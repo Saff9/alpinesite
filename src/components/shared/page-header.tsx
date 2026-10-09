@@ -38,10 +38,10 @@ export function PageHeader({
         className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30"
         aria-hidden="true"
       />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+      <div className="relative mx-auto max-w-7xl px-5 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
         {crumbs.length > 0 && (
-          <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white/70">
+          <nav aria-label="Breadcrumb" className="flex justify-center">
+            <ol className="flex flex-wrap items-center justify-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-white/70">
               {crumbs.map((crumb, i) => (
                 <li key={`${crumb.label}-${i}`} className="flex items-center gap-1.5">
                   {i > 0 && <ChevronRight className="h-3 w-3 text-brand" aria-hidden="true" />}
@@ -62,11 +62,11 @@ export function PageHeader({
             </ol>
           </nav>
         )}
-        <h1 className="mt-4 max-w-3xl font-heading text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl lg:text-[2.85rem]">
+        <h1 className="mx-auto mt-4 max-w-3xl font-heading text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl lg:text-[2.85rem]">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/90">
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-white/90">
             {subtitle}
           </p>
         )}

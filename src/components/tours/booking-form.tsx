@@ -159,12 +159,12 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
             id="booking-name"
             name="name"
             autoComplete="name"
-            placeholder="e.g. Aarav Mehta"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
             aria-invalid={Boolean(fieldErrors.name)}
             aria-describedby={fieldErrors.name ? "booking-name-error" : undefined}
+            className="h-11"
           />
           {errorText("name")}
         </div>
@@ -178,12 +178,12 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             aria-invalid={Boolean(fieldErrors.email)}
             aria-describedby={fieldErrors.email ? "booking-email-error" : undefined}
+            className="h-11"
           />
           {errorText("email")}
         </div>
@@ -197,12 +197,12 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="+91 1234567890"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
             aria-invalid={Boolean(fieldErrors.phone)}
             aria-describedby={fieldErrors.phone ? "booking-phone-error" : undefined}
+            className="h-11"
           />
           {errorText("phone")}
         </div>
@@ -219,6 +219,7 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
               onChange={(e) => setTravelDate(e.target.value)}
               aria-invalid={Boolean(fieldErrors.travelDate)}
               aria-describedby={fieldErrors.travelDate ? "booking-date-error" : undefined}
+              className="h-11"
             />
             {errorText("travelDate")}
           </div>
@@ -226,7 +227,7 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
           <div className="space-y-1.5">
             <Label htmlFor="booking-travellers">Travellers</Label>
             <Select value={travellers} onValueChange={setTravellers}>
-              <SelectTrigger id="booking-travellers" className="h-9 w-full">
+              <SelectTrigger id="booking-travellers" className="h-11 w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -245,7 +246,6 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
           <Textarea
             id="booking-message"
             name="message"
-            placeholder="Honeymoon upgrades, veg meals, kids in the group, flexible dates…"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={3}
@@ -258,7 +258,7 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
         <Button
           type="submit"
           disabled={status === "submitting"}
-          className="h-11 w-full gap-2 bg-terracotta text-white hover:bg-terracotta-deep"
+          className="h-12 w-full gap-2 rounded-xl border border-transparent bg-brand text-white shadow-md hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider"
         >
           {status === "submitting" ? (
             <>

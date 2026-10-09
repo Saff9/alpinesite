@@ -166,7 +166,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
       />
 
       <div className="pb-16 pt-12 sm:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-8">
             {/* Left column — everything about the trip */}
             <article className="space-y-12 sm:space-y-14">

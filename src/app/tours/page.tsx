@@ -44,7 +44,7 @@ export default async function ToursPage({ searchParams }: ToursPageProps) {
       />
 
       <section className="pb-16 pt-12 sm:pb-20" aria-labelledby="tours-explorer-heading">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <h2 id="tours-explorer-heading" className="sr-only">
             Browse and filter all tour packages
           </h2>

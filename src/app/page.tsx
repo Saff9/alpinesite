@@ -49,7 +49,7 @@ export default function HomePage() {
 
       {/* Popular destinations */}
       <section className="py-16 sm:py-20" aria-labelledby="popular-destinations">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Popular destinations"
             title="Where our travellers are heading this year"
@@ -74,7 +74,7 @@ export default function HomePage() {
 
       {/* Featured tours */}
       <section className="bg-sand py-16 sm:py-20" aria-labelledby="featured-tours">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Featured tour packages"
             title="Trips we're quietly proud of"
@@ -95,16 +95,18 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <section className="bg-sand py-16 sm:py-20" aria-labelledby="testimonials-heading">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-10">
-            <div className="max-w-2xl">
-              <p className="mb-2 font-heading text-xs font-bold uppercase tracking-wider text-brand">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="mb-8 flex flex-col items-center text-center justify-center gap-4 sm:mb-10">
+            <div className="max-w-2xl mx-auto flex flex-col items-center">
+              <p className="mb-2.5 inline-flex items-center justify-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                <span aria-hidden="true" className="h-0.5 w-4 bg-brand" />
                 Traveller stories
+                <span aria-hidden="true" className="h-0.5 w-4 bg-brand" />
               </p>
               <h2 id="testimonials-heading" className="font-heading text-2xl font-extrabold uppercase tracking-tight text-black sm:text-3xl lg:text-[2.2rem]">
                 {site.stats.travellersServed} travellers, one phone that answers.
               </h2>
-              <div className="mt-3 flex items-center gap-3">
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
                 <RatingStars rating={site.stats.rating} size="md" />
                 <p className="text-sm text-neutral-600">
                   {site.stats.rating.toFixed(1)}/5 on Google with {site.stats.reviewsCount} reviews earned on the mountain
@@ -123,7 +125,7 @@ export default function HomePage() {
 
       {/* Blog teaser */}
       <section className="pb-16 pt-2 sm:pb-20" aria-labelledby="guides-heading">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Travel guides"
             title="Read before you pack"

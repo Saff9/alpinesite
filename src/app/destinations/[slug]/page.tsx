@@ -124,7 +124,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
 
       {/* About + quick facts */}
       <section className="pb-16 pt-12 sm:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow={destination.country}
             title={`About ${destination.name}`}
@@ -219,14 +219,14 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
 
       {/* When to visit — season guide */}
       <section className="pb-16 sm:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SeasonGuide destination={destination} />
         </div>
       </section>
 
       {/* Highlights */}
       <section className="bg-sand py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Highlights"
             title={`${destination.name}, done properly`}
@@ -252,7 +252,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         <DestinationStories destination={destination} />
       ) : (
       <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Gallery"
             title={`Postcards from ${destination.name}`}
@@ -289,7 +289,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
       {/* Tours */}
       {tours.length > 0 && (
         <section className="bg-sand py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mx-auto max-w-7xl px-5 sm:px-6">
             <SectionHeading
               eyebrow="Tour packages"
               title={`Tours in ${destination.name}`}
@@ -311,7 +311,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
       {/* Related travel guides */}
       {relatedPosts.length > 0 && (
         <section className="py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mx-auto max-w-7xl px-5 sm:px-6">
             <SectionHeading
               eyebrow="Travel guides"
               title={`Travel guides about ${destination.name}`}
@@ -330,27 +330,26 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
 
       {/* CTA band */}
       <section className="pb-16 sm:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="rounded-3xl bg-pine-deep px-6 py-12 sm:px-12 sm:py-16">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-2xl">
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-terracotta">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="rounded-3xl bg-pine-deep px-6 py-12 text-center sm:px-12 sm:py-16">
+            <div className="flex flex-col items-center gap-8">
+              <div className="max-w-2xl mx-auto">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand">
                   Let&apos;s plan it
                 </p>
-                <h2 className="mt-2 font-heading text-3xl font-semibold leading-tight text-primary-foreground sm:text-4xl">
+                <h2 className="mt-2 font-heading text-3xl font-extrabold uppercase leading-tight text-white sm:text-4xl">
                   Plan your {destination.name} trip
                 </h2>
-                <p className="mt-3 leading-relaxed text-primary-foreground/80">
+                <p className="mt-3 leading-relaxed text-neutral-300">
                   Tell us your dates and rough budget — we&apos;ll send back a day-by-day
-                  plan with an honest price within 24 hours. No pressure, no spam; just
-                  a Gulmarg-based team that knows {destination.name} first-hand.
+                  plan with an honest price within 24 hours. A Gulmarg-based team that knows {destination.name} first-hand.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3 lg:shrink-0">
+              <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-terracotta text-white hover:bg-terracotta-deep"
+                  className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-7 py-3.5 text-white shadow-md hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
                 >
                   <Link href="/contact">
                     Get a Free Quote
@@ -361,7 +360,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white/40 bg-white/10 text-primary-foreground hover:bg-white/20 hover:text-primary-foreground"
+                  className="w-[80%] max-w-sm rounded-xl border-white/60 bg-transparent px-7 py-3.5 text-white hover:bg-white/10 hover:text-white font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
                 >
                   <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4" aria-hidden="true" />

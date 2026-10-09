@@ -44,7 +44,7 @@ export function Navbar() {
             : "border-neutral-200",
         )}
       >
-        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-6">
           <SiteLogo />
 
           {/* Desktop Navigation with compact clean dropdowns */}

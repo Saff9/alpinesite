@@ -21,7 +21,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Call, WhatsApp or email our Gulmarg office on Gulmarg Road, Forest Block. We reply within one working day — usually much sooner, especially in ski season.",
+    "Call, WhatsApp or email our Gulmarg office on Gulmarg Road, Forest Block. Local mountain guides ready to craft your Himalayan journey.",
   alternates: { canonical: "/contact" },
 };
 
@@ -120,7 +120,7 @@ export default function ContactPage() {
 
       {/* Contact details + form */}
       <section className="py-12 sm:py-16 lg:py-20" aria-labelledby="contact-details">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <h2 id="contact-details" className="sr-only">
             Contact details and enquiry form
           </h2>
@@ -130,7 +130,7 @@ export default function ContactPage() {
               <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <PhoneCall className="h-5 w-5" />
                 </span>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   <h3 className="text-sm font-semibold text-foreground">Phone</h3>
                   <a
                     href={site.phoneHref}
-                    className="mt-1 block font-heading text-lg font-semibold text-pine transition-colors hover:text-pine-deep hover:underline"
+                    className="mt-1 block font-heading text-lg font-semibold text-brand transition-colors hover:text-brand-deep hover:underline"
                   >
                     {site.phone}
                   </a>
@@ -151,7 +151,7 @@ export default function ContactPage() {
               <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <MessageCircle className="h-5 w-5" />
                 </span>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                     href={whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 block font-heading text-lg font-semibold text-pine transition-colors hover:text-pine-deep hover:underline"
+                    className="mt-1 block font-heading text-lg font-semibold text-brand transition-colors hover:text-brand-deep hover:underline"
                   >
                     Chat with us
                     <span className="sr-only"> on WhatsApp (opens in a new tab)</span>
@@ -175,7 +175,7 @@ export default function ContactPage() {
               <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <Mail className="h-5 w-5" />
                 </span>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                   <h3 className="text-sm font-semibold text-foreground">Email</h3>
                   <a
                     href={`mailto:${site.email}`}
-                    className="mt-1 block font-heading text-lg font-semibold break-words text-pine transition-colors hover:text-pine-deep hover:underline"
+                    className="mt-1 block font-heading text-lg font-semibold break-words text-brand transition-colors hover:text-brand-deep hover:underline"
                   >
                     {site.email}
                   </a>
@@ -196,7 +196,7 @@ export default function ContactPage() {
               <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <MapPin className="h-5 w-5" />
                 </span>
@@ -220,7 +220,7 @@ export default function ContactPage() {
               <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <Clock className="h-5 w-5" />
                 </span>
@@ -236,7 +236,7 @@ export default function ContactPage() {
               </div>
 
               {/* Socials */}
-              <div className="flex items-center gap-3 px-1 pt-2">
+              <div className="flex items-center justify-center sm:justify-start gap-3 px-1 pt-2">
                 <p className="text-sm font-semibold text-foreground">Follow along:</p>
                 <div className="flex gap-2">
                   {socials.map((social) => (
@@ -260,7 +260,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-pine/20 bg-secondary/60 p-4 sm:p-5">
+              <div className="rounded-2xl border border-brand/20 bg-secondary/60 p-4 sm:p-5 text-center sm:text-left">
                 <p className="text-sm leading-relaxed text-foreground/90">
                   Travelling within India? Our numbers work on WhatsApp. Outside
                   India? Email is fastest — phone calls get expensive and time
@@ -277,7 +277,7 @@ export default function ContactPage() {
 
       {/* FAQs */}
       <section className="bg-sand py-16 sm:py-20" aria-labelledby="contact-faqs">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Before you write"
             title="Frequently asked questions"
@@ -303,7 +303,7 @@ export default function ContactPage() {
 
       {/* Map */}
       <section className="py-16 sm:py-20" aria-labelledby="office-map">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Find us"
             title="One office, under the gondola line"

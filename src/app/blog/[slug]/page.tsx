@@ -136,7 +136,7 @@ export default async function BlogPostPage({
 
       {/* Article */}
       <section className="py-12 sm:py-16" aria-label={post.title}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <article className="mx-auto max-w-3xl">
             {/* Article header — the h1 lives in the PageHeader above */}
             <header className="border-b border-border pb-6">
@@ -261,11 +261,11 @@ export default async function BlogPostPage({
 
       {/* Newsletter cross-link — captures readers mid-interest */}
       <section className="py-14 sm:py-16" aria-labelledby="guide-newsletter">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+        <div className="mx-auto max-w-4xl px-5 sm:px-6">
           <div className="rounded-3xl bg-pine-deep px-6 py-10 sm:px-12 sm:py-12">
             <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-terracotta">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand">
                   One email a month
                 </p>
                 <h2
@@ -277,7 +277,6 @@ export default async function BlogPostPage({
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/75">
                   Seasonal picks, fresh itineraries and the odd Kashmir tip
                   worth keeping — written by the guides, never by a marketer.
-                  No spam, unsubscribe anytime.
                 </p>
               </div>
               <div className="lg:justify-self-end lg:w-full lg:max-w-sm">
@@ -290,7 +289,7 @@ export default async function BlogPostPage({
 
       {/* Continue reading */}
       <section className="bg-sand py-16 sm:py-20" aria-labelledby="continue-reading">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Keep reading"
             title="Continue reading"

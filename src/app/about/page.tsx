@@ -88,7 +88,7 @@ export default function AboutPage() {
 
       {/* Our story */}
       <section className="py-12 sm:py-16 lg:py-20" aria-labelledby="our-story">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="relative order-2 lg:order-1">
               <div className="overflow-hidden rounded-3xl">
@@ -112,17 +112,19 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="order-1 lg:order-2">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-terracotta">
+            <div className="order-1 flex flex-col items-center text-center lg:items-start lg:text-left lg:order-2">
+              <p className="mb-2.5 inline-flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-brand">
+                <span aria-hidden="true" className="h-0.5 w-4 bg-brand" />
                 Our story
+                <span aria-hidden="true" className="h-0.5 w-4 bg-brand" />
               </p>
               <h2
                 id="our-story"
-                className="font-heading text-2xl font-semibold sm:text-3xl lg:text-[2.1rem]"
+                className="font-heading text-2xl font-extrabold uppercase tracking-tight text-black sm:text-3xl lg:text-[2.2rem]"
               >
                 It started with a sledge, a shoulder, and one perfect line.
               </h2>
-              <div className="mt-4 space-y-4 text-foreground/85 leading-relaxed">
+              <div className="mt-4 space-y-4 text-foreground/85 leading-relaxed text-left">
                 <p>
                   Bashir Ahmad grew up in Tangmarg, in the pine belt below
                   Gulmarg, in a family that hauled sledges and carried
@@ -159,21 +161,21 @@ export default function AboutPage() {
 
       {/* Mission & Vision */}
       <section className="bg-sand py-16 sm:py-20" aria-labelledby="mission-vision">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="What we're after"
             title="Two things we check every decision against"
             align="center"
           />
           <div id="mission-vision" className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+            <article className="flex flex-col items-center text-center rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
               <span
                 aria-hidden="true"
-                className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-pine"
+                className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-brand"
               >
                 <Target className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-heading text-xl font-semibold">Our mission</h3>
+              <h3 className="mt-5 font-heading text-xl font-bold uppercase text-black">Our mission</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
                 To make the Himalayas feel like home — planned by people who
                 live there, priced without games, and run with the care
@@ -182,14 +184,14 @@ export default function AboutPage() {
                 job.
               </p>
             </article>
-            <article className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+            <article className="flex flex-col items-center text-center rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
               <span
                 aria-hidden="true"
-                className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-pine"
+                className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-brand"
               >
                 <Eye className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-heading text-xl font-semibold">Our vision</h3>
+              <h3 className="mt-5 font-heading text-xl font-bold uppercase text-black">Our vision</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
                 To be the most trusted name in Himalayan travel by 2030 — the
                 team you call before you book anywhere, because you know
@@ -204,7 +206,7 @@ export default function AboutPage() {
 
       {/* Stats band */}
       <section className="py-16 sm:py-20" aria-label="Alpine Club India in numbers">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="rounded-3xl bg-pine-deep px-6 py-12 sm:px-12 sm:py-16">
             <div className="grid grid-cols-2 gap-8 text-center sm:gap-10 lg:grid-cols-4">
               {stats.map((stat) => (
@@ -232,7 +234,7 @@ export default function AboutPage() {
 
       {/* Why travel with us */}
       <section className="py-16 sm:py-20" aria-labelledby="why-us">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Why travel with us"
             title="The boring things we refuse to compromise on"
@@ -242,15 +244,15 @@ export default function AboutPage() {
             {values.map((item) => (
               <article
                 key={item.title}
-                className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="flex flex-col items-center text-center rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-pine"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <item.icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 font-heading text-lg font-semibold">{item.title}</h3>
+                <h3 className="mt-4 font-heading text-base font-bold uppercase text-black">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {item.text}
                 </p>
@@ -262,7 +264,7 @@ export default function AboutPage() {
 
       {/* Team */}
       <section className="bg-sand py-16 sm:py-20" aria-labelledby="team-heading">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Leadership"
             title="Our Founder & Lead Mountain Guide"
@@ -288,14 +290,14 @@ export default function AboutPage() {
                     className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
                     aria-hidden="true"
                   />
-                  <div className="absolute bottom-5 left-5 right-5 text-white">
+                  <div className="absolute bottom-5 left-5 right-5 text-center text-white">
                     <h3 className="font-heading text-2xl font-bold">{member.name}</h3>
                     <p className="mt-1 text-xs font-bold uppercase tracking-wider text-sand">
                       {member.role}
                     </p>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 text-center">
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     {member.line}
                   </p>
@@ -311,7 +313,7 @@ export default function AboutPage() {
 
       {/* Testimonials wall */}
       <section className="py-16 sm:py-20" aria-labelledby="about-testimonials">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Traveller stories"
             title="What they say when they're home"
@@ -325,7 +327,7 @@ export default function AboutPage() {
             >
               {reviewStats.map((stat) => (
                 <div key={stat.label} className="text-center sm:px-4">
-                  <p className="font-heading text-3xl font-semibold text-pine">
+                  <p className="font-heading text-3xl font-semibold text-brand">
                     {stat.figure}
                   </p>
                   <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
@@ -351,24 +353,24 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="pb-16 sm:pb-20" aria-labelledby="about-cta">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="relative overflow-hidden rounded-3xl bg-pine px-6 py-14 text-center sm:px-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+          <div className="relative overflow-hidden rounded-3xl bg-brand px-6 py-14 text-center sm:px-12 sm:py-16">
             <h2
               id="about-cta"
               className="mx-auto max-w-2xl font-heading text-3xl font-semibold leading-tight text-primary-foreground sm:text-4xl"
             >
               Come say hello in Gulmarg
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-primary-foreground/80">
+            <p className="mx-auto mt-4 max-w-xl text-primary-foreground/85">
               Our office on Gulmarg Road has a kettle that&rsquo;s always on and
               skis leaning by the door. Can&rsquo;t make it up the hill? We
               plan just as well over phone, email and WhatsApp.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto">
               <Button
                 asChild
                 size="lg"
-                className="bg-terracotta text-white hover:bg-terracotta-deep"
+                className="w-[80%] max-w-sm rounded-xl border border-white bg-white px-7 py-3.5 text-black shadow-md hover:bg-neutral-100 font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
               >
                 <Link href="/contact">
                   Contact Us
@@ -379,7 +381,7 @@ export default function AboutPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                className="w-[80%] max-w-sm rounded-xl border-white/60 bg-transparent px-7 py-3.5 text-white hover:bg-white/10 hover:text-white font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
               >
                 <Link href="/tours">Our tours</Link>
               </Button>

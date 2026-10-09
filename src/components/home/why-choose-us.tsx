@@ -30,7 +30,7 @@ const features = [
 export function WhyChooseUs() {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Image side */}
           <div className="relative">
@@ -45,7 +45,7 @@ export function WhyChooseUs() {
               />
             </div>
             <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border bg-card p-5 shadow-lg shadow-black/10 sm:left-8 sm:right-auto sm:max-w-64">
-              <Quote className="h-5 w-5 text-terracotta" aria-hidden="true" />
+              <Quote className="h-5 w-5 text-brand" aria-hidden="true" />
               <p className="mt-2 text-sm font-medium leading-relaxed text-foreground">
                 &ldquo;We treat every trip like it's our own family travelling.&rdquo;
               </p>
@@ -56,7 +56,7 @@ export function WhyChooseUs() {
           </div>
 
           {/* Content side */}
-          <div className="lg:pl-2">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-2">
             <p className="mb-2 font-heading text-xs font-extrabold uppercase tracking-[0.22em] text-brand">
               Why travel with us
             </p>
@@ -69,7 +69,7 @@ export function WhyChooseUs() {
               answers, and a team whose only job is your trip going right.
             </p>
 
-            <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+            <ul className="mt-8 grid gap-6 sm:grid-cols-2 text-left">
               {features.map((feature) => (
                 <li key={feature.title} className="flex gap-4">
                   <span
@@ -88,14 +88,14 @@ export function WhyChooseUs() {
               ))}
             </ul>
 
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild className="bg-brand text-white hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11 px-5 shadow-xs">
+            <div className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto lg:justify-start">
+              <Button asChild className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-6 py-3.5 text-white shadow-xs hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto">
                 <Link href="/about">
                   Our story
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="border-neutral-300 text-black hover:border-brand hover:text-brand font-heading text-xs font-bold uppercase tracking-wider h-11 px-5">
+              <Button asChild variant="outline" className="w-[80%] max-w-sm rounded-xl border-neutral-300 text-black hover:border-brand hover:text-brand font-heading text-xs font-bold uppercase tracking-wider h-12 px-6 sm:w-auto">
                 <a href={site.phoneHref}>{site.phone}</a>
               </Button>
             </div>

@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 export function CtaBanner() {
   return (
     <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="relative overflow-hidden rounded-3xl">
           <Image
             src="/images/destinations/kashmir/sonamarg.jpg"
@@ -29,11 +29,14 @@ export function CtaBanner() {
             </h2>
             <p className="max-w-xl text-base leading-relaxed text-white/90">
               A 15-minute call with our mountain expert is all it takes to get a
-              plan, a price, and a honest opinion on the right season. No
-              spam, no pressure, because we are a local team and keep it personal.
+              plan, a price, and a honest opinion on the right season.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11 px-6 shadow-md">
+            <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto">
+              <Button
+                asChild
+                size="lg"
+                className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-7 py-3.5 text-white shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
+              >
                 <Link href="/contact">
                   Get a Free Quote
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -43,7 +46,7 @@ export function CtaBanner() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/50 bg-black/40 text-white hover:bg-white hover:text-black font-heading text-xs font-bold uppercase tracking-wider h-12 px-6 transition-colors"
+                className="w-[80%] max-w-sm rounded-xl border border-white/60 bg-black/50 px-7 py-3.5 backdrop-blur-xs text-white shadow-md transition-colors hover:border-white hover:bg-white hover:text-black font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
               >
                 <a href={site.phoneHref}>
                   <PhoneCall className="h-4 w-4" aria-hidden="true" />

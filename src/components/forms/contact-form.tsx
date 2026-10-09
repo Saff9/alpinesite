@@ -149,7 +149,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
+      className="rounded-2xl border border-border/80 bg-card p-6 shadow-xl hover:shadow-2xl transition-all duration-300 sm:p-8 md:p-10"
       aria-label="Contact form"
     >
       <div className="grid gap-5 sm:grid-cols-2">
@@ -161,13 +161,12 @@ export function ContactForm() {
             id="contact-name"
             name="name"
             autoComplete="name"
-            placeholder="Your full name"
             required
             value={form.name}
             onChange={(e) => setField("name")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.name)}
             aria-describedby={fieldErrors.name ? "contact-name-error" : undefined}
-            className="mt-2 h-10"
+            className="mt-2 h-11"
           />
           {errorText("name")}
         </div>
@@ -181,13 +180,12 @@ export function ContactForm() {
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="you@example.com"
             required
             value={form.email}
             onChange={(e) => setField("email")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.email)}
             aria-describedby={fieldErrors.email ? "contact-email-error" : undefined}
-            className="mt-2 h-10"
+            className="mt-2 h-11"
           />
           {errorText("email")}
         </div>
@@ -201,12 +199,11 @@ export function ContactForm() {
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="+91 1234567890"
             value={form.phone}
             onChange={(e) => setField("phone")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.phone)}
             aria-describedby={fieldErrors.phone ? "contact-phone-error" : undefined}
-            className="mt-2 h-10"
+            className="mt-2 h-11"
           />
           {errorText("phone")}
         </div>
@@ -219,7 +216,7 @@ export function ContactForm() {
           >
             <SelectTrigger
               id="contact-subject"
-              className="mt-2 h-10 w-full"
+              className="mt-2 h-11 w-full"
               aria-invalid={Boolean(fieldErrors.subject)}
             >
               <SelectValue placeholder="Choose a topic" />
@@ -242,7 +239,6 @@ export function ContactForm() {
           <Textarea
             id="contact-message"
             name="message"
-            placeholder="Where do you want to go, roughly when, and who's travelling? The more you tell us, the better the first draft."
             required
             minLength={10}
             rows={6}
@@ -265,27 +261,26 @@ export function ContactForm() {
         </p>
       )}
 
-      <Button
-        type="submit"
-        size="lg"
-        disabled={status === "submitting"}
-        className="mt-6 w-full bg-terracotta text-white hover:bg-terracotta-deep sm:w-auto"
-      >
-        {status === "submitting" ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-            Sending…
-          </>
-        ) : (
-          <>
-            Send message
-            <Send className="h-4 w-4" aria-hidden="true" />
-          </>
-        )}
-      </Button>
-      <p className="mt-4 text-xs text-muted-foreground">
-        We reply within one working day. No spam — we hate it too.
-      </p>
+      <div className="mt-6 flex flex-col items-center sm:items-start">
+        <Button
+          type="submit"
+          size="lg"
+          disabled={status === "submitting"}
+          className="w-[80%] max-w-sm border border-transparent bg-brand px-7 py-3 text-white shadow-md hover:bg-brand-deep sm:w-auto"
+        >
+          {status === "submitting" ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              Sending…
+            </>
+          ) : (
+            <>
+              Send message
+              <Send className="h-4 w-4" aria-hidden="true" />
+            </>
+          )}
+        </Button>
+      </div>
     </form>
   );
 }

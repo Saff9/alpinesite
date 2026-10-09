@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="mt-auto overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4rem] bg-black text-neutral-400 border-t border-neutral-900 shadow-2xl">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-16">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:py-16">
         {/* Newsletter signup band */}
         <div className="mb-10 flex flex-col gap-5 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-md">

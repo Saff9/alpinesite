@@ -111,7 +111,6 @@ export function NewsletterForm() {
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="you@example.com"
             required
             value={email}
             onChange={(e) => {
@@ -120,7 +119,7 @@ export function NewsletterForm() {
             }}
             aria-invalid={Boolean(fieldError)}
             aria-describedby={fieldError ? "newsletter-email-error" : undefined}
-            className="h-11 rounded-lg border border-neutral-800 bg-neutral-900/90 px-4 text-white placeholder:text-neutral-500 focus-visible:ring-2 focus-visible:ring-neutral-600 focus-visible:border-neutral-600"
+            className="h-11 rounded-xl border border-neutral-800 bg-neutral-900/90 px-4 text-white focus-visible:ring-2 focus-visible:ring-neutral-600 focus-visible:border-neutral-600"
           />
           {fieldError && (
             <p

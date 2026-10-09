@@ -25,7 +25,7 @@ export function FaqSection({
 }: FaqSectionProps) {
   return (
     <section className={cn("py-16 sm:py-20", className)} aria-labelledby="home-faqs-heading">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <SectionHeading
           eyebrow={eyebrow}
           title={title}

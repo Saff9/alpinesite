@@ -25,7 +25,7 @@ export default function DestinationsPage() {
       />
 
       <section className="pb-16 pt-12 sm:pb-20" aria-labelledby="destinations-list">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <h2 id="destinations-list" className="sr-only">
             Browse all destinations
           </h2>

@@ -32,7 +32,7 @@ const iconMap: Record<string, LucideIcon> = {
 export function TravelCategories() {
   return (
     <section className="bg-sand py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <SectionHeading
           eyebrow="Travel by mood"
           title="What kind of traveller are you?"
@@ -47,15 +47,15 @@ export function TravelCategories() {
               <li key={style.id} className="group">
                 <Link
                   href={`/tours?category=${style.id}`}
-                  className="flex h-full flex-col rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-terracotta/40 hover:shadow-md"
+                  className="flex h-full flex-col items-center text-center rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-md"
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-pine transition-colors duration-300 group-hover:bg-terracotta group-hover:text-white"
+                    className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-pine transition-colors duration-300 group-hover:bg-brand group-hover:text-white"
                   >
-                    <Icon className="h-5.5 w-5.5" />
+                    <Icon className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-4 font-heading text-base font-semibold">
+                  <h3 className="mt-4 font-heading text-base font-semibold text-black">
                     {style.label}
                   </h3>
                   <p className="mt-1.5 hidden text-sm leading-relaxed text-muted-foreground sm:block">

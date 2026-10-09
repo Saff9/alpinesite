@@ -29,7 +29,7 @@ export default function BlogPage() {
       />
 
       <section className="py-12 sm:py-16" aria-labelledby="all-guides">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <h2 id="all-guides" className="sr-only">
             All travel guides
           </h2>

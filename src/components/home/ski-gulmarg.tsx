@@ -41,7 +41,7 @@ const gondolaFacts = [
 export function SkiGulmarg() {
   return (
     <section className="py-16 sm:py-20" aria-labelledby="ski-gulmarg-heading">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <SectionHeading
           eyebrow="The home mountain"
           title="Ski Gulmarg with the guides who live here"
@@ -62,10 +62,10 @@ export function SkiGulmarg() {
               className="object-cover"
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-pine-deep/70 via-transparent to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-pine-deep/80 via-transparent to-transparent"
               aria-hidden="true"
             />
-            <figcaption className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-4 p-5 sm:p-6">
+            <figcaption className="absolute bottom-0 left-0 right-0 flex flex-col items-center text-center p-5 sm:p-6">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">
                   Powder day, Apharwat face
@@ -86,7 +86,7 @@ export function SkiGulmarg() {
             {services.map(({ icon: Icon, title, description }) => (
               <article
                 key={title}
-                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs transition-shadow hover:shadow-md"
+                className="flex flex-col items-center text-center rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs transition-shadow hover:shadow-md"
               >
                 <span
                   className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-light text-brand"
@@ -106,7 +106,7 @@ export function SkiGulmarg() {
         </div>
 
         {/* Gondola fact band */}
-        <div className="mt-6 grid gap-5 rounded-2xl bg-neutral-50 border border-neutral-200 p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-8 sm:p-8">
+        <div className="mt-6 flex flex-col items-center justify-between gap-6 rounded-2xl bg-neutral-50 border border-neutral-200 p-6 sm:p-8 md:flex-row">
           <figure className="relative hidden h-24 w-40 shrink-0 overflow-hidden rounded-xl sm:block lg:h-28 lg:w-48">
             <Image
               src="/images/ski/apharwat-peaks.jpg"
@@ -117,9 +117,9 @@ export function SkiGulmarg() {
               className="object-cover"
             />
           </figure>
-          <dl className="grid grid-cols-3 divide-x divide-neutral-200">
+          <dl className="grid w-full max-w-md grid-cols-3 divide-x divide-neutral-200">
             {gondolaFacts.map(({ figure, unit, label }) => (
-              <div key={label} className="px-2 text-center sm:px-5 sm:text-left">
+              <div key={label} className="px-2 text-center sm:px-4">
                 <dd className="font-heading text-xl font-extrabold tracking-tight text-black tabular-nums sm:text-3xl">
                   {figure}
                   {unit ? <span className="text-xs sm:text-base font-semibold text-neutral-500"> {unit}</span> : null}
@@ -132,7 +132,7 @@ export function SkiGulmarg() {
           </dl>
           <Button
             asChild
-            className="bg-brand text-white hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11 px-5 shadow-xs"
+            className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-6 py-3 text-white shadow-sm hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11 md:w-auto"
           >
             <Link href="/tours/gulmarg-ski-adventure">
               Plan your ski week
