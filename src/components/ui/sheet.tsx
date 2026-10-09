@@ -69,9 +69,27 @@ export function SheetContent({
   children: React.ReactNode;
 }) {
   const ctx = React.useContext(SheetContext);
+  const [mounted, setMounted] = React.useState(ctx?.open ?? false);
+  const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
-    if (!ctx?.open) return;
+    if (ctx?.open) {
+      setMounted(true);
+      const raf = requestAnimationFrame(() => {
+        setVisible(true);
+      });
+      return () => cancelAnimationFrame(raf);
+    } else {
+      setVisible(false);
+      const timer = setTimeout(() => {
+        setMounted(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [ctx?.open]);
+
+  React.useEffect(() => {
+    if (!mounted) return;
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") ctx?.setOpen(false);
     }
@@ -81,34 +99,37 @@ export function SheetContent({
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [ctx]);
+  }, [mounted, ctx]);
 
-  if (!ctx?.open) return null;
+  if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 z-50">
+    <div className="fixed inset-0 z-50 overflow-hidden">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-in fade-in"
-        onClick={() => ctx.setOpen(false)}
+        className={cn(
+          "fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-300 ease-out",
+          visible ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+        onClick={() => ctx?.setOpen(false)}
       />
 
-      {/* Drawer */}
+      {/* Drawer with smooth slide in & slide out animation */}
       <div
         role="dialog"
         aria-modal="true"
         className={cn(
-          "fixed top-0 bottom-0 z-50 h-full bg-background shadow-xl transition-transform duration-300 ease-in-out",
-          side === "right" && "right-0 w-80 animate-in slide-in-from-right",
-          side === "left" && "left-0 w-80 animate-in slide-in-from-left",
+          "fixed top-0 bottom-0 z-50 h-full bg-background shadow-2xl transition-transform duration-300 ease-out will-change-transform",
+          side === "right" && (visible ? "right-0 w-80 translate-x-0" : "right-0 w-80 translate-x-full"),
+          side === "left" && (visible ? "left-0 w-80 translate-x-0" : "left-0 w-80 -translate-x-full"),
           className
         )}
       >
         <button
           type="button"
-          onClick={() => ctx.setOpen(false)}
+          onClick={() => ctx?.setOpen(false)}
           aria-label="Close navigation"
-          className="absolute right-4 top-4 rounded-md p-1.5 text-muted-foreground hover:bg-secondary hover:text-foreground"
+          className="absolute right-4 top-4 rounded-lg p-2 text-muted-foreground hover:bg-neutral-100 hover:text-foreground transition-colors"
         >
           <X className="h-5 w-5" />
         </button>
