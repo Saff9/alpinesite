@@ -1,0 +1,68 @@
+import type { Testimonial } from "@/types";
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Daniel & Mara Whitfield",
+    location: "London, UK",
+    rating: 5,
+    text: "Fifteen years of heli-trips in Canada and Japan, and Gulmarg's January powder is the best I've skied — but that's not why you should book these guys. Bashir read the wind report at breakfast, called the Phase 2 hold before the resort announced it, and had us tree-skiing Kongdoori while everyone else stood in the queue. A guide who saves your powder days, not just your life.",
+    tour: "Gulmarg Ski & Snow Adventure",
+    date: "January 2026",
+  },
+  {
+    name: "Kabir Malhotra",
+    location: "Gurugram",
+    rating: 5,
+    text: "Second ski week with Imran's crew, this time with my 11-year-old. They put a dedicated instructor on her for three mornings at a fair price — no upsell, no attitude — and by Friday she was lapping the gondola without me. Gear rental was fitted the evening we arrived so day one wasn't wasted. This is how you run a mountain.",
+    tour: "Gulmarg Ski & Snow Adventure",
+    date: "February 2026",
+  },
+  {
+    name: "Priya & Arjun Menon",
+    location: "Bengaluru",
+    rating: 5,
+    text: "Our Kashmir honeymoon was the trip of a lifetime, and that's mostly because of how it was planned. The houseboat had a private deck we weren't expecting, the candle-lit shikara dinner was genuinely private — not a boat with 6 couples like we'd read about. Bashir checked in on us every single day. We're already planning Ladakh with them next year.",
+    tour: "Kashmir Honeymoon Retreat",
+    date: "June 2025",
+  },
+  {
+    name: "The Khurana Family",
+    location: "Delhi",
+    rating: 5,
+    text: "Three generations, one tempo traveller, and zero arguments — a family travel record. The kids still talk about feeding rabbits in Pahalgam and the gondola at Gulmarg. My mother-in-law has knee issues and the team rearranged the Sonamarg day without a single question. That kind of care is rare.",
+    tour: "Kashmir Valley Explorer",
+    date: "May 2025",
+  },
+  {
+    name: "Rohan Deshpande",
+    location: "Pune",
+    rating: 5,
+    text: "Went for the Gulmarg ski week as a complete beginner, honestly half-expecting to hate it. By day four I was linking turns on the Phase 1 slopes and grinning like an idiot. Imran's instructors are patient without being babyish, and the hotel being slope-side meant zero commuting. Already rebooked for January powder.",
+    tour: "Gulmarg Ski & Snow Adventure",
+    date: "February 2025",
+  },
+  {
+    name: "Sneha Kulkarni",
+    location: "Mumbai",
+    rating: 5,
+    text: "Ladakh with my parents, both 60+, felt like a logistical minefield until Alpine Club India took over. Oxygen in the car, a driver who adjusted pace for my father's breathing, and camps with actual hot water. My parents' photos from Pangong sunrise have already been framed. Worth every rupee.",
+    tour: "Ladakh Monasteries & Lakes",
+    date: "August 2025",
+  },
+  {
+    name: "Vikram & Friends",
+    location: "Hyderabad",
+    rating: 5,
+    text: "Six riders, nine days, five passes — the Ladakh bike expedition was flawlessly run. Backup vehicle with a mechanic saved two of our rides (clutch cable and a bent lever), and the lead rider made every call on weather and roads right. The Tso Moriri finale alone justified the whole trip.",
+    tour: "Ladakh Bike Expedition",
+    date: "July 2025",
+  },
+  {
+    name: "Ananya Rao",
+    location: "Chennai",
+    rating: 5,
+    text: "I did Spiti solo as a woman traveller and never once felt unsafe — which says everything about the team. The homestay families, the driver Tenzin who became a friend, and the honesty about which days would be hard. Chandratal under a full moon was the most beautiful night of my life.",
+    tour: "Spiti Valley Odyssey",
+    date: "September 2025",
+  },
+];

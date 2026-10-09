@@ -1,0 +1,335 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  Clock,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  MessageCircle,
+  PhoneCall,
+  Twitter,
+  Youtube,
+} from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/shared/page-header";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { ContactForm } from "@/components/forms/contact-form";
+import { site } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Call, WhatsApp or email our Gulmarg office on Gulmarg Road, Forest Block. We reply within one working day — usually much sooner, especially in ski season.",
+  alternates: { canonical: "/contact" },
+};
+
+const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`;
+
+const contactFaqs = [
+  {
+    question: "How does booking work, and what are the payment terms?",
+    answer:
+      "You send an enquiry — form, WhatsApp or call — and we reply with a draft itinerary and an honest quote within a day. To confirm, you pay a 25% advance; the balance is due any time before the trip starts. We accept bank transfer, UPI and international wire. You get written confirmations for every stay and transfer before you fly — not vouchers handed to you on arrival.",
+  },
+  {
+    question: "Can I customise an itinerary?",
+    answer:
+      "Yes — every trip we run is private, so customisation is the norm, not an exception. Swap hotels, add a day in Pahalgam, skip a temple, bring your dog (we've done it). Tell us what you loved and hated on past trips; the first draft usually changes twice before you book, and that's a good thing.",
+  },
+  {
+    question: "What's your cancellation policy?",
+    answer:
+      "Full refund if you cancel 21 or more days before departure. 50% refund between 14 and 20 days. Inside 14 days we recover what we can from hotels and transport — in thirteen years we've never kept a rupee that was recoverable. Peak-date houseboats and permits sometimes carry their own rules, and we tell you upfront, not after you cancel.",
+  },
+  {
+    question: "Do I need travel insurance?",
+    answer:
+      "For high-altitude and winter trips — Ladakh, Apharwat backcountry, Gulmarg powder skiing — we recommend it strongly and help you arrange it within a day; we work with insurers who actually pay out in India. We will never pretend it's compulsory when it isn't.",
+  },
+  {
+    question: "How are you different from other agencies?",
+    answer:
+      "We're the local team, not a reseller. Your driver, guide and boatman work with us year-round, and your money stays in the valley instead of a call-centre chain. If a hotel disappoints, we hear about it on the same evening's check-in call and move you the next morning — not after you're home writing a review.",
+  },
+];
+
+const socials = [
+  { label: "Alpine Club India on Instagram", href: site.socials.instagram, icon: Instagram },
+  { label: "Alpine Club India on Facebook", href: site.socials.facebook, icon: Facebook },
+  { label: "Alpine Club India on YouTube", href: site.socials.youtube, icon: Youtube },
+  { label: "Alpine Club India on X (Twitter)", href: site.socials.twitter, icon: Twitter },
+];
+
+const contactFaqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: contactFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Alpine Club India",
+  url: `${site.url}/contact`,
+  mainEntity: {
+    "@type": "Organization",
+    name: site.legalName,
+    url: site.url,
+    telephone: site.phone,
+    email: site.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.address.street,
+      addressLocality: site.address.locality,
+      addressRegion: site.address.region,
+      postalCode: site.address.postalCode,
+      addressCountry: site.address.country,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: site.phone,
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi", "Urdu", "Kashmiri"],
+    },
+  },
+};
+
+export default function ContactPage() {
+  return (
+    <>
+      <PageHeader
+        title="Let's plan your next trip"
+        subtitle="Call, WhatsApp or write to us — a real guide from the Gulmarg office replies, usually the same day."
+        image="/images/ski/apharwat-peaks.jpg"
+        imageAlt="Snow-covered ridgelines of the Apharwat range above Gulmarg under a clear sky"
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Contact" },
+        ]}
+      />
+
+      {/* Contact details + form */}
+      <section className="py-12 sm:py-16 lg:py-20" aria-labelledby="contact-details">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 id="contact-details" className="sr-only">
+            Contact details and enquiry form
+          </h2>
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+            {/* Left: info cards */}
+            <div className="space-y-3">
+              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                >
+                  <PhoneCall className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-foreground">Phone</h3>
+                  <a
+                    href={site.phoneHref}
+                    className="mt-1 block font-heading text-lg font-semibold text-pine transition-colors hover:text-pine-deep hover:underline"
+                  >
+                    {site.phone}
+                  </a>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    A human picks up, 9 AM – 7 PM IST, all days.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-foreground">WhatsApp</h3>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block font-heading text-lg font-semibold text-pine transition-colors hover:text-pine-deep hover:underline"
+                  >
+                    Chat with us
+                    <span className="sr-only"> on WhatsApp (opens in a new tab)</span>
+                  </a>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Fastest for quick questions — we usually reply in minutes.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                >
+                  <Mail className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-foreground">Email</h3>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="mt-1 block font-heading text-lg font-semibold break-words text-pine transition-colors hover:text-pine-deep hover:underline"
+                  >
+                    {site.email}
+                  </a>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Best for detailed itineraries and group quotes.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                >
+                  <MapPin className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-foreground">Office</h3>
+                  <address className="mt-1 text-sm not-italic leading-relaxed text-foreground/90">
+                    {site.address.full}
+                  </address>
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(site.address.full)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-brand underline-offset-4 transition-colors hover:underline"
+                  >
+                    View on Google Maps
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+                <span
+                  aria-hidden="true"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-pine"
+                >
+                  <Clock className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-foreground">Hours</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-foreground/90">
+                    {site.hours}
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    On-trip travellers get 24×7 emergency support.
+                  </p>
+                </div>
+              </div>
+
+              {/* Socials */}
+              <div className="flex items-center gap-3 px-1 pt-2">
+                <p className="text-sm font-semibold text-foreground">Follow along:</p>
+                <div className="flex gap-2">
+                  {socials.map((social) => (
+                    <Button
+                      key={social.label}
+                      asChild
+                      variant="outline"
+                      size="icon"
+                      className="rounded-xl"
+                    >
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                      >
+                        <social.icon className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-pine/20 bg-secondary/60 p-4 sm:p-5">
+                <p className="text-sm leading-relaxed text-foreground/90">
+                  Travelling within India? Our numbers work on WhatsApp. Outside
+                  India? Email is fastest — phone calls get expensive and time
+                  zones get cruel.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: form */}
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="bg-sand py-16 sm:py-20" aria-labelledby="contact-faqs">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <SectionHeading
+            eyebrow="Before you write"
+            title="Frequently asked questions"
+            description="The five things almost everyone asks before booking. If yours isn't here, ask us directly — no question is too small."
+            align="center"
+          />
+          <div id="contact-faqs" className="rounded-2xl border border-border bg-card px-6 py-2 shadow-sm">
+            <Accordion type="single" collapsible className="w-full">
+              {contactFaqs.map((faq, index) => (
+                <AccordionItem key={faq.question} value={`faq-${index}`}>
+                  <AccordionTrigger className="py-5 text-left font-heading text-base font-semibold hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-5 leading-relaxed text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="py-16 sm:py-20" aria-labelledby="office-map">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionHeading
+            eyebrow="Find us"
+            title="One office, under the gondola line"
+            description="Gulmarg Road, Forest Block — a short walk from the Gondola base. In winter look for the skis leaning by the door and the kettle that's always on."
+          />
+          <div id="office-map" className="overflow-hidden rounded-2xl border border-border shadow-sm">
+            <iframe
+              src="https://maps.google.com/maps?q=Gulmarg%20Gondola%2C%20Gulmarg%2C%20Jammu%20and%20Kashmir%20193403&z=14&output=embed"
+              title="Google Map showing Alpine Club India's office on Gulmarg Road, Forest Block, Gulmarg"
+              loading="lazy"
+              className="h-[380px] w-full border-0"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactFaqJsonLd) }}
+      />
+    </>
+  );
+}
