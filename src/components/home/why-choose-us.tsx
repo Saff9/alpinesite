@@ -58,15 +58,13 @@ export function WhyChooseUs() {
           {/* Content side */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-2">
             <p className="mb-2 font-heading text-xs font-extrabold uppercase tracking-[0.22em] text-brand">
-              Why travel with us
+              About Alpine Club
             </p>
             <h2 className="font-heading text-2xl font-extrabold uppercase tracking-tight text-black sm:text-3xl lg:text-[2.2rem]">
-              A mountain company that actually travels with you.
+              Himalayan Guides Born on These Slopes.
             </h2>
             <p className="mt-3 text-base leading-relaxed text-neutral-700">
-              Most agencies sell you an itinerary and disappear. We ride along —
-              a founder who still guides on Apharwat, one phone number that
-              answers, and a team whose only job is your trip going right.
+              Operating out of Gulmarg since 2012, we are local mountain guides who plan, drive, and lead every trip directly. No outsourced scripts or booking agents — just authentic mountain expertise and private custom journeys.
             </p>
 
             <ul className="mt-8 grid gap-6 sm:grid-cols-2 text-left">
