@@ -94,10 +94,10 @@ export function SkiGulmarg() {
                 >
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 font-heading text-base font-extrabold uppercase leading-snug text-black">
+                <h3 className="mt-3.5 sm:mt-4 font-heading text-sm sm:text-base font-extrabold uppercase leading-snug text-black">
                   {title}
                 </h3>
-                <p className="mt-2 text-pretty text-sm leading-relaxed text-neutral-600">
+                <p className="mt-2 text-pretty text-sm leading-relaxed text-neutral-600 hidden lg:block">
                   {description}
                 </p>
               </article>

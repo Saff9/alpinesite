@@ -9,6 +9,9 @@ import { TourCard } from "@/components/cards/tour-card";
 import { popularDestinations } from "@/data/destinations";
 import { featuredTours } from "@/data/tours";
 import { testimonials } from "@/data/testimonials";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { RatingStars } from "@/components/shared/rating-stars";
 import { site } from "@/data/site";
 
@@ -62,13 +65,22 @@ export default function HomePage() {
             eyebrow="Curated Packages"
             title="Popular Tour Packages"
             description="Handcrafted private itineraries guided by our own mountain team."
-            linkHref="/tours"
-            linkLabel="View All Packages"
           />
           <div id="featured-packages" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {topPackages.map((tour, i) => (
               <TourCard key={tour.slug} tour={tour} priority={i < 3} />
             ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Button
+              asChild
+              className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-8 py-3 text-white shadow-xs hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11 sm:w-auto"
+            >
+              <Link href="/tours">
+                View All Packages
+                <ArrowRight className="h-4 w-4 ml-1" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -82,8 +94,6 @@ export default function HomePage() {
             eyebrow="Where We Guide"
             title="Featured Destinations"
             description="Explore the timeless valleys of Kashmir, Gulmarg powder bowls, and high passes of Ladakh."
-            linkHref="/destinations"
-            linkLabel="All Destinations"
           />
           <div
             id="popular-destinations"
@@ -96,6 +106,17 @@ export default function HomePage() {
                 priority={index === 0}
               />
             ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Button
+              asChild
+              className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-8 py-3 text-white shadow-xs hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11 sm:w-auto"
+            >
+              <Link href="/destinations">
+                View All Destinations
+                <ArrowRight className="h-4 w-4 ml-1" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

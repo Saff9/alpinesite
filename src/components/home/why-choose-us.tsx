@@ -7,31 +7,31 @@ import { site } from "@/data/site";
 const features = [
   {
     icon: MapPinned,
-    title: "Local to the bone",
-    text: "Our guides, drivers and boatmen are the neighbours we grew up with in Gulmarg and the valley. No outsourced scripts — just people who know which slope holds powder and which lane has the best baker.",
+    title: "Local Mountain Team",
+    text: "Born on these slopes, knowing every powder bowl and quiet valley trail.",
   },
   {
     icon: ShieldCheck,
-    title: "Honest, all-in pricing",
-    text: "Every quote lists what's included and what isn't. No surprise 'permit fees' on day three, no shopping-stop commissions baked into your itinerary.",
+    title: "Honest Pricing",
+    text: "Transparent quotes with zero hidden fees or tourist-trap commissions.",
   },
   {
     icon: Home,
-    title: "Stays we've slept in",
-    text: "Houseboats, camps and homestays are audited by us every season. If the hot water fails or the view is a wall, it doesn't make our list.",
+    title: "Audited Stays",
+    text: "Personally inspected houseboats and lodges with reliable heating guaranteed.",
   },
   {
     icon: PhoneCall,
-    title: "One WhatsApp away",
-    text: "A real person from our team checks in daily on every trip, and answers within minutes when plans change — because plans change.",
+    title: "Direct Support",
+    text: "A dedicated local guide on WhatsApp throughout your journey for instant help.",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Image side */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-3xl">
@@ -47,7 +47,7 @@ export function WhyChooseUs() {
             <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border bg-card p-5 shadow-lg shadow-black/10 sm:left-8 sm:right-auto sm:max-w-64">
               <Quote className="h-5 w-5 text-brand" aria-hidden="true" />
               <p className="mt-2 text-sm font-medium leading-relaxed text-foreground">
-                &ldquo;We treat every trip like it's our own family travelling.&rdquo;
+                &ldquo;We treat every trip like it&apos;s our own family travelling.&rdquo;
               </p>
               <p className="mt-2 text-xs text-muted-foreground">
                 Bashir Ahmad — Founder, born in Tangmarg
@@ -57,17 +57,17 @@ export function WhyChooseUs() {
 
           {/* Content side */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-2">
-            <p className="mb-2 font-heading text-xs font-extrabold uppercase tracking-[0.22em] text-brand">
+            <p className="mb-3 font-heading text-xs font-extrabold uppercase tracking-[0.22em] text-brand">
               About Alpine Club
             </p>
             <h2 className="font-heading text-2xl font-extrabold uppercase tracking-tight text-black sm:text-3xl lg:text-[2.2rem]">
               Himalayan Guides Born on These Slopes.
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-neutral-700">
-              Operating out of Gulmarg since 2012, we are local mountain guides who plan, drive, and lead every trip directly. No outsourced scripts or booking agents — just authentic mountain expertise and private custom journeys.
+            <p className="mt-4 text-base leading-relaxed text-neutral-600 max-w-xl">
+              Operating out of Gulmarg since 2012, our mountain guides design and lead every journey directly with authentic local care and zero middleman markups.
             </p>
 
-            <ul className="mt-8 grid gap-6 sm:grid-cols-2 text-left">
+            <ul className="mt-8 grid gap-7 sm:grid-cols-2 text-left">
               {features.map((feature) => (
                 <li key={feature.title} className="flex gap-4">
                   <span
@@ -78,7 +78,7 @@ export function WhyChooseUs() {
                   </span>
                   <div>
                     <h3 className="font-heading text-sm font-extrabold uppercase tracking-tight text-black">{feature.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">
+                    <p className="mt-1 text-sm leading-relaxed text-neutral-600">
                       {feature.text}
                     </p>
                   </div>
@@ -86,14 +86,14 @@ export function WhyChooseUs() {
               ))}
             </ul>
 
-            <div className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto lg:justify-start">
-              <Button asChild className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-6 py-3.5 text-white shadow-xs hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto">
+            <div className="mt-10 flex w-full flex-col items-center justify-center gap-3.5 sm:flex-row sm:w-auto lg:justify-start">
+              <Button asChild className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-7 py-3.5 text-white shadow-xs hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto">
                 <Link href="/about">
                   Our story
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" className="w-[80%] max-w-sm rounded-xl border-neutral-300 text-black hover:border-brand hover:text-brand font-heading text-xs font-bold uppercase tracking-wider h-12 px-6 sm:w-auto">
+              <Button asChild variant="secondary" className="w-[80%] max-w-sm rounded-xl border border-border/80 bg-secondary text-secondary-foreground hover:bg-neutral-200 hover:text-black font-heading text-xs font-bold uppercase tracking-wider h-12 px-7 sm:w-auto">
                 <a href={site.phoneHref}>{site.phone}</a>
               </Button>
             </div>

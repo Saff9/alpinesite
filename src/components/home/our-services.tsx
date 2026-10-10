@@ -66,7 +66,7 @@ export function OurServices() {
           {services.map(({ icon, title, description }) => (
             <article
               key={title}
-              className="group flex flex-col items-center text-center rounded-2xl border border-border/80 bg-card p-6 sm:p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg"
+              className="group flex flex-col items-center text-center rounded-2xl border border-border/80 bg-card p-5 sm:p-6 lg:p-8 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg"
             >
               <span
                 className="flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white"
@@ -74,10 +74,10 @@ export function OurServices() {
               >
                 <FontAwesomeIcon icon={icon} className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-heading text-lg font-bold uppercase tracking-tight text-black">
+              <h3 className="mt-4 sm:mt-5 font-heading text-base sm:text-lg font-bold uppercase tracking-tight text-black">
                 {title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-neutral-600">
+              <p className="mt-2.5 text-sm leading-relaxed text-neutral-600 hidden lg:block">
                 {description}
               </p>
             </article>

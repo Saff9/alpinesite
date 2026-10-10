@@ -201,10 +201,30 @@ export function Navbar() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="h-10 w-10 rounded-xl border-neutral-200 text-neutral-900 hover:bg-neutral-100 hover:border-brand hover:text-brand transition-colors"
-                  aria-label="Open navigation menu"
+                  className="group relative flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-xl border border-neutral-200 text-neutral-900 transition-all duration-300 hover:border-brand hover:bg-neutral-100 hover:text-brand focus-visible:ring-2 focus-visible:ring-brand active:scale-95"
+                  aria-label={open ? "Close navigation menu" : "Open navigation menu"}
                 >
-                  <Menu className="h-5 w-5" aria-hidden="true" />
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-in-out",
+                      open ? "translate-y-1.5 rotate-45" : ""
+                    )}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-in-out",
+                      open ? "opacity-0 scale-0" : "opacity-100"
+                    )}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-in-out",
+                      open ? "-translate-y-1.5 -rotate-45" : ""
+                    )}
+                  />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80 sm:w-88 p-0 bg-white">

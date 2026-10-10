@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
 import { SiteLogo } from "./site-logo";
-import { NewsletterForm } from "@/components/forms/newsletter-form";
 import { mainNav, site } from "@/data/site";
 import { destinations, popularDestinations } from "@/data/destinations";
 
@@ -10,23 +9,8 @@ export function Footer() {
 
   return (
     <footer className="mt-auto overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4rem] bg-black text-neutral-400 border-t border-neutral-900 shadow-2xl">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:py-16">
-        {/* Newsletter signup band */}
-        <div className="mb-10 flex flex-col gap-5 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="max-w-md">
-            <h2 className="font-heading text-lg font-bold uppercase tracking-wide text-white">
-              Trip ideas and powder alerts in your inbox
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-neutral-400">
-              One honest email a month featuring seasonal ski picks, fresh itineraries and Kashmir travel tips.
-            </p>
-          </div>
-          <div className="w-full lg:max-w-md">
-            <NewsletterForm />
-          </div>
-        </div>
-
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:py-20">
+        <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14">
           {/* Brand */}
           <div>
             <SiteLogo variant="dark" />

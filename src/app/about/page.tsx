@@ -29,22 +29,22 @@ const values = [
   {
     icon: MapPinned,
     title: "Guides, not resellers",
-    text: "The people who plan your trip are the ones who run it. Our guides work with us year-round — neighbours we grew up on the mountain with, not contractors from a portal.",
+    text: "Local guides who plan your trip lead it on the mountain — no outsourced scripts or brokers.",
   },
   {
     icon: ShieldCheck,
     title: "Honest pricing",
-    text: "Every quote lists what's in and what isn't. No day-three 'permit fees', no shopping stops quietly funding the itinerary.",
+    text: "Clear, all-in quotes with zero surprise permit fees or sponsored shopping stops.",
   },
   {
     icon: Home,
-    title: "Stays we've slept in",
-    text: "Houseboats, camps and homestays are audited by us every season. If the hot water fails or the view is a wall, it doesn't make the list.",
+    title: "Audited stays",
+    text: "Personally vetted houseboats and lodges with guaranteed heating and hot water.",
   },
   {
     icon: PhoneCall,
     title: "On-trip support",
-    text: "A real person checks in daily while you travel, and answers within minutes when plans change — because in the mountains, plans change.",
+    text: "A real local guide on WhatsApp daily for immediate answers when mountain plans shift.",
   },
 ];
 
@@ -87,9 +87,9 @@ export default function AboutPage() {
       />
 
       {/* Our story */}
-      <section className="py-12 sm:py-16 lg:py-20" aria-labelledby="our-story">
+      <section className="py-16 sm:py-20 lg:py-24" aria-labelledby="our-story">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="relative order-2 lg:order-1">
               <div className="overflow-hidden rounded-3xl">
                 <Image
@@ -124,34 +124,12 @@ export default function AboutPage() {
               >
                 It started with a sledge, a shoulder, and one perfect line.
               </h2>
-              <div className="mt-4 space-y-4 text-foreground/85 leading-relaxed text-left">
+              <div className="mt-6 space-y-5 text-foreground/85 leading-relaxed text-left">
                 <p>
-                  Bashir Ahmad grew up in Tangmarg, in the pine belt below
-                  Gulmarg, in a family that hauled sledges and carried
-                  tourists&rsquo; skis up the mountain for a living — this was
-                  before the gondola went all the way up, when &ldquo;the
-                  top&rdquo; meant six hours on foot. He learned the mountain
-                  the slow way: which slopes held powder after a storm, which
-                  gullies the sun ruined by ten, and which line down was safe
-                  on a Tuesday in February.
+                  Bashir Ahmad grew up in Tangmarg below Gulmarg, learning Apharwat&apos;s terrain long before modern gondolas reached the summit. Hauling gear and skiing remote powder bowls gave him an intimate understanding of mountain safety, seasonal weather shifts, and Himalayan terrain.
                 </p>
                 <p>
-                  In 2012 he and two guide friends registered Alpine Club India
-                  Agency out of a single room on Gulmarg Road, with one rule
-                  that hasn&rsquo;t changed: <em>if we wouldn&rsquo;t put our own
-                  family on the trip, we don&rsquo;t sell it.</em> Skiers came
-                  for the powder weeks and stayed friends. They sent their
-                  cousins. The cousins wanted Pahalgam, then Ladakh, then
-                  Kerala — and the guides who&rsquo;d walked them down Apharwat
-                  were exactly the people to plan it.
-                </p>
-                <p>
-                  Today we&rsquo;re ten people full-time — guides, operations,
-                  guest experience — plus the forty-odd drivers, boatmen and
-                  mountain folk we&rsquo;ve worked with for over a decade. The
-                  office is still on Gulmarg Road, Forest Block, a short walk
-                  from the Gondola base. Walk in without an appointment.
-                  That&rsquo;s honestly how most of our best trips have started.
+                  In 2012, Alpine Club India was founded on Gulmarg Road with one enduring principle: <em>if we wouldn&apos;t put our own family on the trip, we don&apos;t sell it.</em> Today, our dedicated local guides and mountain crews craft private, authentic journeys across Kashmir, Gulmarg, and Ladakh.
                 </p>
               </div>
             </div>
