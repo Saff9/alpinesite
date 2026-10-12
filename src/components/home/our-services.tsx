@@ -77,7 +77,7 @@ export function OurServices() {
               <h3 className="mt-4 sm:mt-5 font-heading text-base sm:text-lg font-bold uppercase tracking-tight text-black">
                 {title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-neutral-600 hidden lg:block">
+              <p className="mt-2.5 font-poppins font-normal text-sm leading-relaxed text-neutral-600 hidden lg:block">
                 {description}
               </p>
             </article>

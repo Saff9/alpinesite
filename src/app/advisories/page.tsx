@@ -58,7 +58,7 @@ export default function AdvisoriesIndexPage() {
                       {cat.title}
                     </h2>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-3 font-poppins font-normal text-sm leading-relaxed text-muted-foreground">
                     {cat.description}
                   </p>
                   <ul className="mt-6 space-y-3">

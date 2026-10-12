@@ -65,7 +65,7 @@ export function TourCard({ tour, className, priority = false }: TourCardProps) {
             {tour.title}
           </Link>
         </h3>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-neutral-600">
+        <p className="mt-2 line-clamp-2 font-poppins font-normal text-sm leading-relaxed text-neutral-600">
           {tour.shortDescription}
         </p>
 

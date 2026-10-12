@@ -93,7 +93,7 @@ export function Navbar() {
           <SiteLogo />
 
           {/* Desktop Navigation with animated auto-closing dropdowns and light grey hover states */}
-          <nav aria-label="Primary" className="hidden items-center gap-1.5 lg:flex h-full">
+          <nav aria-label="Primary" className="hidden h-full items-center gap-1 lg:flex xl:gap-1.5">
             {mainNav.map((item: NavItem) => {
               const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
               const active = isActive(item.href);
@@ -107,7 +107,7 @@ export function Navbar() {
                     onMouseEnter={handleLinkHoverNoDropdown}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "font-heading relative rounded-lg px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200",
+                      "font-heading relative whitespace-nowrap rounded-lg px-2.5 py-2 text-[11px] font-bold uppercase tracking-wider transition-all duration-200 xl:px-3.5 xl:text-xs",
                       active
                         ? "bg-neutral-100 text-brand"
                         : "text-neutral-800 hover:bg-neutral-100 hover:text-brand",
@@ -121,7 +121,7 @@ export function Navbar() {
               return (
                 <div
                   key={item.label}
-                  className="relative h-full flex items-center"
+                  className="relative flex h-full items-center"
                   onMouseEnter={() => handleDropdownOpen(item.label)}
                   onMouseLeave={handleDropdownClose}
                 >
@@ -130,7 +130,7 @@ export function Navbar() {
                     aria-expanded={isDropdownOpen}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "font-heading inline-flex items-center gap-1 rounded-lg px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 outline-none",
+                      "font-heading inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-[11px] font-bold uppercase tracking-wider transition-all duration-200 outline-none xl:px-3.5 xl:text-xs",
                       isDropdownOpen || active
                         ? "bg-neutral-100 text-brand"
                         : "text-neutral-800 hover:bg-neutral-100 hover:text-brand",
@@ -139,7 +139,7 @@ export function Navbar() {
                     <span>{item.label}</span>
                     <ChevronDown
                       className={cn(
-                        "h-3.5 w-3.5 transition-transform duration-200",
+                        "h-3.5 w-3.5 shrink-0 transition-transform duration-200",
                         isDropdownOpen ? "rotate-180 text-brand" : "text-neutral-400 group-hover:text-brand",
                       )}
                     />
@@ -148,12 +148,12 @@ export function Navbar() {
                   {/* Animated Dropdown Menu with Auto-Close */}
                   <div
                     className={cn(
-                      "absolute left-0 top-full pt-2 max-w-[90vw] transition-all duration-200 ease-out origin-top-left",
+                      "absolute top-full pt-2 max-w-[92vw] transition-all duration-200 ease-out",
                       item.dropdown?.length === 1
-                        ? "w-[260px]"
+                        ? "left-0 w-[260px] origin-top-left"
                         : item.dropdown?.length === 2
-                          ? "w-[440px]"
-                          : "w-[620px]",
+                          ? "left-0 w-[440px] origin-top-left"
+                          : "left-1/2 -translate-x-1/2 w-[580px] xl:w-[640px] origin-top",
                       isDropdownOpen
                         ? "opacity-100 translate-y-0 scale-100 visible pointer-events-auto"
                         : "opacity-0 translate-y-2 scale-[0.98] invisible pointer-events-none"
@@ -250,9 +250,9 @@ export function Navbar() {
                   />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 sm:w-88 p-0 bg-white">
-                <div className="flex h-full flex-col">
-                  <div className="border-b border-neutral-200 p-5 bg-white">
+              <SheetContent side="right" className="w-80 sm:w-88 h-screen h-[100dvh] max-h-screen p-0 bg-white">
+                <div className="flex h-screen h-[100dvh] max-h-screen flex-col overflow-hidden">
+                  <div className="shrink-0 border-b border-neutral-200 p-5 bg-white">
                     <SheetTitle asChild>
                       <div>
                         <SiteLogo />
@@ -260,7 +260,7 @@ export function Navbar() {
                     </SheetTitle>
                   </div>
 
-                  <nav aria-label="Mobile Navigation" className="flex-1 overflow-y-auto p-5 space-y-2.5">
+                  <nav aria-label="Mobile Navigation" className="flex-1 overflow-y-auto overscroll-contain p-5 space-y-2.5">
                     {mainNav.map((item: NavItem) => {
                       const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
                       const isExpanded = mobileExpanded === item.label;

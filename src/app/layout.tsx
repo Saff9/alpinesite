@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat, Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -20,6 +20,14 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   display: "swap",
   weight: ["400", "600"],
+});
+
+// Poppins 400 for card description paragraphs and footer link text
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -144,7 +152,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${openSans.variable} flex min-h-screen flex-col bg-background font-sans text-foreground antialiased`}
+        className={`${montserrat.variable} ${openSans.variable} ${poppins.variable} flex min-h-screen flex-col bg-background font-sans text-foreground antialiased`}
       >
         <a
           href="#main-content"

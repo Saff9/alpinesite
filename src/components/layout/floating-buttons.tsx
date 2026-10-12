@@ -1,30 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { ArrowUp, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export function FloatingButtons() {
-  const [showTop, setShowTop] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const showTop = useSyncExternalStore(
+    (onChange) => {
+      window.addEventListener("scroll", onChange, { passive: true });
+      return () => window.removeEventListener("scroll", onChange);
+    },
+    () => window.scrollY > 480,
+    () => false,
+  );
 
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 480);
-    const onMenuChange = (e: Event) => {
-      const customEvent = e as CustomEvent<boolean>;
-      setMenuOpen(Boolean(customEvent.detail));
-    };
-    onScroll();
-    setMenuOpen(document.documentElement.dataset.mobileMenuOpen === "true");
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("mobile-menu-change", onMenuChange);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("mobile-menu-change", onMenuChange);
-    };
-  }, []);
+  const menuOpen = useSyncExternalStore(
+    (onChange) => {
+      window.addEventListener("mobile-menu-change", onChange);
+      return () => window.removeEventListener("mobile-menu-change", onChange);
+    },
+    () => document.documentElement.dataset.mobileMenuOpen === "true",
+    () => false,
+  );
 
   const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     site.whatsappMessage,

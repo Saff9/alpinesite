@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 export function SiteLogo({
   className,
   variant = "light",
+  hideTagline = false,
 }: {
   className?: string;
   variant?: "light" | "dark";
+  hideTagline?: boolean;
 }) {
   const onDark = variant === "dark";
   return (
@@ -59,13 +61,15 @@ export function SiteLogo({
         >
           {site.shortName}&nbsp;India
         </span>
-        <span
-          className={cn(
-            "mt-0.5 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-brand",
-          )}
-        >
-          {site.logoTagline}
-        </span>
+        {!hideTagline && (
+          <span
+            className={cn(
+              "mt-0.5 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-brand",
+            )}
+          >
+            {site.logoTagline}
+          </span>
+        )}
       </span>
     </Link>
   );

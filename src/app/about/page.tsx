@@ -103,11 +103,11 @@ export default function AboutPage() {
                 />
               </div>
               <div className="mt-5 rounded-2xl border border-border bg-card p-5 shadow-sm lg:absolute lg:-bottom-6 lg:mt-0 lg:max-w-64">
-                <p className="text-sm font-medium leading-relaxed text-foreground">
+                <p className="font-poppins font-normal text-sm leading-relaxed text-foreground">
                   &ldquo;The mountain decides the plan. Our job is knowing
                   which plan to hand it.&rdquo;
                 </p>
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-2 font-poppins font-normal text-xs text-muted-foreground">
                   Sajad Ahmad, Founder, born in Tangmarg
                 </p>
               </div>
@@ -154,7 +154,7 @@ export default function AboutPage() {
                 <Target className="h-6 w-6" />
               </span>
               <h3 className="mt-5 font-heading text-xl font-bold uppercase text-black">Our mission</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">
+              <p className="mt-3 font-poppins font-normal leading-relaxed text-muted-foreground">
                 To make the Himalayas feel like home, planned by people who
                 live there, priced without games, and run with the care
                 we&rsquo;d want for our own families travelling. If a traveller
@@ -170,7 +170,7 @@ export default function AboutPage() {
                 <Eye className="h-6 w-6" />
               </span>
               <h3 className="mt-5 font-heading text-xl font-bold uppercase text-black">Our vision</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">
+              <p className="mt-3 font-poppins font-normal leading-relaxed text-muted-foreground">
                 To be the most trusted name in Himalayan travel by 2030, the
                 team you call before you book anywhere, because you know
                 you&rsquo;ll get a straight answer. Even when the straight answer
@@ -231,7 +231,7 @@ export default function AboutPage() {
                   <item.icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 font-heading text-base font-bold uppercase text-black">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 font-poppins font-normal text-sm leading-relaxed text-muted-foreground">
                   {item.text}
                 </p>
               </article>
@@ -269,10 +269,10 @@ export default function AboutPage() {
                   <h3 className="font-heading text-2xl font-extrabold text-foreground">
                     {member.name}
                   </h3>
-                  <p className="mt-1.5 text-xs font-bold uppercase tracking-wider text-brand">
+                  <p className="mt-1.5 font-heading text-xs font-bold uppercase tracking-wider text-brand">
                     {member.role}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-foreground/85 sm:text-base">
+                  <p className="mt-4 font-poppins font-normal text-sm leading-relaxed text-foreground/85 sm:text-base">
                     {member.line}
                   </p>
                 </div>

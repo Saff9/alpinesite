@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -69,57 +70,77 @@ export function SheetContent({
   children: React.ReactNode;
 }) {
   const ctx = React.useContext(SheetContext);
-  const [mounted, setMounted] = React.useState(ctx?.open ?? false);
+  const isOpen = Boolean(ctx?.open);
+  const [closing, setClosing] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
 
   React.useEffect(() => {
-    if (ctx?.open) {
-      setMounted(true);
+    if (isOpen) {
       const raf = requestAnimationFrame(() => {
+        setClosing(false);
         setVisible(true);
       });
       return () => cancelAnimationFrame(raf);
     } else {
-      setVisible(false);
+      const raf = requestAnimationFrame(() => {
+        setVisible(false);
+        setClosing(true);
+      });
       const timer = setTimeout(() => {
-        setMounted(false);
+        setClosing(false);
       }, 300);
-      return () => clearTimeout(timer);
+      return () => {
+        cancelAnimationFrame(raf);
+        clearTimeout(timer);
+      };
     }
-  }, [ctx?.open]);
+  }, [isOpen]);
+
+  const mounted = isOpen || closing || visible;
 
   React.useEffect(() => {
     if (!mounted) return;
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") ctx?.setOpen(false);
     }
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyOverscroll = body.style.overscrollBehavior;
+
     document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.overscrollBehavior = "none";
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.overscrollBehavior = prevBodyOverscroll;
     };
   }, [mounted, ctx]);
 
-  if (!mounted) return null;
+  if (!mounted || typeof document === "undefined") return null;
 
-  return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
+  return createPortal(
+    <div className="fixed inset-0 z-50 h-screen h-[100dvh] w-screen overflow-hidden overscroll-none">
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-300 ease-out",
+          "fixed inset-0 h-screen h-[100dvh] w-screen bg-black/60 backdrop-blur-xs transition-opacity duration-300 ease-out touch-none",
           visible ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
         onClick={() => ctx?.setOpen(false)}
       />
 
-      {/* Drawer with smooth slide in & slide out animation */}
+      {/* Drawer with smooth slide in & slide out animation and strict 100vh height */}
       <div
         role="dialog"
         aria-modal="true"
         className={cn(
-          "fixed top-0 bottom-0 z-50 h-full bg-background shadow-2xl transition-transform duration-300 ease-out will-change-transform",
+          "fixed top-0 bottom-0 z-50 h-screen h-[100dvh] max-h-screen bg-background shadow-2xl transition-transform duration-300 ease-out will-change-transform",
           side === "right" && (visible ? "right-0 w-80 translate-x-0" : "right-0 w-80 translate-x-full"),
           side === "left" && (visible ? "left-0 w-80 translate-x-0" : "left-0 w-80 -translate-x-full"),
           className
@@ -129,13 +150,14 @@ export function SheetContent({
           type="button"
           onClick={() => ctx?.setOpen(false)}
           aria-label="Close navigation"
-          className="absolute right-4 top-4 rounded-lg p-2 text-muted-foreground hover:bg-neutral-100 hover:text-foreground transition-colors"
+          className="absolute right-4 top-4 z-10 rounded-lg p-2 text-muted-foreground hover:bg-neutral-100 hover:text-foreground transition-colors"
         >
           <X className="h-5 w-5" />
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

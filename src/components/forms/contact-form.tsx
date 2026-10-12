@@ -149,11 +149,11 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-2xl border border-border/80 bg-card p-6 shadow-xl hover:shadow-2xl transition-all duration-300 sm:p-8 md:p-10"
+      className="w-full min-w-0 rounded-2xl border border-border/80 bg-card p-5 shadow-xl transition-all duration-300 hover:shadow-2xl sm:p-8 md:p-10"
       aria-label="Contact form"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <div className="sm:col-span-1">
+        <div className="min-w-0 sm:col-span-1">
           <Label htmlFor="contact-name">
             Name <span className="text-terracotta" aria-hidden="true">*</span>
           </Label>
@@ -166,12 +166,12 @@ export function ContactForm() {
             onChange={(e) => setField("name")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.name)}
             aria-describedby={fieldErrors.name ? "contact-name-error" : undefined}
-            className="mt-2 h-11"
+            className="mt-2 h-11 w-full"
           />
           {errorText("name")}
         </div>
 
-        <div className="sm:col-span-1">
+        <div className="min-w-0 sm:col-span-1">
           <Label htmlFor="contact-email">
             Email <span className="text-terracotta" aria-hidden="true">*</span>
           </Label>
@@ -185,12 +185,12 @@ export function ContactForm() {
             onChange={(e) => setField("email")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.email)}
             aria-describedby={fieldErrors.email ? "contact-email-error" : undefined}
-            className="mt-2 h-11"
+            className="mt-2 h-11 w-full"
           />
           {errorText("email")}
         </div>
 
-        <div className="sm:col-span-1">
+        <div className="min-w-0 sm:col-span-1">
           <Label htmlFor="contact-phone">
             Phone <span className="font-normal text-muted-foreground">(optional)</span>
           </Label>
@@ -203,12 +203,12 @@ export function ContactForm() {
             onChange={(e) => setField("phone")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.phone)}
             aria-describedby={fieldErrors.phone ? "contact-phone-error" : undefined}
-            className="mt-2 h-11"
+            className="mt-2 h-11 w-full"
           />
           {errorText("phone")}
         </div>
 
-        <div className="sm:col-span-1">
+        <div className="min-w-0 sm:col-span-1">
           <Label htmlFor="contact-subject">What&rsquo;s this about?</Label>
           <Select
             value={form.subject}
@@ -232,7 +232,7 @@ export function ContactForm() {
           {errorText("subject")}
         </div>
 
-        <div className="sm:col-span-2">
+        <div className="min-w-0 sm:col-span-2">
           <Label htmlFor="contact-message">
             Your message <span className="text-terracotta" aria-hidden="true">*</span>
           </Label>
@@ -246,7 +246,7 @@ export function ContactForm() {
             onChange={(e) => setField("message")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.message)}
             aria-describedby={fieldErrors.message ? "contact-message-error" : undefined}
-            className="mt-2 min-h-32"
+            className="mt-2 min-h-32 w-full"
           />
           {errorText("message")}
         </div>
@@ -261,12 +261,12 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="mt-6 flex flex-col items-center sm:items-start">
+      <div className="mt-6 flex flex-col items-stretch sm:items-start">
         <Button
           type="submit"
           size="lg"
           disabled={status === "submitting"}
-          className="w-[80%] max-w-sm border border-transparent bg-brand px-7 py-3 text-white shadow-md hover:bg-brand-deep sm:w-auto"
+          className="h-11 w-full rounded-xl border border-transparent bg-brand px-7 py-3 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-deep sm:w-auto"
         >
           {status === "submitting" ? (
             <>

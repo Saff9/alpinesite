@@ -13,8 +13,8 @@ export function Footer() {
         <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14">
           {/* Brand */}
           <div>
-            <SiteLogo variant="dark" />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-400">
+            <SiteLogo variant="dark" hideTagline />
+            <p className="mt-4 max-w-sm font-poppins font-normal text-sm leading-relaxed text-neutral-400">
               {site.tagline}. Operating from Gulmarg since {site.established} with local mountain guides, drivers, and families.
             </p>
             <div className="mt-5 flex gap-3">
@@ -62,12 +62,12 @@ export function Footer() {
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white">
               Navigation
             </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <ul className="mt-4 space-y-2.5 font-poppins font-normal text-sm">
               {mainNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="transition-colors hover:text-white"
+                    className="font-poppins font-normal transition-colors hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -81,12 +81,12 @@ export function Footer() {
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white">
               Destinations
             </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <ul className="mt-4 space-y-2.5 font-poppins font-normal text-sm">
               {popularDestinations.map((d) => (
                 <li key={d.slug}>
                   <Link
                     href={`/destinations/${d.slug}`}
-                    className="transition-colors hover:text-white"
+                    className="font-poppins font-normal transition-colors hover:text-white"
                   >
                     {d.name}
                   </Link>
@@ -95,7 +95,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/destinations"
-                  className="font-semibold text-neutral-300 transition-colors hover:text-white"
+                  className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
                 >
                   View all {destinations.length} destinations
                 </Link>
@@ -108,31 +108,31 @@ export function Footer() {
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white">
               Get in touch
             </h2>
-            <ul className="mt-4 space-y-3 text-sm">
+            <ul className="mt-4 space-y-3 font-poppins font-normal text-sm">
               <li>
                 <a
                   href={`https://maps.google.com/?q=${encodeURIComponent(site.address.full)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-2.5 transition-colors hover:text-white"
+                  className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white"
                 >
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
                   <span>{site.address.full}</span>
                 </a>
               </li>
               <li>
-                <a href={site.phoneHref} className="flex gap-2.5 transition-colors hover:text-white">
+                <a href={site.phoneHref} className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
                   {site.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="flex gap-2.5 transition-colors hover:text-white">
+                <a href={`mailto:${site.email}`} className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
                   {site.email}
                 </a>
               </li>
-              <li className="flex gap-2.5">
+              <li className="flex gap-2.5 font-poppins font-normal">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
                 {site.hours}
               </li>
@@ -140,12 +140,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-6 text-xs sm:flex-row">
-          <p className="text-neutral-500">
-            © {year} {site.legalName}. All rights reserved.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-6 font-poppins font-normal text-xs sm:flex-row">
+          <p className="font-poppins font-normal text-neutral-500">
+            © {year} {site.name}. All rights reserved.
           </p>
-          <p className="flex items-center gap-4 text-neutral-500">
-            <span>Made in Gulmarg, Kashmir</span>
+          <p className="flex flex-wrap items-center justify-center gap-1.5 font-poppins font-normal text-neutral-500">
+            <span>Designed &amp; Powered by</span>
+            <a
+              href="https://imtiyazkumar.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-poppins font-normal text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            >
+              Imtiyaz Kumar
+            </a>
           </p>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Clock,
   Facebook,
@@ -12,7 +11,6 @@ import {
   Youtube,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -132,33 +130,29 @@ export default function ContactPage() {
         subtitle="Call, WhatsApp or write to us, a real guide from the Gulmarg office replies, usually the same day."
         image="/images/ski/apharwat-peaks.jpg"
         imageAlt="Snow-covered ridgelines of the Apharwat range above Gulmarg under a clear sky"
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Contact" },
-        ]}
       />
 
       {/* Contact details + form */}
       <section className="py-12 sm:py-16 lg:py-20" aria-labelledby="contact-details">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <h2 id="contact-details" className="sr-only">
             Contact details and enquiry form
           </h2>
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+          <div className="grid items-start gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
             {/* Left: info cards */}
-            <div className="space-y-3">
-              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+            <div className="min-w-0 space-y-3.5">
+              <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
                 <span
                   aria-hidden="true"
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <PhoneCall className="h-5 w-5" />
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-sm font-semibold text-foreground">Phone</h3>
                   <a
                     href={site.phoneHref}
-                    className="mt-1 block font-heading text-lg font-semibold text-brand transition-colors hover:text-brand-deep hover:underline"
+                    className="mt-1 block font-heading text-base font-semibold text-brand transition-colors hover:text-brand-deep hover:underline sm:text-lg"
                   >
                     {site.phone}
                   </a>
@@ -168,20 +162,20 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+              <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
                 <span
                   aria-hidden="true"
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-xs"
                 >
                   <MessageCircle className="h-5 w-5" />
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-sm font-semibold text-foreground">WhatsApp</h3>
                   <a
                     href={whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 block font-heading text-lg font-semibold text-brand transition-colors hover:text-brand-deep hover:underline"
+                    className="mt-1 block font-heading text-base font-semibold text-brand transition-colors hover:text-brand-deep hover:underline sm:text-lg"
                   >
                     Chat with us
                     <span className="sr-only"> on WhatsApp (opens in a new tab)</span>
@@ -192,18 +186,18 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+              <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
                 <span
                   aria-hidden="true"
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <Mail className="h-5 w-5" />
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-sm font-semibold text-foreground">Email</h3>
                   <a
                     href={`mailto:${site.email}`}
-                    className="mt-1 block font-heading text-lg font-semibold break-words text-brand transition-colors hover:text-brand-deep hover:underline"
+                    className="mt-1 block font-heading text-sm font-semibold break-all text-brand transition-colors hover:text-brand-deep hover:underline sm:text-base lg:text-lg sm:break-words"
                   >
                     {site.email}
                   </a>
@@ -213,14 +207,14 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+              <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
                 <span
                   aria-hidden="true"
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <MapPin className="h-5 w-5" />
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-sm font-semibold text-foreground">Office</h3>
                   <address className="mt-1 text-sm not-italic leading-relaxed text-foreground/90">
                     {site.address.full}
@@ -237,14 +231,14 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+              <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
                 <span
                   aria-hidden="true"
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <Clock className="h-5 w-5" />
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="text-sm font-semibold text-foreground">Hours</h3>
                   <p className="mt-1 text-sm leading-relaxed text-foreground/90">
                     {site.hours}
@@ -256,9 +250,9 @@ export default function ContactPage() {
               </div>
 
               {/* Socials */}
-              <div className="flex items-center justify-center sm:justify-start gap-3 px-1 pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-3 px-1 pt-2 sm:justify-start">
                 <p className="text-sm font-semibold text-foreground">Follow along:</p>
-                <div className="flex gap-2.5">
+                <div className="flex flex-wrap gap-2.5">
                   {socials.map((social) => (
                     <a
                       key={social.label}
@@ -274,7 +268,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-brand/20 bg-secondary/60 p-4 sm:p-5 text-center sm:text-left">
+              <div className="rounded-2xl border border-brand/20 bg-secondary/60 p-4 text-center sm:p-5 sm:text-left">
                 <p className="text-sm leading-relaxed text-foreground/90">
                   Travelling within India? Our numbers work on WhatsApp. Outside
                   India? Email is fastest, phone calls get expensive and time
@@ -284,28 +278,30 @@ export default function ContactPage() {
             </div>
 
             {/* Right: form */}
-            <ContactForm />
+            <div className="min-w-0 w-full">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQs */}
-      <section className="bg-sand py-16 sm:py-20" aria-labelledby="contact-faqs">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+      <section className="bg-sand py-14 sm:py-20" aria-labelledby="contact-faqs">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Before you write"
             title="Frequently asked questions"
             description="The five things almost everyone asks before booking. If yours isn't here, ask us directly, no question is too small."
             align="center"
           />
-          <div id="contact-faqs" className="rounded-2xl border border-border bg-card px-6 py-2 shadow-sm">
+          <div id="contact-faqs" className="rounded-2xl border border-border bg-card px-4 py-2 shadow-sm sm:px-6">
             <Accordion type="single" collapsible className="w-full">
               {contactFaqs.map((faq, index) => (
                 <AccordionItem key={faq.question} value={`faq-${index}`}>
-                  <AccordionTrigger className="py-5 text-left font-heading text-base font-semibold hover:no-underline">
+                  <AccordionTrigger className="py-4 text-left font-heading text-sm font-semibold hover:no-underline sm:py-5 sm:text-base">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 leading-relaxed text-muted-foreground">
+                  <AccordionContent className="pb-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -316,19 +312,20 @@ export default function ContactPage() {
       </section>
 
       {/* Map */}
-      <section className="py-16 sm:py-20" aria-labelledby="office-map">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
+      <section className="py-14 sm:py-20" aria-labelledby="office-map">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
             eyebrow="Find us"
             title="One office, under the gondola line"
             description="Gulmarg Road, Forest Block, a short walk from the Gondola base. In winter look for the skis leaning by the door and the kettle that's always on."
+            align="center"
           />
           <div id="office-map" className="overflow-hidden rounded-2xl border border-border shadow-sm">
             <iframe
               src="https://maps.google.com/maps?q=Gulmarg%20Gondola%2C%20Gulmarg%2C%20Jammu%20and%20Kashmir%20193403&z=14&output=embed"
               title="Google Map showing Alpine Club India's office on Gulmarg Road, Forest Block, Gulmarg"
               loading="lazy"
-              className="h-[380px] w-full border-0"
+              className="h-[300px] w-full border-0 sm:h-[380px]"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />

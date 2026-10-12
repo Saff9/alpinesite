@@ -32,7 +32,7 @@ export function TestimonialCard({ testimonial, className }: TestimonialCardProps
         <RatingStars rating={testimonial.rating} size="sm" />
         <Quote className="h-5 w-5 text-terracotta/30" aria-hidden="true" />
       </div>
-      <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/90">
+      <blockquote className="mt-4 flex-1 font-poppins font-normal text-sm leading-relaxed text-foreground/90">
         &ldquo;{testimonial.text}&rdquo;
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">

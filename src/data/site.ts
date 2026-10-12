@@ -112,7 +112,7 @@ export const mainNav: NavItem[] = [
         title: "High Passes",
         items: [
           { title: "Ladakh & Leh", href: "/destinations/ladakh" },
-          { title: "Pangong & Nubra", href: "/tours/ladakh-monasteries-lakes-7-day" },
+          { title: "Pangong & Nubra", href: "/tours/ladakh-8-day-tour" },
         ],
       },
     ],

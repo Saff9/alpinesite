@@ -46,10 +46,10 @@ export function WhyChooseUs() {
             </div>
             <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border bg-card p-5 shadow-lg shadow-black/10 sm:left-8 sm:right-auto sm:max-w-64">
               <Quote className="h-5 w-5 text-brand" aria-hidden="true" />
-              <p className="mt-2 text-sm font-medium leading-relaxed text-foreground">
+              <p className="mt-2 font-poppins font-normal text-sm leading-relaxed text-foreground">
                 &ldquo;We treat every trip like it&apos;s our own family travelling.&rdquo;
               </p>
-              <p className="mt-2 text-xs text-muted-foreground">
+              <p className="mt-2 font-poppins font-normal text-xs text-muted-foreground">
                 Sajad Ahmad, Founder, born in Tangmarg
               </p>
             </div>
@@ -78,7 +78,7 @@ export function WhyChooseUs() {
                   </span>
                   <div>
                     <h3 className="font-heading text-sm font-extrabold uppercase tracking-tight text-black">{feature.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-neutral-600">
+                    <p className="mt-1 font-poppins font-normal text-sm leading-relaxed text-neutral-600">
                       {feature.text}
                     </p>
                   </div>
