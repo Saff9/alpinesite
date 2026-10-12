@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import {
   Clock,
+  ExternalLink,
   Mail,
   MapPin,
   MessageCircle,
   PhoneCall,
+  Star,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PageHeader } from "@/components/shared/page-header";
@@ -71,6 +73,7 @@ const contactJsonLd = {
     "@type": "Organization",
     name: site.legalName,
     url: site.url,
+    sameAs: [site.googleReviewsUrl],
     telephone: site.phone,
     email: site.email,
     address: {
@@ -189,12 +192,13 @@ export default function ContactPage() {
                     {site.address.full}
                   </address>
                   <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(site.address.full)}`}
+                    href={site.googleReviewsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-brand underline-offset-4 transition-colors hover:underline"
                   >
-                    View on Google Maps
+                    View Google Business Profile
+                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </div>
@@ -253,24 +257,43 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map */}
-      <section className="py-14 sm:py-20" aria-labelledby="office-map">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      {/* Google Business Profile */}
+      <section className="py-14 sm:py-20" aria-labelledby="google-business-profile">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <SectionHeading
-            eyebrow="Find us"
-            title="One office, under the gondola line"
-            description="Gulmarg Road, Forest Block, a short walk from the Gondola base. In winter look for the skis leaning by the door and the kettle that's always on."
+            eyebrow="Find us on Google"
+            title="Our Google Business Profile"
+            description="Check our verified traveller reviews, directions, and live operating hours on Google."
             align="center"
           />
-          <div id="office-map" className="overflow-hidden rounded-2xl border border-border shadow-sm">
-            <iframe
-              src="https://maps.google.com/maps?q=Gulmarg%20Gondola%2C%20Gulmarg%2C%20Jammu%20and%20Kashmir%20193403&z=14&output=embed"
-              title="Google Map showing Alpine Club India's office on Gulmarg Road, Forest Block, Gulmarg"
-              loading="lazy"
-              className="h-[300px] w-full border-0 sm:h-[380px]"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+          <div
+            id="google-business-profile"
+            className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-border bg-card p-6 text-center shadow-md sm:flex-row sm:p-8 sm:text-left"
+          >
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800 border border-amber-200">
+                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" aria-hidden="true" />
+                <span>{site.stats.rating.toFixed(1)} ★ Rated on Google ({site.stats.reviewsCount} Reviews)</span>
+              </div>
+              <h3 className="font-heading text-xl font-extrabold uppercase text-foreground sm:text-2xl">
+                {site.name}
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                {site.address.full}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {site.hours} · {site.phone}
+              </p>
+            </div>
+            <a
+              href={site.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-brand px-6 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-brand-deep sm:w-auto"
+            >
+              <span>Open Google Profile</span>
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>

@@ -111,7 +111,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3 font-poppins font-normal text-sm">
               <li>
                 <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(site.address.full)}`}
+                  href={site.googleReviewsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white"

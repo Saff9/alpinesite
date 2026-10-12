@@ -141,17 +141,29 @@ export default function HomePage() {
               <h2 id="testimonials-heading" className="font-heading text-2xl font-extrabold uppercase tracking-tight text-black sm:text-3xl lg:text-[2.2rem]">
                 {site.stats.travellersServed} Travellers Guided Across the Himalayas
               </h2>
-              <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={site.googleReviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 flex flex-wrap items-center justify-center gap-3 transition-opacity hover:opacity-80"
+              >
                 <RatingStars rating={site.stats.rating} size="md" />
-                <p className="text-sm text-neutral-600">
+                <p className="text-sm text-neutral-600 underline decoration-neutral-300 underline-offset-4">
                   {site.stats.rating.toFixed(1)}/5 on Google with {site.stats.reviewsCount} reviews earned on the mountain
                 </p>
-              </div>
+              </a>
             </div>
           </div>
           <TestimonialsCarousel />
           <p className="mt-6 text-center text-xs text-neutral-500">
-            {testimonials.length} verified reviews from our travellers.
+            <a
+              href={site.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-neutral-300 underline-offset-4 hover:text-brand"
+            >
+              {testimonials.length} verified reviews from our travellers on Google
+            </a>
           </p>
         </div>
       </section>

@@ -29,7 +29,7 @@ export const site = {
     youtube: "https://youtube.com/@alpineclubindia",
     twitter: "https://x.com/alpineclubindia",
   },
-  googleReviewsUrl: "https://www.google.com/search?q=gulmarg+guids+agency",
+  googleReviewsUrl: "https://share.google/64IbJkTNczkNhRyuT",
   stats: {
     yearsExperience: 13,
     travellersServed: "3,500+",
