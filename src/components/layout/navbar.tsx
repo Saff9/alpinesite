@@ -250,9 +250,9 @@ export function Navbar() {
                   />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 sm:w-88 h-screen h-[100dvh] max-h-screen p-0 bg-white">
-                <div className="flex h-screen h-[100dvh] max-h-screen flex-col overflow-hidden">
-                  <div className="shrink-0 border-b border-neutral-200 p-5 bg-white">
+              <SheetContent side="right" className="w-[86vw] max-w-80 sm:max-w-88 p-0 bg-white">
+                <div className="flex h-full max-h-full min-h-0 flex-col overflow-hidden bg-white">
+                  <div className="shrink-0 border-b border-neutral-200 px-4 py-3.5 pr-12 sm:p-5 sm:pr-12 bg-white">
                     <SheetTitle asChild>
                       <div>
                         <SiteLogo />
@@ -260,7 +260,10 @@ export function Navbar() {
                     </SheetTitle>
                   </div>
 
-                  <nav aria-label="Mobile Navigation" className="flex-1 overflow-y-auto overscroll-contain p-5 space-y-2.5">
+                  <nav
+                    aria-label="Mobile Navigation"
+                    className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3.5 sm:p-5 space-y-2"
+                  >
                     {mainNav.map((item: NavItem) => {
                       const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
                       const isExpanded = mobileExpanded === item.label;
@@ -273,7 +276,7 @@ export function Navbar() {
                             onClick={() => setOpen(false)}
                             aria-current={isActive(item.href) ? "page" : undefined}
                             className={cn(
-                              "font-heading block rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-wider transition-colors",
+                              "font-heading block rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs font-bold uppercase tracking-wider transition-colors",
                               isActive(item.href)
                                 ? "bg-brand text-white"
                                 : "text-neutral-900 hover:bg-neutral-100 hover:text-brand",
@@ -290,14 +293,14 @@ export function Navbar() {
                             type="button"
                             onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
                             className={cn(
-                              "font-heading flex w-full items-center justify-between px-4 py-3 text-xs font-bold uppercase tracking-wider text-left transition-colors",
+                              "font-heading flex w-full items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs font-bold uppercase tracking-wider text-left transition-colors",
                               isExpanded ? "bg-neutral-100 text-brand" : "bg-white text-neutral-900 hover:bg-neutral-50",
                             )}
                           >
                             <span>{item.label}</span>
                             <ChevronDown
                               className={cn(
-                                "h-4 w-4 transition-transform duration-200 text-neutral-400",
+                                "h-4 w-4 shrink-0 transition-transform duration-200 text-neutral-400",
                                 isExpanded && "rotate-180 text-brand",
                               )}
                             />
@@ -306,15 +309,15 @@ export function Navbar() {
                           <div
                             className={cn(
                               "transition-all duration-300 ease-in-out overflow-hidden bg-neutral-50",
-                              isExpanded ? "max-h-[600px] opacity-100 p-3.5 space-y-3.5 border-t border-neutral-200" : "max-h-0 opacity-0 p-0 border-t-0"
+                              isExpanded ? "max-h-[500px] opacity-100 p-3 space-y-3 border-t border-neutral-200" : "max-h-0 opacity-0 p-0 border-t-0"
                             )}
                           >
                             {item.dropdown?.map((col) => (
-                              <div key={col.title} className="space-y-1.5">
+                              <div key={col.title} className="space-y-1">
                                 <span className="font-heading text-[0.65rem] font-bold uppercase tracking-wider text-brand">
                                   {col.title}
                                 </span>
-                                <ul className="space-y-1 pl-1">
+                                <ul className="space-y-0.5 pl-1">
                                   {col.items.map((sub) => (
                                     <li key={sub.href}>
                                       <Link
@@ -335,31 +338,31 @@ export function Navbar() {
                     })}
                   </nav>
 
-                  <div className="mt-auto space-y-3 border-t border-neutral-200 p-5 bg-white">
+                  <div className="shrink-0 space-y-2.5 border-t border-neutral-200 bg-white px-4 pt-3.5 pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-5">
                     <Button
                       asChild
-                      className="w-full rounded-xl bg-brand text-white hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11"
+                      className="flex h-10 sm:h-11 w-full items-center justify-center rounded-xl bg-brand px-4 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep"
                     >
                       <Link href="/contact" onClick={() => setOpen(false)}>
                         Plan Your Trip
                       </Link>
                     </Button>
-                    <div className="grid grid-cols-[1fr_auto] gap-3">
+                    <div className="flex items-center gap-2.5">
                       <a
                         href={whatsappHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-xs font-bold text-white transition-colors hover:bg-[#20ba59]"
+                        className="flex h-10 sm:h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-bold text-white shadow-xs transition-colors hover:bg-[#20ba59]"
                       >
-                        <WhatsAppIcon className="h-4 w-4" />
-                        <span>Chat on WhatsApp</span>
+                        <WhatsAppIcon className="h-4 w-4 shrink-0" />
+                        <span className="truncate">Chat on WhatsApp</span>
                       </a>
                       <a
                         href={site.socials.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Alpine Club India on Facebook"
-                        className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs transition-all duration-200 hover:brightness-110"
+                        className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs transition-all duration-200 hover:brightness-110"
                       >
                         <FaFacebookFilled className="h-4 w-4" />
                       </a>

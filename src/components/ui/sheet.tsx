@@ -125,24 +125,24 @@ export function SheetContent({
   if (!mounted || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 h-screen h-[100dvh] w-screen overflow-hidden overscroll-none">
+    <div className="fixed inset-0 z-50 overflow-hidden overscroll-none">
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 h-screen h-[100dvh] w-screen bg-black/60 backdrop-blur-xs transition-opacity duration-300 ease-out touch-none",
+          "fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-300 ease-out touch-none",
           visible ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
         onClick={() => ctx?.setOpen(false)}
       />
 
-      {/* Drawer with smooth slide in & slide out animation and strict 100vh height */}
+      {/* Drawer with smooth slide in & slide out animation and exact visible viewport height */}
       <div
         role="dialog"
         aria-modal="true"
         className={cn(
-          "fixed top-0 bottom-0 z-50 h-screen h-[100dvh] max-h-screen bg-background shadow-2xl transition-transform duration-300 ease-out will-change-transform",
-          side === "right" && (visible ? "right-0 w-80 translate-x-0" : "right-0 w-80 translate-x-full"),
-          side === "left" && (visible ? "left-0 w-80 translate-x-0" : "left-0 w-80 -translate-x-full"),
+          "fixed inset-y-0 z-50 flex h-full max-h-full flex-col bg-background shadow-2xl transition-transform duration-300 ease-out will-change-transform",
+          side === "right" && (visible ? "right-0 w-[86vw] max-w-80 translate-x-0 sm:max-w-88" : "right-0 w-[86vw] max-w-80 translate-x-full sm:max-w-88"),
+          side === "left" && (visible ? "left-0 w-[86vw] max-w-80 translate-x-0 sm:max-w-88" : "left-0 w-[86vw] max-w-80 -translate-x-full sm:max-w-88"),
           className
         )}
       >
@@ -150,7 +150,7 @@ export function SheetContent({
           type="button"
           onClick={() => ctx?.setOpen(false)}
           aria-label="Close navigation"
-          className="absolute right-4 top-4 z-10 rounded-lg p-2 text-muted-foreground hover:bg-neutral-100 hover:text-foreground transition-colors"
+          className="absolute right-3.5 top-3.5 z-10 rounded-lg p-2 text-muted-foreground hover:bg-neutral-100 hover:text-foreground transition-colors sm:right-4 sm:top-4"
         >
           <X className="h-5 w-5" />
         </button>

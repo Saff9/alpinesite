@@ -1,6 +1,6 @@
 export const site = {
   name: "Alpine Club India",
-  legalName: "Alpine Club India Expeditions & Tours",
+  legalName: "Alpine Club India",
   shortName: "Alpine Club",
   tagline: "Mountain Guides & Himalayan Tours",
   description:

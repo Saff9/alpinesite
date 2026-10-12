@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import {
   Clock,
-  Facebook,
-  Instagram,
   Mail,
   MapPin,
   MessageCircle,
   PhoneCall,
-  Twitter,
-  Youtube,
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PageHeader } from "@/components/shared/page-header";
@@ -50,33 +46,6 @@ const contactFaqs = [
     question: "How are you different from other agencies?",
     answer:
       "We're the local team, not a reseller. Your driver, guide and boatman work with us year-round, and your money stays in the valley instead of a call-centre chain. If a hotel disappoints, we hear about it on the same evening's check-in call and move you the next morning, not after you're home writing a review.",
-  },
-];
-
-const socials = [
-  {
-    label: "Alpine Club India on Instagram",
-    href: site.socials.instagram,
-    icon: Instagram,
-    className: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white",
-  },
-  {
-    label: "Alpine Club India on Facebook",
-    href: site.socials.facebook,
-    icon: Facebook,
-    className: "bg-[#1877F2] text-white",
-  },
-  {
-    label: "Alpine Club India on YouTube",
-    href: site.socials.youtube,
-    icon: Youtube,
-    className: "bg-[#FF0000] text-white",
-  },
-  {
-    label: "Alpine Club India on X (Twitter)",
-    href: site.socials.twitter,
-    icon: Twitter,
-    className: "bg-[#1DA1F2] text-white",
   },
 ];
 
@@ -247,33 +216,6 @@ export default function ContactPage() {
                     On-trip travellers get 24×7 emergency support.
                   </p>
                 </div>
-              </div>
-
-              {/* Socials */}
-              <div className="flex flex-wrap items-center justify-center gap-3 px-1 pt-2 sm:justify-start">
-                <p className="text-sm font-semibold text-foreground">Follow along:</p>
-                <div className="flex flex-wrap gap-2.5">
-                  {socials.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className={`flex h-9 w-9 items-center justify-center rounded-lg shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110 ${social.className}`}
-                    >
-                      <social.icon className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-brand/20 bg-secondary/60 p-4 text-center sm:p-5 sm:text-left">
-                <p className="text-sm leading-relaxed text-foreground/90">
-                  Travelling within India? Our numbers work on WhatsApp. Outside
-                  India? Email is fastest, phone calls get expensive and time
-                  zones get cruel.
-                </p>
               </div>
             </div>
 
