@@ -36,7 +36,7 @@ export function TravelCategories() {
         <SectionHeading
           eyebrow="Travel by mood"
           title="What kind of traveller are you?"
-          description="Every itinerary we build starts with this question. Pick a mood — we'll take it from there."
+          description="Every itinerary we build starts with this question. Pick a mood, we'll take it from there."
           linkHref="/tours"
           linkLabel="Browse all tours"
         />

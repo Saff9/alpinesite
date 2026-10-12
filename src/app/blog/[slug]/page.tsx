@@ -4,12 +4,9 @@ import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/shared/page-header";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { BlogCard } from "@/components/cards/blog-card";
 import { ShareButtons } from "@/components/blog/share-buttons";
 import { ReadingProgress } from "@/components/blog/reading-progress";
-import { NewsletterForm } from "@/components/forms/newsletter-form";
-import { blogPosts, getBlogPostBySlug, relatedBlogPosts } from "@/data/blog";
+import { blogPosts, getBlogPostBySlug } from "@/data/blog";
 import { getDestinationBySlug } from "@/data/destinations";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -57,7 +54,7 @@ const MONTHS = [
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ] as const;
 
-/** Formats "2025-09-14" as "14 Sep 2025" — deterministic across runtimes. */
+/** Formats "2025-09-14" as "14 Sep 2025", deterministic across runtimes. */
 const formatPublishedDate = (iso: string) => {
   const date = new Date(iso);
   return `${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
@@ -75,7 +72,6 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const related = relatedBlogPosts(post, 3);
   const primaryDestination = getDestinationBySlug(post.relatedDestinationSlugs[0]);
   const destinationName = primaryDestination?.name ?? "the Himalayas";
   const publishedDate = formatPublishedDate(post.publishedAt);
@@ -138,17 +134,12 @@ export default async function BlogPostPage({
       <section className="py-12 sm:py-16" aria-label={post.title}>
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <article className="mx-auto max-w-3xl">
-            {/* Article header — the h1 lives in the PageHeader above */}
+            {/* Article header, the h1 lives in the PageHeader above */}
             <header className="border-b border-border pb-6">
               <span className="inline-block rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-pine">
                 {post.category}
               </span>
               <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">
-                  {post.author.name}
-                </span>
-                <span>{post.author.role}</span>
-                <span aria-hidden="true">·</span>
                 <time dateTime={post.publishedAt}>{publishedDate}</time>
                 <span aria-hidden="true">·</span>
                 <span className="inline-flex items-center gap-1">
@@ -228,7 +219,7 @@ export default async function BlogPostPage({
               </h2>
               <p className="mt-3 leading-relaxed text-foreground/80">
                 Our team runs private, customisable trips across{" "}
-                {destinationName} and every destination in this guide — planned
+                {destinationName} and every destination in this guide, planned
                 in Gulmarg, priced honestly, and supported from landing to
                 take-off.
               </p>
@@ -256,51 +247,6 @@ export default async function BlogPostPage({
               </div>
             </aside>
           </article>
-        </div>
-      </section>
-
-      {/* Newsletter cross-link — captures readers mid-interest */}
-      <section className="py-14 sm:py-16" aria-labelledby="guide-newsletter">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
-          <div className="rounded-3xl bg-pine-deep px-6 py-10 sm:px-12 sm:py-12">
-            <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand">
-                  One email a month
-                </p>
-                <h2
-                  id="guide-newsletter"
-                  className="mt-2 font-heading text-2xl font-semibold leading-snug text-primary-foreground sm:text-3xl"
-                >
-                  More where this came from
-                </h2>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-primary-foreground/75">
-                  Seasonal picks, fresh itineraries and the odd Kashmir tip
-                  worth keeping — written by the guides, never by a marketer.
-                </p>
-              </div>
-              <div className="lg:justify-self-end lg:w-full lg:max-w-sm">
-                <NewsletterForm />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Continue reading */}
-      <section className="bg-sand py-16 sm:py-20" aria-labelledby="continue-reading">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeading
-            eyebrow="Keep reading"
-            title="Continue reading"
-            linkHref="/blog"
-            linkLabel="All travel guides"
-          />
-          <div id="continue-reading" className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((relatedPost) => (
-              <BlogCard key={relatedPost.slug} post={relatedPost} />
-            ))}
-          </div>
         </div>
       </section>
 

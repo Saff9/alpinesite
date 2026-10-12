@@ -21,7 +21,7 @@ import { testimonials } from "@/data/testimonials";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Meet Alpine Club India — a ten-person team of mountain guides based in Gulmarg, Kashmir, running ski weeks and private Himalayan journeys since 2012. Local guides, honest pricing, one phone that always answers.",
+    "Meet Alpine Club India, a ten-person team of mountain guides based in Gulmarg, Kashmir, running ski weeks and private Himalayan journeys since 2012. Local guides, honest pricing, one phone that always answers.",
   alternates: { canonical: "/about" },
 };
 
@@ -29,7 +29,7 @@ const values = [
   {
     icon: MapPinned,
     title: "Guides, not resellers",
-    text: "Local guides who plan your trip lead it on the mountain — no outsourced scripts or brokers.",
+    text: "Local guides who plan your trip lead it on the mountain, no outsourced scripts or brokers.",
   },
   {
     icon: ShieldCheck,
@@ -50,11 +50,11 @@ const values = [
 
 const team = [
   {
-    name: "Bashir Ahmad",
+    name: "Sajad Ahmad",
     role: "Founder & Lead Mountain Guide",
     line: "Tangmarg-born. Carried his first pair of tourist skis up Apharwat on a shoulder before Phase 2 existed; now chooses every route we sell himself.",
     image: "/images/about/founder.jpg",
-    imageAlt: "Bashir Ahmad — Founder & Lead Mountain Guide",
+    imageAlt: "Sajad Ahmad, Founder & Lead Mountain Guide",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        title="A small team, obsessed with getting your trip right"
+        title="About Alpine Club India"
         subtitle="Ten people, one office under the Gondola line in Gulmarg, and thirteen years of travellers who trusted us with their holidays."
         image="/images/about/group-trek.jpg"
         imageAlt="A small group of travellers walking a Himalayan trail together with their guide"
@@ -108,7 +108,7 @@ export default function AboutPage() {
                   which plan to hand it.&rdquo;
                 </p>
                 <p className="mt-2 text-xs text-muted-foreground">
-                  Bashir Ahmad — Founder, born in Tangmarg
+                  Sajad Ahmad, Founder, born in Tangmarg
                 </p>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function AboutPage() {
               </h2>
               <div className="mt-6 space-y-5 text-foreground/85 leading-relaxed text-left">
                 <p>
-                  Bashir Ahmad grew up in Tangmarg below Gulmarg, learning Apharwat&apos;s terrain long before modern gondolas reached the summit. Hauling gear and skiing remote powder bowls gave him an intimate understanding of mountain safety, seasonal weather shifts, and Himalayan terrain.
+                  Sajad Ahmad grew up in Tangmarg below Gulmarg, learning Apharwat&apos;s terrain long before modern gondolas reached the summit. Hauling gear and skiing remote powder bowls gave him an intimate understanding of mountain safety, seasonal weather shifts, and Himalayan terrain.
                 </p>
                 <p>
                   In 2012, Alpine Club India was founded on Gulmarg Road with one enduring principle: <em>if we wouldn&apos;t put our own family on the trip, we don&apos;t sell it.</em> Today, our dedicated local guides and mountain crews craft private, authentic journeys across Kashmir, Gulmarg, and Ladakh.
@@ -155,7 +155,7 @@ export default function AboutPage() {
               </span>
               <h3 className="mt-5 font-heading text-xl font-bold uppercase text-black">Our mission</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                To make the Himalayas feel like home — planned by people who
+                To make the Himalayas feel like home, planned by people who
                 live there, priced without games, and run with the care
                 we&rsquo;d want for our own families travelling. If a traveller
                 leaves as a friend who&rsquo;ll come back, we&rsquo;ve done our
@@ -171,7 +171,7 @@ export default function AboutPage() {
               </span>
               <h3 className="mt-5 font-heading text-xl font-bold uppercase text-black">Our vision</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                To be the most trusted name in Himalayan travel by 2030 — the
+                To be the most trusted name in Himalayan travel by 2030, the
                 team you call before you book anywhere, because you know
                 you&rsquo;ll get a straight answer. Even when the straight answer
                 is &ldquo;don&rsquo;t come this week, the passes are
@@ -253,30 +253,26 @@ export default function AboutPage() {
             {team.map((member) => (
               <article
                 key={member.name}
-                className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg"
+                className="flex flex-col items-center rounded-3xl border border-border bg-card p-8 text-center shadow-sm transition-all duration-300 hover:shadow-lg sm:p-10"
               >
-                <div className="relative h-80 w-full sm:h-96">
+                <div className="relative h-44 w-44 shrink-0 overflow-hidden rounded-full border-4 border-brand/20 shadow-md sm:h-52 sm:w-52">
                   <Image
                     src={member.image}
                     alt={member.imageAlt}
                     fill
-                    sizes="(max-width: 640px) 100vw, 448px"
-                    className="object-cover"
+                    sizes="(max-width: 640px) 176px, 208px"
+                    className="rounded-full object-cover object-top"
                     priority
                   />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
-                    aria-hidden="true"
-                  />
-                  <div className="absolute bottom-5 left-5 right-5 text-center text-white">
-                    <h3 className="font-heading text-2xl font-bold">{member.name}</h3>
-                    <p className="mt-1 text-xs font-bold uppercase tracking-wider text-sand">
-                      {member.role}
-                    </p>
-                  </div>
                 </div>
-                <div className="p-6 text-center">
-                  <p className="text-sm leading-relaxed text-muted-foreground">
+                <div className="mt-6">
+                  <h3 className="font-heading text-2xl font-extrabold text-foreground">
+                    {member.name}
+                  </h3>
+                  <p className="mt-1.5 text-xs font-bold uppercase tracking-wider text-brand">
+                    {member.role}
+                  </p>
+                  <p className="mt-4 text-sm leading-relaxed text-foreground/85 sm:text-base">
                     {member.line}
                   </p>
                 </div>
@@ -315,7 +311,7 @@ export default function AboutPage() {
               ))}
             </div>
 
-            {/* Masonry wall — every review we publish, unedited */}
+            {/* Masonry wall, every review we publish, unedited */}
             <div className="mt-8 columns-1 gap-5 sm:columns-2 lg:columns-3">
               {testimonials.map((testimonial) => (
                 <TestimonialCard

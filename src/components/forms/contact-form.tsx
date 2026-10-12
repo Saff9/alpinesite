@@ -102,7 +102,7 @@ export function ContactForm() {
     } catch {
       setStatus("idle");
       setGeneralError(
-        "Network hiccup — check your connection and try again, or WhatsApp us directly. That always gets through.",
+        "Network hiccup, check your connection and try again, or WhatsApp us directly. That always gets through.",
       );
     }
   }

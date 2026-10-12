@@ -61,7 +61,7 @@ export function CtaBanner() {
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground/85 underline-offset-4 transition-colors hover:text-primary-foreground hover:underline"
             >
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
-              or WhatsApp us directly — we usually reply in minutes
+              or WhatsApp us directly, we usually reply in minutes
             </a>
           </div>
         </div>

@@ -50,7 +50,7 @@ export function WhyChooseUs() {
                 &ldquo;We treat every trip like it&apos;s our own family travelling.&rdquo;
               </p>
               <p className="mt-2 text-xs text-muted-foreground">
-                Bashir Ahmad — Founder, born in Tangmarg
+                Sajad Ahmad, Founder, born in Tangmarg
               </p>
             </div>
           </div>

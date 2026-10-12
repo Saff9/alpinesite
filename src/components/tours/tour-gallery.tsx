@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import type { GalleryImage } from "@/types";
 
 interface TourGalleryProps {
-  /** Plain serializable data — built server-side from coverImage + gallery. */
+  /** Plain serializable data, built server-side from coverImage + gallery. */
   images: GalleryImage[];
   tourTitle: string;
 }
@@ -99,10 +99,10 @@ export function TourGallery({ images, tourTitle }: TourGalleryProps) {
           className="fixed top-0 left-0 z-[70] flex h-full w-full max-w-none translate-x-0 translate-y-0 flex-col rounded-none border-0 bg-black/95 p-4 shadow-none sm:max-w-none sm:p-6"
         >
           <DialogTitle className="sr-only">
-            {tourTitle} — photo gallery
+            {tourTitle}, photo gallery
           </DialogTitle>
 
-          {/* Top bar — counter + caption, close */}
+          {/* Top bar, counter + caption, close */}
           <div className="flex shrink-0 items-start justify-between gap-4">
             <div className="min-w-0 flex-1" aria-live="polite">
               <p className="text-sm font-semibold text-white">
@@ -120,7 +120,7 @@ export function TourGallery({ images, tourTitle }: TourGalleryProps) {
             </button>
           </div>
 
-          {/* Center — photo with fade/scale-in on change */}
+          {/* Center, photo with fade/scale-in on change */}
           <div className="relative mx-auto aspect-[3/2] w-full max-w-5xl max-h-[70vh] flex-1">
             <div
               key={index}
@@ -158,7 +158,7 @@ export function TourGallery({ images, tourTitle }: TourGalleryProps) {
             )}
           </div>
 
-          {/* Bottom — thumbnail strip (hidden on <sm) */}
+          {/* Bottom, thumbnail strip (hidden on <sm) */}
           <div className="hidden shrink-0 gap-2 overflow-x-auto py-3 sm:flex">
             {images.map((image, i) => (
               <button

@@ -12,14 +12,14 @@ export default function NotFound() {
         <Compass className="h-8 w-8" />
       </span>
       <p className="mt-6 text-xs font-bold uppercase tracking-[0.22em] text-brand">
-        404 — off the map
+        404, off the map
       </p>
       <h1 className="mt-3 font-heading text-3xl font-extrabold uppercase sm:text-4xl">
         This trail doesn&apos;t exist.
       </h1>
       <p className="mt-4 max-w-md text-muted-foreground">
         The page you&apos;re looking for moved, or never was. Even our best guides
-        take a wrong turn in the fog sometimes — let&apos;s get you back to
+        take a wrong turn in the fog sometimes, let&apos;s get you back to
         somewhere beautiful.
       </p>
       <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto">

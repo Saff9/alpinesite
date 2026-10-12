@@ -41,7 +41,7 @@ const services = [
     icon: faSliders,
     title: "Tailor-Made Itineraries",
     description:
-      "Flexible private journeys designed around your pace, travel style, and preferences — no rigid group schedules.",
+      "Flexible private journeys designed around your pace, travel style, and preferences, no rigid group schedules.",
   },
   {
     icon: faShieldHalved,

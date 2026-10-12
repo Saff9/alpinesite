@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     }
 
     if (!message || typeof message !== "string" || message.trim().length < 10) {
-      fieldErrors.message = "Tell us a little more — at least 10 characters";
+      fieldErrors.message = "Tell us a little more, at least 10 characters";
     }
 
     if (Object.keys(fieldErrors).length > 0) {

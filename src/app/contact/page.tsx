@@ -31,35 +31,55 @@ const contactFaqs = [
   {
     question: "How does booking work, and what are the payment terms?",
     answer:
-      "You send an enquiry — form, WhatsApp or call — and we reply with a draft itinerary and an honest quote within a day. To confirm, you pay a 25% advance; the balance is due any time before the trip starts. We accept bank transfer, UPI and international wire. You get written confirmations for every stay and transfer before you fly — not vouchers handed to you on arrival.",
+      "You send an enquiry, form, WhatsApp or call, and we reply with a draft itinerary and an honest quote within a day. To confirm, you pay a 25% advance; the balance is due any time before the trip starts. We accept bank transfer, UPI and international wire. You get written confirmations for every stay and transfer before you fly, not vouchers handed to you on arrival.",
   },
   {
     question: "Can I customise an itinerary?",
     answer:
-      "Yes — every trip we run is private, so customisation is the norm, not an exception. Swap hotels, add a day in Pahalgam, skip a temple, bring your dog (we've done it). Tell us what you loved and hated on past trips; the first draft usually changes twice before you book, and that's a good thing.",
+      "Yes, every trip we run is private, so customisation is the norm, not an exception. Swap hotels, add a day in Pahalgam, skip a temple, bring your dog (we've done it). Tell us what you loved and hated on past trips; the first draft usually changes twice before you book, and that's a good thing.",
   },
   {
     question: "What's your cancellation policy?",
     answer:
-      "Full refund if you cancel 21 or more days before departure. 50% refund between 14 and 20 days. Inside 14 days we recover what we can from hotels and transport — in thirteen years we've never kept a rupee that was recoverable. Peak-date houseboats and permits sometimes carry their own rules, and we tell you upfront, not after you cancel.",
+      "Full refund if you cancel 21 or more days before departure. 50% refund between 14 and 20 days. Inside 14 days we recover what we can from hotels and transport, in thirteen years we've never kept a rupee that was recoverable. Peak-date houseboats and permits sometimes carry their own rules, and we tell you upfront, not after you cancel.",
   },
   {
     question: "Do I need travel insurance?",
     answer:
-      "For high-altitude and winter trips — Ladakh, Apharwat backcountry, Gulmarg powder skiing — we recommend it strongly and help you arrange it within a day; we work with insurers who actually pay out in India. We will never pretend it's compulsory when it isn't.",
+      "For high-altitude and winter trips, Ladakh, Apharwat backcountry, Gulmarg powder skiing, we recommend it strongly and help you arrange it within a day; we work with insurers who actually pay out in India. We will never pretend it's compulsory when it isn't.",
   },
   {
     question: "How are you different from other agencies?",
     answer:
-      "We're the local team, not a reseller. Your driver, guide and boatman work with us year-round, and your money stays in the valley instead of a call-centre chain. If a hotel disappoints, we hear about it on the same evening's check-in call and move you the next morning — not after you're home writing a review.",
+      "We're the local team, not a reseller. Your driver, guide and boatman work with us year-round, and your money stays in the valley instead of a call-centre chain. If a hotel disappoints, we hear about it on the same evening's check-in call and move you the next morning, not after you're home writing a review.",
   },
 ];
 
 const socials = [
-  { label: "Alpine Club India on Instagram", href: site.socials.instagram, icon: Instagram },
-  { label: "Alpine Club India on Facebook", href: site.socials.facebook, icon: Facebook },
-  { label: "Alpine Club India on YouTube", href: site.socials.youtube, icon: Youtube },
-  { label: "Alpine Club India on X (Twitter)", href: site.socials.twitter, icon: Twitter },
+  {
+    label: "Alpine Club India on Instagram",
+    href: site.socials.instagram,
+    icon: Instagram,
+    className: "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white",
+  },
+  {
+    label: "Alpine Club India on Facebook",
+    href: site.socials.facebook,
+    icon: Facebook,
+    className: "bg-[#1877F2] text-white",
+  },
+  {
+    label: "Alpine Club India on YouTube",
+    href: site.socials.youtube,
+    icon: Youtube,
+    className: "bg-[#FF0000] text-white",
+  },
+  {
+    label: "Alpine Club India on X (Twitter)",
+    href: site.socials.twitter,
+    icon: Twitter,
+    className: "bg-[#1DA1F2] text-white",
+  },
 ];
 
 const contactFaqJsonLd = {
@@ -109,7 +129,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         title="Let's plan your next trip"
-        subtitle="Call, WhatsApp or write to us — a real guide from the Gulmarg office replies, usually the same day."
+        subtitle="Call, WhatsApp or write to us, a real guide from the Gulmarg office replies, usually the same day."
         image="/images/ski/apharwat-peaks.jpg"
         imageAlt="Snow-covered ridgelines of the Apharwat range above Gulmarg under a clear sky"
         crumbs={[
@@ -151,7 +171,7 @@ export default function ContactPage() {
               <div className="flex gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-xs"
                 >
                   <MessageCircle className="h-5 w-5" />
                 </span>
@@ -167,7 +187,7 @@ export default function ContactPage() {
                     <span className="sr-only"> on WhatsApp (opens in a new tab)</span>
                   </a>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    Fastest for quick questions — we usually reply in minutes.
+                    Fastest for quick questions, we usually reply in minutes.
                   </p>
                 </div>
               </div>
@@ -238,24 +258,18 @@ export default function ContactPage() {
               {/* Socials */}
               <div className="flex items-center justify-center sm:justify-start gap-3 px-1 pt-2">
                 <p className="text-sm font-semibold text-foreground">Follow along:</p>
-                <div className="flex gap-2">
+                <div className="flex gap-2.5">
                   {socials.map((social) => (
-                    <Button
+                    <a
                       key={social.label}
-                      asChild
-                      variant="outline"
-                      size="icon"
-                      className="rounded-xl"
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className={`flex h-9 w-9 items-center justify-center rounded-lg shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110 ${social.className}`}
                     >
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                      >
-                        <social.icon className="h-4 w-4" aria-hidden="true" />
-                      </a>
-                    </Button>
+                      <social.icon className="h-4 w-4" aria-hidden="true" />
+                    </a>
                   ))}
                 </div>
               </div>
@@ -263,7 +277,7 @@ export default function ContactPage() {
               <div className="rounded-2xl border border-brand/20 bg-secondary/60 p-4 sm:p-5 text-center sm:text-left">
                 <p className="text-sm leading-relaxed text-foreground/90">
                   Travelling within India? Our numbers work on WhatsApp. Outside
-                  India? Email is fastest — phone calls get expensive and time
+                  India? Email is fastest, phone calls get expensive and time
                   zones get cruel.
                 </p>
               </div>
@@ -281,7 +295,7 @@ export default function ContactPage() {
           <SectionHeading
             eyebrow="Before you write"
             title="Frequently asked questions"
-            description="The five things almost everyone asks before booking. If yours isn't here, ask us directly — no question is too small."
+            description="The five things almost everyone asks before booking. If yours isn't here, ask us directly, no question is too small."
             align="center"
           />
           <div id="contact-faqs" className="rounded-2xl border border-border bg-card px-6 py-2 shadow-sm">
@@ -307,7 +321,7 @@ export default function ContactPage() {
           <SectionHeading
             eyebrow="Find us"
             title="One office, under the gondola line"
-            description="Gulmarg Road, Forest Block — a short walk from the Gondola base. In winter look for the skis leaning by the door and the kettle that's always on."
+            description="Gulmarg Road, Forest Block, a short walk from the Gondola base. In winter look for the skis leaning by the door and the kettle that's always on."
           />
           <div id="office-map" className="overflow-hidden rounded-2xl border border-border shadow-sm">
             <iframe

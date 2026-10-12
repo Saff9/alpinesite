@@ -3,7 +3,7 @@ import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Brand wordmark — reads the name and micro-copy from `src/data/site.ts`,
+ * Brand wordmark, reads the name and micro-copy from `src/data/site.ts`,
  * so a rebrand never touches this file.
  */
 export function SiteLogo({
@@ -17,11 +17,11 @@ export function SiteLogo({
   return (
     <Link
       href="/"
-      aria-label={`${site.name} — home`}
+      aria-label={`${site.name}, home`}
       className={cn("group flex items-center gap-2.5", className)}
     >
       {/* Peak-and-piste mark: twin ridgelines with a snow cap and a fall
-          line (the ski line) cutting through — a guide's mountain, drawn
+          line (the ski line) cutting through, a guide's mountain, drawn
           with the same stroke weight as the wordmark. */}
       <span
         aria-hidden="true"
@@ -46,7 +46,7 @@ export function SiteLogo({
           />
           {/* snow-capped peak */}
           <path d="M8.4 8.9l1.9-3.4 1.2 2 1-1 1.4 3.5" />
-          {/* the fall line — a guide's line down the face */}
+          {/* the fall line, a guide's line down the face */}
           <path d="M13.9 15.6c-1.1-.9-1.6-2.4-1.2-3.9" />
         </svg>
       </span>

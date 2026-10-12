@@ -3,7 +3,7 @@ import { getBlogPostBySlug, blogPosts } from "@/data/blog";
 import { ogImageResponse, OG_CONTENT_TYPE, OG_SIZE } from "@/lib/og";
 
 /**
- * Per-post Open-Graph card — guide title, author and reading time render
+ * Per-post Open-Graph card, guide title, author and reading time render
  * directly into the WhatsApp/Facebook link preview.
  */
 

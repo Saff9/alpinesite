@@ -14,7 +14,7 @@ export type TravelStyle =
 export interface GalleryImage {
   src: string;
   alt: string;
-  /** Editorial caption — surfaced by the destination photo essay. Optional. */
+  /** Editorial caption, surfaced by the destination photo essay. Optional. */
   caption?: string;
 }
 
@@ -25,7 +25,7 @@ export interface DestinationStory {
   title: string;
   /** 1–2 sentences that set the scene. */
   intro: string;
-  /** Closing line — ties the essay to the booking CTA. */
+  /** Closing line, ties the essay to the booking CTA. */
   outro: string;
 }
 
@@ -69,7 +69,7 @@ export interface Destination {
   seasons?: DestinationSeason[];
   /** 12 entries, index 0 = January. 0 = closed/avoid, 1 = possible, 2 = good, 3 = prime. */
   monthScores?: number[];
-  /** Photo essay — when present, the destination page renders the gallery as
+  /** Photo essay, when present, the destination page renders the gallery as
    *  an editorial story instead of a plain grid. */
   story?: DestinationStory;
 }

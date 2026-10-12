@@ -4,7 +4,7 @@ import { formatINR } from "@/data/site";
 import { ogImageResponse, OG_CONTENT_TYPE, OG_SIZE } from "@/lib/og";
 
 /**
- * Per-tour Open-Graph card — trip name, duration and the from-price render
+ * Per-tour Open-Graph card, trip name, duration and the from-price render
  * directly into the WhatsApp/Facebook link preview.
  */
 

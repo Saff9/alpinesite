@@ -5,23 +5,23 @@ import { site } from "@/data/site";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- * BRANDED OPEN-GRAPH CARDS — shared design system for social link previews.
+ * BRANDED OPEN-GRAPH CARDS, shared design system for social link previews.
  * ─────────────────────────────────────────────────────────────────────────────
  * Every route that matters (home, tours, destinations, blog posts) renders a
  * 1200×630 card via Next.js file conventions (`opengraph-image.tsx`). This
  * module is the single place to restyle ALL of them.
  *
  * Why cards instead of cover photos? Links to this site are shared mostly in
- * WhatsApp groups — a card that shows the trip name, duration and price sells
+ * WhatsApp groups, a card that shows the trip name, duration and price sells
  * the click far better than an unlabelled photo.
  *
- * Satori notes: flexbox only, inline styles only, no CSS variables — the hex
+ * Satori notes: flexbox only, inline styles only, no CSS variables, the hex
  * values below mirror the oklch tokens in globals.css (pine/terracotta/sand).
- * DejaVu Sans (bundled in src/assets/fonts — incl. the ₹ glyph, which the
+ * DejaVu Sans (bundled in src/assets/fonts, incl. the ₹ glyph, which the
  * default Noto Sans lacks) is loaded once and cached for every card.
  */
 
-/** Load both DejaVu weights once — module-level cache shared by all cards. */
+/** Load both DejaVu weights once, module-level cache shared by all cards. */
 const fontsPromise = Promise.all([
   readFile(path.join(process.cwd(), "src/assets/fonts/DejaVuSans.ttf")),
   readFile(path.join(process.cwd(), "src/assets/fonts/DejaVuSans-Bold.ttf")),
@@ -45,7 +45,7 @@ export const OG_COLORS = {
 
 const DOMAIN = site.url.replace(/^https?:\/\//, "");
 
-/** Long tour titles must still fit — step the type down as text grows. */
+/** Long tour titles must still fit, step the type down as text grows. */
 function titleSizeFor(title: string): number {
   if (title.length <= 26) return 74;
   if (title.length <= 38) return 62;
@@ -54,12 +54,12 @@ function titleSizeFor(title: string): number {
 }
 
 export interface OgCardProps {
-  /** Small terracotta kicker above the title — e.g. "TOUR · GULMARG, KASHMIR". */
+  /** Small terracotta kicker above the title, e.g. "TOUR · GULMARG, KASHMIR". */
   eyebrow: string;
   title: string;
-  /** Supporting line under the title — price, tagline or byline. */
+  /** Supporting line under the title, price, tagline or byline. */
   subtitle: string;
-  /** Pill at the top-right — "5-DAY TOUR", "7 MIN READ", "SINCE 2012". */
+  /** Pill at the top-right, "5-DAY TOUR", "7 MIN READ", "SINCE 2012". */
   chip?: string;
 }
 
@@ -94,7 +94,7 @@ export function OgCard({ eyebrow, title, subtitle, chip }: OgCardProps) {
             justifyContent: "center",
           }}
         >
-          {/* Mountain glyph — mirrors the site logo mark */}
+          {/* Mountain glyph, mirrors the site logo mark */}
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
             <path
               d="M3 19 L9.5 7 L13 13.5 L15.5 9.5 L21 19 Z"
@@ -148,7 +148,7 @@ export function OgCard({ eyebrow, title, subtitle, chip }: OgCardProps) {
         ) : null}
       </div>
 
-      {/* Main block — padded clear of the mountain silhouettes below */}
+      {/* Main block, padded clear of the mountain silhouettes below */}
       <div
         style={{
           flex: 1,
@@ -213,7 +213,7 @@ export function OgCard({ eyebrow, title, subtitle, chip }: OgCardProps) {
         </div>
       </div>
 
-      {/* Mountain silhouettes — dawn glow behind, two ridge layers in front */}
+      {/* Mountain silhouettes, dawn glow behind, two ridge layers in front */}
       <svg
         width={1200}
         height={220}
@@ -223,12 +223,12 @@ export function OgCard({ eyebrow, title, subtitle, chip }: OgCardProps) {
         {/* Low sun glow on the horizon */}
         <circle cx={930} cy={185} r={105} fill="rgba(195,107,66,0.20)" />
         <circle cx={930} cy={185} r={58} fill="rgba(195,107,66,0.28)" />
-        {/* Back ridge — catches the light */}
+        {/* Back ridge, catches the light */}
         <polygon
           points="0,220 0,150 130,74 235,132 375,35 505,130 640,58 760,134 905,63 1035,132 1200,84 1200,220"
           fill={OG_COLORS.pine}
         />
-        {/* Front ridge — darkest, anchors the composition */}
+        {/* Front ridge, darkest, anchors the composition */}
         <polygon
           points="0,220 0,172 190,103 330,160 480,91 640,163 800,106 960,165 1080,123 1200,158 1200,220"
           fill={OG_COLORS.pineInk}
@@ -242,7 +242,7 @@ export function OgCard({ eyebrow, title, subtitle, chip }: OgCardProps) {
   );
 }
 
-/** Convenience wrapper — every route file calls this with its OgCardProps. */
+/** Convenience wrapper, every route file calls this with its OgCardProps. */
 export async function ogImageResponse(props: OgCardProps): Promise<ImageResponse> {
   const fonts = await fontsPromise;
   return new ImageResponse(<OgCard {...props} />, {

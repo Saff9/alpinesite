@@ -6,7 +6,7 @@ import type { Destination } from "@/types";
 import { cn } from "@/lib/utils";
 
 /**
- * Editorial photo essay — the destination's own gallery images, retold as a
+ * Editorial photo essay, the destination's own gallery images, retold as a
  * travel story. Renders ONLY when the destination carries a `story` in its
  * data entry; pages without one fall back to the plain gallery grid.
  *
@@ -24,7 +24,7 @@ export function DestinationStories({ destination }: { destination: Destination }
   return (
     <section className="pb-16 sm:pb-20" aria-labelledby="story-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        {/* Story header — editorial, left-aligned with a hairline rule */}
+        {/* Story header, editorial, left-aligned with a hairline rule */}
         <div className="max-w-3xl">
           <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-terracotta">
             Travel story
@@ -44,7 +44,7 @@ export function DestinationStories({ destination }: { destination: Destination }
           />
         </div>
 
-        {/* Lead scene — full width, caption centred beneath */}
+        {/* Lead scene, full width, caption centred beneath */}
         <figure className="group mt-10 sm:mt-12">
           <div className="relative aspect-[16/10] overflow-hidden rounded-3xl shadow-sm sm:aspect-[16/8]">
             <Image
@@ -69,7 +69,7 @@ export function DestinationStories({ destination }: { destination: Destination }
           </figcaption>
         </figure>
 
-        {/* Following scenes — alternating image / caption rows on lg */}
+        {/* Following scenes, alternating image / caption rows on lg */}
         <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12 lg:space-y-16">
           {rest.map((scene, i) => {
             const flip = i % 2 === 0; // scene 2 = index 0 after lead flips

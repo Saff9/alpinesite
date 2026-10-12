@@ -4,7 +4,7 @@ import { formatINR } from "@/data/site";
 import { ogImageResponse, OG_CONTENT_TYPE, OG_SIZE } from "@/lib/og";
 
 /**
- * Per-destination Open-Graph card — destination name, tagline and the
+ * Per-destination Open-Graph card, destination name, tagline and the
  * from-price render directly into the WhatsApp/Facebook link preview.
  */
 

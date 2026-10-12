@@ -23,7 +23,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Instagram className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -32,7 +32,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Facebook className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -41,7 +41,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on YouTube"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Youtube className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -50,7 +50,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on Twitter"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1DA1F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Twitter className="h-4 w-4" aria-hidden="true" />
               </a>

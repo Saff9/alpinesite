@@ -5,11 +5,25 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { mainNav, site, type NavItem } from "@/data/site";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Menu, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useSyncExternalStore } from "react";
+import { useState, useRef, useEffect, useSyncExternalStore } from "react";
 import { SiteLogo } from "./site-logo";
+
+function FaFacebookFilled({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 320 512"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+    </svg>
+  );
+}
 
 export function Navbar() {
   const pathname = usePathname();
@@ -17,6 +31,11 @@ export function Navbar() {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    document.documentElement.dataset.mobileMenuOpen = open ? "true" : "false";
+    window.dispatchEvent(new CustomEvent("mobile-menu-change", { detail: open }));
+  }, [open]);
 
   // Subscribe to scroll position for sticky header state
   const scrolled = useSyncExternalStore(
@@ -129,14 +148,28 @@ export function Navbar() {
                   {/* Animated Dropdown Menu with Auto-Close */}
                   <div
                     className={cn(
-                      "absolute left-0 top-full pt-2 w-[620px] max-w-[90vw] transition-all duration-200 ease-out origin-top-left",
+                      "absolute left-0 top-full pt-2 max-w-[90vw] transition-all duration-200 ease-out origin-top-left",
+                      item.dropdown?.length === 1
+                        ? "w-[260px]"
+                        : item.dropdown?.length === 2
+                          ? "w-[440px]"
+                          : "w-[620px]",
                       isDropdownOpen
                         ? "opacity-100 translate-y-0 scale-100 visible pointer-events-auto"
                         : "opacity-0 translate-y-2 scale-[0.98] invisible pointer-events-none"
                     )}
                   >
                     <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-2xl ring-1 ring-black/5">
-                      <div className="grid grid-cols-3 gap-6">
+                      <div
+                        className={cn(
+                          "grid gap-6",
+                          item.dropdown?.length === 1
+                            ? "grid-cols-1"
+                            : item.dropdown?.length === 2
+                              ? "grid-cols-2"
+                              : "grid-cols-3",
+                        )}
+                      >
                         {item.dropdown?.map((col) => (
                           <div key={col.title} className="space-y-3">
                             <h4 className="font-heading text-[0.7rem] font-bold uppercase tracking-widest text-brand border-b border-neutral-100 pb-2">
@@ -165,14 +198,16 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Right Action CTA */}
-          <div className="hidden items-center gap-3 lg:flex">
+          {/* Desktop Right Action CTA (Facebook filled icon + Plan Your Trip) */}
+          <div className="hidden items-center gap-3.5 lg:flex">
             <a
-              href={site.phoneHref}
-              className="flex items-center gap-2 rounded-xl border border-neutral-200 px-3.5 py-2 text-xs font-bold text-neutral-800 hover:bg-neutral-100 hover:border-brand hover:text-brand transition-all duration-200"
+              href={site.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Alpine Club India on Facebook"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs transition-all duration-200 hover:scale-105 hover:brightness-110"
             >
-              <Phone className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
-              <span>{site.phone}</span>
+              <FaFacebookFilled className="h-4 w-4" />
             </a>
             <Button
               asChild
@@ -182,20 +217,8 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile & Tablet Actions */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <Button
-              asChild
-              variant="outline"
-              size="icon"
-              className="h-10 w-10 rounded-xl border-neutral-200 text-neutral-900 hover:bg-neutral-100 hover:border-brand hover:text-brand transition-colors"
-              aria-label={`Call ${site.name} at ${site.phone}`}
-            >
-              <a href={site.phoneHref}>
-                <Phone className="h-4 w-4 text-brand" aria-hidden="true" />
-              </a>
-            </Button>
-
+          {/* Mobile & Tablet Hamburger Trigger (Facebook icon hidden here, placed inside menu) */}
+          <div className="flex items-center lg:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -237,7 +260,7 @@ export function Navbar() {
                     </SheetTitle>
                   </div>
 
-                  <nav aria-label="Mobile Navigation" className="flex-1 overflow-y-auto p-4 space-y-1.5">
+                  <nav aria-label="Mobile Navigation" className="flex-1 overflow-y-auto p-5 space-y-2.5">
                     {mainNav.map((item: NavItem) => {
                       const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
                       const isExpanded = mobileExpanded === item.label;
@@ -250,7 +273,7 @@ export function Navbar() {
                             onClick={() => setOpen(false)}
                             aria-current={isActive(item.href) ? "page" : undefined}
                             className={cn(
-                              "font-heading block rounded-xl px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors",
+                              "font-heading block rounded-xl px-4 py-3 text-xs font-bold uppercase tracking-wider transition-colors",
                               isActive(item.href)
                                 ? "bg-brand text-white"
                                 : "text-neutral-900 hover:bg-neutral-100 hover:text-brand",
@@ -267,7 +290,7 @@ export function Navbar() {
                             type="button"
                             onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
                             className={cn(
-                              "font-heading flex w-full items-center justify-between px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider text-left transition-colors",
+                              "font-heading flex w-full items-center justify-between px-4 py-3 text-xs font-bold uppercase tracking-wider text-left transition-colors",
                               isExpanded ? "bg-neutral-100 text-brand" : "bg-white text-neutral-900 hover:bg-neutral-50",
                             )}
                           >
@@ -283,7 +306,7 @@ export function Navbar() {
                           <div
                             className={cn(
                               "transition-all duration-300 ease-in-out overflow-hidden bg-neutral-50",
-                              isExpanded ? "max-h-[600px] opacity-100 p-3 space-y-3 border-t border-neutral-200" : "max-h-0 opacity-0 p-0 border-t-0"
+                              isExpanded ? "max-h-[600px] opacity-100 p-3.5 space-y-3.5 border-t border-neutral-200" : "max-h-0 opacity-0 p-0 border-t-0"
                             )}
                           >
                             {item.dropdown?.map((col) => (
@@ -312,7 +335,7 @@ export function Navbar() {
                     })}
                   </nav>
 
-                  <div className="mt-auto space-y-2.5 border-t border-neutral-200 p-5 bg-white">
+                  <div className="mt-auto space-y-3 border-t border-neutral-200 p-5 bg-white">
                     <Button
                       asChild
                       className="w-full rounded-xl bg-brand text-white hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11"
@@ -321,22 +344,26 @@ export function Navbar() {
                         Plan Your Trip
                       </Link>
                     </Button>
-                    <a
-                      href={whatsappHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3.5 py-2.5 text-xs font-bold text-white hover:bg-[#20ba59] transition-colors"
-                    >
-                      <WhatsAppIcon className="h-4 w-4" />
-                      <span>Chat on WhatsApp</span>
-                    </a>
-                    <a
-                      href={site.phoneHref}
-                      className="flex items-center justify-center gap-2 rounded-xl border border-neutral-200 px-3.5 py-2.5 text-xs font-bold text-neutral-900 hover:bg-neutral-100 hover:border-brand"
-                    >
-                      <Phone className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
-                      {site.phone}
-                    </a>
+                    <div className="grid grid-cols-[1fr_auto] gap-3">
+                      <a
+                        href={whatsappHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-xs font-bold text-white transition-colors hover:bg-[#20ba59]"
+                      >
+                        <WhatsAppIcon className="h-4 w-4" />
+                        <span>Chat on WhatsApp</span>
+                      </a>
+                      <a
+                        href={site.socials.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Alpine Club India on Facebook"
+                        className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs transition-all duration-200 hover:brightness-110"
+                      >
+                        <FaFacebookFilled className="h-4 w-4" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </SheetContent>

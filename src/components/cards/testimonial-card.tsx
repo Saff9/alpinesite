@@ -22,7 +22,7 @@ export function TestimonialCard({ testimonial, className }: TestimonialCardProps
     <figure
       className={cn(
         // min-w-0: the truncating caption must never force this card (and any
-        // grid it lives in) wider than its track — nowrap text otherwise
+        // grid it lives in) wider than its track, nowrap text otherwise
         // inflates the intrinsic min-content width on mobile.
         "flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-6 shadow-sm",
         className,

@@ -75,14 +75,14 @@ export function SeasonGuide({ destination }: SeasonGuideProps) {
     ? `Best months for ${destination.name}: ${formatMonthList(bestMonths)}.`
     : goodMonths.length
       ? `Good months for ${destination.name}: ${formatMonthList(goodMonths)}.`
-      : `${destination.name} has no standout months — read the season notes below.`;
+      : `${destination.name} has no standout months, read the season notes below.`;
 
   return (
     <div className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
       <SectionHeading
         eyebrow="When to visit"
         title={`Seasons in ${destination.name}, honestly told`}
-        description="Month by month, without the brochure optimism — what each season actually delivers, and when to spend your leave."
+        description="Month by month, without the brochure optimism, what each season actually delivers, and when to spend your leave."
       />
 
       {scores && (

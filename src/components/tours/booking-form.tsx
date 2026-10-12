@@ -105,7 +105,7 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
       }
     } catch {
       setGeneralError(
-        "Network hiccup on our side — please try again, or WhatsApp us and we'll sort it out in minutes.",
+        "Network hiccup on our side, please try again, or WhatsApp us and we'll sort it out in minutes.",
       );
       setStatus("error");
     }
@@ -131,7 +131,7 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
             </p>
             <p className="mt-2 text-sm leading-relaxed text-emerald-800 dark:text-emerald-300">
               We&apos;ll call you on the number you shared to fine-tune dates, stays and
-              pickups — nothing is charged until you say yes.
+              pickups, nothing is charged until you say yes.
             </p>
           </div>
         </div>
@@ -279,7 +279,7 @@ export function BookingForm({ tourSlug, tourTitle, tourPrice }: BookingFormProps
         </p>
 
         <p className="text-center text-xs text-muted-foreground">
-          Enquiry only — {formatINR(tourPrice)} per person, final quote after we talk.
+          Enquiry only, {formatINR(tourPrice)} per person, final quote after we talk.
         </p>
       </div>
     </form>

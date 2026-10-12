@@ -4,12 +4,12 @@ export const site = {
   shortName: "Alpine Club",
   tagline: "Mountain Guides & Himalayan Tours",
   description:
-    "Handcrafted ski expeditions in Gulmarg, classic Kashmir journeys, and high-altitude Himalayan treks — guided by local mountain experts who call these peaks home.",
+    "Handcrafted ski expeditions in Gulmarg, classic Kashmir journeys, and high-altitude Himalayan treks, guided by local mountain experts who call these peaks home.",
   url: "https://alpineclubindia.com",
-  phone: "+91 1234567890",
-  phoneHref: "tel:+911234567890",
-  email: "info@alpineclubindia.com",
-  whatsapp: "1234567890",
+  phone: "+91 9682163030",
+  phoneHref: "tel:+919682163030",
+  email: "imtiyazahmadkumar36@gmail.com",
+  whatsapp: "919682163030",
   whatsappMessage:
     "Hello Alpine Club India! I'd like to plan a trip with your mountain guides.",
   established: 2012,
@@ -45,7 +45,7 @@ export const site = {
     alt: "Red Gulmarg Gondola cabins crossing above snowy pine forests and skiers below Apharwat peak, Gulmarg, Kashmir",
   },
   /** Image used by the TravelAgency JSON-LD schema (image/logo fields).
-   *  Social-share cards are generated separately — see src/lib/og.tsx. */
+   *  Social-share cards are generated separately, see src/lib/og.tsx. */
   ogImage: {
     url: "/images/hero/gulmarg-hero.jpg",
     width: 2000,
@@ -71,7 +71,7 @@ export interface NavItem {
 }
 
 /**
- * Primary navigation — compact, readable, human-developer structure.
+ * Primary navigation, compact, readable, human-developer structure.
  * Clean titles only without verbose sub-info paragraphs.
  */
 export const mainNav: NavItem[] = [
@@ -95,15 +95,6 @@ export const mainNav: NavItem[] = [
           { title: "Ladakh Bike Expedition (9D)", href: "/tours/ladakh-bike-expedition" },
         ],
       },
-      {
-        title: "By Travel Style",
-        items: [
-          { title: "Ski & Snowboard", href: "/tours?style=ski" },
-          { title: "High Altitude Trekking", href: "/tours?style=trekking" },
-          { title: "Romantic & Honeymoon", href: "/tours?style=honeymoon" },
-          { title: "Custom Private Trip", href: "/contact" },
-        ],
-      },
     ],
   },
   {
@@ -124,17 +115,39 @@ export const mainNav: NavItem[] = [
           { title: "Pangong & Nubra", href: "/tours/ladakh-monasteries-lakes-7-day" },
         ],
       },
+    ],
+  },
+  {
+    label: "Tour Guides & Advisories",
+    href: "/advisories",
+    dropdown: [
       {
-        title: "Trip Guides",
+        title: "Travel Advisories",
         items: [
-          { title: "Gulmarg Gondola Guide", href: "/blog/gulmarg-skiing-guide" },
-          { title: "Best Time to Visit Kashmir", href: "/blog/best-places-to-visit-in-kashmir" },
-          { title: "View All Destinations", href: "/destinations" },
+          { title: "High Altitude & Acclimatisation", href: "/advisories/high-altitude-safety" },
+          { title: "Permits & Travel Guidelines", href: "/advisories/permits-and-guidelines" },
+          { title: "Mountain Road & Pass Advisory", href: "/advisories/mountain-road-advisory" },
+        ],
+      },
+      {
+        title: "Weather Update",
+        items: [
+          { title: "Gulmarg Snow & Wind Forecast", href: "/advisories/gulmarg-snow-forecast" },
+          { title: "Kashmir Valley Weather Update", href: "/advisories/kashmir-valley-weather" },
+          { title: "Ladakh High Pass Weather", href: "/advisories/ladakh-pass-weather" },
+        ],
+      },
+      {
+        title: "When to Visit Gulmarg",
+        items: [
+          { title: "Winter Powder Season (Dec to Mar)", href: "/advisories/gulmarg-winter-powder" },
+          { title: "Spring & Summer Meadows (Apr to Aug)", href: "/advisories/gulmarg-spring-summer" },
+          { title: "Autumn Chinar Season (Sep to Nov)", href: "/advisories/gulmarg-autumn-gold" },
         ],
       },
     ],
   },
-  { href: "/blog", label: "Travel Guides" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

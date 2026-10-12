@@ -10,13 +10,13 @@ const services = [
     icon: Mountain,
     title: "Private ski & snowboard guides",
     description:
-      "Apharwat's bowls, the tree runs off Kongdoori, the burns nobody else times right — our guides grew up turning on this mountain and read its weather by instinct.",
+      "Apharwat's bowls, the tree runs off Kongdoori, the burns nobody else times right, our guides grew up turning on this mountain and read its weather by instinct.",
   },
   {
     icon: Radio,
     title: "Safety-first backcountry",
     description:
-      "Every powder day starts with a terrain briefing and a pack check — transceivers, probes, shovels — and routes that respect what the snowpack is actually doing.",
+      "Every powder day starts with a terrain briefing and a pack check, transceivers, probes, shovels, and routes that respect what the snowpack is actually doing.",
   },
   {
     icon: TramFront,
@@ -28,7 +28,7 @@ const services = [
     icon: Snowflake,
     title: "Gear, lessons & first-timers",
     description:
-      "Rental fitting the evening before, patient instructors on the beginner slopes, and dry socks waiting in the car — skiing should be the hard part.",
+      "Rental fitting the evening before, patient instructors on the beginner slopes, and dry socks waiting in the car, skiing should be the hard part.",
   },
 ] as const;
 
@@ -45,13 +45,13 @@ export function SkiGulmarg() {
         <SectionHeading
           eyebrow="The home mountain"
           title="Ski Gulmarg with the guides who live here"
-          description="Gulmarg is the reason the agency exists — a 13-season guiding operation on one of the highest lift-served mountains on earth. Everything below the gondola is our office."
+          description="Gulmarg is the reason the agency exists, a 13-season guiding operation on one of the highest lift-served mountains on earth. Everything below the gondola is our office."
           linkHref="/tours/gulmarg-ski-adventure"
           linkLabel="Ski week packages"
         />
 
         <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-[1.05fr_1fr]">
-          {/* Photo column — action over the piste, peaks behind */}
+          {/* Photo column, action over the piste, peaks behind */}
           <figure className="relative min-h-[22rem] overflow-hidden rounded-2xl sm:min-h-[26rem]">
             <Image
               src="/images/ski/powder-skiing.jpg"
@@ -71,7 +71,7 @@ export function SkiGulmarg() {
                   Powder day, Apharwat face
                 </p>
                 <p className="mt-1 max-w-sm text-pretty text-sm leading-relaxed text-white/90">
-                  A guide&rsquo;s line down — the mountain has a hundred of
+                  A guide&rsquo;s line down, the mountain has a hundred of
                   them and we know which one today wants.
                 </p>
               </div>

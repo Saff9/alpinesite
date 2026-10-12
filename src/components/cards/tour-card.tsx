@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Clock, MapPin, ArrowRight } from "lucide-react";
 import type { Tour } from "@/types";
 import { formatINR } from "@/data/site";
-import { RatingStars } from "@/components/shared/rating-stars";
 import { cn } from "@/lib/utils";
 
 interface TourCardProps {
@@ -25,7 +24,7 @@ export function TourCard({ tour, className, priority = false }: TourCardProps) {
         className,
       )}
     >
-      {/* Keyboard focus ring — inset so the card's overflow-hidden can't
+      {/* Keyboard focus ring, inset so the card's overflow-hidden can't
           clip it; highlights whichever control inside the card is focused. */}
       <span
         aria-hidden="true"
@@ -44,20 +43,11 @@ export function TourCard({ tour, className, priority = false }: TourCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" aria-hidden="true" />
-        <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1 text-xs font-semibold text-white">
-          <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 via-black/20 to-transparent" aria-hidden="true" />
+        <span className="absolute bottom-3.5 left-3.5 inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 font-heading text-xs font-extrabold uppercase tracking-wider text-black shadow-md ring-1 ring-black/10">
+          <Clock className="h-3.5 w-3.5 text-brand stroke-[2.5]" aria-hidden="true" />
           {tour.durationDays}D / {tour.durationNights}N
         </span>
-        <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-xs font-semibold text-foreground">
-          <RatingStars rating={tour.rating} size="sm" className="gap-0" />
-          <span>{tour.rating.toFixed(1)}</span>
-        </span>
-        {tour.badge && (
-          <span className="absolute left-3 top-3 rounded-full bg-terracotta px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-            {tour.badge}
-          </span>
-        )}
       </Link>
 
       <div className="flex flex-1 flex-col p-5">

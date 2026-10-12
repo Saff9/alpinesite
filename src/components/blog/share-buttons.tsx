@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 interface ShareButtonsProps {
   title: string;
   path: string;
-  /** Label above the buttons — "Share this guide" for blog, "Share this trip" for tours. */
+  /** Label above the buttons, "Share this guide" for blog, "Share this trip" for tours. */
   label?: string;
   className?: string;
 }
@@ -22,7 +22,7 @@ export function ShareButtons({ title, path, label = "Share this guide", classNam
 
   const url = `${site.url}${path}`;
 
-  /** Native share sheet (navigator.share) — available on most mobile
+  /** Native share sheet (navigator.share), available on most mobile
    *  browsers. Read via useSyncExternalStore with a server snapshot of false
    *  so SSR and hydration stay identical (same pattern as the navbar's
    *  scroll flag); the capability never changes, so subscribe is a no-op. */
@@ -38,7 +38,7 @@ export function ShareButtons({ title, path, label = "Share this guide", classNam
     try {
       await navigator.share({ title, url });
     } catch {
-      // User dismissed the sheet or the browser refused — either way, no-op.
+      // User dismissed the sheet or the browser refused, either way, no-op.
     }
   };
 
@@ -118,7 +118,7 @@ export function ShareButtons({ title, path, label = "Share this guide", classNam
       )}
 
       <a
-        href={`https://wa.me/?text=${encodeURIComponent(`${title} — ${url}`)}`}
+        href={`https://wa.me/?text=${encodeURIComponent(`${title}, ${url}`)}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on WhatsApp"
