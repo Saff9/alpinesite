@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { site } from "@/data/site";
 
 export async function POST(request: Request) {
   try {
@@ -30,20 +31,53 @@ export async function POST(request: Request) {
       );
     }
 
-    // In-flight log for developer / server operator
+    const cleanName = name.trim();
+    const cleanEmail = email.trim();
+    const cleanPhone = phone?.trim() || "Not provided";
+    const cleanSubject = subject?.trim() || "General Enquiry";
+    const cleanMessage = message.trim();
+
+    // Server log
     console.log("[New Contact Enquiry]", {
-      name: name.trim(),
-      email: email.trim(),
-      phone: phone?.trim() || "N/A",
-      subject: subject?.trim() || "General Enquiry",
-      message: message.trim(),
+      toEmail: site.email,
+      toWhatsApp: site.whatsapp,
+      name: cleanName,
+      email: cleanEmail,
+      phone: cleanPhone,
+      subject: cleanSubject,
+      message: cleanMessage,
       receivedAt: new Date().toISOString(),
     });
 
-    const firstName = name.trim().split(" ")[0];
+    // Optional server-side email forwarding via Web3Forms or FormSubmit
+    try {
+      const origin = request.headers.get("origin") || site.url;
+      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(site.email)}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Origin: origin,
+          Referer: `${origin}/contact`,
+        },
+        body: JSON.stringify({
+          _subject: `[Alpine Club India] ${cleanSubject} - ${cleanName}`,
+          name: cleanName,
+          email: cleanEmail,
+          phone: cleanPhone,
+          subject: cleanSubject,
+          message: cleanMessage,
+          _template: "table",
+        }),
+      });
+    } catch (emailErr) {
+      console.warn("[api/contact email relay warning]:", emailErr);
+    }
+
+    const firstName = cleanName.split(" ")[0];
     return NextResponse.json({
       success: true,
-      message: `Thank you, ${firstName}! Your enquiry has been received. Our Gulmarg team will reach out to you within a few hours.`,
+      message: `Thank you, ${firstName}! Your enquiry has been sent to our email (${site.email}) and opened in WhatsApp so our Gulmarg team can reply right away.`,
     });
   } catch (error) {
     console.error("[api/contact error]:", error);

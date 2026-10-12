@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { CheckCircle2, Loader2, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { site } from "@/data/site";
 
 const SUBJECTS = [
   "Planning a trip",
@@ -45,12 +46,33 @@ interface ApiResponse {
   fieldErrors?: Record<string, string>;
 }
 
-export function ContactForm() {
-  const [form, setForm] = useState<ContactFormState>(emptyForm);
+interface ContactFormProps {
+  defaultMessage?: string;
+  defaultSubject?: string;
+  title?: string;
+  subtitle?: string;
+  compact?: boolean;
+}
+
+export function ContactForm({
+  defaultMessage = "",
+  defaultSubject = SUBJECTS[0],
+  title,
+  subtitle,
+  compact = false,
+}: ContactFormProps = {}) {
+  const initialForm: ContactFormState = {
+    ...emptyForm,
+    subject: defaultSubject,
+    message: defaultMessage,
+  };
+
+  const [form, setForm] = useState<ContactFormState>(initialForm);
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [successMessage, setSuccessMessage] = useState("");
   const [generalError, setGeneralError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [submittedWhatsappUrl, setSubmittedWhatsappUrl] = useState<string | null>(null);
 
   const setField = (field: keyof ContactFormState) => (value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -63,11 +85,12 @@ export function ContactForm() {
   };
 
   const resetForm = () => {
-    setForm(emptyForm);
+    setForm(initialForm);
     setStatus("idle");
     setSuccessMessage("");
     setGeneralError("");
     setFieldErrors({});
+    setSubmittedWhatsappUrl(null);
   };
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -78,20 +101,62 @@ export function ContactForm() {
     setGeneralError("");
     setFieldErrors({});
 
+    const cleanName = form.name.trim();
+    const cleanEmail = form.email.trim();
+    const cleanPhone = form.phone.trim();
+    const cleanSubject = form.subject.trim() || SUBJECTS[0];
+    const cleanMessage = form.message.trim();
+
+    const whatsappText = [
+      `*New Website Enquiry - Alpine Club India*`,
+      `*Name:* ${cleanName}`,
+      `*Email:* ${cleanEmail}`,
+      cleanPhone ? `*Phone:* ${cleanPhone}` : null,
+      `*Topic:* ${cleanSubject}`,
+      `*Message:* ${cleanMessage}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(whatsappText)}`;
+    const emailSubject = `[Alpine Club India] ${cleanSubject} - ${cleanName}`;
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          phone: form.phone.trim() || undefined,
+          phone: cleanPhone || undefined,
         }),
       });
       const data = (await response.json()) as ApiResponse;
 
       if (response.ok && data.success) {
+        // Also fire client-side FormSubmit AJAX so browser Origin header is included for email delivery
+        fetch(`https://formsubmit.co/ajax/${encodeURIComponent(site.email)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            _subject: emailSubject,
+            name: cleanName,
+            email: cleanEmail,
+            phone: cleanPhone || "Not provided",
+            subject: cleanSubject,
+            message: cleanMessage,
+            _template: "table",
+          }),
+        }).catch(() => {});
+
+        setSubmittedWhatsappUrl(whatsappUrl);
         setSuccessMessage(data.message);
         setStatus("success");
+
+        // Open WhatsApp with the pre-filled enquiry
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       } else {
         setStatus("idle");
         setFieldErrors(data.fieldErrors ?? {});
@@ -117,7 +182,7 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div
-        className="flex h-full flex-col items-center justify-center rounded-2xl border border-green-300 bg-green-50 p-8 text-center sm:p-10"
+        className="flex h-full flex-col items-center justify-center rounded-2xl border border-green-300 bg-green-50 p-6 text-center sm:p-8"
         role="status"
         aria-live="polite"
       >
@@ -128,15 +193,30 @@ export function ContactForm() {
           <CheckCircle2 className="h-7 w-7" />
         </span>
         <h3 className="mt-5 font-heading text-xl font-semibold text-green-900">
-          Message received
+          Enquiry Sent
         </h3>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-green-800">
           {successMessage}
         </p>
+
+        {submittedWhatsappUrl && (
+          <div className="mt-5 flex w-full max-w-sm flex-col">
+            <a
+              href={submittedWhatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-[#20ba59]"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+              Send on WhatsApp
+            </a>
+          </div>
+        )}
+
         <Button
           type="button"
           variant="outline"
-          className="mt-6 border-green-300 bg-white text-green-800 hover:bg-green-100 hover:text-green-900"
+          className="mt-4 border-green-300 bg-white text-green-800 hover:bg-green-100 hover:text-green-900"
           onClick={resetForm}
         >
           Send another message
@@ -149,10 +229,29 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="w-full min-w-0 rounded-2xl border border-border/80 bg-card p-5 shadow-xl transition-all duration-300 hover:shadow-2xl sm:p-8 md:p-10"
+      className={
+        compact
+          ? "w-full min-w-0 rounded-2xl border border-border/80 bg-card p-5 shadow-xl transition-all duration-300 hover:shadow-2xl sm:p-6"
+          : "w-full min-w-0 rounded-2xl border border-border/80 bg-card p-5 shadow-xl transition-all duration-300 hover:shadow-2xl sm:p-8 md:p-10"
+      }
       aria-label="Contact form"
     >
-      <div className="grid gap-5 sm:grid-cols-2">
+      {(title || subtitle) && (
+        <div className="mb-5 border-b border-border pb-4 text-center lg:text-left">
+          {title && (
+            <h3 className="font-heading text-lg font-bold uppercase tracking-tight text-foreground sm:text-xl">
+              {title}
+            </h3>
+          )}
+          {subtitle && (
+            <p className="mt-1 font-poppins font-normal text-xs text-muted-foreground sm:text-sm">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      )}
+
+      <div className={compact ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-1" : "grid gap-5 sm:grid-cols-2"}>
         <div className="min-w-0 sm:col-span-1">
           <Label htmlFor="contact-name">
             Name <span className="text-terracotta" aria-hidden="true">*</span>
@@ -166,7 +265,7 @@ export function ContactForm() {
             onChange={(e) => setField("name")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.name)}
             aria-describedby={fieldErrors.name ? "contact-name-error" : undefined}
-            className="mt-2 h-11 w-full"
+            className="mt-1.5 h-10 w-full sm:mt-2 sm:h-11"
           />
           {errorText("name")}
         </div>
@@ -185,7 +284,7 @@ export function ContactForm() {
             onChange={(e) => setField("email")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.email)}
             aria-describedby={fieldErrors.email ? "contact-email-error" : undefined}
-            className="mt-2 h-11 w-full"
+            className="mt-1.5 h-10 w-full sm:mt-2 sm:h-11"
           />
           {errorText("email")}
         </div>
@@ -203,7 +302,7 @@ export function ContactForm() {
             onChange={(e) => setField("phone")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.phone)}
             aria-describedby={fieldErrors.phone ? "contact-phone-error" : undefined}
-            className="mt-2 h-11 w-full"
+            className="mt-1.5 h-10 w-full sm:mt-2 sm:h-11"
           />
           {errorText("phone")}
         </div>
@@ -216,7 +315,7 @@ export function ContactForm() {
           >
             <SelectTrigger
               id="contact-subject"
-              className="mt-2 h-11 w-full"
+              className="mt-1.5 h-10 w-full sm:mt-2 sm:h-11"
               aria-invalid={Boolean(fieldErrors.subject)}
             >
               <SelectValue placeholder="Choose a topic" />
@@ -232,7 +331,7 @@ export function ContactForm() {
           {errorText("subject")}
         </div>
 
-        <div className="min-w-0 sm:col-span-2">
+        <div className={compact ? "min-w-0 sm:col-span-2 lg:col-span-1" : "min-w-0 sm:col-span-2"}>
           <Label htmlFor="contact-message">
             Your message <span className="text-terracotta" aria-hidden="true">*</span>
           </Label>
@@ -241,12 +340,12 @@ export function ContactForm() {
             name="message"
             required
             minLength={10}
-            rows={6}
+            rows={compact ? 4 : 6}
             value={form.message}
             onChange={(e) => setField("message")(e.target.value)}
             aria-invalid={Boolean(fieldErrors.message)}
             aria-describedby={fieldErrors.message ? "contact-message-error" : undefined}
-            className="mt-2 min-h-32 w-full"
+            className={compact ? "mt-1.5 min-h-24 w-full sm:mt-2" : "mt-2 min-h-32 w-full"}
           />
           {errorText("message")}
         </div>
@@ -261,12 +360,16 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="mt-6 flex flex-col items-stretch sm:items-start">
+      <div className="mt-5 flex flex-col items-stretch sm:mt-6 sm:items-start">
         <Button
           type="submit"
           size="lg"
           disabled={status === "submitting"}
-          className="h-11 w-full rounded-xl border border-transparent bg-brand px-7 py-3 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-deep sm:w-auto"
+          className={
+            compact
+              ? "h-11 w-full rounded-xl border border-transparent bg-brand px-6 py-3 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-deep"
+              : "h-11 w-full rounded-xl border border-transparent bg-brand px-7 py-3 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-md hover:bg-brand-deep sm:w-auto"
+          }
         >
           {status === "submitting" ? (
             <>

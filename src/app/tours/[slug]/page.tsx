@@ -12,6 +12,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { TourGallery } from "@/components/tours/tour-gallery";
 import { ShareButtons } from "@/components/blog/share-buttons";
+import { ContactForm } from "@/components/forms/contact-form";
 import {
   Accordion,
   AccordionContent,
@@ -210,19 +211,37 @@ export default async function TourDetailPage({ params }: TourPageProps) {
       </div>
 
       <div className="pb-16 pt-12 sm:pb-20 sm:pt-16">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
-          <article className="mx-auto space-y-12 sm:space-y-16">
-            {/* Overview */}
-            <section aria-labelledby="overview-heading" className="text-center">
-              <h2 id="overview-heading" className="font-heading text-2xl font-semibold sm:text-3xl">
-                Trip overview
-              </h2>
-              <div className="mx-auto mt-4 max-w-3xl space-y-4 leading-relaxed text-muted-foreground sm:text-base">
-                {tour.overview.map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
-                ))}
-              </div>
-            </section>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_350px] xl:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 xl:gap-12">
+            {/* Right Floating / Sticky Contact Form with Pre-filled Package Name */}
+            <aside
+              aria-label={`Enquire about ${tour.title}`}
+              data-print-hidden
+              className="order-2 min-w-0 w-full lg:order-2 lg:sticky lg:top-24"
+            >
+              <ContactForm
+                key={tour.slug}
+                compact
+                title="Enquire About This Tour"
+                subtitle={`${tour.title} (${tour.durationDays}D / ${tour.durationNights}N)`}
+                defaultSubject="Planning a trip"
+                defaultMessage={`Hi Alpine Club India! I am interested in booking the "${tour.title}" (${tour.durationDays} Days / ${tour.durationNights} Nights) tour package in ${tour.destinationName}. Please share availability, itinerary details, and best quote.`}
+              />
+            </aside>
+
+            {/* Left: Existing Tour Content */}
+            <article className="order-1 min-w-0 w-full space-y-12 sm:space-y-16 lg:order-1">
+              {/* Overview */}
+              <section aria-labelledby="overview-heading" className="text-center">
+                <h2 id="overview-heading" className="font-heading text-2xl font-semibold sm:text-3xl">
+                  Trip overview
+                </h2>
+                <div className="mx-auto mt-4 max-w-3xl space-y-4 leading-relaxed text-muted-foreground sm:text-base">
+                  {tour.overview.map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
 
             {/* What's Included & Excluded */}
             <section aria-labelledby="inclusions-heading">
@@ -390,7 +409,8 @@ export default async function TourDetailPage({ params }: TourPageProps) {
                 ))}
               </Accordion>
             </section>
-          </article>
+            </article>
+          </div>
         </div>
       </div>
 
