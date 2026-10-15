@@ -2,6 +2,7 @@ export const site = {
   name: "Alpine Club India",
   legalName: "Alpine Club India",
   shortName: "Alpine Club",
+  logo: "/Alpine_logo_20261015_181802_0000.svg",
   tagline: "Mountain Guides & Himalayan Tours",
   description:
     "Handcrafted ski expeditions in Gulmarg, classic Kashmir journeys, and high-altitude Himalayan treks, guided by local mountain experts who call these peaks home.",

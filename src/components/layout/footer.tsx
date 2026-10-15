@@ -140,7 +140,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-6 font-poppins font-normal text-xs sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-6 font-poppins font-normal text-xs text-center sm:flex-row sm:text-left">
           <p className="font-poppins font-normal text-neutral-500">
             © {year} {site.name}. All rights reserved.
           </p>
@@ -152,7 +152,16 @@ export function Footer() {
               rel="noopener noreferrer"
               className="font-poppins font-normal text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
-              Imtiyaz Kumar
+              Imtiyaz
+            </a>
+            <span className="text-neutral-500">&amp;</span>
+            <a
+              href="https://owaisdar.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-poppins font-normal text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            >
+              Owais
             </a>
           </p>
         </div>

@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Brand wordmark, reads the name and micro-copy from `src/data/site.ts`,
- * so a rebrand never touches this file.
+ * Brand logo component that renders the official Alpine Club India logo
+ * seamlessly on both light (navbar) and dark (footer) backgrounds, fully responsive.
  */
 export function SiteLogo({
   className,
@@ -16,61 +17,44 @@ export function SiteLogo({
   hideTagline?: boolean;
 }) {
   const onDark = variant === "dark";
+
   return (
     <Link
       href="/"
       aria-label={`${site.name}, home`}
-      className={cn("group flex items-center gap-2.5", className)}
+      className={cn(
+        "group inline-flex items-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
+        className,
+      )}
     >
-      {/* Peak-and-piste mark: twin ridgelines with a snow cap and a fall
-          line (the ski line) cutting through, a guide's mountain, drawn
-          with the same stroke weight as the wordmark. */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-transform duration-200 group-hover:-translate-y-0.5",
-          onDark ? "bg-brand text-white" : "bg-brand text-white shadow-xs",
-        )}
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-5 w-5"
-        >
-          {/* far ridge */}
-          <path
-            d="M2.8 19.2 8.4 8.9l2.5 4.5L13.9 10l7.3 9.2"
-            className="opacity-60"
-          />
-          {/* snow-capped peak */}
-          <path d="M8.4 8.9l1.9-3.4 1.2 2 1-1 1.4 3.5" />
-          {/* the fall line, a guide's line down the face */}
-          <path d="M13.9 15.6c-1.1-.9-1.6-2.4-1.2-3.9" />
-        </svg>
-      </span>
-      <span className="flex flex-col leading-none">
+      <span className="sr-only">{site.name}</span>
+      {onDark ? (
+        /* Dark footer mode: clean white card badge for crisp contrast against dark background */
         <span
-          className={cn(
-            "font-heading text-[1.1rem] font-extrabold uppercase tracking-tight",
-            onDark ? "text-white" : "text-neutral-950",
-          )}
+          className="inline-flex items-center justify-center rounded-2xl bg-white p-2 sm:p-2.5 shadow-md ring-1 ring-white/20 transition-transform duration-200 group-hover:scale-[1.03]"
+          aria-hidden="true"
         >
-          {site.shortName}&nbsp;India
+          <Image
+            src={site.logo}
+            alt={site.name}
+            width={180}
+            height={90}
+            className="h-11 w-auto sm:h-13 max-w-[160px] sm:max-w-[190px] object-contain"
+          />
         </span>
-        {!hideTagline && (
-          <span
-            className={cn(
-              "mt-0.5 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-brand",
-            )}
-          >
-            {site.logoTagline}
-          </span>
-        )}
-      </span>
+      ) : (
+        /* Light navbar mode: native seamless display matching the white navbar background */
+        <span className="inline-flex items-center" aria-hidden="true">
+          <Image
+            src={site.logo}
+            alt={site.name}
+            width={190}
+            height={95}
+            className="h-10 w-auto sm:h-12 md:h-13 max-w-[140px] sm:max-w-[180px] md:max-w-[210px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            priority
+          />
+        </span>
+      )}
     </Link>
   );
 }

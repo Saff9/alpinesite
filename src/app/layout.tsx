@@ -88,6 +88,13 @@ export const metadata: Metadata = {
       ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
       : undefined,
   },
+  icons: {
+    icon: [
+      { url: site.logo, type: "image/svg+xml" },
+    ],
+    shortcut: site.logo,
+    apple: site.logo,
+  },
 };
 
 export const viewport: Viewport = {
@@ -106,7 +113,7 @@ const localBusinessJsonLd = {
   telephone: site.phone,
   email: site.email,
   image: `${site.url}${site.ogImage.url}`,
-  logo: `${site.url}${site.ogImage.url}`,
+  logo: `${site.url}${site.logo}`,
   foundingDate: String(site.established),
   priceRange: "₹₹",
   address: {
