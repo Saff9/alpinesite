@@ -1,6 +1,5 @@
 "use client";
 
-import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { mainNav, site, type NavItem } from "@/data/site";
@@ -38,10 +37,6 @@ export function Navbar() {
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-  const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    site.whatsappMessage,
-  )}`;
 
   const handleDropdownOpen = (label: string) => {
     if (dropdownTimeoutRef.current) {
@@ -357,48 +352,24 @@ export function Navbar() {
                     })}
                   </nav>
 
-                  <div className="shrink-0 space-y-2.5 border-t border-neutral-200 bg-white px-4 pt-3.5 pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-5">
-                    {/* Dynamic Itinerary Button inside mobile drawer */}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setOpen(false);
-                        openItineraryModal();
-                      }}
-                      className="flex h-10 sm:h-11 w-full items-center justify-center gap-2 rounded-xl border border-brand/30 bg-brand/5 px-4 font-heading text-xs font-bold uppercase tracking-wider text-brand hover:bg-brand/10 transition-colors"
-                    >
-                      <Calendar className="h-4 w-4" />
-                      <span>{itineraryCtx.title}</span>
-                    </button>
-
+                  <div className="shrink-0 space-y-3 border-t border-neutral-200 bg-white px-4 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:p-5">
                     <Button
                       asChild
-                      className="flex h-10 sm:h-11 w-full items-center justify-center rounded-xl bg-brand px-4 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep"
+                      className="flex h-11 sm:h-12 w-full items-center justify-center rounded-xl bg-brand px-4 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep transition-all"
                     >
                       <Link href="/contact" onClick={() => setOpen(false)}>
                         Plan Your Trip
                       </Link>
                     </Button>
-                    <div className="grid grid-cols-2 gap-2">
-                      <a
-                        href={whatsappHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-10 sm:h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-bold text-white shadow-xs transition-colors hover:bg-[#20ba59]"
-                      >
-                        <WhatsAppIcon className="h-4 w-4 shrink-0" />
-                        <span className="truncate">WhatsApp</span>
-                      </a>
-                      <a
-                        href={site.socials.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex h-10 sm:h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#1877F2] px-3 text-xs font-bold text-white shadow-xs transition-colors hover:brightness-110"
-                      >
-                        <Facebook className="h-4 w-4 shrink-0" />
-                        <span className="truncate">Facebook</span>
-                      </a>
-                    </div>
+                    <a
+                      href={site.socials.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-11 w-full items-center justify-center gap-2.5 rounded-xl border border-neutral-200 bg-neutral-50 px-4 font-heading text-xs font-bold uppercase tracking-wider text-neutral-800 transition-colors hover:border-[#1877F2] hover:bg-[#1877F2]/5 hover:text-[#1877F2]"
+                    >
+                      <Facebook className="h-4 w-4 text-[#1877F2]" />
+                      <span>Follow on Facebook</span>
+                    </a>
                   </div>
                 </div>
               </SheetContent>

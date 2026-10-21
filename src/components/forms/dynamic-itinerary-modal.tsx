@@ -79,6 +79,25 @@ export function DynamicItineraryModal({
   const [success, setSuccess] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
 
+  // Lock background scroll when modal is open and restore on close
+  useEffect(() => {
+    if (isModalOpen) {
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalBodyTouch = document.body.style.touchAction;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+      document.documentElement.style.overflow = "hidden";
+
+      return () => {
+        document.body.style.overflow = originalBodyOverflow;
+        document.body.style.touchAction = originalBodyTouch;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+      };
+    }
+  }, [isModalOpen]);
+
   // Sync with route context changes
   useEffect(() => {
     if (isModalOpen) {
@@ -184,7 +203,7 @@ Requirements & Notes: ${notes || "None"}`;
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-y-auto overscroll-contain"
     >
       {/* Backdrop */}
       <div
@@ -192,8 +211,8 @@ Requirements & Notes: ${notes || "None"}`;
         className="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
       />
 
-      {/* Modal Dialog Card - Pure Rectangle & Generous Spacing */}
-      <div className="relative w-full max-w-3xl rounded-none border border-neutral-300 bg-white p-6 sm:p-8 md:p-10 shadow-2xl z-10 my-auto overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col">
+      {/* Modal Dialog Card - Elegant Rectangle with Little Rounded Corners */}
+      <div className="relative w-full max-w-3xl rounded-2xl border border-neutral-300 bg-white p-6 sm:p-8 md:p-10 shadow-2xl z-10 my-auto overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col">
         {/* Header Bar */}
         <div className="flex items-start justify-between border-b border-neutral-200 pb-5 shrink-0">
           <div>
@@ -208,17 +227,17 @@ Requirements & Notes: ${notes || "None"}`;
             type="button"
             onClick={() => setModalOpen(false)}
             aria-label="Close dialog"
-            className="flex h-9 w-9 items-center justify-center rounded-none border border-neutral-300 bg-neutral-100 text-neutral-700 hover:bg-neutral-900 hover:text-white transition-colors shrink-0"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-300 bg-neutral-100 text-neutral-700 hover:bg-neutral-900 hover:text-white transition-colors shrink-0"
           >
             ✕
           </button>
         </div>
 
-        {/* Scrollable Form Body with Good Spacing & Gaps */}
-        <div className="overflow-y-auto pr-1 pt-6 pb-2 flex-1">
+        {/* Scrollable Form Body with Smooth Scrolling & Gaps */}
+        <div className="overflow-y-auto pr-1 pt-6 pb-2 flex-1 scroll-smooth overscroll-contain">
           {success ? (
             <div className="py-8 text-center space-y-6">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-none border border-emerald-600 bg-emerald-50 text-emerald-600">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl border border-emerald-600 bg-emerald-50 text-emerald-600">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
               <div className="space-y-2">
@@ -235,7 +254,7 @@ Requirements & Notes: ${notes || "None"}`;
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-[#25D366] px-8 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#20ba59] transition-all"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-8 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#20ba59] transition-all"
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     Send via WhatsApp
@@ -244,7 +263,7 @@ Requirements & Notes: ${notes || "None"}`;
                     type="button"
                     variant="outline"
                     onClick={() => setModalOpen(false)}
-                    className="h-12 rounded-none border-neutral-300 px-8 text-xs font-bold uppercase tracking-wider hover:bg-neutral-100"
+                    className="h-12 rounded-lg border-neutral-300 px-8 text-xs font-bold uppercase tracking-wider hover:bg-neutral-100"
                   >
                     Close
                   </Button>
@@ -268,16 +287,16 @@ Requirements & Notes: ${notes || "None"}`;
                   >
                     <SelectTrigger
                       id="destination"
-                      className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-0"
+                      className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-none border-neutral-300">
+                    <SelectContent className="rounded-lg border-neutral-300">
                       {DESTINATIONS.map((dest) => (
                         <SelectItem
                           key={dest.value}
                           value={dest.value}
-                          className="rounded-none py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                          className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
                         >
                           {dest.label}
                         </SelectItem>
@@ -299,16 +318,16 @@ Requirements & Notes: ${notes || "None"}`;
                   >
                     <SelectTrigger
                       id="activity"
-                      className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-0"
+                      className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-none border-neutral-300">
+                    <SelectContent className="rounded-lg border-neutral-300">
                       {ACTIVITIES.map((act) => (
                         <SelectItem
                           key={act.value}
                           value={act.value}
-                          className="rounded-none py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                          className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
                         >
                           {act.label}
                         </SelectItem>
@@ -330,16 +349,16 @@ Requirements & Notes: ${notes || "None"}`;
                   <Select value={duration} onValueChange={setDuration}>
                     <SelectTrigger
                       id="duration"
-                      className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-0"
+                      className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-none border-neutral-300">
+                    <SelectContent className="rounded-lg border-neutral-300">
                       {DURATION_OPTIONS.map((opt) => (
                         <SelectItem
                           key={opt.value}
                           value={opt.value}
-                          className="rounded-none py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                          className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
                         >
                           {opt.label}
                         </SelectItem>
@@ -358,16 +377,16 @@ Requirements & Notes: ${notes || "None"}`;
                   <Select value={travelers} onValueChange={setTravelers}>
                     <SelectTrigger
                       id="travelers"
-                      className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-0"
+                      className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="rounded-none border-neutral-300">
+                    <SelectContent className="rounded-lg border-neutral-300">
                       {TRAVELER_OPTIONS.map((opt) => (
                         <SelectItem
                           key={opt.value}
                           value={opt.value}
-                          className="rounded-none py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                          className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
                         >
                           {opt.label}
                         </SelectItem>
@@ -388,7 +407,7 @@ Requirements & Notes: ${notes || "None"}`;
                     type="text"
                     value={travelDates}
                     onChange={(e) => setTravelDates(e.target.value)}
-                    className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-0"
+                    className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
               </div>
@@ -408,7 +427,7 @@ Requirements & Notes: ${notes || "None"}`;
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-0"
+                    className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
 
@@ -425,7 +444,7 @@ Requirements & Notes: ${notes || "None"}`;
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-0"
+                    className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
 
@@ -441,7 +460,7 @@ Requirements & Notes: ${notes || "None"}`;
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-12 rounded-none border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-0"
+                    className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium font-poppins focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
               </div>
@@ -459,26 +478,26 @@ Requirements & Notes: ${notes || "None"}`;
                   rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="min-h-[100px] p-4 rounded-none border-neutral-300 bg-white text-xs font-medium font-poppins resize-none focus:border-brand focus:ring-0"
+                  className="min-h-[100px] p-4 rounded-lg border-neutral-300 bg-white text-xs font-medium font-poppins resize-none focus:border-brand focus:ring-1 focus:ring-brand"
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button with Friendly Human Name */}
               <div className="pt-2">
                 <Button
                   type="submit"
                   disabled={submitting}
-                  className="w-full h-13 rounded-none bg-brand font-heading text-xs sm:text-sm font-bold uppercase tracking-widest text-white hover:bg-brand-deep transition-all flex items-center justify-center gap-2"
+                  className="w-full h-13 rounded-lg bg-brand font-heading text-xs sm:text-sm font-bold uppercase tracking-widest text-white hover:bg-brand-deep transition-all flex items-center justify-center gap-2 shadow-xs"
                 >
                   {submitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Processing Request...
+                      Planning Your Trip...
                     </>
                   ) : (
                     <>
                       <Send className="h-4 w-4" />
-                      Request Tailor-Made Itinerary
+                      Plan My Trip
                     </>
                   )}
                 </Button>
