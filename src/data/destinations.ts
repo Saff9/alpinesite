@@ -196,13 +196,15 @@ export const destinations: Destination[] = [
     slug: "ladakh",
     name: "Ladakh",
     country: "India",
-    tagline: "A high-altitude desert that feels like another planet",
+    tagline: "Geographical Location, Altitude and Major Peaks",
     shortDescription:
-      "Turquoise lakes that change colour by the hour, thousand-year-old monasteries, and roads that top 17,500 feet. Ladakh is not a trip, it's a badge.",
+      "Ladakh lies in the northern part of the Indian subcontinent, within the Trans-Himalayan region. Renowned for rugged mountain ranges, 7,000 m peaks, glacial lakes, and cold-desert landscapes.",
     description: [
-      "Ladakh sits where the Himalayas finally give up and the Tibetan plateau begins. Pangong Tso shifts from steel grey to impossible turquoise within minutes. Nubra Valley hides sand dunes and double-humped Bactrian camels behind army roads and prayer-flag passes.",
-      "Thiksey and Hemis monasteries still run on 5 a.m. prayer drums and butter tea, and the Khardung La road to Nubra is the kind of switchback climb that makes playlists irrelevant. This is India's most dramatic landscape, and it humbles everyone equally.",
-      "We run acclimatised itineraries, real Leh rest days, oxygen support in vehicles, and homestays in Sham Valley villages where you'll eat skyu with a Ladakhi family instead of rushing past them.",
+      "Ladakh lies in the northern part of the Indian subcontinent, within the Trans-Himalayan region. It is renowned for its rugged mountain ranges, vast high-altitude plateaus, remote valleys, glacial lakes, and dramatic cold-desert landscapes. The region is home to numerous peaks exceeding 7,000 metres, making it a significant destination for high-altitude mountaineering and Himalayan expeditions.",
+      "Altitude and Topography: Ladakh's terrain ranges from approximately 2,500 metres to over 7,000 metres above sea level. Leh, the principal town, lies at an elevation of approximately 3,500 metres. The region's extreme altitude, arid climate, sparse vegetation, and rugged topography create challenging conditions for mountaineering, trekking, hiking, and expedition climbing.",
+      "Major Mountain Ranges and Peaks: Ladakh encompasses several prominent mountain systems, including the Karakoram, Ladakh Range, Zanskar Range, and parts of the Greater Himalaya. Major peaks include Saltoro Kangri (7,742 m) in the Saltoro Range, Saser Kangri I (7,672 m) in the eastern Karakoram, Nun (7,135 m) and Kun (7,077 m) of the Nun–Kun massif in the Suru Valley, Kang Yatse II (approx. 6,250 m) in the Markha Valley, and Stok Kangri (6,153 m) in the Stok Range near Leh.",
+      "Rivers, Valleys and High-Altitude Lakes: The Indus River flows through Ladakh, shaping its principal valleys and settlements. Other notable geographical features include the Zanskar Valley, Nubra Valley, Markha Valley, and the Changthang Plateau. High-altitude lakes such as Pangong Tso and Tso Moriri add to the region's distinctive mountain environment.",
+      "Mountaineering and Adventure Significance: With its concentration of high mountain summits exceeding 7,000 metres, Ladakh offers exceptional terrain for mountaineering, technical climbing, high-altitude trekking, and remote Himalayan expeditions. The region's high elevations require careful acclimatisation, appropriate expedition planning, and awareness of altitude-related risks.",
     ],
     image: "/images/destinations/ladakh/hero.jpg",
     imageAlt: "Pangong Lake in Ladakh with brilliant blue water and barren mountains behind",
@@ -227,23 +229,23 @@ export const destinations: Destination[] = [
       },
     ],
     story: {
-      title: "Two passes and a lake",
+      title: "Trans-Himalayan summits and high passes",
       intro:
-        "Getting there is half the story, Khardung La and Chang La are the two doors, and everything we love lives behind them.",
+        "From Saltoro Kangri (7,742 m) to Pangong Tso and the Indus Valley, Ladakh offers terrain unmatched anywhere on the subcontinent.",
       outro:
-        "Come for the lake, come back for the passes, and let us build in the Leh acclimatisation day. Every good Ladakh week starts with one.",
+        "Every expedition starts with careful acclimatisation in Leh at 3,500 m. Let our high-altitude mountain leaders plan your climb.",
     },
     startingPrice: 52999,
     bestTime: "May – September",
     idealDuration: "6 – 9 days",
     travelStyles: ["adventure", "bike", "culture", "family", "trekking"],
     highlights: [
-      "Pangong Tso, the 134 km lake that changes colour hourly",
-      "Khardung La pass at 17,582 feet",
-      "Hunder sand dunes and Bactrian camel rides in Nubra",
-      "Morning prayers at Thiksey Monastery",
-      "Magnetic Hill and the confluence at Sangam",
-      "Sham Valley village homestays with local families",
+      "Saltoro Kangri (7,742 m) & Saser Kangri I (7,672 m) Karakoram peaks",
+      "Nun (7,135 m) and Kun (7,077 m) Himalayan massifs in Suru Valley",
+      "Pangong Tso (134 km) and Tso Moriri high-altitude lakes",
+      "Khardung La Pass (17,582 ft) gateway to Nubra Valley",
+      "Markha Valley & Kang Yatse II (6,250 m) mountaineering route",
+      "Zanskar Valley, Changthang Plateau & Indus River circuits",
     ],
     popular: true,
     seasons: [
@@ -277,6 +279,93 @@ export const destinations: Destination[] = [
       },
     ],
     monthScores: [0, 0, 0, 1, 2, 3, 3, 3, 3, 1, 1, 0],
+  },
+  {
+    slug: "sikkim",
+    name: "Sikkim",
+    country: "India",
+    tagline: "The Home of Kangchenjunga, the World's Third-Highest Mountain",
+    shortDescription:
+      "Located in the Eastern Himalayas, Sikkim is a spectacular destination for Himalayan trekking, mountaineering, and high-altitude hiking beneath the magnificent Kangchenjunga massif.",
+    description: [
+      "Located in the Eastern Himalayas of northeastern India, Sikkim is a spectacular destination for Himalayan trekking, mountaineering, high-altitude hiking, and mountain exploration. Home to the magnificent Kangchenjunga massif (8,586 m), the world's third-highest mountain, the region features snow-covered peaks, glaciers, alpine lakes, rugged mountain ranges, and breathtaking valleys. Sikkim shares international borders with Nepal, Bhutan, and Tibet (China), while West Bengal lies to its south.",
+      "Key adventure regions include Yuksom, Dzongri, Goechala, Lachen, Lachung, and Yumthang Valley, offering remarkable mountain landscapes and trekking opportunities. The region's high-altitude terrain, seasonal snowfall, and rich biodiversity make it a premier Himalayan adventure destination.",
+      "From the historic first capital of Yuksom to the high-altitude vantage points of Dzongri (4,030 m) and Goechala Pass (4,940 m), trekkers get up-close views of Kangchenjunga's southeast face. North Sikkim reveals the raw, pristine beauty of Lachen and Lachung, leading to the Valley of Flowers at Yumthang, Zero Point, and the sacred sacred glacial waters of Gurudongmar Lake.",
+      "Alpine Club India provides certified high-altitude mountain leaders, comprehensive trekking logistics, inner-line permit assistance, and eco-conscious expedition support across Sikkim's iconic trails.",
+    ],
+    image: "/images/destinations/sikkim/hero.jpg",
+    imageAlt: "Kangchenjunga peak rising above cloud-filled valleys in Sikkim",
+    gallery: [
+      {
+        src: "/images/destinations/sikkim/hero.jpg",
+        alt: "Snow-capped summit of Kangchenjunga massif in morning alpine glow",
+        caption:
+          "Kangchenjunga (8,586 m) glowing gold at sunrise. Revered as a sacred peak by locals, it commands the entire skyline of western Sikkim.",
+      },
+      {
+        src: "/images/destinations/sikkim/kangchenjunga.jpg",
+        alt: "Alpine ridge trail leading towards Dzongri and Goechala",
+        caption:
+          "The Goechala trail winds through ancient rhododendron forests and sub-alpine meadows before reaching rocky glacial moraines at 4,940 m.",
+      },
+      {
+        src: "/images/destinations/sikkim/valley.jpg",
+        alt: "Yumthang Valley of Flowers with mountain streams and peaks",
+        caption:
+          "Yumthang Valley in northern Sikkim, where alpine streams cut through pine forests beneath jagged peaks near Lachung.",
+      },
+    ],
+    story: {
+      title: "Footsteps toward Kangchenjunga",
+      intro:
+        "Starting from Yuksom, the trail ascends through dense mossy forests to the ridge at Dzongri and the high pass at Goechala.",
+      outro:
+        "Trek with licensed mountain guides who respect local sacred mountain traditions and high-altitude safety.",
+    },
+    startingPrice: 38999,
+    bestTime: "March – May & October – December",
+    idealDuration: "6 – 8 days",
+    travelStyles: ["trekking", "adventure", "culture", "leisure"],
+    highlights: [
+      "Kangchenjunga massif (8,586 m) — the world's third-highest summit",
+      "Goechala Pass trek (4,940 m) with front-row mountain views",
+      "Yuksom historic trailhead and Dzongri ridge viewpoint (4,030 m)",
+      "North Sikkim: Lachen, Lachung, and Yumthang Valley of Flowers",
+      "High-altitude glacial lakes: Gurudongmar (5,150 m) and Tso Lhamo",
+      "Ancient Buddhist monasteries: Pemayangtse, Rumtek, and Tashiding",
+    ],
+    popular: true,
+    seasons: [
+      {
+        months: "March – May",
+        label: "Spring Rhododendron Bloom",
+        verdict: "Excellent",
+        summary:
+          "Rhododendrons and orchids carpet the lower trails in brilliant red and pink. Moderate daytime temperatures (12–18°C) make it ideal for the Goechala and Dzongri treks with crystal clear morning views of Kangchenjunga.",
+      },
+      {
+        months: "June – August",
+        label: "Monsoon Rains",
+        verdict: "Quiet",
+        summary:
+          "Heavy Eastern Himalayan monsoon rains bring lush greenery and roaring waterfalls, but trails can be muddy and mountain passes slippery. Best suited for cultural visits and monastery tours.",
+      },
+      {
+        months: "September – November",
+        label: "Autumn Peak Season",
+        verdict: "Excellent",
+        summary:
+          "Crisp alpine air, deep blue skies, and the sharpest panoramic views of Kangchenjunga all year. The premier window for high-altitude trekking and mountaineering expeditions.",
+      },
+      {
+        months: "December – February",
+        label: "Winter Snows",
+        verdict: "Good",
+        summary:
+          "Sub-zero temperatures and heavy snowfall in North Sikkim and high passes. Yumthang and Dzongri turn into winter wonderlands. Bring insulated alpine layers.",
+      },
+    ],
+    monthScores: [1, 2, 3, 3, 3, 1, 0, 1, 3, 3, 2, 2],
   },
 ];
 

@@ -22,12 +22,12 @@ const openSans = Open_Sans({
   weight: ["400", "600"],
 });
 
-// Poppins 400 for card description paragraphs and footer link text
+// Poppins for card descriptions, footer links, and dropdown menu links
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
-  weight: ["400"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {

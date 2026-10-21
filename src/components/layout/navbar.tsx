@@ -11,20 +11,6 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect, useSyncExternalStore } from "react";
 import { SiteLogo } from "./site-logo";
 
-function FaFacebookFilled({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 320 512"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-    </svg>
-  );
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -150,7 +136,9 @@ export function Navbar() {
                     className={cn(
                       "absolute top-full pt-2 max-w-[92vw] transition-all duration-200 ease-out",
                       item.dropdown?.length === 1
-                        ? "left-0 w-[260px] origin-top-left"
+                        ? item.label === "More"
+                          ? "right-0 w-[240px] origin-top-right"
+                          : "left-0 w-[240px] origin-top-left"
                         : item.dropdown?.length === 2
                           ? "left-0 w-[440px] origin-top-left"
                           : "left-1/2 -translate-x-1/2 w-[580px] xl:w-[640px] origin-top",
@@ -159,10 +147,10 @@ export function Navbar() {
                         : "opacity-0 translate-y-2 scale-[0.98] invisible pointer-events-none"
                     )}
                   >
-                    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-2xl ring-1 ring-black/5">
+                    <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-2xl ring-1 ring-black/5">
                       <div
                         className={cn(
-                          "grid gap-6",
+                          "grid gap-4",
                           item.dropdown?.length === 1
                             ? "grid-cols-1"
                             : item.dropdown?.length === 2
@@ -170,18 +158,20 @@ export function Navbar() {
                               : "grid-cols-3",
                         )}
                       >
-                        {item.dropdown?.map((col) => (
-                          <div key={col.title} className="space-y-3">
-                            <h4 className="font-heading text-[0.7rem] font-bold uppercase tracking-widest text-brand border-b border-neutral-100 pb-2">
-                              {col.title}
-                            </h4>
+                        {item.dropdown?.map((col, idx) => (
+                          <div key={col.title || idx} className="space-y-1.5">
+                            {col.title && (
+                              <h4 className="font-heading text-[0.7rem] font-bold uppercase tracking-widest text-brand border-b border-neutral-100 pb-2 mb-1.5">
+                                {col.title}
+                              </h4>
+                            )}
                             <ul className="space-y-1">
                               {col.items.map((sub) => (
                                 <li key={sub.href}>
                                   <Link
                                     href={sub.href}
                                     onClick={() => setActiveDropdown(null)}
-                                    className="block rounded-lg py-1.5 px-2 text-xs font-bold text-neutral-800 transition-colors hover:bg-neutral-100 hover:text-brand"
+                                    className="block rounded-lg py-2 px-2.5 font-poppins font-normal text-[14px] text-neutral-800 transition-colors hover:bg-neutral-100 hover:text-brand"
                                   >
                                     {sub.title}
                                   </Link>
@@ -198,17 +188,8 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Right Action CTA (Facebook filled icon + Plan Your Trip) */}
-          <div className="hidden items-center gap-3.5 lg:flex">
-            <a
-              href={site.socials.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Alpine Club India on Facebook"
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs transition-all duration-200 hover:scale-105 hover:brightness-110"
-            >
-              <FaFacebookFilled className="h-4 w-4" />
-            </a>
+          {/* Desktop Right Action CTA (Plan Your Trip) */}
+          <div className="hidden items-center gap-3 lg:flex">
             <Button
               asChild
               className="bg-brand text-white hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-10 px-5 shadow-xs"
@@ -265,6 +246,27 @@ export function Navbar() {
                     className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3.5 sm:p-5 space-y-2"
                   >
                     {mainNav.map((item: NavItem) => {
+                      // On mobile/tablet, unwrap "More" so its items render directly like standard links (About Us, Contact Us)
+                      if (item.label === "More" && item.dropdown) {
+                        const moreItems = item.dropdown.flatMap((col) => col.items);
+                        return moreItems.map((sub) => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={() => setOpen(false)}
+                            aria-current={isActive(sub.href) ? "page" : undefined}
+                            className={cn(
+                              "font-heading block rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs font-bold uppercase tracking-wider transition-colors",
+                              isActive(sub.href)
+                                ? "bg-brand text-white"
+                                : "text-neutral-900 hover:bg-neutral-100 hover:text-brand",
+                            )}
+                          >
+                            {sub.title}
+                          </Link>
+                        ));
+                      }
+
                       const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
                       const isExpanded = mobileExpanded === item.label;
 
@@ -309,21 +311,23 @@ export function Navbar() {
                           <div
                             className={cn(
                               "transition-all duration-300 ease-in-out overflow-hidden bg-neutral-50",
-                              isExpanded ? "max-h-[500px] opacity-100 p-3 space-y-3 border-t border-neutral-200" : "max-h-0 opacity-0 p-0 border-t-0"
+                              isExpanded ? "max-h-[800px] opacity-100 p-3 space-y-3 border-t border-neutral-200" : "max-h-0 opacity-0 p-0 border-t-0"
                             )}
                           >
-                            {item.dropdown?.map((col) => (
-                              <div key={col.title} className="space-y-1">
-                                <span className="font-heading text-[0.65rem] font-bold uppercase tracking-wider text-brand">
-                                  {col.title}
-                                </span>
+                            {item.dropdown?.map((col, idx) => (
+                              <div key={col.title || idx} className="space-y-1">
+                                {col.title && (
+                                  <span className="font-heading text-[0.65rem] font-bold uppercase tracking-wider text-brand">
+                                    {col.title}
+                                  </span>
+                                )}
                                 <ul className="space-y-0.5 pl-1">
                                   {col.items.map((sub) => (
                                     <li key={sub.href}>
                                       <Link
                                         href={sub.href}
                                         onClick={() => setOpen(false)}
-                                        className="block rounded-lg py-1.5 px-2 text-xs font-bold text-neutral-900 hover:bg-neutral-200/70 hover:text-brand transition-colors"
+                                        className="block rounded-lg py-2 px-2.5 font-poppins font-normal text-[14px] text-neutral-900 hover:bg-neutral-200/70 hover:text-brand transition-colors"
                                       >
                                         {sub.title}
                                       </Link>
@@ -347,24 +351,15 @@ export function Navbar() {
                         Plan Your Trip
                       </Link>
                     </Button>
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center">
                       <a
                         href={whatsappHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-10 sm:h-11 min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-bold text-white shadow-xs transition-colors hover:bg-[#20ba59]"
+                        className="flex h-10 sm:h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-bold text-white shadow-xs transition-colors hover:bg-[#20ba59]"
                       >
                         <WhatsAppIcon className="h-4 w-4 shrink-0" />
                         <span className="truncate">Chat on WhatsApp</span>
-                      </a>
-                      <a
-                        href={site.socials.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Alpine Club India on Facebook"
-                        className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs transition-all duration-200 hover:brightness-110"
-                      >
-                        <FaFacebookFilled className="h-4 w-4" />
                       </a>
                     </div>
                   </div>

@@ -61,7 +61,7 @@ export interface SubNavItem {
 }
 
 export interface NavSection {
-  title: string;
+  title?: string;
   items: SubNavItem[];
 }
 
@@ -77,23 +77,15 @@ export interface NavItem {
  */
 export const mainNav: NavItem[] = [
   {
-    label: "Tours",
-    href: "/tours",
+    label: "Activities",
+    href: "/activities",
     dropdown: [
       {
-        title: "Powder & Ski",
         items: [
-          { title: "Gulmarg Ski Adventure (6D)", href: "/tours/gulmarg-ski-adventure" },
-          { title: "All Ski Packages", href: "/tours?style=ski" },
-        ],
-      },
-      {
-        title: "Himalayan Circuits",
-        items: [
-          { title: "Kashmir Valley Explorer (7D)", href: "/tours/kashmir-7-day-tour" },
-          { title: "Kashmir Honeymoon (6D)", href: "/tours/kashmir-honeymoon-6-day" },
-          { title: "Ladakh Highlights (8D)", href: "/tours/ladakh-8-day-tour" },
-          { title: "Ladakh Bike Expedition (9D)", href: "/tours/ladakh-bike-expedition" },
+          { title: "Trekking", href: "/activities/trekking" },
+          { title: "Hiking", href: "/activities/hiking" },
+          { title: "Winter Hiking", href: "/activities/winter-hiking" },
+          { title: "Expeditions", href: "/activities/expeditions" },
         ],
       },
     ],
@@ -103,54 +95,49 @@ export const mainNav: NavItem[] = [
     href: "/destinations",
     dropdown: [
       {
-        title: "Kashmir & Gulmarg",
         items: [
-          { title: "Gulmarg", href: "/destinations/gulmarg" },
-          { title: "Kashmir Valley", href: "/destinations/kashmir" },
-        ],
-      },
-      {
-        title: "High Passes",
-        items: [
-          { title: "Ladakh & Leh", href: "/destinations/ladakh" },
-          { title: "Pangong & Nubra", href: "/tours/ladakh-8-day-tour" },
+          { title: "Kashmir", href: "/destinations/kashmir" },
+          { title: "Ladakh", href: "/destinations/ladakh" },
+          { title: "Sikkim", href: "/destinations/sikkim" },
         ],
       },
     ],
   },
   {
-    label: "Tour Guides & Advisories",
-    href: "/advisories",
+    label: "Gulmarg Ski Resort",
+    href: "/gulmarg-ski-resort",
     dropdown: [
       {
-        title: "Travel Advisories",
         items: [
-          { title: "High Altitude & Acclimatisation", href: "/advisories/high-altitude-safety" },
-          { title: "Permits & Travel Guidelines", href: "/advisories/permits-and-guidelines" },
-          { title: "Mountain Road & Pass Advisory", href: "/advisories/mountain-road-advisory" },
-        ],
-      },
-      {
-        title: "Weather Update",
-        items: [
-          { title: "Gulmarg Snow & Wind Forecast", href: "/advisories/gulmarg-snow-forecast" },
-          { title: "Kashmir Valley Weather Update", href: "/advisories/kashmir-valley-weather" },
-          { title: "Ladakh High Pass Weather", href: "/advisories/ladakh-pass-weather" },
-        ],
-      },
-      {
-        title: "When to Visit Gulmarg",
-        items: [
-          { title: "Winter Powder Season (Dec to Mar)", href: "/advisories/gulmarg-winter-powder" },
-          { title: "Spring & Summer Meadows (Apr to Aug)", href: "/advisories/gulmarg-spring-summer" },
-          { title: "Autumn Chinar Season (Sep to Nov)", href: "/advisories/gulmarg-autumn-gold" },
+          { title: "About Gulmarg", href: "/gulmarg-ski-resort/about-gulmarg" },
+          { title: "Backcountry Skiing", href: "/gulmarg-ski-resort/backcountry-skiing" },
+          { title: "Ski Touring", href: "/gulmarg-ski-resort/ski-touring" },
+          { title: "Ski Classes", href: "/gulmarg-ski-resort/ski-classes" },
         ],
       },
     ],
   },
-  { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  {
+    label: "About Us",
+    href: "/about",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact",
+  },
+  {
+    label: "More",
+    href: "#",
+    dropdown: [
+      {
+        items: [
+          { title: "Our Ski Guides", href: "/ski-guides" },
+          { title: "Last Minute Trip", href: "/last-minute-trip" },
+          { title: "Our Promise", href: "/our-promise" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const formatINR = (value: number): string =>

@@ -708,6 +708,149 @@ export const tours: Tour[] = [
       },
     ],
   },
+  {
+    slug: "sikkim-goechala-kangchenjunga-trek",
+    title: "Sikkim Goechala & Kangchenjunga Trek",
+    destinationSlug: "sikkim",
+    destinationName: "Sikkim",
+    durationDays: 8,
+    durationNights: 7,
+    price: 38999,
+    originalPrice: 44999,
+    rating: 4.9,
+    reviewsCount: 168,
+    shortDescription:
+      "Trek through ancient rhododendron forests from Yuksom to Dzongri and Goechala Pass (4,940 m) for eye-level views of the Kangchenjunga massif.",
+    overview: [
+      "The Goechala Trek is Sikkim's legendary high-altitude mountain expedition. Starting at the historic capital of Yuksom, you will hike through rhododendron groves, cross alpine torrents, and camp under the high Himalayan ridges of Tshoka and Dzongri.",
+      "The crowning reward is standing at Goechala Pass (4,940 m) as first light turns the colossal southeast face of Kangchenjunga (8,586 m) — the world's third-highest peak — to shimmering gold.",
+    ],
+    highlights: [
+      "Eye-level sunrise views of Kangchenjunga (8,586 m)",
+      "Cross Goechala High Pass at 4,940 metres",
+      "Panoramic Dzongri ridge viewpoint (4,030 m)",
+      "Trailhead at historic Yuksom with local cultural homestay",
+      "Sacred glacial waters of Samiti Lake",
+      "Certified mountain guides, medical kits & oxygen cylinders",
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrive Bagdogra / NJP → Drive to Yuksom (1,780 m)",
+        description:
+          "Pick-up and scenic mountain drive along the Teesta and Rangit rivers to Yuksom, the historic first capital of Sikkim. Team briefing and equipment check.",
+        meals: "Dinner",
+        stay: "Yuksom mountain lodge",
+      },
+      {
+        day: 2,
+        title: "Yuksom to Sachen (2,200 m)",
+        description:
+          "First trekking day through dense sub-tropical forests, crossing the roaring Prek Chu river over suspension bridges to Sachen camp.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Alpine camp",
+      },
+      {
+        day: 3,
+        title: "Sachen to Tshoka (3,000 m)",
+        description:
+          "Steep scenic climb through rhododendron, pine, and giant magnolia woods past Bakhim settlement to the ridge clearing at Tshoka.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Alpine camp / lodge",
+      },
+      {
+        day: 4,
+        title: "Tshoka to Dzongri (4,030 m)",
+        description:
+          "Ascend the paved wooden log trail of Phedang to reach the vast alpine meadow and windswept ridgeline of Dzongri.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Alpine camp",
+      },
+      {
+        day: 5,
+        title: "Dzongri Top Sunrise (4,250 m) & Trek to Thansing (3,930 m)",
+        description:
+          "Dawn summit of Dzongri Top for a 360-degree panorama of Kangchenjunga, Pandim, and Kabru. Descend into the Prek Chu riverbed and reach Thansing.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Alpine camp",
+      },
+      {
+        day: 6,
+        title: "Thansing to Lamuney & Samiti Lake (4,290 m)",
+        description:
+          "Gentle ascent alongside alpine streams to Lamuney camp. Afternoon walk to the sacred turquoise waters of Samiti Lake beneath Mount Pandim.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Alpine camp",
+      },
+      {
+        day: 7,
+        title: "Goechala Pass (4,940 m) & Kangchenjunga View → Return to Kokchurang",
+        description:
+          "03:00 am departure under starlight to reach Goechala Viewpoint for the awe-inspiring sunrise on Kangchenjunga's southeast face. Descend to Kokchurang.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Alpine camp",
+      },
+      {
+        day: 8,
+        title: "Kokchurang to Yuksom → Celebration Dinner",
+        description:
+          "Trek back down through the lush valley trail to Yuksom. Farewell certificate ceremony and traditional Sikkimese dinner.",
+        meals: "Breakfast, lunch, dinner",
+        stay: "Yuksom mountain lodge",
+      },
+    ],
+    included: [
+      "All accommodation (mountain lodges and high-altitude alpine tents)",
+      "All meals on trek prepared by experienced camp chef",
+      "Certified Wilderness First Responder mountain guide",
+      "Support staff, pack animals/porters for personal luggage",
+      "Sikkim State inner-line trekking permits and national park fees",
+      "Emergency oxygen cylinders and comprehensive first aid kits",
+    ],
+    excluded: [
+      "Airfare to/from Bagdogra airport",
+      "Personal trekking gear (boots, down jacket, sleeping bag - rental available)",
+      "Travel and medical evacuation insurance",
+      "Tips for guides, cook, and porters",
+    ],
+    coverImage: "/images/destinations/sikkim/kangchenjunga.jpg",
+    coverImageAlt: "Trekker overlooking the Kangchenjunga mountain range at Goechala",
+    gallery: [
+      {
+        src: "/images/destinations/sikkim/kangchenjunga.jpg",
+        alt: "Morning alpine glow on the Kangchenjunga massif",
+      },
+      {
+        src: "/images/destinations/sikkim/hero.jpg",
+        alt: "Snow-covered ridges along the Goechala trek route",
+      },
+      {
+        src: "/images/destinations/sikkim/valley.jpg",
+        alt: "Lush alpine valley and pine forests in Sikkim",
+      },
+    ],
+    travelStyles: ["trekking", "adventure", "culture"],
+    groupSize: "4 – 12 trekkers",
+    featured: true,
+    badge: "Bucket List Trek",
+    faqs: [
+      {
+        question: "How physically demanding is the Goechala Trek?",
+        answer:
+          "It is rated moderate to strenuous due to altitudes approaching 5,000 metres. Good aerobic stamina, previous hiking experience, and disciplined hydration are essential.",
+      },
+      {
+        question: "Do foreign nationals require special permits for Sikkim?",
+        answer:
+          "Yes, foreign nationals require a Sikkim Inner Line Permit (ILP) and a Protected Area Permit (PAP) for trekking. Our team arranges all paperwork upon your arrival.",
+      },
+      {
+        question: "What is the best time for the Goechala Trek?",
+        answer:
+          "Spring (April to May) for rhododendron blooms and clear morning skies, and Autumn (October to November) for the sharpest mountain visibility.",
+      },
+    ],
+  },
 ];
 
 export const getTourBySlug = (slug: string): Tour | undefined =>

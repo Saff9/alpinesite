@@ -24,8 +24,8 @@ export const metadata: Metadata = {
 
 function SectionDivider() {
   return (
-    <div className="mx-auto max-w-7xl px-5 sm:px-6">
-      <hr className="border-0 h-px bg-neutral-200/80" />
+    <div className="mx-auto max-w-7xl px-5 sm:px-6 my-2 sm:my-4">
+      <hr className="border-0 h-px bg-gradient-to-r from-transparent via-neutral-200 to-transparent shadow-xs" />
     </div>
   );
 }
@@ -59,7 +59,7 @@ export default function HomePage() {
       <SectionDivider />
 
       {/* 3. Packages Section */}
-      <section className="py-16 sm:py-20" aria-labelledby="featured-packages">
+      <section className="py-16 sm:py-20 relative bg-neutral-50/50 rounded-3xl border border-neutral-200/60 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.04)] mx-3 sm:mx-6 my-4 sm:my-8" aria-labelledby="featured-packages">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Curated Packages"
@@ -124,7 +124,9 @@ export default function HomePage() {
       <SectionDivider />
 
       {/* 5. About Us Section */}
-      <WhyChooseUs />
+      <div className="bg-neutral-50/50 rounded-3xl border border-neutral-200/60 shadow-[0_4px_24px_-6px_rgba(0,0,0,0.04)] mx-3 sm:mx-6 my-4 sm:my-8">
+        <WhyChooseUs />
+      </div>
 
       <SectionDivider />
 

@@ -8,22 +8,22 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4rem] bg-black text-neutral-400 border-t border-neutral-900 shadow-2xl">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:py-20">
-        <div className="grid gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14">
+    <footer className="mt-auto w-full overflow-hidden rounded-none border-t border-[#182c3a] bg-[#0c1821] text-neutral-300 shadow-2xl">
+      <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:px-8 sm:py-16 md:py-20 lg:px-8 lg:py-20">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14 text-center lg:text-left">
           {/* Brand */}
-          <div>
+          <div className="flex flex-col items-center lg:items-start">
             <SiteLogo variant="dark" hideTagline />
-            <p className="mt-4 max-w-sm font-poppins font-normal text-sm leading-relaxed text-neutral-400">
+            <p className="mt-4 max-w-sm font-poppins font-normal text-sm leading-relaxed text-neutral-300 text-center lg:text-left">
               {site.tagline}. Operating from Gulmarg since {site.established} with local mountain guides, drivers, and families.
             </p>
-            <div className="mt-5 flex gap-3">
+            <div className="mt-6 flex justify-center lg:justify-start gap-3">
               <a
                 href={site.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Instagram className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -32,7 +32,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Facebook className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -41,7 +41,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on YouTube"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FF0000] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FF0000] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Youtube className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -50,7 +50,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Alpine Club India on Twitter"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1DA1F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#1DA1F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Twitter className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -58,35 +58,49 @@ export function Footer() {
           </div>
 
           {/* Quick links */}
-          <nav aria-label="Footer Navigation">
-            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white">
+          <nav aria-label="Footer Navigation" className="flex flex-col items-center lg:items-start">
+            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
               Navigation
             </h2>
-            <ul className="mt-4 space-y-2.5 font-poppins font-normal text-sm">
-              {mainNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="font-poppins font-normal transition-colors hover:text-white"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+            <ul className="mt-4 space-y-3 font-poppins font-normal text-sm flex flex-col items-center lg:items-start">
+              {mainNav.map((item) => {
+                if (item.label === "More" && item.dropdown) {
+                  return (
+                    <li key={item.label}>
+                      <Link
+                        href="/ski-guides"
+                        className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                      >
+                        Our Ski Guides
+                      </Link>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
           {/* Popular destinations */}
-          <nav aria-label="Destinations">
-            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white">
+          <nav aria-label="Destinations" className="flex flex-col items-center lg:items-start">
+            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
               Destinations
             </h2>
-            <ul className="mt-4 space-y-2.5 font-poppins font-normal text-sm">
+            <ul className="mt-4 space-y-3 font-poppins font-normal text-sm flex flex-col items-center lg:items-start">
               {popularDestinations.map((d) => (
                 <li key={d.slug}>
                   <Link
                     href={`/destinations/${d.slug}`}
-                    className="font-poppins font-normal transition-colors hover:text-white"
+                    className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
                   >
                     {d.name}
                   </Link>
@@ -95,7 +109,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/destinations"
-                  className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                  className="font-poppins font-medium text-brand-light/90 transition-colors hover:text-white"
                 >
                   View all {destinations.length} destinations
                 </Link>
@@ -104,53 +118,60 @@ export function Footer() {
           </nav>
 
           {/* Contact */}
-          <div>
-            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white">
-              Get in touch
+          <div className="flex flex-col items-center lg:items-start">
+            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
+              Get in Touch
             </h2>
-            <ul className="mt-4 space-y-3 font-poppins font-normal text-sm">
-              <li>
+            <ul className="mt-4 space-y-3.5 font-poppins font-normal text-sm flex flex-col items-center lg:items-start">
+              <li className="flex justify-center lg:justify-start">
                 <a
                   href={site.googleReviewsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white"
+                  className="flex items-center lg:items-start gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white text-center lg:text-left max-w-xs"
                 >
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
+                  <MapPin className="h-4 w-4 shrink-0 text-brand-light mt-0.5" aria-hidden="true" />
                   <span>{site.address.full}</span>
                 </a>
               </li>
-              <li>
-                <a href={site.phoneHref} className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
-                  {site.phone}
+              <li className="flex justify-center lg:justify-start">
+                <a
+                  href={site.phoneHref}
+                  className="flex items-center gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                >
+                  <Phone className="h-4 w-4 shrink-0 text-brand-light" aria-hidden="true" />
+                  <span>{site.phone}</span>
                 </a>
               </li>
-              <li>
-                <a href={`mailto:${site.email}`} className="flex gap-2.5 font-poppins font-normal transition-colors hover:text-white">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
-                  {site.email}
+              <li className="flex justify-center lg:justify-start">
+                <a
+                  href={`mailto:${site.email}`}
+                  className="flex items-center gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                >
+                  <Mail className="h-4 w-4 shrink-0 text-brand-light" aria-hidden="true" />
+                  <span>{site.email}</span>
                 </a>
               </li>
-              <li className="flex gap-2.5 font-poppins font-normal">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-neutral-400" aria-hidden="true" />
-                {site.hours}
+              <li className="flex items-center justify-center lg:justify-start gap-2.5 font-poppins font-normal text-neutral-300">
+                <Clock className="h-4 w-4 shrink-0 text-brand-light" aria-hidden="true" />
+                <span>{site.hours}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-6 font-poppins font-normal text-xs text-center sm:flex-row sm:text-left">
-          <p className="font-poppins font-normal text-neutral-500">
+        {/* Bottom Credits Bar */}
+        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-between gap-4 border-t border-[#182c3a] pt-6 sm:pt-8 font-poppins font-normal text-xs text-center lg:flex-row lg:text-left">
+          <p className="font-poppins font-normal text-neutral-400">
             © {year} {site.name}. All rights reserved.
           </p>
-          <p className="flex flex-wrap items-center justify-center gap-1.5 font-poppins font-normal text-neutral-500">
+          <p className="flex flex-wrap items-center justify-center gap-1.5 font-poppins font-normal text-neutral-400">
             <span>Designed &amp; Powered by</span>
             <a
               href="https://imtiyazkumar.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-poppins font-normal text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+              className="font-poppins font-normal text-neutral-200 underline decoration-neutral-500 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               Imtiyaz
             </a>
@@ -159,7 +180,7 @@ export function Footer() {
               href="https://owaisdar.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-poppins font-normal text-neutral-300 underline decoration-neutral-600 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+              className="font-poppins font-normal text-neutral-200 underline decoration-neutral-500 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               Owais
             </a>

@@ -6,6 +6,20 @@ import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 320 512"
+      fill="currentColor"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+    </svg>
+  );
+}
+
 export function FloatingButtons() {
   const showTop = useSyncExternalStore(
     (onChange) => {
@@ -30,47 +44,69 @@ export function FloatingButtons() {
   )}`;
 
   return (
-    <div
-      data-print-hidden
-      className={cn(
-        "fixed bottom-5 right-5 z-50 flex flex-col items-center gap-3 transition-all duration-200 sm:bottom-6 sm:right-6",
-        menuOpen && "invisible opacity-0 pointer-events-none lg:visible lg:opacity-100 lg:pointer-events-auto",
-      )}
-    >
-      {/* Contact / Call button floating directly above WhatsApp button */}
-      <a
-        href={site.phoneHref}
-        aria-label={`Call us at ${site.phone}`}
-        className="group flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-black/25 transition-all duration-300 hover:bg-brand-deep hover:shadow-xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
-      >
-        <Phone className="h-5 w-5 shrink-0 fill-current text-white sm:h-6 sm:w-6" aria-hidden="true" />
-      </a>
-
-      {/* WhatsApp chat, floating directly above back-to-top button */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-        className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/25 transition-all duration-300 hover:bg-[#20ba59] hover:shadow-xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
-      >
-        <WhatsAppIcon className="h-6 w-6 shrink-0 fill-white text-white sm:h-7 sm:w-7" />
-      </a>
-
-      {/* Back to top arrow button */}
-      <button
-        type="button"
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
+    <>
+      {/* 1. Left Bottom: Quick Call Button */}
+      <div
+        data-print-hidden
         className={cn(
-          "flex h-11 w-11 items-center justify-center rounded-full bg-neutral-900 text-white shadow-lg shadow-black/25 transition-all duration-300 hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-12 sm:w-12",
-          showTop
-            ? "translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-3 opacity-0",
+          "fixed bottom-5 left-5 z-50 flex flex-col items-center gap-3 transition-all duration-200 sm:bottom-6 sm:left-6",
+          menuOpen && "invisible opacity-0 pointer-events-none lg:visible lg:opacity-100 lg:pointer-events-auto",
         )}
       >
-        <ArrowUp className="h-5 w-5" aria-hidden="true" />
-      </button>
-    </div>
+        <a
+          href={site.phoneHref}
+          aria-label={`Call us at ${site.phone}`}
+          className="group flex h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-xl shadow-black/25 transition-all duration-300 hover:bg-brand-deep hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
+        >
+          <Phone className="h-5 w-5 shrink-0 fill-current text-white sm:h-6 sm:w-6" aria-hidden="true" />
+        </a>
+      </div>
+
+      {/* 2. Right Bottom: Facebook (above) + WhatsApp + Back to Top */}
+      <div
+        data-print-hidden
+        className={cn(
+          "fixed bottom-5 right-5 z-50 flex flex-col items-center gap-3 transition-all duration-200 sm:bottom-6 sm:right-6",
+          menuOpen && "invisible opacity-0 pointer-events-none lg:visible lg:opacity-100 lg:pointer-events-auto",
+        )}
+      >
+        {/* Back to top arrow button */}
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+          className={cn(
+            "flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900/90 text-white shadow-lg shadow-black/20 transition-all duration-300 hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-11 sm:w-11",
+            showTop
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none translate-y-3 opacity-0",
+          )}
+        >
+          <ArrowUp className="h-4 w-4" aria-hidden="true" />
+        </button>
+
+        {/* Facebook floating button (positioned directly above WhatsApp) */}
+        <a
+          href={site.socials.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Alpine Club India on Facebook"
+          className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:brightness-110 hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
+        >
+          <FacebookIcon className="h-5 w-5 text-white sm:h-5.5 sm:w-5.5" />
+        </a>
+
+        {/* WhatsApp chat button */}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with us on WhatsApp"
+          className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:bg-[#20ba59] hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
+        >
+          <WhatsAppIcon className="h-6 w-6 shrink-0 fill-white text-white sm:h-7 sm:w-7" />
+        </a>
+      </div>
+    </>
   );
 }
