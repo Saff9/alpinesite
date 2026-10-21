@@ -30,7 +30,7 @@ export default function NotFound() {
           </Link>
         </Button>
         <Button asChild variant="outline" className="w-[80%] max-w-sm rounded-xl border-neutral-300 text-black hover:border-brand hover:text-brand font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto">
-          <Link href="/tours">Browse tours instead</Link>
+          <Link href="/destinations">Explore destinations</Link>
         </Button>
       </div>
     </section>

@@ -5,9 +5,8 @@ import { ArrowRight, Mountain, Shield, CheckCircle2, Award, Calendar, Phone, Spa
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
+import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
-import { tours } from "@/data/tours";
-import { TourCard } from "@/components/cards/tour-card";
 
 interface ResortSectionProps {
   params: Promise<{ section: string }>;
@@ -127,7 +126,7 @@ export async function generateMetadata({
   if (!data) return { title: "Section Not Found" };
 
   return {
-    title: `${data.title} | Alpine Club India`,
+    title: data.title,
     description: data.subtitle,
     alternates: { canonical: `/gulmarg-ski-resort/${section}` },
   };
@@ -138,7 +137,6 @@ export default async function ResortSectionPage({ params }: ResortSectionProps) 
   const data = sectionData[section];
   if (!data) notFound();
 
-  const skiTours = tours.filter((t) => t.travelStyles.includes("ski") || t.destinationSlug === "gulmarg");
   const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     `Hello Alpine Club India! I'd like to ask about ${data.title} for my trip to Gulmarg.`
   )}`;
@@ -175,15 +173,14 @@ export default async function ResortSectionPage({ params }: ResortSectionProps) 
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep"
+                <ItineraryButton
+                  destination="kashmir"
+                  activity="skiing-snowboarding"
+                  className="inline-flex items-center gap-2 rounded-none bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep font-heading cursor-pointer"
                 >
                   Book / Inquire Now
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </ItineraryButton>
                 <Button
                   asChild
                   variant="outline"
@@ -219,21 +216,6 @@ export default async function ResortSectionPage({ params }: ResortSectionProps) 
                 ))}
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Ski Tours */}
-      <section className="bg-sand py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeading
-            title="Gulmarg Ski Packages"
-            description="Slope-side hotels, daily certified ski guiding, safety gear, and fresh powder lines across Mount Apharwat."
-          />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-            {skiTours.map((tour, i) => (
-              <TourCard key={tour.slug} tour={tour} priority={i < 3} />
-            ))}
           </div>
         </div>
       </section>

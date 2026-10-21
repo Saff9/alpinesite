@@ -118,14 +118,6 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "About Us",
-    href: "/about",
-  },
-  {
-    label: "Contact Us",
-    href: "/contact",
-  },
-  {
     label: "More",
     href: "#",
     dropdown: [
@@ -137,6 +129,14 @@ export const mainNav: NavItem[] = [
         ],
       },
     ],
+  },
+  {
+    label: "About Us",
+    href: "/about",
+  },
+  {
+    label: "Contact Us",
+    href: "/contact",
   },
 ];
 

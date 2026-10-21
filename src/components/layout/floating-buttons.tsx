@@ -1,10 +1,13 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-import { ArrowUp, Phone } from "lucide-react";
+import { useSyncExternalStore, useState } from "react";
+import { ArrowUp, Phone, Calendar } from "lucide-react";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import { DynamicItineraryModal } from "@/components/forms/dynamic-itinerary-modal";
+import { getItineraryContextByPath, openItineraryModal } from "@/data/itinerary-context";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -21,6 +24,9 @@ function FacebookIcon({ className }: { className?: string }) {
 }
 
 export function FloatingButtons() {
+  const pathname = usePathname();
+  const itineraryCtx = getItineraryContextByPath(pathname);
+
   const showTop = useSyncExternalStore(
     (onChange) => {
       window.addEventListener("scroll", onChange, { passive: true });
@@ -62,7 +68,10 @@ export function FloatingButtons() {
         </a>
       </div>
 
-      {/* 2. Right Bottom: Facebook (above) + WhatsApp + Back to Top */}
+      {/* 2. Right Bottom: 
+          On Mobile & Tablet: Itinerary Calendar Button replaces Facebook above WhatsApp.
+          On Desktop: Facebook stays above WhatsApp, while Itinerary Calendar is in the Navbar.
+      */}
       <div
         data-print-hidden
         className={cn(
@@ -85,13 +94,28 @@ export function FloatingButtons() {
           <ArrowUp className="h-4 w-4" aria-hidden="true" />
         </button>
 
-        {/* Facebook floating button (positioned directly above WhatsApp) */}
+        {/* Mobile & Tablet: Itinerary Calendar Floating Button (replaces Facebook here) */}
+        <button
+          type="button"
+          onClick={() => openItineraryModal()}
+          aria-label={`Customize Itinerary: ${itineraryCtx.title}`}
+          title={itineraryCtx.title}
+          className="flex lg:hidden group relative h-12 w-12 items-center justify-center rounded-full bg-brand text-white shadow-xl shadow-black/25 transition-all duration-300 hover:bg-brand-deep hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
+        >
+          <Calendar className="h-5 w-5 text-white sm:h-6 sm:w-6" />
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 items-center justify-center">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+        </button>
+
+        {/* Desktop & Laptop: Facebook floating button */}
         <a
           href={site.socials.facebook}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Alpine Club India on Facebook"
-          className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:brightness-110 hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
+          className="hidden lg:flex group h-12 w-12 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:brightness-110 hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
         >
           <FacebookIcon className="h-5 w-5 text-white sm:h-5.5 sm:w-5.5" />
         </a>
@@ -107,6 +131,9 @@ export function FloatingButtons() {
           <WhatsAppIcon className="h-6 w-6 shrink-0 fill-white text-white sm:h-7 sm:w-7" />
         </a>
       </div>
+
+      {/* Global Dynamic Itinerary Modal */}
+      <DynamicItineraryModal pathname={pathname} />
     </>
   );
 }

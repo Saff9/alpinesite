@@ -5,9 +5,9 @@ import { ArrowRight, Mountain, Compass, Shield, CheckCircle2, Calendar, Phone, C
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
+import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
-import { tours } from "@/data/tours";
-import { TourCard } from "@/components/cards/tour-card";
+import type { ActivityOption } from "@/data/itinerary-context";
 
 interface ActivityPageProps {
   params: Promise<{ activity: string }>;
@@ -150,7 +150,7 @@ export async function generateMetadata({
   if (!data) return { title: "Activity Not Found" };
 
   return {
-    title: `${data.title} | Alpine Club India`,
+    title: data.title,
     description: data.subtitle,
     alternates: { canonical: `/activities/${activity}` },
   };
@@ -161,7 +161,6 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
   const data = activityData[activity];
   if (!data) notFound();
 
-  const relatedTours = tours.slice(0, 3);
   const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     `Hello Alpine Club India! I want to inquire about your ${data.title} activities.`
   )}`;
@@ -238,22 +237,27 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep"
+                <ItineraryButton
+                  activity={
+                    activity === "hiking"
+                      ? "trekking"
+                      : (activity as ActivityOption)
+                  }
+                  className="inline-flex items-center gap-2 rounded-none bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep font-heading cursor-pointer"
                 >
                   Inquire This Activity
                   <ArrowRight className="h-4 w-4" />
-                </a>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="rounded-xl border-neutral-300 text-xs font-bold uppercase tracking-wider text-neutral-900 hover:bg-neutral-100"
+                </ItineraryButton>
+                <ItineraryButton
+                  activity={
+                    activity === "hiking"
+                      ? "trekking"
+                      : (activity as ActivityOption)
+                  }
+                  className="inline-flex items-center gap-2 rounded-none border border-neutral-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-wider text-neutral-900 hover:bg-neutral-100 font-heading cursor-pointer"
                 >
-                  <Link href="/contact">Custom Itinerary</Link>
-                </Button>
+                  Custom Itinerary
+                </ItineraryButton>
               </div>
             </div>
 
@@ -282,21 +286,6 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
                 ))}
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Tour Packages */}
-      <section className="bg-sand py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeading
-            title="Featured Packages &amp; Departures"
-            description="Handcrafted itineraries matching this activity with certified guiding and full on-ground logistics."
-          />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-            {relatedTours.map((tour, i) => (
-              <TourCard key={tour.slug} tour={tour} priority={i < 3} />
-            ))}
           </div>
         </div>
       </section>

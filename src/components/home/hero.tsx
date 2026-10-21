@@ -60,8 +60,8 @@ export function Hero() {
               size="lg"
               className="w-[80%] max-w-sm rounded-xl border border-brand bg-brand px-7 py-3.5 text-white shadow-lg transition-all duration-200 hover:scale-[1.02] hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
             >
-              <Link href="/tours">
-                Explore Packages
+              <Link href="/activities">
+                Explore Activities
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>

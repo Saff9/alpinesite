@@ -12,10 +12,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ContactForm } from "@/components/forms/contact-form";
+import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us | Gulmarg Office & Direct Mountain Team",
   description:
     "Call, WhatsApp or email our Gulmarg office on Gulmarg Road, Forest Block. Local mountain guides ready to craft your Himalayan journey.",
   alternates: { canonical: "/contact" },
@@ -224,7 +225,20 @@ export default function ContactPage() {
             </div>
 
             {/* Right: form */}
-            <div className="min-w-0 w-full">
+            <div className="min-w-0 w-full space-y-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border border-neutral-200 bg-neutral-50 p-4 sm:p-5 rounded-none">
+                <div>
+                  <h3 className="font-heading text-xs font-bold uppercase tracking-wider text-neutral-900">
+                    Looking for a Custom Mountain Itinerary?
+                  </h3>
+                  <p className="mt-0.5 text-xs text-neutral-600 font-poppins">
+                    Select your preferred destinations, activities, group size, and dates.
+                  </p>
+                </div>
+                <ItineraryButton className="shrink-0 rounded-none bg-brand px-5 py-2.5 font-heading text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep cursor-pointer transition-colors">
+                  Open Itinerary Planner
+                </ItineraryButton>
+              </div>
               <ContactForm />
             </div>
           </div>

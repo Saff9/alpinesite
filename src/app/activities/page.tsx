@@ -5,39 +5,24 @@ import { ArrowRight, Mountain, Compass, Shield, Wind, CheckCircle2, Phone, Calen
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
-import { tours } from "@/data/tours";
+import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
+import type { ActivityOption } from "@/data/itinerary-context";
 
 export const metadata: Metadata = {
-  title: "Himalayan Activities & Mountain Expeditions | Alpine Club India",
+  title: "Himalayan Activities | Trekking, Hiking & Expeditions",
   description:
-    "Explore world-class Himalayan adventures: Gulmarg backcountry skiing, high-altitude trekking to Kangchenjunga in Sikkim, 7,000m mountaineering in Ladakh, and Himalayan bike expeditions.",
+    "Explore world-class Himalayan adventures: high-altitude trekking to Kangchenjunga in Sikkim, alpine day hikes in Kashmir, winter snowshoeing, and 7,000m mountaineering expeditions in Ladakh.",
   alternates: { canonical: "/activities" },
   openGraph: {
-    title: "Activities & Expeditions | Alpine Club India",
+    title: "Activities & Expeditions",
     description:
-      "World-class ski guiding, high-altitude trekking, motorcycle safaris, and mountaineering across Kashmir, Ladakh, and Sikkim.",
+      "World-class high-altitude trekking, alpine day hikes, winter snowshoeing, and mountaineering expeditions across Kashmir, Ladakh, and Sikkim.",
     url: "/activities",
   },
 };
 
 const activityCategories = [
-  {
-    id: "ski",
-    title: "Powder Skiing & Snowboarding",
-    tagline: "Asia's powder capital with 1,300 m vertical drop served by the Gulmarg Gondola",
-    image: "/images/ski/powder-skiing.jpg",
-    features: [
-      "Gulmarg Gondola to Apharwat Shoulder (3,980 m)",
-      "13+ metres average annual maritime-dry Himalayan powder",
-      "Certified IFMGA and Avalanche Level 2 mountain guides",
-      "Full backcountry safety equipment: Mammut beacon, probe, shovel & ABS packs",
-      "Beginner-friendly nursery slopes and certified ski school at Kongdoori",
-    ],
-    link: "/gulmarg-ski-resort",
-    linkText: "Explore Gulmarg Ski Resort",
-    highlight: "December to March",
-  },
   {
     id: "trekking",
     title: "High-Altitude Trekking & Mountaineering",
@@ -50,41 +35,57 @@ const activityCategories = [
       "Nun (7,135 m) and Kun (7,077 m) Suru Valley expedition staging",
       "Yuksom to Dzongri ridge viewpoint (4,030 m) in the Eastern Himalayas",
     ],
-    link: "/destinations/sikkim",
-    linkText: "View Sikkim Treks",
+    link: "/activities/trekking",
+    linkText: "Explore Trekking",
     highlight: "April to November",
   },
   {
-    id: "expeditions",
-    title: "Motorcycle & 4x4 Overlanding",
-    tagline: "Conquer the world's highest motorable passes across the Trans-Himalayan desert",
-    image: "/images/tours/ladakh-bike-expedition/cover.jpg",
+    id: "hiking",
+    title: "Alpine Hiking & Day Treks",
+    tagline: "Panoramic day walks through pine forests, meadow ridges, and hidden waterfalls",
+    image: "/images/destinations/kashmir/pahalgam.jpg",
     features: [
-      "Khardung La Pass (17,582 ft) & Chang La (17,590 ft) pass crossings",
-      "Pangong Tso & Tso Moriri high-altitude saltwater lakes",
-      "Royal Enfield Himalayan 411 fleet with dedicated support truck & mechanics",
-      "Double-humped camel desert dunes in Nubra Valley",
-      "Zanskar Valley gorge routes and ancient clifftop monasteries",
+      "Aru Valley to Lidderwat meadow day hikes in Pahalgam",
+      "Thajiwas Glacier trail hike in Sonamarg",
+      "Shankaracharya Hill and Pari Mahal heritage trails in Srinagar",
+      "Khilanmarg wildflower hike from Gulmarg meadow",
+      "Yuksom to Dubdi Monastery trail in West Sikkim",
     ],
-    link: "/tours/ladakh-bike-expedition",
-    linkText: "View Ladakh Bike Expedition",
-    highlight: "June to September",
+    link: "/activities/hiking",
+    linkText: "Explore Hiking",
+    highlight: "May to October",
   },
   {
-    id: "leisure",
-    title: "Alpine Leisure, Lakes & Culture",
-    tagline: "Timeless Kashmiri houseboats, sunrise shikara rides, and Himalayan heritage",
-    image: "/images/hero/dal-lake-hero.jpg",
+    id: "winter-hiking",
+    title: "Winter Hiking & Snowshoeing",
+    tagline: "Crisp snowy pine forests, frozen alpine streams, and guided snowshoe adventures",
+    image: "/images/destinations/kashmir/gulmarg.jpg",
     features: [
-      "Cedarwood heritage houseboat stays on tranquil Nigeen and Dal Lakes",
-      "Mughal gardens (Nishat & Shalimar Bagh) and April Tulip bloom",
-      "Betaab and Aru Valleys riverside retreats in Pahalgam",
-      "Centuries-old Buddhist gompas in Leh, Thiksey, and Hemis",
-      "17-course traditional Kashmiri Wazwan dinners with local families",
+      "Guided snowshoe treks through Kongdoori's old-growth pine woods",
+      "Frozen Drung Waterfall winter trail hike",
+      "Baisaran Valley snow hike through deep Pahalgam forests",
+      "Avalanche safety briefings and professional snowshoes provided",
+      "Warm kahwa breaks with saffron and almonds on the snow trail",
     ],
-    link: "/tours/kashmir-7-day-tour",
-    linkText: "View Kashmir Explorer",
-    highlight: "Year-Round",
+    link: "/activities/winter-hiking",
+    linkText: "Explore Winter Hiking",
+    highlight: "December to March",
+  },
+  {
+    id: "expeditions",
+    title: "High-Altitude Expeditions & Overlanding",
+    tagline: "Conquer 7,000 m summits and the world's highest motorable Trans-Himalayan passes",
+    image: "/images/tours/ladakh-bike-expedition/cover.jpg",
+    features: [
+      "Nun (7,135 m) and Kun (7,077 m) peak climbing expeditions",
+      "Kang Yatse II (6,250 m) and Stok Kangri mountaineering ascents",
+      "Khardung La Pass (17,582 ft) & Chang La (17,590 ft) motorcycle crossings",
+      "Pangong Tso & Tso Moriri high-altitude saltwater lakes overland",
+      "Royal Enfield Himalayan 411 fleet with dedicated support truck & mechanics",
+    ],
+    link: "/activities/expeditions",
+    linkText: "Explore Expeditions",
+    highlight: "June to September",
   },
 ];
 
@@ -174,14 +175,16 @@ export default function ActivitiesPage() {
                         <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                       </Link>
                     </Button>
-                    <a
-                      href={whatsappHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand hover:underline"
+                    <ItineraryButton
+                      activity={
+                        activity.id === "hiking"
+                          ? "trekking"
+                          : (activity.id as ActivityOption)
+                      }
+                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand hover:underline font-heading cursor-pointer"
                     >
-                      Inquire Custom Dates
-                    </a>
+                      Inquire Custom Itinerary
+                    </ItineraryButton>
                   </div>
                 </div>
               </div>

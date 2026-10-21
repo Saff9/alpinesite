@@ -6,15 +6,14 @@ import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
-import { tours } from "@/data/tours";
 
 export const metadata: Metadata = {
-  title: "Gulmarg Ski Resort Guide | Gondola, Apharwat Peak, Slopes & Guiding",
+  title: "Gulmarg Ski Resort | Gondola, Apharwat Peak & Backcountry Powder",
   description:
     "Complete guide to skiing in Gulmarg: Gulmarg Gondola Phase 1 & 2, Apharwat Peak 3,980m, deep Himalayan powder, backcountry avalanche safety, ski rentals, and certified ski guides.",
   alternates: { canonical: "/gulmarg-ski-resort" },
   openGraph: {
-    title: "Gulmarg Ski Resort Guide | Alpine Club India",
+    title: "Gulmarg Ski Resort | Powder Skiing & Gondola Guide",
     description:
       "Ski 1,300 vertical metres of Himalayan powder from the world's highest gondola-served ski terrain on Apharwat Peak.",
     url: "/gulmarg-ski-resort",
@@ -41,7 +40,6 @@ const resortHighlights = [
 ];
 
 export default function GulmargSkiResortPage() {
-  const skiTour = tours.find((t) => t.slug === "gulmarg-ski-adventure");
   const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
     "Hello Alpine Club India! I'd like to ask about skiing in Gulmarg, gondola passes, and hiring a certified ski guide."
   )}`;
@@ -102,8 +100,8 @@ export default function GulmargSkiResortPage() {
                   asChild
                   className="rounded-xl bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep"
                 >
-                  <Link href="/advisories/permits-and-guidelines">
-                    Gondola Ticket Info
+                  <Link href="/gulmarg-ski-resort/about-gulmarg">
+                    About Gulmarg Resort
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
@@ -273,41 +271,39 @@ export default function GulmargSkiResortPage() {
         </div>
       </section>
 
-      {/* Featured Ski Package CTA */}
-      {skiTour && (
-        <section className="bg-neutral-950 py-16 sm:py-20 text-white">
-          <div className="mx-auto max-w-5xl px-5 sm:px-6 text-center">
-            <span className="font-heading text-xs font-bold uppercase tracking-widest text-brand-light">
-              Full Powder Package
-            </span>
-            <h2 className="mt-3 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
-              Gulmarg Ski Adventure (6 Days / 5 Nights)
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-neutral-300 font-poppins">
-              Includes slope-side hotel accommodation, daily certified ski guiding, airport transfers, safety gear, and fresh powder lines across Mount Apharwat.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button
-                asChild
-                className="rounded-xl bg-brand px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep h-12"
-              >
-                <Link href={`/tours/${skiTour.slug}`}>
-                  View 6-Day Ski Itinerary
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-neutral-800 h-12"
-              >
-                Inquire Over WhatsApp
-              </a>
-            </div>
+      {/* Featured Ski Guiding Callout */}
+      <section className="bg-neutral-950 py-16 sm:py-20 text-white">
+        <div className="mx-auto max-w-5xl px-5 sm:px-6 text-center">
+          <span className="font-heading text-xs font-bold uppercase tracking-widest text-brand-light">
+            Certified Powder Guiding
+          </span>
+          <h2 className="mt-3 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+            Ready to Ski Mount Apharwat?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-neutral-300 font-poppins">
+            Direct guiding with our local mountain guides. Daily snowpack analysis, certified avalanche safety gear, backcountry bowls, and private transport.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button
+              asChild
+              className="rounded-xl bg-brand px-8 py-3.5 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep h-12"
+            >
+              <Link href="/ski-guides">
+                Meet Our Ski Guides
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900 px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-neutral-800 h-12"
+            >
+              Inquire Over WhatsApp
+            </a>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
     </>
   );
 }

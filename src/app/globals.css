@@ -183,6 +183,19 @@
     overflow-wrap: break-word;
   }
 
+  /* All paragraphs across the website (excluded the footer): Poppins and fontsize=12-14px */
+  p:not(footer p):not(.font-heading) {
+    font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.65;
+  }
+
+  @media (min-width: 640px) {
+    p:not(footer p):not(.font-heading) {
+      font-size: 14px !important;
+    }
+  }
+
   /* Poppins 400 for card description paragraphs & footer links/descriptions */
   .bg-card p:not(.font-heading),
   .bg-card blockquote,

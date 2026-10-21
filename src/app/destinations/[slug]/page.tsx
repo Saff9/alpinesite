@@ -3,12 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Mountain, Compass, MapPin, Shield, Calendar, Clock, CheckCircle2, Waves, Wind } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { TourCard } from "@/components/cards/tour-card";
 import { destinations, getDestinationBySlug } from "@/data/destinations";
-import { getToursByDestination } from "@/data/tours";
 import { site, formatINR } from "@/data/site";
+import type { DestinationOption } from "@/data/itinerary-context";
 
 interface DestinationPageProps {
   params: Promise<{ slug: string }>;
@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!destination) return { title: "Destination not found" };
 
   return {
-    title: `${destination.name} Tours, Peaks & Travel Guide | Alpine Club India`,
+    title: `${destination.name} Travel Guide, Peaks & Mountain Expeditions`,
     description: destination.shortDescription,
     keywords: [
       destination.name,
@@ -54,8 +54,6 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
   const { slug } = await params;
   const destination = getDestinationBySlug(slug);
   if (!destination) notFound();
-
-  const tours = getToursByDestination(slug);
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -437,34 +435,6 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         </div>
       </section>
 
-      {/* Tour Packages in Destination */}
-      {tours.length > 0 && (
-        <section className="bg-sand py-16 sm:py-20 lg:py-24">
-          <div className="mx-auto max-w-7xl px-5 sm:px-6">
-            <SectionHeading
-              title={`Handcrafted Tours &amp; Treks in ${destination.name}`}
-              description="Guided by local experts with all mountain logistics, permits, and equipment handled."
-            />
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
-              {tours.map((tour, i) => (
-                <TourCard key={tour.slug} tour={tour} priority={i < 3} />
-              ))}
-            </div>
-            <div className="mt-10 flex justify-center">
-              <Button
-                asChild
-                className="rounded-xl border border-brand bg-brand px-8 py-3 text-white shadow-xs hover:bg-brand-deep font-heading text-xs font-bold uppercase tracking-wider h-11"
-              >
-                <Link href="/tours">
-                  View All Himalayan Packages
-                  <ArrowRight className="h-4 w-4 ml-1.5" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Direct Booking CTA */}
       <section className="bg-neutral-950 py-16 text-white text-center">
         <div className="mx-auto max-w-4xl px-5 sm:px-6">
@@ -475,12 +445,12 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
             Contact our senior mountain guides directly to customize your itinerary, check permit requirements, or reserve dates.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button
-              asChild
-              className="rounded-xl bg-brand px-8 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep h-12"
+            <ItineraryButton
+              destination={destination.slug as DestinationOption}
+              className="inline-flex items-center justify-center rounded-none bg-brand px-8 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep h-12 font-heading cursor-pointer shadow-xs transition-colors"
             >
-              <Link href="/contact">Inquire Now</Link>
-            </Button>
+              Inquire Itinerary Now
+            </ItineraryButton>
             <a
               href={whatsappHref}
               target="_blank"

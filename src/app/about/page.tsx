@@ -19,7 +19,7 @@ import { site } from "@/data/site";
 import { testimonials } from "@/data/testimonials";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | Local Mountain Guides Born in Gulmarg",
   description:
     "Meet Alpine Club India, a ten-person team of mountain guides based in Gulmarg, Kashmir, running ski weeks and private Himalayan journeys since 2012. Local guides, honest pricing, one phone that always answers.",
   alternates: { canonical: "/about" },
@@ -357,7 +357,7 @@ export default function AboutPage() {
                 variant="outline"
                 className="w-[80%] max-w-sm rounded-xl border-white/60 bg-transparent px-7 py-3.5 text-white hover:bg-white/10 hover:text-white font-heading text-xs font-bold uppercase tracking-wider h-12 sm:w-auto"
               >
-                <Link href="/tours">Our tours</Link>
+                <Link href="/activities">Our Activities</Link>
               </Button>
             </div>
           </div>

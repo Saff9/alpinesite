@@ -33,9 +33,8 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default:
-      "Alpine Club India: Ski Guides, Gulmarg and Kashmir Tour Packages",
-    template: "%s | Alpine Club India",
+    default: "AlpineClubIndia | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
+    template: "%s | AlpineClubIndia",
   },
   description: site.description,
   keywords: [
@@ -90,17 +89,22 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: site.logo, type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon1.png", sizes: "96x96", type: "image/png" },
     ],
-    shortcut: site.logo,
-    apple: site.logo,
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1f3a2d",
+  themeColor: "#ffffff",
 };
 
 const localBusinessJsonLd = {

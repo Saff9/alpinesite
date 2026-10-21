@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Our Promise | Alpine Club India",
+  title: "Our Promise | Alpine Safety, Certified Guides & Local Care",
   description:
     "Our guiding philosophy: 100% certified mountain guides, uncompromising avalanche safety, fair local stewardship, transparent pricing, and genuine Himalayan hospitality.",
   alternates: { canonical: "/our-promise" },
   openGraph: {
-    title: "Our Promise | Alpine Club India",
+    title: "Our Promise | Alpine Safety, Certified Guides & Local Care",
     description:
       "Safety, integrity, and local mountain stewardship. Read what Alpine Club India promises to every traveller.",
     url: "/our-promise",

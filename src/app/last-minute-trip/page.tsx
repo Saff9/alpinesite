@@ -8,12 +8,12 @@ import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Last Minute Himalayan Trips & Powder Chasers | Alpine Club India",
+  title: "Last Minute Trips | Gulmarg Powder & Kashmir Fast-Track",
   description:
     "Planning a sudden trip to Gulmarg, Kashmir, or Ladakh? We organize fast-track airport pickups, slope-side hotels, ski passes, and local mountain guides on short notice.",
   alternates: { canonical: "/last-minute-trip" },
   openGraph: {
-    title: "Last Minute Trips | Alpine Club India",
+    title: "Last Minute Trips | Gulmarg Powder & Kashmir Fast-Track",
     description:
       "Spontaneous departures for Gulmarg powder dumps and Kashmir getaways with 24/7 on-ground mountain assistance.",
     url: "/last-minute-trip",

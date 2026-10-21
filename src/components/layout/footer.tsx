@@ -10,14 +10,14 @@ export function Footer() {
   return (
     <footer className="mt-auto w-full overflow-hidden rounded-none border-t border-[#182c3a] bg-[#0c1821] text-neutral-300 shadow-2xl">
       <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:px-8 sm:py-16 md:py-20 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14 text-center lg:text-left">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14 text-left">
           {/* Brand */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-start">
             <SiteLogo variant="dark" hideTagline />
-            <p className="mt-4 max-w-sm font-poppins font-normal text-sm leading-relaxed text-neutral-300 text-center lg:text-left">
+            <p className="mt-4 max-w-sm font-poppins font-normal text-sm leading-relaxed text-neutral-300 text-left">
               {site.tagline}. Operating from Gulmarg since {site.established} with local mountain guides, drivers, and families.
             </p>
-            <div className="mt-6 flex justify-center lg:justify-start gap-3">
+            <div className="mt-6 flex justify-start gap-3">
               <a
                 href={site.socials.instagram}
                 target="_blank"
@@ -58,11 +58,11 @@ export function Footer() {
           </div>
 
           {/* Quick links */}
-          <nav aria-label="Footer Navigation" className="flex flex-col items-center lg:items-start">
+          <nav aria-label="Footer Navigation" className="flex flex-col items-start">
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
               Navigation
             </h2>
-            <ul className="mt-4 space-y-3 font-poppins font-normal text-sm flex flex-col items-center lg:items-start">
+            <ul className="mt-4 space-y-3 font-poppins font-normal text-base sm:text-sm flex flex-col items-start text-left">
               {mainNav.map((item) => {
                 if (item.label === "More" && item.dropdown) {
                   return (
@@ -91,11 +91,11 @@ export function Footer() {
           </nav>
 
           {/* Popular destinations */}
-          <nav aria-label="Destinations" className="flex flex-col items-center lg:items-start">
+          <nav aria-label="Destinations" className="flex flex-col items-start">
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
               Destinations
             </h2>
-            <ul className="mt-4 space-y-3 font-poppins font-normal text-sm flex flex-col items-center lg:items-start">
+            <ul className="mt-4 space-y-3 font-poppins font-normal text-base sm:text-sm flex flex-col items-start text-left">
               {popularDestinations.map((d) => (
                 <li key={d.slug}>
                   <Link
@@ -118,41 +118,41 @@ export function Footer() {
           </nav>
 
           {/* Contact */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-start">
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
               Get in Touch
             </h2>
-            <ul className="mt-4 space-y-3.5 font-poppins font-normal text-sm flex flex-col items-center lg:items-start">
-              <li className="flex justify-center lg:justify-start">
+            <ul className="mt-4 space-y-3.5 font-poppins font-normal text-base sm:text-sm flex flex-col items-start text-left">
+              <li className="flex justify-start">
                 <a
                   href={site.googleReviewsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center lg:items-start gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white text-center lg:text-left max-w-xs"
+                  className="flex items-start gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white text-left max-w-xs"
                 >
                   <MapPin className="h-4 w-4 shrink-0 text-brand-light mt-0.5" aria-hidden="true" />
                   <span>{site.address.full}</span>
                 </a>
               </li>
-              <li className="flex justify-center lg:justify-start">
+              <li className="flex justify-start">
                 <a
                   href={site.phoneHref}
-                  className="flex items-center gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                  className="flex items-center gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white text-left"
                 >
                   <Phone className="h-4 w-4 shrink-0 text-brand-light" aria-hidden="true" />
                   <span>{site.phone}</span>
                 </a>
               </li>
-              <li className="flex justify-center lg:justify-start">
+              <li className="flex justify-start">
                 <a
                   href={`mailto:${site.email}`}
-                  className="flex items-center gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                  className="flex items-center gap-2.5 font-poppins font-normal text-neutral-300 transition-colors hover:text-white text-left"
                 >
                   <Mail className="h-4 w-4 shrink-0 text-brand-light" aria-hidden="true" />
                   <span>{site.email}</span>
                 </a>
               </li>
-              <li className="flex items-center justify-center lg:justify-start gap-2.5 font-poppins font-normal text-neutral-300">
+              <li className="flex items-center justify-start gap-2.5 font-poppins font-normal text-neutral-300 text-left">
                 <Clock className="h-4 w-4 shrink-0 text-brand-light" aria-hidden="true" />
                 <span>{site.hours}</span>
               </li>
@@ -161,11 +161,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Credits Bar */}
-        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-between gap-4 border-t border-[#182c3a] pt-6 sm:pt-8 font-poppins font-normal text-xs text-center lg:flex-row lg:text-left">
-          <p className="font-poppins font-normal text-neutral-400">
+        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-3 border-t border-[#182c3a] pt-6 sm:pt-8 font-poppins font-normal text-sm text-center text-neutral-300 lg:flex-row lg:justify-between lg:text-left">
+          <p className="font-poppins font-normal text-sm text-neutral-300">
             © {year} {site.name}. All rights reserved.
           </p>
-          <p className="flex flex-wrap items-center justify-center gap-1.5 font-poppins font-normal text-neutral-400">
+          <p className="flex flex-wrap items-center justify-center gap-1.5 font-poppins font-normal text-sm text-neutral-300 lg:justify-end">
             <span>Designed &amp; Powered by</span>
             <a
               href="https://imtiyazkumar.vercel.app"
@@ -175,7 +175,7 @@ export function Footer() {
             >
               Imtiyaz
             </a>
-            <span className="text-neutral-500">&amp;</span>
+            <span className="text-neutral-400">&amp;</span>
             <a
               href="https://owaisdar.vercel.app/"
               target="_blank"

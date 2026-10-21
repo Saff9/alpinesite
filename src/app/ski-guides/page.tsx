@@ -5,15 +5,16 @@ import { ArrowRight, Shield, Award, CheckCircle2, Phone, Mountain, Radio, HeartH
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
+import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Our Certified Ski & Mountain Guides | Alpine Club India",
+  title: "Our Certified Ski Guides | Gulmarg Mountain Professionals",
   description:
     "Meet our team of licensed mountain and ski guides in Gulmarg. IFMGA-aligned, avalanche safety certified, and born on the slopes of Mount Apharwat.",
   alternates: { canonical: "/ski-guides" },
   openGraph: {
-    title: "Our Ski Guides | Alpine Club India",
+    title: "Our Certified Ski Guides | Gulmarg Mountain Professionals",
     description:
       "Ski Gulmarg's legendary backcountry with local certified guides who have skied Mount Apharwat their entire lives.",
     url: "/ski-guides",
@@ -240,30 +241,29 @@ export default function SkiGuidesPage() {
                 Full-day guiding across Apharwat Phase 1 &amp; Phase 2 with safety briefing, radio communication, and line selection.
               </p>
               <div className="mt-6">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep"
+                <ItineraryButton
+                  destination="kashmir"
+                  activity="skiing-snowboarding"
+                  className="inline-flex items-center gap-2 rounded-none bg-brand px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep font-heading cursor-pointer"
                 >
                   Inquire Daily Rates
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </ItineraryButton>
               </div>
             </div>
 
             <div className="rounded-2xl border border-neutral-800 bg-neutral-900/80 p-6">
-              <h4 className="font-heading text-lg font-bold text-white">6-Day Ski Expedition</h4>
+              <h4 className="font-heading text-lg font-bold text-white">Backcountry Guiding</h4>
               <p className="mt-2 text-xs text-neutral-400 font-poppins">
-                Comprehensive week: hotel accommodation, daily guiding, airport pickups from Srinagar, and safety equipment.
+                Direct private guiding: Apharwat bowls, Mary's Shoulder, Shark Fin, snowpack analysis, and certified safety equipment.
               </p>
               <div className="mt-6">
                 <Button
                   asChild
                   className="rounded-xl bg-brand px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep"
                 >
-                  <Link href="/tours/gulmarg-ski-adventure">
-                    View Ski Tour (6D)
+                  <Link href="/gulmarg-ski-resort/backcountry-skiing">
+                    Explore Backcountry
                     <ArrowRight className="h-4 w-4 ml-1" />
                   </Link>
                 </Button>

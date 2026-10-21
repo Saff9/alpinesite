@@ -17,10 +17,10 @@ import {
 import { site } from "@/data/site";
 
 const SUBJECTS = [
-  "Planning a trip",
-  "Custom itinerary",
+  "General inquiry",
   "Group / corporate booking",
   "Existing booking",
+  "Feedback & partnerships",
   "Something else",
 ] as const;
 
