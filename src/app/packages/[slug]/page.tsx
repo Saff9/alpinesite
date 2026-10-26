@@ -5,10 +5,12 @@ import Link from "next/link";
 import {
   Clock,
   MapPin,
-  Calendar,
   Mountain,
   ShieldCheck,
   Check,
+  CheckCircle2,
+  X,
+  XCircle,
   ArrowRight,
   Phone,
   Compass,
@@ -18,6 +20,7 @@ import {
 import { packagesData, getPackageBySlug, getPackagesByCategory, type PackageItem } from "@/data/packages";
 import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
+import { cn } from "@/lib/utils";
 import type { DestinationOption, ActivityOption } from "@/data/itinerary-context";
 
 interface PackagePageProps {
@@ -82,6 +85,39 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
     .filter((p) => p.slug !== pkg.slug)
     .slice(0, 3);
 
+  const waypoints = pkg.route
+    ? pkg.route
+        .split(/→|->/)
+        .map((w) => w.trim())
+        .filter(Boolean)
+    : [];
+
+  const defaultSkiExclusions = [
+    "Personal ski & snowboard equipment (high-end rentals available on-site)",
+    "Avalanche safety kit: beacon, probe, shovel & ABS airbag",
+    "International & domestic airfare to/from Srinagar International Airport",
+    "Personal winter sports & emergency mountain rescue insurance",
+    "Lunches, dinners (unless specified in package), alcoholic beverages & personal snacks",
+    "Gratuities and tips for mountain ski guides, drivers, and hotel staff",
+  ];
+
+  const defaultTrekExclusions = [
+    "Personal trekking gear, high-altitude clothing, backpacks & trekking poles",
+    "Airfare to/from Leh, Srinagar, or Bagdogra arrival airports",
+    "High-altitude wilderness travel & emergency medical evacuation insurance",
+    "Hotel stays and meals outside the scheduled trek itinerary dates",
+    "Personal expenses, laundry, telephone calls & packaged mineral water",
+    "Gratuities and tips for mountain leaders, local camp cooks, porters, and horsemen",
+  ];
+
+  const inclusions = pkg.inclusions || [];
+  const exclusions =
+    pkg.exclusions && pkg.exclusions.length > 0
+      ? pkg.exclusions
+      : pkg.category === "ski-packages"
+      ? defaultSkiExclusions
+      : defaultTrekExclusions;
+
   return (
     <main className="min-h-screen bg-neutral-50/50">
       {/* Hero Banner */}
@@ -124,124 +160,137 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
       {/* Main Content Layout */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12 items-start">
-          {/* Left Column (Overview, Specs, Route, Inclusions) */}
+          {/* Left Column (Overview, Path Route Traverse, Inclusions & Exclusions) */}
           <div className="lg:col-span-2 space-y-10">
-            {/* Overview / Verbatim Description */}
+            {/* 1. Overview / Verbatim Description */}
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-4">
               <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900 border-b border-neutral-100 pb-3">
-                Overview & Experience
+                Overview &amp; Experience
               </h2>
               <p className="font-poppins text-[13px] sm:text-[14px] text-neutral-700 leading-relaxed whitespace-pre-line">
                 {pkg.description}
               </p>
             </div>
 
-            {/* Quick Specs Grid */}
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-4">
-              <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900 border-b border-neutral-100 pb-3">
-                Key Trip Specifications
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-poppins">
-                <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                  <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                    Duration
+            {/* 2. Trail & Route Traverse — Path-Structured Stepper */}
+            {waypoints.length > 0 && (
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-100 pb-4">
+                  <div className="flex items-center gap-2">
+                    <Compass className="h-5 w-5 text-brand" />
+                    <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900">
+                      Trail &amp; Route Traverse
+                    </h2>
+                  </div>
+                  <span className="font-heading text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-brand bg-brand/10 border border-brand/20 px-3 py-1 rounded-full">
+                    {waypoints.length} Route Stages
                   </span>
-                  <span className="font-semibold text-neutral-900">{pkg.duration}</span>
                 </div>
-                {pkg.region && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Region
-                    </span>
-                    <span className="font-semibold text-neutral-900">{pkg.region}</span>
+
+                {/* Structured Path Map Line */}
+                <div className="relative pl-6 sm:pl-8 before:absolute before:left-3 sm:before:left-4 before:top-4 before:bottom-4 before:w-0.5 before:bg-gradient-to-b before:from-brand before:via-neutral-300 before:to-brand">
+                  <div className="space-y-3.5">
+                    {waypoints.map((point, index) => {
+                      const isStart = index === 0;
+                      const isEnd = index === waypoints.length - 1;
+                      return (
+                        <div key={index} className="relative flex items-center gap-3.5 group">
+                          {/* Stepper node circle along the path */}
+                          <span
+                            className={cn(
+                              "absolute -left-6 sm:-left-8 flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full text-[10px] sm:text-xs font-bold font-heading transition-all duration-200 ring-4 ring-white",
+                              isStart
+                                ? "bg-brand text-white shadow-xs"
+                                : isEnd
+                                ? "bg-neutral-950 text-white shadow-xs"
+                                : "bg-white border-2 border-neutral-300 text-neutral-700 group-hover:border-brand group-hover:text-brand"
+                            )}
+                          >
+                            {index + 1}
+                          </span>
+
+                          {/* Waypoint container card */}
+                          <div className="flex-1 rounded-xl border border-neutral-200/80 bg-neutral-50/70 px-4 py-3 transition-all duration-200 group-hover:bg-white group-hover:border-brand/40 group-hover:shadow-xs">
+                            <div className="flex flex-wrap items-center justify-between gap-2">
+                              <span className="font-poppins text-xs sm:text-sm font-semibold text-neutral-900">
+                                {point}
+                              </span>
+                              {isStart && (
+                                <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-md border border-emerald-300">
+                                  Trailhead / Start
+                                </span>
+                              )}
+                              {isEnd && (
+                                <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-neutral-900 bg-neutral-200 px-2.5 py-0.5 rounded-md">
+                                  Final Waypoint / End
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                )}
-                {pkg.bestSeason && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Best Time
+                </div>
+              </div>
+            )}
+
+            {/* 3. Package Inclusions & Exclusions (Audited Green & Red Sections) */}
+            <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
+              <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900 border-b border-neutral-100 pb-4">
+                Package Inclusions &amp; Features
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* What's Included (Green / Emerald Section) */}
+                <div className="rounded-2xl border border-emerald-300/80 bg-emerald-50/50 p-5 sm:p-6 shadow-xs flex flex-col">
+                  <div className="flex items-center justify-between border-b border-emerald-200/80 pb-3 mb-4">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+                      <h3 className="font-heading text-sm sm:text-base font-extrabold uppercase tracking-wider text-emerald-950">
+                        What&apos;s Included
+                      </h3>
+                    </div>
+                    <span className="rounded-full bg-emerald-600 px-2.5 py-0.5 font-heading text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+                      Included
                     </span>
-                    <span className="font-semibold text-neutral-900">{pkg.bestSeason}</span>
                   </div>
-                )}
-                {pkg.difficulty && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Difficulty Level
+
+                  <ul className="space-y-3">
+                    {inclusions.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 font-poppins text-xs sm:text-sm text-neutral-800 leading-snug">
+                        <Check className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* What's Not Included (Red / Rose Section) */}
+                <div className="rounded-2xl border border-rose-300/80 bg-rose-50/50 p-5 sm:p-6 shadow-xs flex flex-col">
+                  <div className="flex items-center justify-between border-b border-rose-200/80 pb-3 mb-4">
+                    <div className="flex items-center gap-2">
+                      <XCircle className="h-5 w-5 text-rose-600 shrink-0" />
+                      <h3 className="font-heading text-sm sm:text-base font-extrabold uppercase tracking-wider text-rose-950">
+                        What&apos;s Not Included
+                      </h3>
+                    </div>
+                    <span className="rounded-full bg-rose-600 px-2.5 py-0.5 font-heading text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+                      Not Included
                     </span>
-                    <span className="font-semibold text-neutral-900">{pkg.difficulty}</span>
                   </div>
-                )}
-                {pkg.maxAltitude && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Maximum Altitude
-                    </span>
-                    <span className="font-semibold text-neutral-900">{pkg.maxAltitude}</span>
-                  </div>
-                )}
-                {pkg.distance && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Trek / Route Distance
-                    </span>
-                    <span className="font-semibold text-neutral-900">{pkg.distance}</span>
-                  </div>
-                )}
-                {pkg.startingPoint && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Starting Point
-                    </span>
-                    <span className="font-semibold text-neutral-900">{pkg.startingPoint}</span>
-                  </div>
-                )}
-                {pkg.endingPoint && (
-                  <div className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-neutral-600 block">
-                      Ending Point
-                    </span>
-                    <span className="font-semibold text-neutral-900">{pkg.endingPoint}</span>
-                  </div>
-                )}
+
+                  <ul className="space-y-3">
+                    {exclusions.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 font-poppins text-xs sm:text-sm text-neutral-800 leading-snug">
+                        <X className="h-4 w-4 text-rose-600 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-
-            {/* Route Milestones (if route specified) */}
-            {pkg.route && (
-              <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-4">
-                <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900 border-b border-neutral-100 pb-3">
-                  Trail & Route Traverse
-                </h2>
-                <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200">
-                  <p className="font-poppins text-[13px] sm:text-[14px] text-neutral-800 font-medium leading-relaxed">
-                    {pkg.route}
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* Inclusions / What's Included */}
-            {pkg.inclusions && pkg.inclusions.length > 0 && (
-              <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-4">
-                <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900 border-b border-neutral-100 pb-3">
-                  Package Inclusions & Features
-                </h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {pkg.inclusions.map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-3 p-3 rounded-xl bg-neutral-50/80 border border-neutral-100"
-                    >
-                      <Check className="h-4 w-4 text-brand shrink-0 mt-0.5" />
-                      <span className="font-poppins text-[13px] text-neutral-800 leading-snug">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
 
           {/* Right Column (Sticky Booking & Action Card) */}

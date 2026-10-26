@@ -8,40 +8,56 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "AlpineClubIndia | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
-    template: "%s | AlpineClubIndia",
+    default: "Alpine Club India | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
+    template: "%s | Alpine Club India",
   },
-  description: site.description,
+  description:
+    "Official website of Alpine Club India. Certified mountain guides leading backcountry skiing in Gulmarg, curated Kashmir & Ladakh tours, and Himalayan trekking expeditions.",
   keywords: [
     "Alpine Club India",
+    "alpineclubindia.com",
     "Gulmarg ski guides",
-    "Gulmarg tour packages",
+    "Gulmarg ski resort",
     "skiing in Gulmarg",
     "Gulmarg Gondola",
     "Kashmir tour packages",
     "Kashmir travel agency",
     "Ladakh tour",
-    "Srinagar houseboat",
-    "honeymoon packages Kashmir",
-    "India tour operator",
+    "Ski resorts in India",
+    "Himalayas of India",
+    "Tiger ski guide Gulmarg",
+    "Imtiyaz Kumar",
   ],
-  authors: [{ name: site.legalName }],
+  authors: [{ name: site.legalName, url: site.url }],
   creator: site.legalName,
   publisher: site.legalName,
   formatDetection: { telephone: true, address: true, email: true },
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: site.url,
     siteName: site.name,
-    title: "Alpine Club India: Mountain Guides & Himalayan Tours",
-    description: site.description,
+    title: "Alpine Club India | Certified Mountain Guides & Himalayan Tours",
+    description:
+      "Official website of Alpine Club India. Handcrafted ski expeditions in Gulmarg, classic Kashmir journeys, and high-altitude Himalayan treks with local certified guides.",
+    images: [
+      {
+        url: `${site.url}${site.ogImage.url}`,
+        width: 1200,
+        height: 630,
+        alt: "Alpine Club India - Mountain Guides and Himalayan Expeditions in Gulmarg",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alpine Club India: Mountain Guides & Himalayan Tours",
-    description: site.description,
+    title: "Alpine Club India | Certified Mountain Guides & Himalayan Tours",
+    description:
+      "Handcrafted ski expeditions in Gulmarg, classic Kashmir journeys, and high-altitude Himalayan treks with local certified guides.",
+    images: [`${site.url}${site.ogImage.url}`],
   },
   robots: {
     index: true,
@@ -54,10 +70,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // Google / Bing webmaster verification IDs can be supplied via env without code changes:
-  // GOOGLE_SITE_VERIFICATION, BING_SITE_VERIFICATION (msvalidate.01)
+  // Google / Bing webmaster verification IDs
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    google: process.env.GOOGLE_SITE_VERIFICATION || "FPbZsQmUdvmjQzPFNSyT3-Z-GiLPu2o_RMH1T2fqcPo",
     other: process.env.BING_SITE_VERIFICATION
       ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
       : undefined,
@@ -67,6 +82,8 @@ export const metadata: Metadata = {
       { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/icon1.png", sizes: "96x96", type: "image/png" },
+      { url: "/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
     apple: [
@@ -82,17 +99,64 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  url: `${site.url}/`,
+  name: "Alpine Club India",
+  description: site.description,
+  publisher: {
+    "@id": `${site.url}/#organization`,
+  },
+};
+
+const siteNavigationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
+    {
+      "@type": "SiteNavigationElement",
+      position: 1,
+      name: "Contact Us",
+      description: "Direct contact with our Gulmarg mountain office and local certified guides.",
+      url: `${site.url}/contact`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 2,
+      name: "Deals & Packages",
+      description: "Fully guided Gulmarg ski packages, Kashmir valley tours, and Himalayan trekking.",
+      url: `${site.url}/packages`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 3,
+      name: "Gulmarg Ski Resort",
+      description: "Complete guide to Mount Apharwat backcountry powder lines, gondola phases, and ski touring.",
+      url: `${site.url}/gulmarg-ski-resort`,
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 4,
+      name: "Ski Resorts in India",
+      description: "Comprehensive guide to all major ski destinations in India.",
+      url: `${site.url}/ski-resorts-in-india`,
+    },
+  ],
+};
+
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
   "@id": `${site.url}/#organization`,
   name: site.legalName,
   description: site.description,
-  url: site.url,
+  url: `${site.url}/`,
   telephone: site.phone,
   email: site.email,
   image: `${site.url}${site.ogImage.url}`,
-  logo: `${site.url}${site.logo}`,
+  logo: `${site.url}/web-app-manifest-512x512.png`,
   foundingDate: String(site.established),
   priceRange: "₹₹",
   address: {
@@ -116,12 +180,9 @@ const localBusinessJsonLd = {
   },
   sameAs: [
     site.googleReviewsUrl,
-    site.socials.instagram,
     site.socials.facebook,
-    site.socials.youtube,
-    site.socials.twitter,
-  ],
-  areaServed: ["Gulmarg", "Kashmir", "Ladakh"],
+  ].filter((url) => Boolean(url) && url !== "#"),
+  areaServed: ["Gulmarg", "Kashmir", "Ladakh", "Himalayas"],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: site.stats.rating,
@@ -138,6 +199,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="FPbZsQmUdvmjQzPFNSyT3-Z-GiLPu2o_RMH1T2fqcPo" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -160,6 +222,14 @@ export default function RootLayout({
         <FloatingButtons />
         <script
           type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         <script
@@ -169,13 +239,6 @@ export default function RootLayout({
                 if (typeof window !== 'undefined') {
                   window.addEventListener('error', function(e) {
                     var msg = e && (e.message || (e.error && e.error.message));
-                    if (msg && (msg.indexOf('ChunkLoadError') !== -1 || msg.indexOf('Failed to load chunk') !== -1)) {
-                      window.location.reload();
-                    }
-                  });
-                  window.addEventListener('unhandledrejection', function(e) {
-                    var r = e && e.reason;
-                    var msg = r && (r.message || (typeof r === 'string' ? r : ''));
                     if (msg && (msg.indexOf('ChunkLoadError') !== -1 || msg.indexOf('Failed to load chunk') !== -1)) {
                       window.location.reload();
                     }

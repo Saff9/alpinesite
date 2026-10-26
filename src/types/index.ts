@@ -101,43 +101,11 @@ export interface Tour {
   faqs: FAQ[];
 }
 
-export interface BlogSection {
-  heading?: string;
-  paragraphs?: string[];
-  list?: string[];
-}
-
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  sections: BlogSection[];
-  coverImage: string;
-  coverImageAlt: string;
-  category: string;
-  tags: string[];
-  author: {
-    name: string;
-    role: string;
-  };
-  publishedAt: string;
-  updatedAt?: string;
-  readTime: number;
-  relatedDestinationSlugs: string[];
-}
-
 export interface Testimonial {
   name: string;
-  location: string;
   rating: number;
   text: string;
-  tour: string;
-  date: string;
-}
-
-export interface TravelStyleInfo {
-  id: TravelStyle;
-  label: string;
-  description: string;
-  icon: string;
+  location?: string;
+  tour?: string;
+  date?: string;
 }

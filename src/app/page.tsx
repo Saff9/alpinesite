@@ -14,7 +14,7 @@ import { RatingStars } from "@/components/shared/rating-stars";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "AlpineClubIndia | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
+  title: "Alpine Club India | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
   description:
     "Private ski guiding on Gulmarg's Apharwat powder bowls, high-altitude trekking in Kashmir & Sikkim, and Trans-Himalayan expeditions led by certified local guides since 2012. Rated 5.0 on Google.",
   alternates: { canonical: "/" },

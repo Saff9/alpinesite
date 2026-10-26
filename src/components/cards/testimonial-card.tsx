@@ -32,7 +32,7 @@ export function TestimonialCard({ testimonial, className }: TestimonialCardProps
         <RatingStars rating={testimonial.rating} size="sm" />
         <Quote className="h-5 w-5 text-terracotta/30" aria-hidden="true" />
       </div>
-      <blockquote className="mt-4 flex-1 font-poppins font-normal text-sm leading-relaxed text-foreground/90">
+      <blockquote className="mt-4 flex-1 font-poppins font-normal text-sm leading-relaxed text-foreground/90 whitespace-pre-line">
         &ldquo;{testimonial.text}&rdquo;
       </blockquote>
       <figcaption className="mt-5 flex items-center gap-3 border-t border-border pt-4">
@@ -44,9 +44,6 @@ export function TestimonialCard({ testimonial, className }: TestimonialCardProps
         </span>
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-foreground">{testimonial.name}</p>
-          <p className="truncate text-xs text-muted-foreground">
-            {testimonial.location} · {testimonial.tour}, {testimonial.date}
-          </p>
         </div>
       </figcaption>
     </figure>

@@ -6,11 +6,11 @@ export const site = {
   tagline: "Mountain Guides & Himalayan Tours",
   description:
     "Handcrafted ski expeditions in Gulmarg, classic Kashmir journeys, and high-altitude Himalayan treks, guided by local mountain experts who call these peaks home.",
-  url: "https://alpineclubindia.com",
-  phone: "+91 9682163030",
-  phoneHref: "tel:+919682163030",
-  email: "imtiyazahmadkumar36@gmail.com",
-  whatsapp: "919682163030",
+  url: "https://www.alpineclubindia.com",
+  phone: "+91 8082111967",
+  phoneHref: "tel:+918082111967",
+  email: "info@alpineclubindia.com",
+  whatsapp: "918082111967",
   whatsappMessage:
     "Hello Alpine Club India! I'd like to plan a trip with your mountain guides.",
   established: 2012,
@@ -25,10 +25,10 @@ export const site = {
   geo: { lat: 34.0484, lng: 74.3805 },
   hours: "Mon – Sun · 8:00 AM – 7:00 PM IST (ski season: dawn patrol)",
   socials: {
-    instagram: "https://instagram.com/alpineclubindia",
-    facebook: "https://facebook.com/alpineclubindia",
-    youtube: "https://youtube.com/@alpineclubindia",
-    twitter: "https://x.com/alpineclubindia",
+    instagram: "#",
+    facebook: "#",
+    youtube: "#",
+    twitter: "#",
   },
   googleReviewsUrl: "https://share.google/64IbJkTNczkNhRyuT",
   stats: {
@@ -36,7 +36,7 @@ export const site = {
     travellersServed: "3,500+",
     destinations: 3,
     rating: 5.0,
-    reviewsCount: 11,
+    reviewsCount: 10,
   },
   /** Logo micro-copy rendered under the wordmark. */
   logoTagline: "Tours · Treks · Ski",
@@ -183,31 +183,46 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "About Us",
-    href: "/about",
-  },
-  {
     label: "Contact Us",
     href: "/contact",
   },
 ];
 
 /**
- * Footer specific navigation items for Activities and More columns.
+ * Footer Quick Links — Main navigation root links that are missing from the top navbar,
+ * now including Packages and Destinations.
  */
-export const footerActivities = [
-  { title: "Trekking", href: "/activities/trekking" },
-  { title: "Hiking", href: "/activities/hiking" },
-  { title: "Winter Hiking", href: "/activities/winter-hiking" },
-  { title: "Expeditions", href: "/activities/expeditions" },
-];
-
-export const footerMore = [
+export const quickLinksNav = [
+  { title: "About Us", href: "/about" },
+  { title: "Deals & Packages", href: "/packages" },
+  { title: "Destinations", href: "/destinations" },
   { title: "Our Ski Guides", href: "/ski-guides" },
   { title: "Last Minute Trip", href: "/last-minute-trip" },
   { title: "Our Promise", href: "/our-promise" },
-  { title: "About Us", href: "/about" },
   { title: "Contact Us", href: "/contact" },
+];
+
+/**
+ * Footer Ski & Himalayas column links with Gulmarg quick navigation.
+ */
+export const skiAndHimalayasNav = [
+  { title: "Ski Resorts in India", href: "/ski-resorts-in-india" },
+  { title: "Himalayas of India", href: "/himalayas-of-india" },
+  { title: "Gulmarg Ski Resort", href: "/gulmarg-ski-resort" },
+  { title: "About Gulmarg", href: "/gulmarg-ski-resort/about-gulmarg" },
+  { title: "Backcountry Skiing", href: "/gulmarg-ski-resort/backcountry-skiing" },
+  { title: "Ski Touring", href: "/gulmarg-ski-resort/ski-touring" },
+  { title: "Ski Classes", href: "/gulmarg-ski-resort/ski-classes" },
+];
+
+/**
+ * Footer Activities navigation links.
+ */
+export const activitiesNav = [
+  { title: "High-Altitude Trekking", href: "/activities/trekking" },
+  { title: "Himalayan Day Hikes", href: "/activities/hiking" },
+  { title: "Winter Snow Hiking", href: "/activities/winter-hiking" },
+  { title: "Himalayan Expeditions", href: "/activities/expeditions" },
 ];
 
 export const formatINR = (value: number): string =>

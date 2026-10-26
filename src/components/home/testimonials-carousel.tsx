@@ -57,7 +57,7 @@ export function TestimonialsCarousel() {
       >
         {testimonials.map((t) => (
           <div
-            key={`${t.name}-${t.tour}`}
+            key={t.name}
             className="w-full shrink-0 snap-start sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
           >
             <TestimonialCard testimonial={t} className="h-full" />

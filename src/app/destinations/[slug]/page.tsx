@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Mountain, Compass, MapPin, Shield, Calendar, Clock, CheckCircle2, Waves, Wind } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { destinations, getDestinationBySlug } from "@/data/destinations";
-import { site, formatINR } from "@/data/site";
+import { site } from "@/data/site";
 import type { DestinationOption } from "@/data/itinerary-context";
 
 interface DestinationPageProps {
@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!destination) return { title: "Destination not found" };
 
   return {
-    title: `${destination.name} Travel Guide, Peaks & Mountain Expeditions`,
+    title: `${destination.name} Mountain Guide & Expeditions | Alpine Club India`,
     description: destination.shortDescription,
     keywords: [
       destination.name,
@@ -90,64 +90,7 @@ export default async function DestinationPage({ params }: DestinationPageProps) 
         subtitle={destination.tagline}
         image={destination.image}
         imageAlt={destination.imageAlt}
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Destinations", href: "/destinations" },
-          { label: destination.name },
-        ]}
       />
-
-      {/* Quick Facts Strip */}
-      <section className="border-b border-neutral-200 bg-white py-8">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <div className="flex items-center gap-3">
-              <Calendar className="h-5 w-5 text-brand shrink-0" />
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                  Best Time
-                </span>
-                <span className="text-xs font-semibold text-neutral-900 font-heading">
-                  {destination.bestTime}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-brand shrink-0" />
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                  Ideal Duration
-                </span>
-                <span className="text-xs font-semibold text-neutral-900 font-heading">
-                  {destination.idealDuration}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mountain className="h-5 w-5 text-brand shrink-0" />
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                  Starting Price
-                </span>
-                <span className="text-xs font-semibold text-neutral-900 font-heading">
-                  From {formatINR(destination.startingPrice)}
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Compass className="h-5 w-5 text-brand shrink-0" />
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                  Expedition Style
-                </span>
-                <span className="text-xs font-semibold text-neutral-900 font-heading capitalize">
-                  {destination.travelStyles.slice(0, 3).join(", ")}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Narrative Overview */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">

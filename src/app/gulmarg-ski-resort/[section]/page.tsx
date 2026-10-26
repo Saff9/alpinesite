@@ -126,9 +126,15 @@ export async function generateMetadata({
   if (!data) return { title: "Section Not Found" };
 
   return {
-    title: data.title,
+    title: `${data.title} | Gulmarg Ski Resort | Alpine Club India`,
     description: data.subtitle,
     alternates: { canonical: `/gulmarg-ski-resort/${section}` },
+    openGraph: {
+      title: `${data.title} | Gulmarg Ski Resort`,
+      description: data.subtitle,
+      url: `/gulmarg-ski-resort/${section}`,
+      images: [{ url: data.heroImage }],
+    },
   };
 }
 

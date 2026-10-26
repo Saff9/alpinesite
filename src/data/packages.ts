@@ -15,6 +15,7 @@ export interface PackageItem {
   route?: string;
   description: string;
   inclusions?: string[];
+  exclusions?: string[];
   image: string;
 }
 

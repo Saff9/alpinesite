@@ -112,8 +112,9 @@ export function FloatingButtons() {
         {/* Desktop & Laptop: Facebook floating button */}
         <a
           href={site.socials.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={(e) => {
+            if (site.socials.facebook === "#") e.preventDefault();
+          }}
           aria-label="Alpine Club India on Facebook"
           className="hidden lg:flex group h-12 w-12 items-center justify-center rounded-full bg-[#1877F2] text-white shadow-xl shadow-black/25 transition-all duration-300 hover:brightness-110 hover:shadow-2xl hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 sm:h-13 sm:w-13"
         >

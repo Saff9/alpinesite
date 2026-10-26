@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import {
   Clock,
   ExternalLink,
+  Facebook,
   Mail,
   MapPin,
   MessageCircle,
   PhoneCall,
-  Star,
 } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -16,54 +15,19 @@ import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Gulmarg Office & Direct Mountain Team",
+  title: "Contact Us | Gulmarg Mountain Office & Certified Guides | Alpine Club India",
   description:
-    "Call, WhatsApp or email our Gulmarg office on Gulmarg Road, Forest Block. Local mountain guides ready to craft your Himalayan journey.",
+    "Direct contact with Alpine Club India mountain office on Gulmarg Road. Call +91 8082111967 or email info@alpineclubindia.com for custom Gulmarg ski and Himalayan trekking itineraries.",
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact Us | Alpine Club India",
+    description:
+      "Direct contact with our Gulmarg mountain office on Gulmarg Road. Certified guides ready to plan your ski or trekking adventure.",
+    url: "/contact",
+  },
 };
 
 const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`;
-
-const contactFaqs = [
-  {
-    question: "How does booking work, and what are the payment terms?",
-    answer:
-      "You send an enquiry, form, WhatsApp or call, and we reply with a draft itinerary and an honest quote within a day. To confirm, you pay a 25% advance; the balance is due any time before the trip starts. We accept bank transfer, UPI and international wire. You get written confirmations for every stay and transfer before you fly, not vouchers handed to you on arrival.",
-  },
-  {
-    question: "Can I customise an itinerary?",
-    answer:
-      "Yes, every trip we run is private, so customisation is the norm, not an exception. Swap hotels, add a day in Pahalgam, skip a temple, bring your dog (we've done it). Tell us what you loved and hated on past trips; the first draft usually changes twice before you book, and that's a good thing.",
-  },
-  {
-    question: "What's your cancellation policy?",
-    answer:
-      "Full refund if you cancel 21 or more days before departure. 50% refund between 14 and 20 days. Inside 14 days we recover what we can from hotels and transport, in thirteen years we've never kept a rupee that was recoverable. Peak-date houseboats and permits sometimes carry their own rules, and we tell you upfront, not after you cancel.",
-  },
-  {
-    question: "Do I need travel insurance?",
-    answer:
-      "For high-altitude and winter trips, Ladakh, Apharwat backcountry, Gulmarg powder skiing, we recommend it strongly and help you arrange it within a day; we work with insurers who actually pay out in India. We will never pretend it's compulsory when it isn't.",
-  },
-  {
-    question: "How are you different from other agencies?",
-    answer:
-      "We're the local team, not a reseller. Your driver, guide and boatman work with us year-round, and your money stays in the valley instead of a call-centre chain. If a hotel disappoints, we hear about it on the same evening's check-in call and move you the next morning, not after you're home writing a review.",
-  },
-];
-
-const contactFaqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: contactFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
 
 const contactJsonLd = {
   "@context": "https://schema.org",
@@ -208,6 +172,28 @@ export default function ContactPage() {
               <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
                 <span
                   aria-hidden="true"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-xs"
+                >
+                  <Facebook className="h-5 w-5" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm font-semibold text-foreground">Facebook</h3>
+                  <a
+                    href="#"
+                    aria-label="Alpine Club India on Facebook"
+                    className="mt-1 block font-heading text-base font-semibold text-brand transition-colors hover:text-brand-deep hover:underline sm:text-lg cursor-default"
+                  >
+                    Alpine Club India
+                  </a>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Connect with our mountain community on Facebook.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 shadow-sm sm:gap-4 sm:p-5">
+                <span
+                  aria-hidden="true"
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand"
                 >
                   <Clock className="h-5 w-5" />
@@ -235,7 +221,7 @@ export default function ContactPage() {
                     Select your preferred destinations, activities, group size, and dates.
                   </p>
                 </div>
-                <ItineraryButton className="shrink-0 rounded-none bg-brand px-5 py-2.5 font-heading text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep cursor-pointer transition-colors">
+                <ItineraryButton className="shrink-0 rounded-xl bg-brand px-5 py-2.5 font-heading text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep cursor-pointer transition-colors">
                   Open Itinerary Planner
                 </ItineraryButton>
               </div>
@@ -245,69 +231,45 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="bg-sand py-14 sm:py-20" aria-labelledby="contact-faqs">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+      {/* Map Preview Window */}
+      <section className="py-14 sm:py-20" aria-labelledby="map-location">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <SectionHeading
-            eyebrow="Before you write"
-            title="Frequently asked questions"
-            description="The five things almost everyone asks before booking. If yours isn't here, ask us directly, no question is too small."
+            eyebrow="Our Office Location"
+            title="Find Us in Gulmarg"
+            description="Located on Gulmarg Road in the heart of Forest Block, Jammu & Kashmir."
             align="center"
           />
-          <div id="contact-faqs" className="rounded-2xl border border-border bg-card px-4 py-2 shadow-sm sm:px-6">
-            <Accordion type="single" collapsible className="w-full">
-              {contactFaqs.map((faq, index) => (
-                <AccordionItem key={faq.question} value={`faq-${index}`}>
-                  <AccordionTrigger className="py-4 text-left font-heading text-sm font-semibold hover:no-underline sm:py-5 sm:text-base">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* Google Business Profile */}
-      <section className="py-14 sm:py-20" aria-labelledby="google-business-profile">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <SectionHeading
-            eyebrow="Find us on Google"
-            title="Our Google Business Profile"
-            description="Check our verified traveller reviews, directions, and live operating hours on Google."
-            align="center"
-          />
-          <div
-            id="google-business-profile"
-            className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-border bg-card p-6 text-center shadow-md sm:flex-row sm:p-8 sm:text-left"
-          >
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800 border border-amber-200">
-                <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-500" aria-hidden="true" />
-                <span>{site.stats.rating.toFixed(1)} ★ Rated on Google ({site.stats.reviewsCount} Reviews)</span>
-              </div>
-              <h3 className="font-heading text-xl font-extrabold uppercase text-foreground sm:text-2xl">
-                {site.name}
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                {site.address.full}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {site.hours} · {site.phone}
-              </p>
+          <div className="mt-8 overflow-hidden rounded-3xl border border-border bg-card shadow-md">
+            <div className="relative h-[380px] sm:h-[450px] w-full">
+              <iframe
+                title="Gulmarg Guides Agency - Google Maps Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2991.3984517593285!2d74.3854698!3d34.0540562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4e23407ba32426ab%3A0x9b6371e0793cac9!2sGulmarg%20guides%20agency!5e1!3m2!1sen!2sin!4v1793016487086!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="h-full w-full"
+              />
             </div>
-            <a
-              href={site.googleReviewsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-12 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-brand px-6 font-heading text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-brand-deep sm:w-auto"
-            >
-              <span>Open Google Profile</span>
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            </a>
+            
+            <div className="flex flex-col items-center justify-between gap-4 border-t border-border bg-neutral-50/70 p-4 sm:flex-row sm:px-6">
+              <div className="flex items-center gap-2 text-xs font-medium text-neutral-600">
+                <MapPin className="h-4 w-4 text-brand shrink-0" aria-hidden="true" />
+                <span>{site.address.full}</span>
+              </div>
+              <a
+                href={site.googleReviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-heading text-xs font-bold uppercase tracking-wider text-brand hover:text-brand-deep hover:underline"
+              >
+                <span>Open in Google Maps</span>
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -315,10 +277,6 @@ export default function ContactPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactFaqJsonLd) }}
       />
     </>
   );

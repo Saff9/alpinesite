@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Mountain, Compass, Shield, CheckCircle2, Calendar, Phone, Clock, Wind } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { Button } from "@/components/ui/button";
 import { ItineraryButton } from "@/components/forms/itinerary-button";
 import { site } from "@/data/site";
 import type { ActivityOption } from "@/data/itinerary-context";
@@ -13,31 +10,27 @@ interface ActivityPageProps {
   params: Promise<{ activity: string }>;
 }
 
-const activityData: Record<
-  string,
-  {
-    title: string;
-    subtitle: string;
-    heroImage: string;
-    duration: string;
-    bestSeason: string;
-    difficulty: string;
-    description: string[];
-    highlights: string[];
-    gearNeeded: string[];
-    destinationFilter: string;
-  }
-> = {
+interface ActivityDetail {
+  title: string;
+  subtitle: string;
+  leadBold?: string;
+  heroImage: string;
+  description: string[];
+  highlights: string[];
+  gearNeeded: string[];
+  destinationFilter: string;
+}
+
+const activityData: Record<string, ActivityDetail> = {
   trekking: {
-    title: "High-Altitude Himalayan Trekking",
-    subtitle: "Classic pass crossings, glacial tarns, and front-row massifs in Kashmir, Ladakh, and Sikkim.",
+    title: "Trekking",
+    subtitle: "The Indian Himalayas are a true paradise for alpine enthusiasts.",
+    leadBold: "The Indian Himalayas are a true paradise for alpine enthusiasts.",
     heroImage: "/images/destinations/sikkim/kangchenjunga.jpg",
-    duration: "6 – 9 Days",
-    bestSeason: "June – October (Kashmir/Ladakh); April – May & Oct – Nov (Sikkim)",
-    difficulty: "Moderate to Strenuous (up to 4,940 m)",
     description: [
-      "Himalayan trekking with Alpine Club India is built on genuine mountain stewardship. We lead small, high-safety expeditions through some of the most dramatic terrain on Earth — from the turquoise tarns of the Kashmir Great Lakes to the colossal Kangchenjunga massif in Sikkim and the arid canyons of the Markha Valley.",
-      "Every trek is staffed by certified Wilderness First Responder mountain leaders, experienced camp cooks who serve fresh hot meals, and reliable pack animal support. We pace daily ascents to ensure proper acclimatisation and maximum enjoyment of the high alpine landscapes.",
+      "The Indian Himalayas represent an extraordinary world of mountains, shaped by ancient geological forces, glaciers, rivers and changing climatic conditions. Stretching from the western Himalayan landscapes of Kashmir and Ladakh to the eastern mountains of Sikkim and Arunachal Pradesh, this vast region contains some of India's most spectacular natural environments.",
+      "High mountain summits rise above deep valleys, while alpine lakes, coniferous forests, wildflower meadows and glacier-fed rivers create diverse landscapes. These mountain environments support rich biodiversity and provide opportunities for trekking, hiking, skiing, mountaineering and high-altitude exploration.",
+      "Alpine Club India introduces the major Himalayan mountain regions, highlighting their geographical features, important peaks, natural attractions and adventure potential.",
     ],
     highlights: [
       "Goechala Pass (4,940 m) eye-level view of Kangchenjunga",
@@ -56,15 +49,12 @@ const activityData: Record<
     destinationFilter: "sikkim",
   },
   hiking: {
-    title: "Himalayan Day Hikes & Ridge Walks",
-    subtitle: "Accessible alpine meadow hikes, pine forest trails, and panoramic view ridges for all fitness levels.",
+    title: "Hiking",
+    subtitle: "One trail. Endless possibilities.",
+    leadBold: "One trail. Endless possibilities.",
     heroImage: "/images/destinations/kashmir/pahalgam.jpg",
-    duration: "1 – 4 Days",
-    bestSeason: "April – November",
-    difficulty: "Easy to Moderate (up to 3,200 m)",
     description: [
-      "You don't need two weeks of expedition time to experience Himalayan magic. Our guided day hikes take you into untouched cedar forests, cascading waterfalls, and rolling flower meadows around Gulmarg, Pahalgam, and Sonamarg.",
-      "Perfect for families, couples, and casual walkers, our hikes include private transfers, packed artisan lunches, and local nature guides who share stories of local flora, wildlife, and Himalayan folklore.",
+      "The Himalayas of India offer everything a hiker could dream of, from scenic mountain trails and lush green valleys to snow-capped peaks, pristine alpine lakes, and breathtaking panoramic views. Whether you're a beginner seeking peaceful nature walks or an experienced adventurer looking for challenging high-altitude treks, the Indian Himalayas promise unforgettable experiences at every turn. Discover the beauty of the mountains, immerse yourself in nature, and embark on an adventure that will stay with you forever.",
     ],
     highlights: [
       "Aru to Lidderwat meadow day hike in Pahalgam",
@@ -86,9 +76,6 @@ const activityData: Record<
     title: "Winter Snow Hiking & Snowshoeing",
     subtitle: "Silent frozen pine forests, snowshoe ridge walks, and magical sub-zero Himalayan landscapes.",
     heroImage: "/images/destinations/kashmir/gulmarg.jpg",
-    duration: "1 – 5 Days",
-    bestSeason: "December – March",
-    difficulty: "Moderate (snow-pack walking)",
     description: [
       "When 13+ metres of snow blankets Gulmarg and the higher valleys, the mountains take on a profound, serene stillness. Winter hiking and snowshoeing allows non-skiers and adventure enthusiasts to access frozen waterfalls, high pine glades, and dramatic ridge viewpoints.",
       "We provide modern MSR snowshoes, insulated gaiters, and adjustable poles. Guided by our winter mountain leaders, you will follow safe routes away from avalanche paths, ending your day around blazing wood bonfires with hot kahwa.",
@@ -113,9 +100,6 @@ const activityData: Record<
     title: "Trans-Himalayan Expeditions & Safaris",
     subtitle: "Overland 4x4 safaris, high-pass motorcycle tours, and remote mountaineering expeditions.",
     heroImage: "/images/tours/ladakh-bike-expedition/cover.jpg",
-    duration: "8 – 12 Days",
-    bestSeason: "June – September",
-    difficulty: "Challenging (high-altitude road & terrain)",
     description: [
       "For those who crave vast horizons and remote wild country. Our expeditions cross the highest motorable passes on the planet, including Khardung La (17,582 ft) and Chang La (17,590 ft), skirting high-altitude saltwater lakes like Pangong Tso and Tso Moriri.",
       "Choose between riding Royal Enfield Himalayan motorcycles with dedicated backup mechanics or traveling in expedition-prepared 4x4 SUVs with oxygen support and vetted high-altitude logistics.",
@@ -150,9 +134,15 @@ export async function generateMetadata({
   if (!data) return { title: "Activity Not Found" };
 
   return {
-    title: data.title,
+    title: `${data.title} in the Himalayas | Alpine Club India`,
     description: data.subtitle,
     alternates: { canonical: `/activities/${activity}` },
+    openGraph: {
+      title: `${data.title} | Alpine Club India`,
+      description: data.subtitle,
+      url: `/activities/${activity}`,
+      images: [{ url: data.heroImage }],
+    },
   };
 }
 
@@ -161,10 +151,6 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
   const data = activityData[activity];
   if (!data) notFound();
 
-  const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    `Hello Alpine Club India! I want to inquire about your ${data.title} activities.`
-  )}`;
-
   return (
     <>
       <PageHeader
@@ -172,52 +158,7 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
         subtitle={data.subtitle}
         image={data.heroImage}
         imageAlt={data.title}
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Activities", href: "/activities" },
-          { label: data.title },
-        ]}
       />
-
-      {/* Quick Specs */}
-      <section className="border-b border-neutral-200 bg-white py-8">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                Typical Duration
-              </span>
-              <span className="text-sm font-bold text-neutral-900 font-heading">
-                {data.duration}
-              </span>
-            </div>
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                Best Season
-              </span>
-              <span className="text-sm font-bold text-neutral-900 font-heading">
-                {data.bestSeason}
-              </span>
-            </div>
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                Difficulty Level
-              </span>
-              <span className="text-sm font-bold text-neutral-900 font-heading">
-                {data.difficulty}
-              </span>
-            </div>
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block">
-                Guiding Ratio
-              </span>
-              <span className="text-sm font-bold text-brand font-heading">
-                Certified 1:4 Ratio
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Description & Highlights */}
       <section className="py-16 sm:py-20 bg-white">
@@ -228,9 +169,15 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
                 Activity Overview
               </span>
               <h2 className="mt-3 font-heading text-3xl font-extrabold text-neutral-950 sm:text-4xl">
-                Experience the Mountain First-Hand
+                {data.title}
               </h2>
+
               <div className="mt-6 space-y-4 text-base text-neutral-600 font-poppins leading-relaxed">
+                {data.leadBold && (
+                  <p className="font-heading text-lg sm:text-xl font-bold text-neutral-950 leading-snug">
+                    {data.leadBold}
+                  </p>
+                )}
                 {data.description.map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}
@@ -243,7 +190,7 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
                       ? "trekking"
                       : (activity as ActivityOption)
                   }
-                  className="inline-flex items-center gap-2 rounded-none bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep font-heading cursor-pointer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:bg-brand-deep font-heading cursor-pointer"
                 >
                   Inquire This Activity
                   <ArrowRight className="h-4 w-4" />
@@ -254,7 +201,7 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
                       ? "trekking"
                       : (activity as ActivityOption)
                   }
-                  className="inline-flex items-center gap-2 rounded-none border border-neutral-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-wider text-neutral-900 hover:bg-neutral-100 font-heading cursor-pointer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-neutral-300 bg-white px-6 py-3 text-xs font-bold uppercase tracking-wider text-neutral-900 hover:bg-neutral-100 font-heading cursor-pointer"
                 >
                   Custom Itinerary
                 </ItineraryButton>

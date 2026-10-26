@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { CheckCircle2, Loader2, Send, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,6 +17,7 @@ import {
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { site } from "@/data/site";
 import { packagesData } from "@/data/packages";
+import { cn } from "@/lib/utils";
 import {
   getItineraryContextByPath,
   DESTINATIONS,
@@ -386,70 +387,112 @@ Requirements & Notes: ${notes || "None"}`;
                 </Select>
               </div>
 
-              {/* Row 1: Destination & Activity (Main only + Custom Itinerary) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <Label
-                    htmlFor="destination"
-                    className="font-heading text-xs font-bold uppercase tracking-wider text-neutral-900 block mb-2.5"
-                  >
-                    Destination
-                  </Label>
-                  <Select
-                    value={destination}
-                    onValueChange={(val) => setDestination(val as DestinationOption)}
-                  >
-                    <SelectTrigger
-                      id="destination"
-                      className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
-                    >
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="rounded-lg border-neutral-300">
-                      {DESTINATIONS.map((dest) => (
-                        <SelectItem
-                          key={dest.value}
-                          value={dest.value}
-                          className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+              {/* Row 1: Destination & Activity (Locked for specific packages, fully customizable for custom itinerary) */}
+              {(() => {
+                const isPackageLocked = selectedPackage !== "custom";
+                return (
+                  <div className="space-y-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <Label
+                          htmlFor="destination"
+                          className="font-heading text-xs font-bold uppercase tracking-wider text-neutral-900 flex items-center justify-between mb-2.5"
                         >
-                          {dest.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                          <span>Destination</span>
+                          {isPackageLocked && (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-normal text-neutral-500 lowercase tracking-normal">
+                              <Lock className="h-3 w-3 text-neutral-400" /> locked for package
+                            </span>
+                          )}
+                        </Label>
+                        <Select
+                          value={destination}
+                          onValueChange={(val) => setDestination(val as DestinationOption)}
+                          disabled={isPackageLocked}
+                        >
+                          <SelectTrigger
+                            id="destination"
+                            className={cn(
+                              "h-12 rounded-lg text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand",
+                              isPackageLocked
+                                ? "border-neutral-200 bg-neutral-100/80 text-neutral-700 cursor-not-allowed opacity-90"
+                                : "border-neutral-300 bg-white text-neutral-900"
+                            )}
+                          >
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="rounded-lg border-neutral-300">
+                            {DESTINATIONS.map((dest) => (
+                              <SelectItem
+                                key={dest.value}
+                                value={dest.value}
+                                className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                              >
+                                {dest.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                <div>
-                  <Label
-                    htmlFor="activity"
-                    className="font-heading text-xs font-bold uppercase tracking-wider text-neutral-900 block mb-2.5"
-                  >
-                    Activity
-                  </Label>
-                  <Select
-                    value={activity}
-                    onValueChange={(val) => setActivity(val as ActivityOption)}
-                  >
-                    <SelectTrigger
-                      id="activity"
-                      className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
-                    >
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="rounded-lg border-neutral-300">
-                      {ACTIVITIES.map((act) => (
-                        <SelectItem
-                          key={act.value}
-                          value={act.value}
-                          className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                      <div>
+                        <Label
+                          htmlFor="activity"
+                          className="font-heading text-xs font-bold uppercase tracking-wider text-neutral-900 flex items-center justify-between mb-2.5"
                         >
-                          {act.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
+                          <span>Activity</span>
+                          {isPackageLocked && (
+                            <span className="inline-flex items-center gap-1 text-[11px] font-normal text-neutral-500 lowercase tracking-normal">
+                              <Lock className="h-3 w-3 text-neutral-400" /> locked for package
+                            </span>
+                          )}
+                        </Label>
+                        <Select
+                          value={activity}
+                          onValueChange={(val) => setActivity(val as ActivityOption)}
+                          disabled={isPackageLocked}
+                        >
+                          <SelectTrigger
+                            id="activity"
+                            className={cn(
+                              "h-12 rounded-lg text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand",
+                              isPackageLocked
+                                ? "border-neutral-200 bg-neutral-100/80 text-neutral-700 cursor-not-allowed opacity-90"
+                                : "border-neutral-300 bg-white text-neutral-900"
+                            )}
+                          >
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent className="rounded-lg border-neutral-300">
+                            {ACTIVITIES.map((act) => (
+                              <SelectItem
+                                key={act.value}
+                                value={act.value}
+                                className="rounded-md py-2.5 text-xs font-medium cursor-pointer hover:bg-neutral-100"
+                              >
+                                {act.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                    {isPackageLocked && (
+                      <p className="text-[11px] font-poppins text-neutral-500 pt-1">
+                        Destination &amp; activity are pre-set for this package. Switch to{" "}
+                        <button
+                          type="button"
+                          onClick={() => handlePackageSelect("custom")}
+                          className="text-brand font-semibold underline hover:text-brand-deep cursor-pointer"
+                        >
+                          Custom Tailor-Made Itinerary
+                        </button>{" "}
+                        to select any combination.
+                      </p>
+                    )}
+                  </div>
+                );
+              })()}
 
               {/* Row 2: Duration, Group Size & Travel Dates */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

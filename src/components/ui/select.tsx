@@ -9,6 +9,7 @@ interface SelectContextType {
   onValueChange?: (val: string) => void;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
+  disabled?: boolean;
   triggerId?: string;
   selectedLabel: string;
   setSelectedLabel: (label: string) => void;
@@ -19,10 +20,12 @@ const SelectContext = React.createContext<SelectContextType | null>(null);
 export function Select({
   value = "",
   onValueChange,
+  disabled = false,
   children,
 }: {
   value?: string;
   onValueChange?: (val: string) => void;
+  disabled?: boolean;
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -33,34 +36,46 @@ export function Select({
       value={{
         value,
         onValueChange,
-        isOpen,
-        setIsOpen,
+        isOpen: disabled ? false : isOpen,
+        setIsOpen: (open) => {
+          if (!disabled) setIsOpen(open);
+        },
+        disabled,
         selectedLabel,
         setSelectedLabel,
       }}
     >
-      <div className="relative inline-block w-full">{children}</div>
+      <div className={cn("relative inline-block w-full", disabled && "cursor-not-allowed opacity-75")}>
+        {children}
+      </div>
     </SelectContext.Provider>
   );
 }
 
 export function SelectTrigger({
   id,
+  disabled,
   className,
   children,
 }: {
   id?: string;
+  disabled?: boolean;
   className?: string;
   children?: React.ReactNode;
 }) {
   const ctx = React.useContext(SelectContext);
   if (!ctx) return null;
 
+  const isDisabled = disabled ?? ctx.disabled ?? false;
+
   return (
     <button
       id={id}
       type="button"
-      onClick={() => ctx.setIsOpen(!ctx.isOpen)}
+      disabled={isDisabled}
+      onClick={() => {
+        if (!isDisabled) ctx.setIsOpen(!ctx.isOpen);
+      }}
       className={cn(
         "border-input flex h-10 w-full items-center justify-between rounded-md border bg-background px-3 py-2 text-sm shadow-xs transition-colors",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",

@@ -91,7 +91,7 @@ export function Navbar() {
                     onMouseEnter={handleLinkHoverNoDropdown}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "font-heading relative whitespace-nowrap rounded-lg px-2.5 py-2 text-[11px] font-bold uppercase tracking-wider transition-all duration-200 xl:px-3.5 xl:text-xs",
+                      "font-heading relative whitespace-nowrap rounded-lg px-3 py-2 text-[13.5px] font-bold uppercase tracking-wider transition-all duration-200 xl:px-4 xl:text-[14.5px]",
                       active
                         ? "bg-neutral-100 text-brand"
                         : "text-neutral-800 hover:bg-neutral-100 hover:text-brand",
@@ -114,7 +114,7 @@ export function Navbar() {
                     aria-expanded={isDropdownOpen}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "font-heading inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-[11px] font-bold uppercase tracking-wider transition-all duration-200 outline-none xl:px-3.5 xl:text-xs",
+                      "font-heading inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg px-3 py-2 text-[13.5px] font-bold uppercase tracking-wider transition-all duration-200 outline-none xl:px-4 xl:text-[14.5px]",
                       isDropdownOpen || active
                         ? "bg-neutral-100 text-brand"
                         : "text-neutral-800 hover:bg-neutral-100 hover:text-brand",
@@ -123,7 +123,7 @@ export function Navbar() {
                     <span>{item.label}</span>
                     <ChevronDown
                       className={cn(
-                        "h-3.5 w-3.5 shrink-0 transition-transform duration-200",
+                        "h-4 w-4 shrink-0 transition-transform duration-200",
                         isDropdownOpen ? "rotate-180 text-brand" : "text-neutral-400 group-hover:text-brand",
                       )}
                     />
@@ -167,7 +167,7 @@ export function Navbar() {
                                   <Link
                                     href={sub.href}
                                     onClick={() => setActiveDropdown(null)}
-                                    className="block rounded-lg py-1.5 px-2.5 font-poppins font-normal text-[13px] text-neutral-800 transition-colors hover:bg-neutral-100 hover:text-brand leading-snug"
+                                    className="block rounded-lg py-1.5 px-2.5 font-poppins font-medium text-[13px] text-neutral-800 transition-colors hover:bg-neutral-100 hover:text-brand leading-snug"
                                   >
                                     {sub.title}
                                   </Link>
@@ -267,7 +267,7 @@ export function Navbar() {
                             onClick={() => setOpen(false)}
                             aria-current={isActive(item.href) ? "page" : undefined}
                             className={cn(
-                              "font-heading block rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs font-bold uppercase tracking-wider transition-colors",
+                              "font-heading block rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-[14px] font-bold uppercase tracking-wider transition-colors",
                               isActive(item.href)
                                 ? "bg-brand text-white"
                                 : "text-neutral-900 hover:bg-neutral-100 hover:text-brand",
@@ -284,7 +284,7 @@ export function Navbar() {
                             type="button"
                             onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
                             className={cn(
-                              "font-heading flex w-full items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs font-bold uppercase tracking-wider text-left transition-colors",
+                              "font-heading flex w-full items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 text-[14px] font-bold uppercase tracking-wider text-left transition-colors",
                               isExpanded ? "bg-neutral-100 text-brand" : "bg-white text-neutral-900 hover:bg-neutral-50",
                             )}
                           >
@@ -316,7 +316,7 @@ export function Navbar() {
                                       <Link
                                         href={sub.href}
                                         onClick={() => setOpen(false)}
-                                        className="block rounded-lg py-2 px-2.5 font-poppins font-normal text-[14px] text-neutral-900 hover:bg-neutral-200/70 hover:text-brand transition-colors"
+                                        className="block rounded-lg py-2 px-2.5 font-poppins font-medium text-[13px] text-neutral-900 hover:bg-neutral-200/70 hover:text-brand transition-colors"
                                       >
                                         {sub.title}
                                       </Link>
@@ -342,8 +342,9 @@ export function Navbar() {
                     </Button>
                     <a
                       href={site.socials.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (site.socials.facebook === "#") e.preventDefault();
+                      }}
                       className="flex h-11 w-full items-center justify-center gap-2.5 rounded-xl border border-neutral-200 bg-neutral-50 px-4 font-heading text-xs font-bold uppercase tracking-wider text-neutral-800 transition-colors hover:border-[#1877F2] hover:bg-[#1877F2]/5 hover:text-[#1877F2]"
                     >
                       <Facebook className="h-4 w-4 text-[#1877F2]" />

@@ -19,10 +19,16 @@ import { site } from "@/data/site";
 import { testimonials } from "@/data/testimonials";
 
 export const metadata: Metadata = {
-  title: "About Us | Local Mountain Guides Born in Gulmarg",
+  title: "About Us | Local Mountain Guides Born in Gulmarg | Alpine Club India",
   description:
-    "Meet Alpine Club India, a ten-person team of mountain guides based in Gulmarg, Kashmir, running ski weeks and private Himalayan journeys since 2012. Local guides, honest pricing, one phone that always answers.",
+    "Meet Alpine Club India, a dedicated team of mountain guides based in Gulmarg, Kashmir, running backcountry ski weeks and private Himalayan journeys since 2012. Local guides, honest pricing, safety first.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us | Alpine Club India",
+    description:
+      "Meet Alpine Club India: local mountain guides based in Gulmarg, running backcountry ski weeks and Himalayan expeditions since 2012.",
+    url: "/about",
+  },
 };
 
 const values = [
@@ -315,7 +321,7 @@ export default function AboutPage() {
             <div className="mt-8 columns-1 gap-5 sm:columns-2 lg:columns-3">
               {testimonials.map((testimonial) => (
                 <TestimonialCard
-                  key={`${testimonial.name}-${testimonial.tour}`}
+                  key={testimonial.name}
                   testimonial={testimonial}
                   className="mb-5 break-inside-avoid"
                 />

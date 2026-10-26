@@ -1,66 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Clock, Zap, Phone, ShieldCheck, CheckCircle2, MessageCircle, AlertCircle, Mountain } from "lucide-react";
+import { Zap, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Last Minute Trips | Gulmarg Powder & Kashmir Fast-Track",
+  title: "Last Minute Tours | Ready. Set. Explore! | Alpine Club India",
   description:
-    "Planning a sudden trip to Gulmarg, Kashmir, or Ladakh? We organize fast-track airport pickups, slope-side hotels, ski passes, and local mountain guides on short notice.",
+    "We know these days it is not always possible to book your next adventure months in advance. Spontaneous last-minute departures with certified local mountain guides.",
   alternates: { canonical: "/last-minute-trip" },
   openGraph: {
-    title: "Last Minute Trips | Gulmarg Powder & Kashmir Fast-Track",
+    title: "Last Minute Tours | Alpine Club India",
     description:
-      "Spontaneous departures for Gulmarg powder dumps and Kashmir getaways with 24/7 on-ground mountain assistance.",
+      "Ready. Set. Explore! Grab your gear and chase the extraordinary with certified local Himalayan mountain guides.",
     url: "/last-minute-trip",
   },
 };
-
-const quickPackages = [
-  {
-    title: "Gulmarg 4-Day Powder Blitz",
-    tagline: "Chase the storm cycle with zero downtime",
-    duration: "4 Days / 3 Nights",
-    idealFor: "Skiers & snowboarders targeting fresh snowfall",
-    includes: [
-      "Airport pickup at Srinagar & heated 4x4 snow-chain transfer to Gulmarg",
-      "Heated slope-side lodge accommodation with breakfast & dinner",
-      "Priority ski gear rental fitting upon arrival",
-      "Certified local ski guide for 3 full powder days",
-    ],
-    price: "₹34,999",
-  },
-  {
-    title: "Kashmir 5-Day Quick Escape",
-    tagline: "Houseboat tranquility and alpine meadows",
-    duration: "5 Days / 4 Nights",
-    idealFor: "Couples and families looking for a spontaneous getaway",
-    includes: [
-      "1 night heritage cedarwood Dal Lake houseboat with sunrise shikara",
-      "2 nights in Gulmarg with Gondola cable car excursion",
-      "1 night in Pahalgam Lidder riverside resort",
-      "Dedicated private vehicle and valley driver throughout",
-    ],
-    price: "₹26,999",
-  },
-  {
-    title: "Weekend Ski / Snow Play (2–3 Days)",
-    tagline: "Fast mountain recharge from Delhi, Mumbai, or Bangalore",
-    duration: "3 Days / 2 Nights",
-    idealFor: "Busy professionals needing a fast mountain fix",
-    includes: [
-      "Immediate airport connection to Gulmarg meadow (90 mins)",
-      "Kongdoori Phase 1 snow experience & Gondola passes",
-      "Heated hotel room with mountain views",
-      "Local guide assistance for sledding, skiing, or snowshoeing",
-    ],
-    price: "₹18,999",
-  },
-];
 
 export default function LastMinuteTripPage() {
   const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
@@ -70,11 +25,10 @@ export default function LastMinuteTripPage() {
   return (
     <>
       <PageHeader
-        title="Last Minute Trip"
-        subtitle="Spontaneous departures, storm-chasing powder alerts, and same-week bookings handled directly by our on-ground team in Gulmarg."
+        title="Last Minute Tours"
+        subtitle="“Ready. Set. Explore!” Grab your gear and chase the extraordinary."
         image="/images/hero/gulmarg-hero.jpg"
         imageAlt="Snow covered peaks under dramatic skies"
-        crumbs={[{ label: "Home", href: "/" }, { label: "Last Minute Trip" }]}
       />
 
       {/* Urgent Dispatch Banner */}
@@ -96,38 +50,44 @@ export default function LastMinuteTripPage() {
         </div>
       </section>
 
-      {/* Why Last Minute with Us */}
+      {/* Main Content Area */}
       <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
               <span className="font-heading text-xs font-bold uppercase tracking-widest text-brand">
-                Zero Middlemen · Ground Operators
+                “Ready. Set. Explore!”
               </span>
               <h2 className="mt-3 font-heading text-3xl font-extrabold text-neutral-950 sm:text-4xl">
-                How We Make Last-Minute Bookings Effortless
+                Grab your gear and chase the extraordinary.
               </h2>
-              <p className="mt-4 text-base text-neutral-600 leading-relaxed font-poppins">
-                Most agencies fail on last-minute mountain trips because they rely on third-party brokers. We are located right here in Gulmarg and Srinagar.
-              </p>
+              
+              <div className="mt-5 space-y-3.5 text-base text-neutral-600 leading-relaxed font-poppins">
+                <p>
+                  We know these days it is not always possible to book your next adventure months in advance. So for the spontaneous traveler who prefers – or needs – to travel at the last minute: pack your bags, leave your worries behind, and let the road lead you to extraordinary destinations.
+                </p>
+                <p>
+                  Join our best local guides on one of our trips. We’ve created a selection of late getaways to inspire you.
+                </p>
+              </div>
 
               <div className="mt-6 space-y-4 font-poppins text-sm text-neutral-700">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-brand mt-0.5 shrink-0" />
                   <div>
-                    <strong className="text-neutral-950">Immediate Room Allocations:</strong> We hold direct relationships and reserved winter inventory with top slope-side hotels and heritage houseboats.
+                    <strong className="text-neutral-950">Immediate Room Allocations:</strong> Direct reserved inventory with top slope-side alpine hotels and heritage houseboats.
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-brand mt-0.5 shrink-0" />
                   <div>
-                    <strong className="text-neutral-950">Dedicated 4x4 Winter Fleet:</strong> Equipped with chains and snow-tested drivers waiting at Srinagar airport to safely climb Tangmarg road even during blizzards.
+                    <strong className="text-neutral-950">Dedicated 4x4 Winter Fleet:</strong> Equipped with snow chains and tested local drivers waiting at Srinagar airport.
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-brand mt-0.5 shrink-0" />
                   <div>
-                    <strong className="text-neutral-950">Instant Permit &amp; Pass Support:</strong> Fast-track advice for Gondola tickets, Ladakh travel permits, or Sikkim inner-line permits without bureaucratic delays.
+                    <strong className="text-neutral-950">Instant Permit &amp; Gondola Pass Support:</strong> Direct on-ground facilitation without middleman delays.
                   </div>
                 </div>
               </div>
@@ -152,6 +112,7 @@ export default function LastMinuteTripPage() {
               </div>
             </div>
 
+            {/* Existing Contact / Instant Availability Form */}
             <div className="rounded-3xl border border-neutral-200 bg-sand p-7 sm:p-9 shadow-sm">
               <h3 className="font-heading text-xl font-extrabold text-neutral-950">
                 Request Instant Availability
@@ -161,7 +122,7 @@ export default function LastMinuteTripPage() {
               </p>
 
               <form
-                action="https://formsubmit.co/imtiyazahmadkumar36@gmail.com"
+                action={`https://formsubmit.co/${site.email}`}
                 method="POST"
                 className="mt-6 space-y-4 text-left"
               >
@@ -231,67 +192,6 @@ export default function LastMinuteTripPage() {
                 </Button>
               </form>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ready-to-Go Packages */}
-      <section className="bg-sand py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6">
-          <SectionHeading
-            title="Fast-Track Last-Minute Packages"
-            description="Pre-arranged logistics ready to roll within hours of your confirmation."
-          />
-
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {quickPackages.map((pkg) => (
-              <div
-                key={pkg.title}
-                className="rounded-2xl border border-neutral-200 bg-white p-7 shadow-xs flex flex-col justify-between"
-              >
-                <div>
-                  <span className="inline-flex rounded-lg bg-amber-100 px-3 py-1 font-heading text-xs font-bold uppercase tracking-wider text-amber-900">
-                    {pkg.duration}
-                  </span>
-                  <h3 className="mt-4 font-heading text-xl font-bold text-neutral-950">
-                    {pkg.title}
-                  </h3>
-                  <p className="mt-1 text-xs text-neutral-500 italic font-poppins">
-                    {pkg.tagline}
-                  </p>
-                  <div className="mt-4 font-poppins text-xs font-semibold text-brand">
-                    Ideal for: {pkg.idealFor}
-                  </div>
-                  <ul className="mt-5 space-y-2.5 text-xs font-poppins text-neutral-700">
-                    {pkg.includes.map((inc) => (
-                      <li key={inc} className="flex items-start gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-brand mt-0.5 shrink-0" />
-                        <span>{inc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-8 pt-5 border-t border-neutral-100 flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block">
-                      Starting From
-                    </span>
-                    <span className="font-heading text-lg font-extrabold text-neutral-950">
-                      {pkg.price}
-                    </span>
-                  </div>
-                  <a
-                    href={whatsappHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-xl bg-brand px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep"
-                  >
-                    Book Now
-                  </a>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
