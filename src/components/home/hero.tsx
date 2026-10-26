@@ -44,13 +44,11 @@ export function Hero() {
         />
 
         <div className="absolute inset-x-0 bottom-0 flex flex-col items-center p-6 text-center sm:p-8 md:p-10 lg:items-start lg:p-12 lg:text-left">
-          <h1 className="max-w-2xl font-heading text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-[3.6rem]">
-            Gulmarg&rsquo;s own mountain guides.
+          <h1 className="max-w-3xl font-heading text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-[3.4rem]">
+            Experience The Himalayas Of India.
           </h1>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-200 drop-shadow-sm sm:mt-4 sm:text-base md:text-lg">
-            We grew up on these slopes, with powder laps off Apharwat, gondola
-            mornings, houseboat evenings on Dal Lake, and high passes in Ladakh.
-            Experience the Himalayas guided by locals who know every trail and descent.
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-200 drop-shadow-sm sm:mt-4 font-poppins">
+            AlpineClubIndia.com is created for travellers from all over the world who see the mountains as a place of inner peace , challenge, reconnect with nature and experience the Himalayas of India .
           </p>
 
           <div className="mt-7 flex w-full flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto lg:justify-start">

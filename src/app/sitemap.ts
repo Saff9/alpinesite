@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 import { destinations } from "@/data/destinations";
+import { packagesData } from "@/data/packages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: site.url, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${site.url}/packages`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
     { url: `${site.url}/activities`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${site.url}/activities/trekking`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${site.url}/activities/hiking`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
@@ -32,5 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: d.popular ? 0.8 : 0.7,
   }));
 
-  return [...staticPages, ...destinationPages];
+  const packagePages: MetadataRoute.Sitemap = packagesData.map((p) => ({
+    url: `${site.url}/packages/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
+  return [...staticPages, ...destinationPages, ...packagePages];
 }

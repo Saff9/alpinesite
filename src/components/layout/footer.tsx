@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook, Youtube, Twitter } from "lucide-react";
 import { SiteLogo } from "./site-logo";
-import { mainNav, site } from "@/data/site";
+import { site, footerActivities, footerMore } from "@/data/site";
 import { destinations, popularDestinations } from "@/data/destinations";
 
 export function Footer() {
@@ -10,9 +10,9 @@ export function Footer() {
   return (
     <footer className="mt-auto w-full overflow-hidden rounded-none border-t border-[#182c3a] bg-[#0c1821] text-neutral-300 shadow-2xl">
       <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:px-8 sm:py-16 md:py-20 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-[1.5fr_1fr_1.1fr_1.4fr] lg:gap-14 text-left">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-8 text-left">
           {/* Brand */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start lg:col-span-1">
             <SiteLogo variant="dark" hideTagline />
             <p className="mt-4 max-w-sm font-poppins font-normal text-sm leading-relaxed text-neutral-300 text-left">
               {site.tagline}. Operating from Gulmarg since {site.established} with local mountain guides, drivers, and families.
@@ -57,40 +57,34 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick links */}
-          <nav aria-label="Footer Navigation" className="flex flex-col items-start">
+          {/* Activities Column (retained directly from dropdown) */}
+          <nav aria-label="Activities Navigation" className="flex flex-col items-start">
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
-              Navigation
+              Activities
             </h2>
             <ul className="mt-4 space-y-3 font-poppins font-normal text-base sm:text-sm flex flex-col items-start text-left">
-              {mainNav.map((item) => {
-                if (item.label === "More" && item.dropdown) {
-                  return (
-                    <li key={item.label}>
-                      <Link
-                        href="/ski-guides"
-                        className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
-                      >
-                        Our Ski Guides
-                      </Link>
-                    </li>
-                  );
-                }
-                return (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
+              {footerActivities.map((act) => (
+                <li key={act.href}>
+                  <Link
+                    href={act.href}
+                    className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                  >
+                    {act.title}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/activities"
+                  className="font-poppins font-medium text-brand-light/90 transition-colors hover:text-white"
+                >
+                  All Activities &rarr;
+                </Link>
+              </li>
             </ul>
           </nav>
 
-          {/* Popular destinations */}
+          {/* Destinations Column */}
           <nav aria-label="Destinations" className="flex flex-col items-start">
             <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
               Destinations
@@ -108,12 +102,47 @@ export function Footer() {
               ))}
               <li>
                 <Link
+                  href="/gulmarg-ski-resort"
+                  className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                >
+                  Gulmarg Ski Resort
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/packages"
+                  className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                >
+                  Deals &amp; Packages
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/destinations"
                   className="font-poppins font-medium text-brand-light/90 transition-colors hover:text-white"
                 >
-                  View all {destinations.length} destinations
+                  All Destinations &rarr;
                 </Link>
               </li>
+            </ul>
+          </nav>
+
+          {/* More Column (retained directly from dropdown) */}
+          <nav aria-label="More Information" className="flex flex-col items-start">
+            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-white border-b border-white/10 pb-2 inline-block">
+              More
+            </h2>
+            <ul className="mt-4 space-y-3 font-poppins font-normal text-base sm:text-sm flex flex-col items-start text-left">
+              {footerMore.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="font-poppins font-normal text-neutral-300 transition-colors hover:text-white"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 

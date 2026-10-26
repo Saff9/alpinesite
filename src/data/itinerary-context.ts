@@ -12,6 +12,7 @@ export interface ItineraryModalDetail {
   destination?: DestinationOption;
   activity?: ActivityOption;
   title?: string;
+  packageSlug?: string;
 }
 
 export function openItineraryModal(detail?: ItineraryModalDetail) {
@@ -97,6 +98,50 @@ export function getItineraryContextByPath(pathname: string): ItineraryContextDat
       destination: "kashmir",
       activity: "skiing-snowboarding",
       suggestedDuration: "5-6-days",
+    };
+  }
+
+  // 3. Deals & Packages
+  if (path.includes("/packages")) {
+    if (path.includes("ski")) {
+      return {
+        title: "Book Gulmarg Ski Package",
+        destination: "kashmir",
+        activity: "skiing-snowboarding",
+        suggestedDuration: "7-10-days",
+      };
+    }
+    if (
+      path.includes("ladakh") ||
+      path.includes("zanskar") ||
+      path.includes("chadar") ||
+      path.includes("rumtse") ||
+      path.includes("markha")
+    ) {
+      return {
+        title: "Book Ladakh Summer Package",
+        destination: "ladakh",
+        activity: "expeditions",
+        suggestedDuration: "8-10-days",
+      };
+    }
+    if (
+      path.includes("sikkim") ||
+      path.includes("goecha") ||
+      path.includes("dzongri")
+    ) {
+      return {
+        title: "Book Sikkim Trekking Package",
+        destination: "sikkim",
+        activity: "trekking",
+        suggestedDuration: "7-9-days",
+      };
+    }
+    return {
+      title: "Plan Your Himalayan Package",
+      destination: "kashmir",
+      activity: "trekking",
+      suggestedDuration: "7-9-days",
     };
   }
 

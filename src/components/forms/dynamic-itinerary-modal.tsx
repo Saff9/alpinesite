@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { site } from "@/data/site";
+import { packagesData } from "@/data/packages";
 import {
   getItineraryContextByPath,
   DESTINATIONS,
@@ -65,6 +66,7 @@ export function DynamicItineraryModal({
 
   // Form State
   const [customTitle, setCustomTitle] = useState<string | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<string>("custom");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -78,6 +80,50 @@ export function DynamicItineraryModal({
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
+
+  const handlePackageSelect = (slug: string) => {
+    setSelectedPackage(slug);
+    if (slug === "custom") return;
+
+    const pkg = packagesData.find((p) => p.slug === slug);
+    if (!pkg) return;
+
+    if (pkg.category === "ski-packages") {
+      setDestination("kashmir");
+      setActivity("skiing-snowboarding");
+    } else if (
+      pkg.region?.toLowerCase().includes("ladakh") ||
+      pkg.title.toLowerCase().includes("ladakh")
+    ) {
+      setDestination("ladakh");
+      setActivity("expeditions");
+    } else if (
+      pkg.region?.toLowerCase().includes("sikkim") ||
+      pkg.title.toLowerCase().includes("sikkim")
+    ) {
+      setDestination("sikkim");
+      setActivity("trekking");
+    } else {
+      setDestination("kashmir");
+      setActivity("trekking");
+    }
+
+    if (
+      pkg.duration.includes("10") ||
+      pkg.duration.includes("11") ||
+      pkg.duration.includes("14")
+    ) {
+      setDuration("10-plus-days");
+    } else if (
+      pkg.duration.includes("7") ||
+      pkg.duration.includes("8") ||
+      pkg.duration.includes("9")
+    ) {
+      setDuration("7-9-days");
+    } else if (pkg.duration.includes("5") || pkg.duration.includes("6")) {
+      setDuration("5-6-days");
+    }
+  };
 
   // Lock background scroll when modal is open and restore on close
   useEffect(() => {
@@ -116,15 +162,21 @@ export function DynamicItineraryModal({
       const detail = (e as CustomEvent<ItineraryModalDetail | undefined>).detail;
       const ctx = getItineraryContextByPath(pathname);
 
+      if (detail?.packageSlug) {
+        handlePackageSelect(detail.packageSlug);
+      } else {
+        setSelectedPackage("custom");
+      }
+
       if (detail?.destination) {
         setDestination(detail.destination);
-      } else {
+      } else if (!detail?.packageSlug) {
         setDestination(ctx.destination);
       }
 
       if (detail?.activity) {
         setActivity(detail.activity);
-      } else {
+      } else if (!detail?.packageSlug) {
         setActivity(ctx.activity);
       }
 
@@ -134,7 +186,9 @@ export function DynamicItineraryModal({
         setCustomTitle(null);
       }
 
-      setDuration(ctx.suggestedDuration);
+      if (!detail?.packageSlug) {
+        setDuration(ctx.suggestedDuration);
+      }
       setSuccess(false);
       setWhatsappUrl(null);
       setModalOpen(true);
@@ -148,6 +202,9 @@ export function DynamicItineraryModal({
     e.preventDefault();
     setSubmitting(true);
 
+    const selectedPkg = packagesData.find((p) => p.slug === selectedPackage);
+    const packageName = selectedPkg ? selectedPkg.title : "Custom Tailor-Made Itinerary";
+
     const selectedDestObj = DESTINATIONS.find((d) => d.value === destination);
     const destName = selectedDestObj ? selectedDestObj.label : destination;
 
@@ -160,6 +217,7 @@ export function DynamicItineraryModal({
       TRAVELER_OPTIONS.find((t) => t.value === travelers)?.label || `${travelers} Travelers`;
 
     const messageSummary = `Custom Itinerary Request
+Package: ${packageName}
 Name: ${name}
 Phone: ${phone}
 Email: ${email || "Not specified"}
@@ -182,7 +240,7 @@ Requirements & Notes: ${notes || "None"}`;
           name,
           phone,
           email,
-          subject: `Itinerary Request: ${destName} - ${actName}`,
+          subject: `Itinerary Request: ${packageName} (${destName})`,
           message: messageSummary,
         }),
       });
@@ -272,6 +330,62 @@ Requirements & Notes: ${notes || "None"}`;
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+              {/* Row 0: Select Specific Package or Custom Itinerary */}
+              <div>
+                <Label
+                  htmlFor="package-select"
+                  className="font-heading text-xs font-bold uppercase tracking-wider text-neutral-900 block mb-2.5"
+                >
+                  Select Package / Trip Option
+                </Label>
+                <Select value={selectedPackage} onValueChange={handlePackageSelect}>
+                  <SelectTrigger
+                    id="package-select"
+                    className="h-12 rounded-lg border-neutral-300 bg-white text-xs font-medium focus:border-brand focus:ring-1 focus:ring-brand"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-lg border-neutral-300 max-h-72">
+                    <SelectItem
+                      value="custom"
+                      className="rounded-md py-2.5 text-xs font-bold text-brand cursor-pointer hover:bg-neutral-100"
+                    >
+                      ✨ Custom Tailor-Made Itinerary
+                    </SelectItem>
+                    <div className="px-2 py-1 text-[10px] uppercase font-bold text-brand border-t border-neutral-100 pt-2 tracking-wider">
+                      Ski Packages
+                    </div>
+                    {packagesData
+                      .filter((p) => p.category === "ski-packages")
+                      .map((p) => (
+                        <SelectItem key={p.slug} value={p.slug} className="rounded-md py-2 text-xs">
+                          {p.title} {p.price ? `(${p.price})` : ""}
+                        </SelectItem>
+                      ))}
+                    <div className="px-2 py-1 text-[10px] uppercase font-bold text-brand border-t border-neutral-100 pt-2 tracking-wider">
+                      Summer Packages
+                    </div>
+                    {packagesData
+                      .filter((p) => p.category === "summer-packages")
+                      .map((p) => (
+                        <SelectItem key={p.slug} value={p.slug} className="rounded-md py-2 text-xs">
+                          {p.title}
+                        </SelectItem>
+                      ))}
+                    <div className="px-2 py-1 text-[10px] uppercase font-bold text-brand border-t border-neutral-100 pt-2 tracking-wider">
+                      Trekking Packages
+                    </div>
+                    {packagesData
+                      .filter((p) => p.category === "trekking")
+                      .map((p) => (
+                        <SelectItem key={p.slug} value={p.slug} className="rounded-md py-2 text-xs">
+                          {p.title}
+                        </SelectItem>
+                      ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
               {/* Row 1: Destination & Activity (Main only + Custom Itinerary) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>

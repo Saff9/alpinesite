@@ -1,29 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, MapPinned, Home, PhoneCall, ArrowRight, Quote } from "lucide-react";
+import { ShieldCheck, Compass, Eye, HeartHandshake, ArrowRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 
 const features = [
   {
-    icon: MapPinned,
-    title: "Local Mountain Team",
-    text: "Born on these slopes, knowing every powder bowl and quiet valley trail.",
+    icon: Compass,
+    title: "Our Mission",
+    text: "Our mission is to make the Himalayas of India accessible,safe, sustainable and life time memorable for travellers across the globe.",
+  },
+  {
+    icon: Eye,
+    title: "Our Vision",
+    text: "Our vision is to become India's most trusted  community for exploring the Himalayas of India.",
   },
   {
     icon: ShieldCheck,
-    title: "Honest Pricing",
-    text: "Transparent quotes with zero hidden fees or tourist-trap commissions.",
+    title: "Safety First & Responsible",
+    text: "We believe adventure should be exciting but safety is always first, responsible and deeply connected to local communities.",
   },
   {
-    icon: Home,
-    title: "Audited Stays",
-    text: "Personally inspected houseboats and lodges with reliable heating guaranteed.",
-  },
-  {
-    icon: PhoneCall,
-    title: "Direct Support",
-    text: "A dedicated local guide on WhatsApp throughout your journey for instant help.",
+    icon: HeartHandshake,
+    title: "Local Mountain Network",
+    text: "Thats why we work with best Guides,local drivers, homestay owners and adventure professionals across the Himalayas of India .",
   },
 ];
 
@@ -44,13 +44,13 @@ export function WhyChooseUs() {
                 className="h-auto w-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border bg-card p-5 shadow-lg shadow-black/10 sm:left-8 sm:right-auto sm:max-w-64">
+            <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border bg-card p-5 shadow-lg shadow-black/10 sm:left-8 sm:right-auto sm:max-w-72">
               <Quote className="h-5 w-5 text-brand" aria-hidden="true" />
-              <p className="mt-2 font-poppins font-normal text-sm leading-relaxed text-foreground">
-                &ldquo;We treat every trip like it&apos;s our own family travelling.&rdquo;
+              <p className="mt-2 font-poppins font-normal text-xs leading-relaxed text-foreground">
+                &ldquo;Our vision is to become India&apos;s most trusted  community for exploring the Himalayas of India.&rdquo;
               </p>
               <p className="mt-2 font-poppins font-normal text-xs text-muted-foreground">
-                Sajad Ahmad, Founder, born in Tangmarg
+                Alpine Club India
               </p>
             </div>
           </div>
@@ -58,13 +58,13 @@ export function WhyChooseUs() {
           {/* Content side */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-2">
             <p className="mb-3 font-heading text-xs font-extrabold uppercase tracking-[0.22em] text-brand">
-              About Alpine Club
+              Our Vision &amp; Ethos
             </p>
             <h2 className="font-heading text-2xl font-extrabold uppercase tracking-tight text-black sm:text-3xl lg:text-[2.2rem]">
-              Himalayan Guides Born on These Slopes.
+              India&apos;s Most Trusted Community For Exploring The Himalayas.
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-neutral-600 max-w-xl">
-              Operating out of Gulmarg since 2012, our mountain guides design and lead every journey directly with authentic local care and zero middleman markups.
+            <p className="mt-4 text-base leading-relaxed text-neutral-600 max-w-xl font-poppins">
+              We believe adventure should be exciting but safety is always first, responsible and deeply connected to local communities.Thats why we work with best Guides,local drivers, homestay owners and adventure professionals across the Himalayas of India .
             </p>
 
             <ul className="mt-8 grid gap-7 sm:grid-cols-2 text-left">
@@ -77,7 +77,9 @@ export function WhyChooseUs() {
                     <feature.icon className="h-5 w-5" />
                   </span>
                   <div>
-                    <h3 className="font-heading text-sm font-extrabold uppercase tracking-tight text-black">{feature.title}</h3>
+                    <h3 className="font-heading text-sm font-extrabold uppercase tracking-tight text-black">
+                      {feature.title}
+                    </h3>
                     <p className="mt-1 font-poppins font-normal text-sm leading-relaxed text-neutral-600">
                       {feature.text}
                     </p>

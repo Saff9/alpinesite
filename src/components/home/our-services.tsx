@@ -58,7 +58,7 @@ export function OurServices() {
         <SectionHeading
           eyebrow="What We Do"
           title="Our Services"
-          description="Local expertise and thoughtful hospitality crafted for memorable Himalayan journeys."
+          description="We specialise  in adventure tours throughout the Himalayas of India.our journeys include Skiing, Trekking, Hiking, Cultural trips and High altitude expeditions"
         />
 
         {/* Responsive Grid: 1 column with generous gap on mobile, 2 cols on tablet, 3 cols on desktop */}

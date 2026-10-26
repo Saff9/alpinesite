@@ -74,31 +74,83 @@ export interface NavItem {
 /**
  * Primary navigation, compact, readable, human-developer structure.
  * Clean titles only without verbose sub-info paragraphs.
+ * 1. Deals & Packages, 2. Gulmarg Ski Resort, 3. Destinations, 4. About Us, 5. Contact Us.
+ * (Activities and More are moved exclusively to the Footer as requested)
  */
 export const mainNav: NavItem[] = [
   {
-    label: "Activities",
-    href: "/activities",
+    label: "Deals & Packages",
+    href: "/packages",
     dropdown: [
       {
+        title: "Ski Packages",
         items: [
-          { title: "Trekking", href: "/activities/trekking" },
-          { title: "Hiking", href: "/activities/hiking" },
-          { title: "Winter Hiking", href: "/activities/winter-hiking" },
-          { title: "Expeditions", href: "/activities/expeditions" },
+          {
+            title: "10 Days Guided Ski",
+            href: "/packages/fully-guided-10-days-ski-package",
+          },
+          {
+            title: "1 Week Guided Ski",
+            href: "/packages/fully-guided-1-week-ski-package",
+          },
+          {
+            title: "2 Weeks Guided Ski",
+            href: "/packages/2-weeks-fully-guided-ski-package",
+          },
         ],
       },
-    ],
-  },
-  {
-    label: "Destinations",
-    href: "/destinations",
-    dropdown: [
       {
+        title: "Summer Packages",
         items: [
-          { title: "Kashmir", href: "/destinations/kashmir" },
-          { title: "Ladakh", href: "/destinations/ladakh" },
-          { title: "Sikkim", href: "/destinations/sikkim" },
+          {
+            title: "Rumtse to Tso Moriri",
+            href: "/packages/rumtse-to-tso-moriri-trek",
+          },
+          {
+            title: "Chadar Frozen River",
+            href: "/packages/chadar-frozen-river-trek",
+          },
+          {
+            title: "Markha Valley Trek",
+            href: "/packages/markha-valley-trek",
+          },
+          {
+            title: "Lamayuru to Zanskar",
+            href: "/packages/lamayuru-to-zanskar-trek",
+          },
+          {
+            title: "Warwan Valley Trek",
+            href: "/packages/warwan-valley-trek",
+          },
+          {
+            title: "Gurez Valley Trek",
+            href: "/packages/gurez-valley-trek",
+          },
+          {
+            title: "Mount Harmukh Trek",
+            href: "/packages/mount-harmukh-trek",
+          },
+        ],
+      },
+      {
+        title: "Trekking",
+        items: [
+          {
+            title: "Kashmir Great Lakes",
+            href: "/packages/kashmir-great-lakes-trek",
+          },
+          {
+            title: "Tosamaidan Pir Panjal",
+            href: "/packages/tosamaidan-pir-panjal-trek",
+          },
+          {
+            title: "Goecha La Trek",
+            href: "/packages/goecha-la-trek",
+          },
+          {
+            title: "Dzongri Trek",
+            href: "/packages/dzongri-trek",
+          },
         ],
       },
     ],
@@ -118,14 +170,14 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "More",
-    href: "#",
+    label: "Destinations",
+    href: "/destinations",
     dropdown: [
       {
         items: [
-          { title: "Our Ski Guides", href: "/ski-guides" },
-          { title: "Last Minute Trip", href: "/last-minute-trip" },
-          { title: "Our Promise", href: "/our-promise" },
+          { title: "Kashmir", href: "/destinations/kashmir" },
+          { title: "Ladakh", href: "/destinations/ladakh" },
+          { title: "Sikkim", href: "/destinations/sikkim" },
         ],
       },
     ],
@@ -138,6 +190,24 @@ export const mainNav: NavItem[] = [
     label: "Contact Us",
     href: "/contact",
   },
+];
+
+/**
+ * Footer specific navigation items for Activities and More columns.
+ */
+export const footerActivities = [
+  { title: "Trekking", href: "/activities/trekking" },
+  { title: "Hiking", href: "/activities/hiking" },
+  { title: "Winter Hiking", href: "/activities/winter-hiking" },
+  { title: "Expeditions", href: "/activities/expeditions" },
+];
+
+export const footerMore = [
+  { title: "Our Ski Guides", href: "/ski-guides" },
+  { title: "Last Minute Trip", href: "/last-minute-trip" },
+  { title: "Our Promise", href: "/our-promise" },
+  { title: "About Us", href: "/about" },
+  { title: "Contact Us", href: "/contact" },
 ];
 
 export const formatINR = (value: number): string =>

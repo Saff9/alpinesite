@@ -13,6 +13,7 @@ interface ItineraryButtonProps {
   destination?: DestinationOption;
   activity?: ActivityOption;
   title?: string;
+  packageSlug?: string;
   onClick?: () => void;
 }
 
@@ -22,6 +23,7 @@ export function ItineraryButton({
   destination,
   activity,
   title,
+  packageSlug,
   onClick,
 }: ItineraryButtonProps) {
   return (
@@ -30,7 +32,7 @@ export function ItineraryButton({
       className={className}
       onClick={() => {
         onClick?.();
-        openItineraryModal({ destination, activity, title });
+        openItineraryModal({ destination, activity, title, packageSlug });
       }}
     >
       {children}
