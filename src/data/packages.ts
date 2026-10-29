@@ -42,7 +42,7 @@ export const packagesData: PackageItem[] = [
       "Complete safety orientation and backcountry snowpack guidance",
       "Local ski culture experience & après-ski vibe",
     ],
-    image: "/images/ski/apharwat-peaks.jpg",
+    image: "/images/ski/apharwat-10-peaks.jpg",
   },
   {
     slug: "fully-guided-1-week-ski-package",
@@ -86,7 +86,7 @@ export const packagesData: PackageItem[] = [
       "12 days skiing",
       "2 days houseboat and local sightseeing",
     ],
-    image: "/images/hero/gulmarg-hero.jpg",
+    image: "/images/hero/2-weeks-ski.jpeg",
   },
 
   // ==========================================
@@ -138,7 +138,7 @@ export const packagesData: PackageItem[] = [
       "Mandatory medical checkups & wildlife/environmental permits",
       "Airport and trailhead transfers to and from Leh",
     ],
-    image: "/images/tours/gulmarg-ski-adventure/slopes.jpg",
+    image: "/images/tours/gulmarg-ski-adventure/frozen-river.avif",
   },
   {
     slug: "markha-valley-trek",
@@ -151,7 +151,7 @@ export const packagesData: PackageItem[] = [
     distance: "Approximately 65–80 km",
     startingPoint: "Leh",
     endingPoint: "Leh",
-    maxAltitude: "5,150–5,260 m / 16,900–17,257 ft at Kongmaru La",
+    maxAltitude: "5,150–5,260 m / 16,900–17,257  t at Kongmaru La",
     difficulty: "Moderate to Difficult",
     description:
       "The Markha Valley Trek is Ladakh’s most popular classic trek, combining river valleys, high-altitude pastures, remote villages, Buddhist monasteries, wildlife, and the dramatic Kongmaru La pass. It is ideal for trekkers seeking a challenging but non-technical Himalayan adventure.",
@@ -187,7 +187,7 @@ export const packagesData: PackageItem[] = [
       "Scenic overland transfer from Padum via Kargil back to Leh",
       "Monastery visits and village heritage encounters",
     ],
-    image: "/images/destinations/ladakh/hero.jpg",
+    image: "/images/destinations/ladakh/zanskar-trek.avif",
   },
   {
     slug: "warwan-valley-trek",
@@ -262,7 +262,7 @@ export const packagesData: PackageItem[] = [
       "Forest entry fees and camping permits",
       "Roundtrip road transport between Srinagar and ancient Naranag temple trailhead",
     ],
-    image: "/images/destinations/kashmir/sonamarg.jpg",
+    image: "/images/destinations/kashmir/harmukh.jpeg",
   },
 
   // ==========================================
@@ -291,7 +291,7 @@ export const packagesData: PackageItem[] = [
       "Horses / porters to carry camp logistics and emergency equipment",
       "Transportation from Srinagar to Sonamarg, and Naranag back to Srinagar",
     ],
-    image: "/images/destinations/kashmir/hero.jpg",
+    image: "/images/destinations/kashmir/treak-days.jpeg",
   },
   {
     slug: "tosamaidan-pir-panjal-trek",
@@ -316,7 +316,7 @@ export const packagesData: PackageItem[] = [
       "Permits, trail safety kits & emergency oxygen",
       "Pick-up and drop transfers from Srinagar",
     ],
-    image: "/images/destinations/kashmir/gardens.jpg",
+    image: "/images/destinations/kashmir/pir-panjal.avif",
   },
   {
     slug: "goecha-la-trek",

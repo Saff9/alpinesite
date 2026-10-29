@@ -32,22 +32,22 @@ export function Hero() {
           quality={90}
           sizes="(max-width: 1280px) 100vw, 1280px"
           className={cn(
-            "object-cover object-[center_35%] sm:object-[center_30%] transition-transform duration-700 ease-out will-change-transform",
+            "object-cover object-[center_35%] sm:object-[center_30%] brightness-[1.04] contrast-[1.02] transition-transform duration-700 ease-out will-change-transform",
             elevated ? "scale-105 sm:scale-105 lg:scale-100" : "scale-100"
           )}
         />
 
-        {/* Scrim gradient: 100% transparent at top on mobile/tablet (clean mountain view), with dark opacity concentrated strictly at the bottom */}
+        {/* Refined gradient: lighter and cleaner to maximize mountain, snow & gondola image clarity */}
         <div
-          className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent lg:from-black/90 lg:via-black/45 lg:to-black/20"
+          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent lg:from-black/75 lg:via-black/25 lg:to-transparent"
           aria-hidden="true"
         />
 
         <div className="absolute inset-x-0 bottom-0 flex flex-col items-center p-6 text-center sm:p-8 md:p-10 lg:items-start lg:p-12 lg:text-left">
-          <h1 className="max-w-3xl font-heading text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-[3.4rem]">
+          <h1 className="max-w-3xl font-heading text-3xl font-extrabold uppercase leading-[1.08] tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)] sm:text-4xl md:text-5xl lg:text-[3.4rem]">
             Experience The Himalayas Of India.
           </h1>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-200 drop-shadow-sm sm:mt-4 font-poppins">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-100 drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)] sm:mt-4 font-poppins">
             AlpineClubIndia.com is created for travellers from all over the world who see the mountains as a place of inner peace , challenge, reconnect with nature and experience the Himalayas of India .
           </p>
 

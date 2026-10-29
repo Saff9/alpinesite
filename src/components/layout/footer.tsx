@@ -19,8 +19,10 @@ export function Footer() {
             <div className="mt-6 flex justify-start">
               <a
                 href={site.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Alpine Club India on Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110 cursor-default"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#1877F2] text-white shadow-sm transition-all duration-200 hover:scale-110 hover:brightness-110"
               >
                 <Facebook className="h-4 w-4" aria-hidden="true" />
               </a>

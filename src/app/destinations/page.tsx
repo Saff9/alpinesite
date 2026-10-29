@@ -9,16 +9,73 @@ import { destinations } from "@/data/destinations";
 export const metadata: Metadata = {
   title: "Himalayan Destinations | Kashmir, Ladakh & Sikkim | Alpine Club India",
   description:
-    "Explore our three premier mountain destinations across Kashmir, Ladakh, and Sikkim. Guided by our certified local Himalayan mountain team.",
+    "Explore our premier mountain destinations across Kashmir, Ladakh, and Sikkim. Guided by certified local Himalayan mountain guides and winter ski instructors.",
+  keywords: [
+    "Kashmir travel guide",
+    "Ladakh tours",
+    "Sikkim expeditions",
+    "Himalayan destinations",
+    "Gulmarg Kashmir",
+    "Leh Ladakh travel",
+    "Yuksom Sikkim",
+    "Himalayan mountain regions",
+    "Alpine Club India destinations",
+  ],
   alternates: { canonical: "/destinations" },
+  openGraph: {
+    title: "Himalayan Destinations | Kashmir, Ladakh & Sikkim",
+    description:
+      "Handcrafted itineraries and certified mountain guides across Kashmir, Ladakh, and Sikkim.",
+    url: "/destinations",
+    images: [
+      {
+        url: "/images/destinations/kashmir/gulmarg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alpine Club India Himalayan Destinations",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Himalayan Destinations | Kashmir, Ladakh & Sikkim",
+    description:
+      "Handcrafted itineraries and certified mountain guides across Kashmir, Ladakh, and Sikkim.",
+    images: ["/images/destinations/kashmir/gulmarg.jpg"],
+  },
 };
 
 export default function DestinationsPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.alpineclubindia.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Destinations",
+        item: "https://www.alpineclubindia.com/destinations",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <PageHeader
         title="Our Destinations"
         subtitle="Handcrafted itineraries, certified mountain guides, and private logistics across Kashmir's timeless valleys, Ladakh's high Trans-Himalayan passes, and Kangchenjunga in Sikkim."
+        image="/images/destinations/kashmir/gulmarg.jpg"
+        imageAlt="Panoramic view of Himalayan destinations in Kashmir, Ladakh, and Sikkim"
       />
 
       <section className="py-14 sm:py-20 lg:py-24 bg-neutral-50/50" aria-labelledby="destinations-list">

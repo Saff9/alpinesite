@@ -2,17 +2,45 @@ import type { Metadata } from "next";
 import { Mountain, ShieldCheck, Compass, Snowflake, Calendar, AlertTriangle } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Ski Resorts in India | Gulmarg, Auli, Solang & Narkanda | Alpine Club India",
   description:
     "Explore the spectacular ski resorts in India across the Himalayas: Gulmarg in J&K, Auli in Uttarakhand, Solang Valley near Manali, and Narkanda in Himachal Pradesh.",
+  keywords: [
+    "ski resorts in India",
+    "best ski resorts in India",
+    "Gulmarg ski resort",
+    "Auli ski resort",
+    "Solang valley skiing",
+    "Narkanda skiing Himachal",
+    "skiing in India cost",
+    "ski season in India",
+    "powder skiing India",
+    "Himalayan ski destinations",
+  ],
   alternates: { canonical: "/ski-resorts-in-india" },
   openGraph: {
     title: "Ski Resorts in India | Alpine Club India",
     description:
       "Spectacular skiing destinations in the Himalayas: Gulmarg, Auli, Solang Valley, and Narkanda.",
     url: "/ski-resorts-in-india",
+    images: [
+      {
+        url: `${site.url}/images/ski/powder-skiing.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Ski Resorts in India",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ski Resorts in India | Alpine Club India",
+    description:
+      "Spectacular skiing destinations in the Himalayas: Gulmarg, Auli, Solang Valley, and Narkanda.",
+    images: [`${site.url}/images/ski/powder-skiing.jpg`],
   },
 };
 
@@ -60,8 +88,21 @@ const skiResorts = [
 ];
 
 export default function SkiResortsInIndiaPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+      { "@type": "ListItem", position: 2, name: "Ski Resorts in India", item: `${site.url}/ski-resorts-in-india` },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-neutral-50/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page Header */}
       <PageHeader
         title="Ski Resorts in India"

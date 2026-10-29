@@ -179,9 +179,11 @@ export default function ContactPage() {
                 <div className="min-w-0 flex-1">
                   <h3 className="text-sm font-semibold text-foreground">Facebook</h3>
                   <a
-                    href="#"
-                    aria-label="Alpine Club India on Facebook"
-                    className="mt-1 block font-heading text-base font-semibold text-brand transition-colors hover:text-brand-deep hover:underline sm:text-lg cursor-default"
+                    href={site.socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Alpine Club India on Facebook (opens in a new tab)"
+                    className="mt-1 block font-heading text-base font-semibold text-brand transition-colors hover:text-brand-deep hover:underline sm:text-lg"
                   >
                     Alpine Club India
                   </a>

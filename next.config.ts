@@ -15,6 +15,20 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days cache for optimal lazy loading
     qualities: [75, 90],
   },
+  async headers() {
+    return [
+      {
+        // Tell all search engines to never index internal API routes
+        source: "/api/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, noarchive",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

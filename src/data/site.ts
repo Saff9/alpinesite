@@ -26,7 +26,7 @@ export const site = {
   hours: "Mon – Sun · 8:00 AM – 7:00 PM IST (ski season: dawn patrol)",
   socials: {
     instagram: "#",
-    facebook: "#",
+    facebook: "https://www.facebook.com/share/1C9oirnxwT/",
     youtube: "#",
     twitter: "#",
   },
@@ -42,13 +42,13 @@ export const site = {
   logoTagline: "Tours · Treks · Ski",
   /** Home hero banner (image + alt text). */
   hero: {
-    image: "/images/hero/gulmarg-hero.jpg",
+    image: "/images/hero/home-image.avif",
     alt: "Red Gulmarg Gondola cabins crossing above snowy pine forests and skiers below Apharwat peak, Gulmarg, Kashmir",
   },
   /** Image used by the TravelAgency JSON-LD schema (image/logo fields).
    *  Social-share cards are generated separately, see src/lib/og.tsx. */
   ogImage: {
-    url: "/images/hero/gulmarg-hero.jpg",
+    url: "/images/hero/home-image.avif",
     width: 2000,
     height: 2000,
     alt: "Red Gulmarg Gondola cabins crossing above snowy pine forests and skiers, Gulmarg, Kashmir",

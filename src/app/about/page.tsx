@@ -251,7 +251,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6">
           <SectionHeading
             eyebrow="Leadership"
-            title="Our Founder & Lead Mountain Guide"
+            title="Our Founder & Lead Mountain / Ski Guide"
             description="Local mountain expertise leading every journey we craft across Kashmir and the Himalayas."
             align="center"
           />

@@ -5,17 +5,44 @@ import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Button } from "@/components/ui/button";
 import { ItineraryButton } from "@/components/forms/itinerary-button";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "The Indian Himalayas | Geography, Ranges, Peaks & Glaciers | Alpine Club India",
   description:
     "Comprehensive geographical guide to the Indian Himalayas: major mountain ranges, 8,000m summits, glaciers, high passes, river systems, lakes, and alpine ecosystems.",
+  keywords: [
+    "Indian Himalayas",
+    "Himalayan mountain ranges",
+    "Kangchenjunga peak",
+    "Nanda Devi Uttarakhand",
+    "Siachen glacier",
+    "Zanskar river Ladakh",
+    "Himalayan geography",
+    "highest mountain passes India",
+    "Alpine Club India Himalayas guide",
+  ],
   alternates: { canonical: "/himalayas-of-india" },
   openGraph: {
     title: "The Indian Himalayas | Alpine Club India",
     description:
       "Geography, mountain ranges, peaks, glaciers, rivers, and lakes across Jammu & Kashmir, Ladakh, Himachal, Uttarakhand, and Sikkim.",
     url: "/himalayas-of-india",
+    images: [
+      {
+        url: `${site.url}/images/destinations/sikkim/kangchenjunga.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "The Indian Himalayas - Peaks and Glaciers",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Indian Himalayas | Alpine Club India",
+    description:
+      "Geography, mountain ranges, peaks, glaciers, rivers, and lakes across the Indian Himalayas.",
+    images: [`${site.url}/images/destinations/sikkim/kangchenjunga.jpg`],
   },
 };
 
@@ -82,11 +109,11 @@ const lakesData = [
 const mountainRanges = [
   {
     name: "Karakoram Range",
-    description: "Located north of Ladakh, the Karakoram contains enormous glaciers, rugged terrain, and some of the world's highest peaks, including K2 at 8,611 metres.",
+    description: "Located north of Ladakh, the Karakoram contains enormous glaciers, rugged terrain, and some of the world's highest peaks.",
   },
   {
     name: "Ladakh Range",
-    description: "A high-altitude mountain system characterised by barren slopes, rocky ridges, deep valleys, and cold-desert landscapes.",
+    description: "A high-altitude mountain system characterised by barren slopes, rocky ridges, deep valleys, and cold desert landscapes.",
   },
   {
     name: "Zanskar Range",
@@ -119,8 +146,21 @@ const mountainRanges = [
 ];
 
 export default function HimalayasOfIndiaPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+      { "@type": "ListItem", position: 2, name: "The Himalayas of India", item: `${site.url}/himalayas-of-india` },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-neutral-50/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page Header */}
       <PageHeader
         title="The Indian Himalayas"

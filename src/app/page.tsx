@@ -17,7 +17,41 @@ export const metadata: Metadata = {
   title: "Alpine Club India | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
   description:
     "Private ski guiding on Gulmarg's Apharwat powder bowls, high-altitude trekking in Kashmir & Sikkim, and Trans-Himalayan expeditions led by certified local guides since 2012. Rated 5.0 on Google.",
+  keywords: [
+    "Alpine Club India",
+    "Gulmarg ski packages",
+    "Gulmarg ski guide",
+    "Kashmir trekking packages",
+    "Kashmir Great Lakes trek",
+    "Chadar trek",
+    "Ladakh expeditions",
+    "Gulmarg powder skiing",
+    "Himalayan mountaineering guides",
+    "Mount Apharwat ski tours",
+    "ski resorts in India",
+  ],
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "Alpine Club India | Certified Mountain Guides, Gulmarg Skiing & Himalayan Expeditions",
+    description:
+      "Private ski guiding on Gulmarg's Apharwat powder bowls, high-altitude trekking in Kashmir & Sikkim, and Trans-Himalayan expeditions led by certified local guides since 2012.",
+    url: "/",
+    images: [
+      {
+        url: "/images/hero/gulmarg-hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alpine Club India Gulmarg Ski Guiding and Himalayan Treks",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alpine Club India | Certified Mountain Guides & Skiing",
+    description:
+      "Private ski guiding on Gulmarg's Apharwat powder bowls, high-altitude trekking in Kashmir & Sikkim.",
+    images: ["/images/hero/gulmarg-hero.jpg"],
+  },
 };
 
 function SectionDivider() {

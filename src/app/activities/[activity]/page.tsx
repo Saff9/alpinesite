@@ -1,10 +1,10 @@
+import { ItineraryButton } from "@/components/forms/itinerary-button";
+import { PageHeader } from "@/components/shared/page-header";
+import type { ActivityOption } from "@/data/itinerary-context";
+import { site } from "@/data/site";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { PageHeader } from "@/components/shared/page-header";
-import { ItineraryButton } from "@/components/forms/itinerary-button";
-import { site } from "@/data/site";
-import type { ActivityOption } from "@/data/itinerary-context";
 
 interface ActivityPageProps {
   params: Promise<{ activity: string }>;
@@ -77,7 +77,7 @@ const activityData: Record<string, ActivityDetail> = {
     subtitle: "Silent frozen pine forests, snowshoe ridge walks, and magical sub-zero Himalayan landscapes.",
     heroImage: "/images/destinations/kashmir/gulmarg.jpg",
     description: [
-      "When 13+ metres of snow blankets Gulmarg and the higher valleys, the mountains take on a profound, serene stillness. Winter hiking and snowshoeing allows non-skiers and adventure enthusiasts to access frozen waterfalls, high pine glades, and dramatic ridge viewpoints.",
+      "When snow blankets Gulmarg and the higher valleys, the mountains take on a profound, serene stillness. Winter hiking and snowshoeing allows non-skiers and adventure enthusiasts to access frozen waterfalls, high pine glades, and dramatic ridge viewpoints.",
       "We provide modern MSR snowshoes, insulated gaiters, and adjustable poles. Guided by our winter mountain leaders, you will follow safe routes away from avalanche paths, ending your day around blazing wood bonfires with hot kahwa.",
     ],
     highlights: [
@@ -151,8 +151,22 @@ export default async function ActivityDetailPage({ params }: ActivityPageProps) 
   const data = activityData[activity];
   if (!data) notFound();
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+      { "@type": "ListItem", position: 2, name: "Activities", item: `${site.url}/activities` },
+      { "@type": "ListItem", position: 3, name: data.title, item: `${site.url}/activities/${activity}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <PageHeader
         title={data.title}
         subtitle={data.subtitle}

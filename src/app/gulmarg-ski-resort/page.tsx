@@ -8,15 +8,41 @@ import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Gulmarg Ski Resort | Gondola, Apharwat Peak & Backcountry Powder",
+  title: "Gulmarg Ski Resort | Gondola, Apharwat Peak & Backcountry Powder | Alpine Club India",
   description:
     "Complete guide to skiing in Gulmarg: About Gulmarg, Backcountry Skiing on Mount Apharwat, Ski Touring expeditions, and certified ski classes.",
+  keywords: [
+    "Gulmarg ski resort",
+    "Gulmarg Gondola phases",
+    "Apharwat peak skiing",
+    "backcountry skiing Gulmarg",
+    "Gulmarg powder snow",
+    "ski touring Gulmarg",
+    "ski classes Gulmarg",
+    "skiing in Kashmir",
+    "Alpine Club India Gulmarg",
+  ],
   alternates: { canonical: "/gulmarg-ski-resort" },
   openGraph: {
     title: "Gulmarg Ski Resort | Alpine Club India",
     description:
       "Explore Gulmarg Ski Resort: About Gulmarg, Backcountry Skiing, Ski Touring, and Ski Classes on Mount Apharwat.",
     url: "/gulmarg-ski-resort",
+    images: [
+      {
+        url: `${site.url}/images/ski/apharwat-peaks.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Gulmarg Ski Resort Mount Apharwat",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gulmarg Ski Resort | Alpine Club India",
+    description:
+      "Explore Gulmarg Ski Resort: About Gulmarg, Backcountry Skiing, Ski Touring, and Ski Classes on Mount Apharwat.",
+    images: [`${site.url}/images/ski/apharwat-peaks.jpg`],
   },
 };
 
@@ -73,8 +99,21 @@ export default function GulmargSkiResortPage() {
     "Hello Alpine Club India! I'd like to ask about skiing in Gulmarg, gondola passes, and hiring a certified ski guide."
   )}`;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+      { "@type": "ListItem", position: 2, name: "Gulmarg Ski Resort", item: `${site.url}/gulmarg-ski-resort` },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-neutral-50/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page Header */}
       <PageHeader
         title="Gulmarg Ski Resort"

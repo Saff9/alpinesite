@@ -342,9 +342,8 @@ export function Navbar() {
                     </Button>
                     <a
                       href={site.socials.facebook}
-                      onClick={(e) => {
-                        if (site.socials.facebook === "#") e.preventDefault();
-                      }}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex h-11 w-full items-center justify-center gap-2.5 rounded-xl border border-neutral-200 bg-neutral-50 px-4 font-heading text-xs font-bold uppercase tracking-wider text-neutral-800 transition-colors hover:border-[#1877F2] hover:bg-[#1877F2]/5 hover:text-[#1877F2]"
                     >
                       <Facebook className="h-4 w-4 text-[#1877F2]" />

@@ -109,6 +109,14 @@ const websiteJsonLd = {
   publisher: {
     "@id": `${site.url}/#organization`,
   },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${site.url}/packages?search={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 const siteNavigationJsonLd = {
@@ -189,6 +197,27 @@ const localBusinessJsonLd = {
     reviewCount: site.stats.reviewsCount,
     bestRating: 5,
   },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Himalayan Ski & Trekking Packages",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Gulmarg Ski Packages",
+        url: `${site.url}/packages`,
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Himalayan Trekking Expeditions",
+        url: `${site.url}/packages`,
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Private Mountain Guiding",
+        url: `${site.url}/ski-guides`,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -200,6 +229,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="FPbZsQmUdvmjQzPFNSyT3-Z-GiLPu2o_RMH1T2fqcPo" />
+        <meta name="geo.region" content="IN-JK" />
+        <meta name="geo.placename" content="Gulmarg, Jammu and Kashmir" />
+        <meta name="geo.position" content="34.0484;74.3805" />
+        <meta name="ICBM" content="34.0484, 74.3805" />
+        <meta name="author" content="Alpine Club India" />
+        <meta name="coverage" content="Worldwide" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="revisit-after" content="3 days" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

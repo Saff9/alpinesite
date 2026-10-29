@@ -11,12 +11,39 @@ export const metadata: Metadata = {
   title: "Himalayan Activities | Trekking, Hiking & Expeditions | Alpine Club India",
   description:
     "Explore world-class Himalayan adventures: high-altitude trekking to Kangchenjunga in Sikkim, alpine day hikes in Kashmir, winter snowshoeing, and 7,000m mountaineering expeditions in Ladakh.",
+  keywords: [
+    "Himalayan trekking",
+    "alpine day hikes Kashmir",
+    "winter snowshoeing Gulmarg",
+    "mountaineering expeditions Ladakh",
+    "high altitude trekking India",
+    "Kashmir trekking guides",
+    "Sikkim Kangchenjunga trek",
+    "Stok Kangri climbing",
+    "Chadar frozen river trek",
+    "Himalayan adventure packages",
+  ],
   alternates: { canonical: "/activities" },
   openGraph: {
     title: "Activities & Expeditions | Alpine Club India",
     description:
       "World-class high-altitude trekking, alpine day hikes, winter snowshoeing, and mountaineering expeditions across Kashmir, Ladakh, and Sikkim.",
     url: "/activities",
+    images: [
+      {
+        url: "/images/hero/gulmarg-hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alpine Club India Himalayan Activities",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Activities & Expeditions | Alpine Club India",
+    description:
+      "High-altitude trekking, alpine day hikes, winter snowshoeing, and 7,000m mountaineering expeditions in the Indian Himalayas.",
+    images: ["/images/hero/gulmarg-hero.jpg"],
   },
 };
 
@@ -65,8 +92,31 @@ const activityCategories: ActivityCategory[] = [
 ];
 
 export default function ActivitiesPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.alpineclubindia.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Activities",
+        item: "https://www.alpineclubindia.com/activities",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-neutral-50/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page Header */}
       <PageHeader
         title="Himalayan Activities"

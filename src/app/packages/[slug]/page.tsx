@@ -43,15 +43,44 @@ export async function generateMetadata({ params }: PackagePageProps): Promise<Me
     };
   }
 
+  const cleanDescription = pkg.description.replace(/\s+/g, " ").trim().slice(0, 160);
+  const keywords = [
+    pkg.title,
+    `${pkg.title} package`,
+    `${pkg.title} cost`,
+    `${pkg.title} itinerary`,
+    `${pkg.title} booking`,
+    pkg.region || "Himalayas",
+    pkg.categoryName,
+    "Alpine Club India",
+    "Himalayan expeditions",
+    ...(pkg.route ? pkg.route.split(/→|->/).map((s) => s.trim()) : []),
+  ].filter(Boolean);
+
   return {
-    title: `${pkg.title} | Alpine Club India`,
-    description: pkg.description.slice(0, 160),
+    title: `${pkg.title} | ${pkg.region || "Himalayas"} | Alpine Club India`,
+    description: cleanDescription,
+    keywords,
     alternates: { canonical: `/packages/${pkg.slug}` },
     openGraph: {
       title: `${pkg.title} | Alpine Club India Deals & Packages`,
-      description: pkg.description.slice(0, 160),
+      description: cleanDescription,
       url: `/packages/${pkg.slug}`,
-      images: [{ url: pkg.image }],
+      type: "website",
+      images: [
+        {
+          url: `${site.url}${pkg.image}`,
+          width: 1200,
+          height: 630,
+          alt: `${pkg.title} - Alpine Club India`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${pkg.title} | Alpine Club India`,
+      description: cleanDescription,
+      images: [`${site.url}${pkg.image}`],
     },
   };
 }
@@ -118,8 +147,64 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
       ? defaultSkiExclusions
       : defaultTrekExclusions;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+      { "@type": "ListItem", position: 2, name: "Deals & Packages", item: `${site.url}/packages` },
+      { "@type": "ListItem", position: 3, name: pkg.title, item: `${site.url}/packages/${pkg.slug}` },
+    ],
+  };
+
+  const touristTripJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: pkg.title,
+    description: pkg.description,
+    touristType: [
+      pkg.category === "ski-packages" ? "Skiers & Snowboarders" : "Trekkers & Alpine Hikers",
+      "Adventure Travelers",
+    ],
+    offers: {
+      "@type": "Offer",
+      name: pkg.title,
+      price: pkg.price ? pkg.price.replace(/[^0-9]/g, "") || undefined : undefined,
+      priceCurrency: pkg.price?.includes("$") ? "USD" : "INR",
+      availability: "https://schema.org/InStock",
+      url: `${site.url}/packages/${pkg.slug}`,
+      validFrom: "2026-01-01",
+    },
+    provider: {
+      "@type": "TravelAgency",
+      name: site.name,
+      url: site.url,
+      telephone: site.phone,
+      email: site.email,
+    },
+    ...(waypoints.length > 0 && {
+      itinerary: {
+        "@type": "ItemList",
+        numberOfItems: waypoints.length,
+        itemListElement: waypoints.map((stop, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: stop,
+        })),
+      },
+    }),
+  };
+
   return (
     <main className="min-h-screen bg-neutral-50/50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(touristTripJsonLd) }}
+      />
       {/* Hero Banner */}
       <section className="relative overflow-hidden bg-neutral-950 py-16 sm:py-24 text-white">
         <Image
@@ -128,13 +213,14 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-50"
+          className="object-cover brightness-[1.04] contrast-[1.02]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
+        {/* Subtle gradient ensuring the tour package landscape is vivid and visible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/15" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-3">
-            <h1 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white drop-shadow-md">
+            <h1 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
               {pkg.title}
             </h1>
 
