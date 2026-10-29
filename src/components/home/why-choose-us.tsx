@@ -8,22 +8,22 @@ const features = [
   {
     icon: Compass,
     title: "Our Mission",
-    text: "Our mission is to make the Himalayas of India accessible,safe, sustainable and life time memorable for travellers across the globe.",
+    text: "Our mission is to share the beauty and spirit of the mountains with adventure lovers from all over the world with safety, authentic experiences, and responsible travel.",
   },
   {
     icon: Eye,
     title: "Our Vision",
-    text: "Our vision is to become India's most trusted  community for exploring the Himalayas of India.",
+    text: "Our vision is to become India's most trusted community for exploring the Himalayas of India.",
   },
   {
     icon: ShieldCheck,
     title: "Safety First & Responsible",
-    text: "We believe adventure should be exciting but safety is always first, responsible and deeply connected to local communities.",
+    text: "We specialize in organizing safe, professionally guided mountain adventures with local knowledge and technical expertise.",
   },
   {
     icon: HeartHandshake,
     title: "Local Mountain Network",
-    text: "Thats why we work with best Guides,local drivers, homestay owners and adventure professionals across the Himalayas of India .",
+    text: "A passionate team of mountain and ski guides based across different destinations, bringing deep respect for the mountains.",
   },
 ];
 
@@ -64,7 +64,7 @@ export function WhyChooseUs() {
               India&apos;s Most Trusted Community For Exploring The Himalayas.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-neutral-600 max-w-xl font-poppins">
-              We believe adventure should be exciting but safety is always first, responsible and deeply connected to local communities.Thats why we work with best Guides,local drivers, homestay owners and adventure professionals across the Himalayas of India .
+              Alpine Club India is a team of passionate mountain and ski guides based across different mountain destinations, coming together in different seasons to create unforgettable mountain experiences.
             </p>
 
             <ul className="mt-8 grid gap-7 sm:grid-cols-2 text-left">

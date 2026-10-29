@@ -42,7 +42,7 @@ export const site = {
   logoTagline: "Tours · Treks · Ski",
   /** Home hero banner (image + alt text). */
   hero: {
-    image: "/images/hero/home-image.avif",
+    image: "/images/hero/home-page-image.jpeg",
     alt: "Red Gulmarg Gondola cabins crossing above snowy pine forests and skiers below Apharwat peak, Gulmarg, Kashmir",
   },
   /** Image used by the TravelAgency JSON-LD schema (image/logo fields).

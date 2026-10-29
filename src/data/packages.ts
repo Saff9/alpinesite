@@ -123,7 +123,7 @@ export const packagesData: PackageItem[] = [
       "Lift passes for the whole trip",
       "2 days houseboat and local sightseeing",
     ],
-    image: "/images/ski/powder-skiing.jpg",
+    image: "/images/ski/1week-image.jpeg",
     itinerary: [
           {
                 "day": 1,
