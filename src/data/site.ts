@@ -197,8 +197,10 @@ export const quickLinksNav = [
   { title: "Deals & Packages", href: "/packages" },
   { title: "Destinations", href: "/destinations" },
   { title: "Our Ski Guides", href: "/ski-guides" },
-  { title: "Last Minute Trip", href: "/last-minute-trip" },
   { title: "Our Promise", href: "/our-promise" },
+  { title: "Last Minute Trip", href: "/last-minute-trip" },
+  { title: "Privacy Policy", href: "/privacy-policy" },
+  { title: "Terms & Conditions", href: "/terms-and-conditions" },
   { title: "Contact Us", href: "/contact" },
 ];
 

@@ -26,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/last-minute-trip`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${site.url}/our-promise`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${site.url}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${site.url}/privacy-policy`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${site.url}/terms-and-conditions`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${site.url}/contact`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
   ];
 

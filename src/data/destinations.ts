@@ -13,7 +13,7 @@ export const destinations: Destination[] = [
       "In winter, Gulmarg turns into one of Asia's finest ski resorts, powdery bowls, pine forests, and the Gulmarg Gondola hauling you to 3,980 metres. Come spring, the valley erupts into tulips and almond blossoms, and the meadows of Pahalgam and Sonamarg turn a green so vivid it looks colour-graded.",
       "We grew up here. We know which houseboat owner makes the best noon-chai, which orchard lets you pick cherries in June, and which patch of Betaab Valley still has zero crowds at sunset. That's the version of Kashmir we'll show you.",
     ],
-    image: "/images/destinations/kashmir/hero.jpg",
+    image: "/images/destinations/kashmir/treak-days.jpeg",
     imageAlt: "Wooden shikara boats resting on Dal Lake at golden hour, Srinagar, Kashmir",
     gallery: [
       {

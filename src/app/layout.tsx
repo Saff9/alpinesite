@@ -189,7 +189,7 @@ const localBusinessJsonLd = {
   sameAs: [
     site.googleReviewsUrl,
     site.socials.facebook,
-  ].filter((url) => Boolean(url) && url !== "#"),
+  ].filter((url: string) => Boolean(url) && url !== "#"),
   areaServed: ["Gulmarg", "Kashmir", "Ladakh", "Himalayas"],
   aggregateRating: {
     "@type": "AggregateRating",

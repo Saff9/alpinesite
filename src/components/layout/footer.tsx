@@ -126,12 +126,26 @@ export function Footer() {
         </div>
 
         {/* Bottom Credits Bar */}
-        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-3 border-t border-[#182c3a] pt-6 sm:pt-8 font-poppins font-normal text-sm text-center text-neutral-300 lg:flex-row lg:justify-between lg:text-left">
-          <p className="font-poppins font-normal text-sm text-neutral-300">
-            © {year} {site.name}. All rights reserved.
-          </p>
+        <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center gap-4 border-t border-[#182c3a] pt-6 sm:pt-8 font-poppins font-normal text-sm text-center text-neutral-300 lg:flex-row lg:justify-between lg:text-left">
+          <div className="flex flex-wrap items-center justify-center gap-x-3.5 gap-y-1.5 font-poppins font-normal text-xs sm:text-sm text-neutral-300">
+            <span>© {year} {site.name}. All rights reserved.</span>
+            <span className="hidden sm:inline text-neutral-500">·</span>
+            <Link
+              href="/privacy-policy"
+              className="text-neutral-300 hover:text-white transition-colors underline-offset-4 hover:underline"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-neutral-500">·</span>
+            <Link
+              href="/terms-and-conditions"
+              className="text-neutral-300 hover:text-white transition-colors underline-offset-4 hover:underline"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </div>
           <p className="flex flex-wrap items-center justify-center gap-1.5 font-poppins font-normal text-sm text-neutral-300 lg:justify-end">
-            <span>Designed &amp; Powered by</span>
+            <span>Designed by</span>
             <a
               href="https://imtiyazkumar.vercel.app"
               target="_blank"

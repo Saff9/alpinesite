@@ -1,3 +1,9 @@
+export interface ItineraryDay {
+  day: number | string;
+  title: string;
+  description: string;
+}
+
 export interface PackageItem {
   slug: string;
   title: string;
@@ -17,6 +23,7 @@ export interface PackageItem {
   inclusions?: string[];
   exclusions?: string[];
   image: string;
+  itinerary?: ItineraryDay[];
 }
 
 export const packagesData: PackageItem[] = [
@@ -43,6 +50,58 @@ export const packagesData: PackageItem[] = [
       "Local ski culture experience & après-ski vibe",
     ],
     image: "/images/ski/apharwat-10-peaks.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival in Srinagar & Transfer to Gulmarg",
+                "description": "Airport reception and private transfer to Gulmarg. Hotel check-in, gear fitting, and evening briefing."
+          },
+          {
+                "day": 2,
+                "title": "Safety Briefing & Phase 1 Warm-Up",
+                "description": "Transceiver safety clinic followed by warm-up powder runs through Kongdoori pine glades."
+          },
+          {
+                "day": 3,
+                "title": "Mount Apharwat Powder Bowls",
+                "description": "Take Phase 2 gondola to ski vast untracked high-alpine bowls with your certified guide."
+          },
+          {
+                "day": 4,
+                "title": "Mary's Shoulder Descents",
+                "description": "Ride steep pitches and long continuous vertical drops through powder bowls into pine glades."
+          },
+          {
+                "day": 5,
+                "title": "Baba Reshi Tree Skiing",
+                "description": "Ski deep powder lines through old-growth forests, returning by private 4WD after local tea."
+          },
+          {
+                "day": 6,
+                "title": "Shark's Fin & High Chutes",
+                "description": "Explore high alpine chutes around Shark's Fin with cold Himalayan powder."
+          },
+          {
+                "day": 7,
+                "title": "Drang Valley Long Descent",
+                "description": "Scenic backcountry descent through alpine bowls and frozen waterfalls to Drang village."
+          },
+          {
+                "day": 8,
+                "title": "Sunshine Peak Powder Lines",
+                "description": "Track fresh powder basins towards Sunshine Peak with views of Nanga Parbat."
+          },
+          {
+                "day": 9,
+                "title": "Final Mountain Descents & Dal Lake Houseboat",
+                "description": "Morning ski on Apharwat, then transfer to Srinagar for a sunset luxury houseboat stay."
+          },
+          {
+                "day": 10,
+                "title": "Sunrise Shikara Ride & Airport Transfer",
+                "description": "Morning Shikara cruise across Dal Lake followed by airport departure."
+          }
+    ],
   },
   {
     slug: "fully-guided-1-week-ski-package",
@@ -65,6 +124,43 @@ export const packagesData: PackageItem[] = [
       "2 days houseboat and local sightseeing",
     ],
     image: "/images/ski/powder-skiing.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival in Srinagar & Drive to Gulmarg",
+                "description": "Meet your team at Srinagar airport, transfer to Gulmarg, and fit your ski gear."
+          },
+          {
+                "day": 2,
+                "title": "Phase 1 Warm-Up & Safety Clinic",
+                "description": "Avalanche transceiver training and warm-up powder runs around Kongdoori."
+          },
+          {
+                "day": 3,
+                "title": "Mount Apharwat High Bowls",
+                "description": "Ascend Phase 2 to ski wide open powder bowls with sweeping Pir Panjal views."
+          },
+          {
+                "day": 4,
+                "title": "Mary's Shoulder Powder Traverse",
+                "description": "Ski off-piste ridgelines and rolling powder bowls into sheltered tree glades."
+          },
+          {
+                "day": 5,
+                "title": "Baba Reshi Forest Tree Runs",
+                "description": "Deep powder tree skiing through pine forests down to the historic Baba Reshi shrine."
+          },
+          {
+                "day": 6,
+                "title": "Morning Ski & Dal Lake Houseboat",
+                "description": "Farewell powder turns on Apharwat, then drive to Srinagar for an evening on Dal Lake."
+          },
+          {
+                "day": 7,
+                "title": "Shikara Cruise & Departure",
+                "description": "Peaceful sunrise cruise on Dal Lake and transfer to Srinagar Airport."
+          }
+    ],
   },
   {
     slug: "2-weeks-fully-guided-ski-package",
@@ -87,6 +183,78 @@ export const packagesData: PackageItem[] = [
       "2 days houseboat and local sightseeing",
     ],
     image: "/images/hero/2-weeks-ski.jpeg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival & Transfer to Gulmarg",
+                "description": "Airport reception and transfer to Gulmarg for check-in and gear setup."
+          },
+          {
+                "day": 2,
+                "title": "Beacon Practice & Phase 1 Glades",
+                "description": "Safety orientation and warm-up powder runs in the Kongdoori woods."
+          },
+          {
+                "day": 3,
+                "title": "Apharwat First Descents",
+                "description": "High-altitude bowl skiing in light Himalayan powder from Phase 2."
+          },
+          {
+                "day": 4,
+                "title": "Mary's Shoulder Traverses",
+                "description": "Guided off-piste descents from Mary's Shoulder through pristine tree-lines."
+          },
+          {
+                "day": 5,
+                "title": "Baba Reshi Valley Descent",
+                "description": "Tree skiing descent to Baba Reshi with local tea and 4WD return."
+          },
+          {
+                "day": 6,
+                "title": "Shark's Fin Cirque",
+                "description": "Technical gullies and open bowls around Shark's Fin formation."
+          },
+          {
+                "day": 7,
+                "title": "Backcountry Skinning Day",
+                "description": "Earn your turns touring the remote western flanks of Mount Apharwat."
+          },
+          {
+                "day": 8,
+                "title": "North Face Couloirs",
+                "description": "Steep, pristine fall-lines in sheltered cold-powder chutes."
+          },
+          {
+                "day": 9,
+                "title": "Drang Valley Descent",
+                "description": "Epic 1,500m vertical descent from summits to frozen waterfalls."
+          },
+          {
+                "day": 10,
+                "title": "Sunshine Peak Basins",
+                "description": "Fresh powder runs towards Sunshine Peak with stunning panoramic views."
+          },
+          {
+                "day": 11,
+                "title": "Steep Powder Clinic",
+                "description": "Advanced line selection and secret powder stashes with local guides."
+          },
+          {
+                "day": 12,
+                "title": "Celebration Mountain Finale",
+                "description": "Ski your favorite Apharwat lines and celebrate an epic two-week trip."
+          },
+          {
+                "day": 13,
+                "title": "Srinagar Heritage & Houseboat",
+                "description": "Transfer to Srinagar for a luxury Dal Lake houseboat and Old City walk."
+          },
+          {
+                "day": 14,
+                "title": "Sunrise Shikara & Airport Drop",
+                "description": "Morning Shikara ride on Dal Lake and airport departure."
+          }
+    ],
   },
 
   // ==========================================
@@ -115,6 +283,63 @@ export const packagesData: PackageItem[] = [
       "All wildlife, environmental & restricted area permits",
     ],
     image: "/images/tours/ladakh-8-day-tour/pangong.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival in Leh & Rest",
+                "description": "Rest and acclimatize to high altitude in Leh."
+          },
+          {
+                "day": 2,
+                "title": "Leh Monastery Tour",
+                "description": "Gentle walking tour of Thiksey and Shey monasteries to aid acclimatization."
+          },
+          {
+                "day": 3,
+                "title": "Drive to Rumtse & Trek to Kyamar",
+                "description": "Drive along the Indus River and begin trek through scenic valleys to Kyamar."
+          },
+          {
+                "day": 4,
+                "title": "Kyamar to Tisaling via Dual Passes",
+                "description": "Cross Kyamar La and Mandalchan La with grand Changthang vistas."
+          },
+          {
+                "day": 5,
+                "title": "Tisaling to Tsokar Lake",
+                "description": "Cross Shibuk La to the white salt shores of Tsokar Lake, spotting wild Kiang."
+          },
+          {
+                "day": 6,
+                "title": "Tsokar Basin to Nuruchan",
+                "description": "Trek across vast saline plains to the Changpa nomad camp at Nuruchan."
+          },
+          {
+                "day": 7,
+                "title": "Nuruchan to Rachungkaru",
+                "description": "Gentle ascent over Horlam Kongka La to high nomadic pastures."
+          },
+          {
+                "day": 8,
+                "title": "Rachungkaru to Gyama",
+                "description": "Cross high Kyamayuri La pass into the remote Gyama valley."
+          },
+          {
+                "day": 9,
+                "title": "Gyama to Tso Moriri Lake",
+                "description": "Cross Yalung Nyau La for the first stunning view of deep-blue Tso Moriri."
+          },
+          {
+                "day": 10,
+                "title": "Tso Moriri & Korzok Monastery",
+                "description": "Explore the sacred lake and visit the 300-year-old Korzok Monastery."
+          },
+          {
+                "day": 11,
+                "title": "Return Drive to Leh",
+                "description": "Spectacular drive through Indus gorges back to Leh for a farewell dinner."
+          }
+    ],
   },
   {
     slug: "chadar-frozen-river-trek",
@@ -139,6 +364,53 @@ export const packagesData: PackageItem[] = [
       "Airport and trailhead transfers to and from Leh",
     ],
     image: "/images/tours/gulmarg-ski-adventure/frozen-river.avif",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival in Leh & Acclimatization",
+                "description": "Arrive in Leh and rest in a heated room to adjust to winter conditions."
+          },
+          {
+                "day": 2,
+                "title": "Medical Fitness Check & Market Walk",
+                "description": "Mandatory medical checkup at SNM Hospital and gear check in Leh bazaar."
+          },
+          {
+                "day": 3,
+                "title": "Drive to Chilling & Step on Ice to Shingra Koma",
+                "description": "Drive along the Indus-Zanskar confluence and take your first steps on the frozen river."
+          },
+          {
+                "day": 4,
+                "title": "Trek through Gorges to Tibb Cave",
+                "description": "Walk the canyon ice sheet between vertical cliffs to sheltered Tibb Cave."
+          },
+          {
+                "day": 5,
+                "title": "Tibb Cave to Naerak Frozen Waterfall",
+                "description": "Trek past giant icicles to the famous 50-foot frozen blue waterfall of Naerak."
+          },
+          {
+                "day": 6,
+                "title": "Naerak Village & Heritage",
+                "description": "Climb up to isolated Naerak village and visit its ancient juniper tree."
+          },
+          {
+                "day": 7,
+                "title": "Return Trek to Tibb Cave",
+                "description": "Retrace steps on the shifting ice sheet, discovering new formations."
+          },
+          {
+                "day": 8,
+                "title": "Tibb Cave to Roadhead & Drive to Leh",
+                "description": "Final river walk to Shingra Koma and warm vehicle transfer back to Leh."
+          },
+          {
+                "day": 9,
+                "title": "Airport Departure",
+                "description": "Transfer to Leh airport with aerial views of the snow-covered Himalayas."
+          }
+    ],
   },
   {
     slug: "markha-valley-trek",
@@ -163,6 +435,53 @@ export const packagesData: PackageItem[] = [
       "Leh trailhead roundtrip pickup and drop-off",
     ],
     image: "/images/destinations/ladakh/monastery.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival in Leh & Acclimatization",
+                "description": "Full rest in Leh to adapt to Ladakh's high altitude."
+          },
+          {
+                "day": 2,
+                "title": "Leh Cultural Walk",
+                "description": "Visit Leh Palace, Shanti Stupa, and local markets."
+          },
+          {
+                "day": 3,
+                "title": "Drive to Chilling & Trek to Skiu",
+                "description": "Cross Zanskar river cable bridge and hike up the valley to Skiu village."
+          },
+          {
+                "day": 4,
+                "title": "Skiu to Markha Village",
+                "description": "Walk through green oasis hamlets to Markha, the valley's largest settlement."
+          },
+          {
+                "day": 5,
+                "title": "Markha to Hankar",
+                "description": "Trek past ancient ruined forts with views of snow-capped Kang Yatse."
+          },
+          {
+                "day": 6,
+                "title": "Hankar to Nimaling Plateau",
+                "description": "Climb past alpine pastures to high Nimaling plateau under Kang Yatse glacier."
+          },
+          {
+                "day": 7,
+                "title": "Kang Yatse Ridge Excursion",
+                "description": "Acclimatization day hike towards Kang Yatse base camp."
+          },
+          {
+                "day": 8,
+                "title": "Cross Kongmaru La to Chokdo & Drive to Leh",
+                "description": "Ascend Kongmaru La for sweeping Karakoram views, then descend to drive to Leh."
+          },
+          {
+                "day": 9,
+                "title": "Leh Airport Departure",
+                "description": "Transfer to airport for your onward flight."
+          }
+    ],
   },
   {
     slug: "lamayuru-to-zanskar-trek",
@@ -188,6 +507,68 @@ export const packagesData: PackageItem[] = [
       "Monastery visits and village heritage encounters",
     ],
     image: "/images/destinations/ladakh/zanskar-trek.avif",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Arrival in Leh",
+                "description": "Rest and acclimatization in Leh."
+          },
+          {
+                "day": 2,
+                "title": "Drive to Lamayuru Monastery",
+                "description": "Scenic drive past the Indus confluence to 11th-century Lamayuru Monastery."
+          },
+          {
+                "day": 3,
+                "title": "Lamayuru to Wanla",
+                "description": "Cross Prinkiti La pass through yellow canyon gorges to Wanla."
+          },
+          {
+                "day": 4,
+                "title": "Wanla to Hinju",
+                "description": "Gentle walk through traditional farming villages and willow banks."
+          },
+          {
+                "day": 5,
+                "title": "Hinju to Sumda Chenmo",
+                "description": "Challenging ascent over Konzke La pass with grand mountain panoramas."
+          },
+          {
+                "day": 6,
+                "title": "Sumda Chenmo to Base Camp",
+                "description": "Trek through rugged river valleys over Dungdung Chan La."
+          },
+          {
+                "day": 7,
+                "title": "Base Camp to Photoksar",
+                "description": "Arrive at cliff-side Photoksar perched above green terraced barley fields."
+          },
+          {
+                "day": 8,
+                "title": "Cross Sengge La Pass",
+                "description": "Ascend the mighty Sengge La (Lion Pass) into the heart of wild Zanskar."
+          },
+          {
+                "day": 9,
+                "title": "Lingshed Ancient Monastery",
+                "description": "Descend to Lingshed amphitheater valley and visit its 1,000-year-old gompa."
+          },
+          {
+                "day": 10,
+                "title": "Lingshed to Hanumil",
+                "description": "Climb over Hanuma La pass and descend through deep rock-cut canyons."
+          },
+          {
+                "day": 11,
+                "title": "Hanumil to Karsha & Padum",
+                "description": "Walk through Karsha monastery to Padum, capital of Zanskar."
+          },
+          {
+                "day": 12,
+                "title": "Overland Drive to Leh",
+                "description": "Scenic drive across Pensi La pass and Suru Valley back to Leh."
+          }
+    ],
   },
   {
     slug: "warwan-valley-trek",
@@ -213,6 +594,53 @@ export const packagesData: PackageItem[] = [
       "Private vehicle transportation from Srinagar to Panikhar and return from Basmina",
     ],
     image: "/images/about/group-trek.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Srinagar to Suru Valley Drive",
+                "description": "Drive across Zoji La and Kargil to Panikhar under the Nun-Kun peaks."
+          },
+          {
+                "day": 2,
+                "title": "Panikhar to Denora",
+                "description": "Begin trekking alongside glacial streams through pristine willow pastures."
+          },
+          {
+                "day": 3,
+                "title": "Denora to Glacier Camp",
+                "description": "Hike through moraine valleys with up-close views of hanging icefalls."
+          },
+          {
+                "day": 4,
+                "title": "Cross Lomvilad Pass to Kaintal",
+                "description": "Traverse snow bridges and cross Lomvilad Pass into the secret Warwan valley."
+          },
+          {
+                "day": 5,
+                "title": "Kaintal to Humpet Meadows",
+                "description": "Trek through expansive, untouched wildflower meadows along the river."
+          },
+          {
+                "day": 6,
+                "title": "Humpet to Sukhnai Village",
+                "description": "Reach Sukhnai, an ancient wooden village with traditional timber houses."
+          },
+          {
+                "day": 7,
+                "title": "Sukhnai to Basmina",
+                "description": "Walk through golden fields and riverside trails to Basmina settlement."
+          },
+          {
+                "day": 8,
+                "title": "Basmina across Margan Pass",
+                "description": "Cross Margan Pass into Kashmir with sweeping views of the Pir Panjal range."
+          },
+          {
+                "day": 9,
+                "title": "Drive to Srinagar",
+                "description": "Drive through apple orchards and saffron fields back to Srinagar."
+          }
+    ],
   },
   {
     slug: "gurez-valley-trek",
@@ -238,6 +666,43 @@ export const packagesData: PackageItem[] = [
       "Scenic private transport from Srinagar across Razdan Pass to Gurez and return",
     ],
     image: "/images/destinations/kashmir/pahalgam.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Srinagar to Dawar via Razdan Pass",
+                "description": "Climb Razdan Pass with views of Mount Harmukh, descending into hidden Gurez."
+          },
+          {
+                "day": 2,
+                "title": "Habba Khatoon Peak Base",
+                "description": "Hike to the foot of pyramid-shaped Habba Khatoon and its crystal spring."
+          },
+          {
+                "day": 3,
+                "title": "Tulail Valley Riverside Camp",
+                "description": "Trek along the turquoise Kishanganga River into Tulail valley."
+          },
+          {
+                "day": 4,
+                "title": "High Meadows of Pukhta",
+                "description": "Ascend past shepherd hamlets into remote alpine meadows and tarns."
+          },
+          {
+                "day": 5,
+                "title": "Chakwali Border Village",
+                "description": "Visit the northernmost inhabited border village and meet local Dardic families."
+          },
+          {
+                "day": 6,
+                "title": "Return Walk to Dawar",
+                "description": "Sunset walk across Kishanganga suspension bridge with riverside campfire."
+          },
+          {
+                "day": 7,
+                "title": "Return Drive to Srinagar",
+                "description": "Scenic return journey across Razdan Pass back to Srinagar."
+          }
+    ],
   },
   {
     slug: "mount-harmukh-trek",
@@ -263,6 +728,43 @@ export const packagesData: PackageItem[] = [
       "Roundtrip road transport between Srinagar and ancient Naranag temple trailhead",
     ],
     image: "/images/destinations/kashmir/harmukh.jpeg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Naranag Temple to Trunkhol",
+                "description": "Drive to ancient Naranag ruins and climb pine forests to Trunkhol meadow."
+          },
+          {
+                "day": 2,
+                "title": "Trunkhol to Gangabal & Nundkol Lakes",
+                "description": "Trek across rolling pastures to camp beside Nundkol under Mount Harmukh."
+          },
+          {
+                "day": 3,
+                "title": "Gangabal Lake Exploration",
+                "description": "Relax by Gangabal Lake, renowned for clear waters and trout fishing."
+          },
+          {
+                "day": 4,
+                "title": "Harmukh Base Camp Excursion",
+                "description": "Scramble up the moraine ridge towards Harmukh glaciers and icefalls."
+          },
+          {
+                "day": 5,
+                "title": "Koleksar Glacial Tarn Hike",
+                "description": "Discover hidden glacial tarns tucked in rock amphitheatres behind Harmukh."
+          },
+          {
+                "day": 6,
+                "title": "Trunkhol Meadow Sunset",
+                "description": "Gentle walk to Trunkhol for golden hour views over the Kashmir valley."
+          },
+          {
+                "day": 7,
+                "title": "Descent to Naranag & Srinagar",
+                "description": "Descend through pine woods to Naranag and drive back to Srinagar."
+          }
+    ],
   },
 
   // ==========================================
@@ -292,6 +794,48 @@ export const packagesData: PackageItem[] = [
       "Transportation from Srinagar to Sonamarg, and Naranag back to Srinagar",
     ],
     image: "/images/destinations/kashmir/treak-days.jpeg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Srinagar to Sonamarg Basecamp",
+                "description": "Drive along Sindh River to Shitkadi camp near Sonamarg for orientation."
+          },
+          {
+                "day": 2,
+                "title": "Sonamarg to Nichnai",
+                "description": "Climb through Table Top meadows and birch forests to Nichnai valley."
+          },
+          {
+                "day": 3,
+                "title": "Nichnai Pass to Vishansar Lake",
+                "description": "Cross Nichnai Pass and descend to camp near turquoise Vishansar Lake."
+          },
+          {
+                "day": 4,
+                "title": "Gadsar Pass to Gadsar Lake",
+                "description": "Climb past Kishansar Lake to Gadsar Pass, descending into wildflower meadows."
+          },
+          {
+                "day": 5,
+                "title": "Gadsar to Satsar Lakes",
+                "description": "Traverse boulder trails to the seven interconnected alpine lakes of Satsar."
+          },
+          {
+                "day": 6,
+                "title": "Zaj Pass to Gangabal & Nundkol",
+                "description": "Cross Zaj Pass for views of twin lakes under Mount Harmukh."
+          },
+          {
+                "day": 7,
+                "title": "Rest Day at Gangabal Lake",
+                "description": "Relax by Gangabal Lake and take photography walks around Mount Harmukh."
+          },
+          {
+                "day": 8,
+                "title": "Descent to Naranag & Srinagar",
+                "description": "Descend through Trunkhol pine forests to ancient Naranag and drive to Srinagar."
+          }
+    ],
   },
   {
     slug: "tosamaidan-pir-panjal-trek",
@@ -317,6 +861,43 @@ export const packagesData: PackageItem[] = [
       "Pick-up and drop transfers from Srinagar",
     ],
     image: "/images/destinations/kashmir/pir-panjal.avif",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Srinagar to Dumail Camp",
+                "description": "Drive to Sitharan and hike through virgin pine woods to Dumail."
+          },
+          {
+                "day": 2,
+                "title": "Dumail to Tosamaidan Meadow",
+                "description": "Ascend to the vast alpine pasture of Tosamaidan, ringed by fir trees."
+          },
+          {
+                "day": 3,
+                "title": "Tosamaidan to Pehjan Meadow",
+                "description": "Trek across rolling green hills with expansive Pir Panjal panoramas."
+          },
+          {
+                "day": 4,
+                "title": "Durgin Alpine Tarns",
+                "description": "Explore hidden glacial tarns and shepherd trails around Durgin meadow."
+          },
+          {
+                "day": 5,
+                "title": "Panoramic Ridge Walk",
+                "description": "Walk scenic alpine ridges with views stretching across the Kashmir valley."
+          },
+          {
+                "day": 6,
+                "title": "Descent to Drang River",
+                "description": "Descend through ancient pine forests to camp beside the rushing Drang stream."
+          },
+          {
+                "day": 7,
+                "title": "Return Drive to Srinagar",
+                "description": "Morning nature walk and private transfer back to Srinagar."
+          }
+    ],
   },
   {
     slug: "goecha-la-trek",
@@ -341,6 +922,63 @@ export const packagesData: PackageItem[] = [
       "Trailhead reception and logistics coordination in Yuksom",
     ],
     image: "/images/destinations/sikkim/kangchenjunga.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Drive to Yuksom",
+                "description": "Scenic mountain drive through Teesta valley to historic Yuksom in Sikkim."
+          },
+          {
+                "day": 2,
+                "title": "Yuksom to Tshoka Rainforests",
+                "description": "Trek across suspension bridges through dense subtropical rainforests to Tshoka."
+          },
+          {
+                "day": 3,
+                "title": "Tshoka to Dzongri Ridge",
+                "description": "Climb through flowering rhododendron forests of Phedang to Dzongri ridge."
+          },
+          {
+                "day": 4,
+                "title": "Dzongri Top Sunrise",
+                "description": "Dawn hike to Dzongri Top for a 360-degree panorama of Mount Kangchenjunga."
+          },
+          {
+                "day": 5,
+                "title": "Dzongri to Thansing",
+                "description": "Descend to Kokchurang river gorge and climb into the alpine valley of Thansing."
+          },
+          {
+                "day": 6,
+                "title": "Thansing to Lamuney Basecamp",
+                "description": "Gentle walk up the valley beside moraines to high camp at Lamuney."
+          },
+          {
+                "day": 7,
+                "title": "Goecha La Viewpoint Push",
+                "description": "Early morning push past Samiti Lake to Goecha La for an eye-level view of Kangchenjunga."
+          },
+          {
+                "day": 8,
+                "title": "Kokchurang to Tshoka",
+                "description": "Scenic return trek through rhododendron forests back to Tshoka."
+          },
+          {
+                "day": 9,
+                "title": "Descent to Yuksom",
+                "description": "Descend through rainforest trails back to Yuksom for a celebration dinner."
+          },
+          {
+                "day": 10,
+                "title": "Contingency & Monastery Walk",
+                "description": "Buffer day for weather flexibility and walk to historic Dubdi Monastery."
+          },
+          {
+                "day": 11,
+                "title": "Departure Drive",
+                "description": "Drive down to Bagdogra Airport or NJP station for your journey home."
+          }
+    ],
   },
   {
     slug: "dzongri-trek",
@@ -365,6 +1003,48 @@ export const packagesData: PackageItem[] = [
       "Trailhead briefings and support from Yuksom",
     ],
     image: "/images/destinations/sikkim/hero.jpg",
+    itinerary: [
+          {
+                "day": 1,
+                "title": "Drive to Yuksom",
+                "description": "Scenic drive through tea gardens and Sikkim hills to trailhead Yuksom."
+          },
+          {
+                "day": 2,
+                "title": "Yuksom to Sachen Gorges",
+                "description": "Enter Khangchendzonga National Park, crossing suspension bridges to Sachen."
+          },
+          {
+                "day": 3,
+                "title": "Sachen to Tshoka Settlement",
+                "description": "Climb past Bakhim to the mountain village of Tshoka facing Mount Pandim."
+          },
+          {
+                "day": 4,
+                "title": "Tshoka to Dzongri Meadow",
+                "description": "Steep climb through red rhododendrons of Phedang to windswept Dzongri."
+          },
+          {
+                "day": 5,
+                "title": "Dzongri Top Sunrise Panorama",
+                "description": "Witness golden sunrise light striking Kangchenjunga, Kabru, and Pandim peaks."
+          },
+          {
+                "day": 6,
+                "title": "Dzongri to Tshoka Descent",
+                "description": "Descend along the mountain ridge back to Tshoka for a relaxed afternoon."
+          },
+          {
+                "day": 7,
+                "title": "Tshoka to Yuksom Return",
+                "description": "Descend through lush green forests to Yuksom and enjoy a warm celebration."
+          },
+          {
+                "day": 8,
+                "title": "Departure to Bagdogra",
+                "description": "Transfer from Yuksom to Bagdogra Airport or NJP station."
+          }
+    ],
   },
 ];
 

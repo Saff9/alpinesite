@@ -16,9 +16,11 @@ import {
   Compass,
   Sparkles,
   ChevronRight,
+  Calendar,
 } from "lucide-react";
 import { packagesData, getPackageBySlug, getPackagesByCategory, type PackageItem } from "@/data/packages";
 import { ItineraryButton } from "@/components/forms/itinerary-button";
+import { ItineraryAccordion } from "@/components/packages/itinerary-accordion";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 import type { DestinationOption, ActivityOption } from "@/data/itinerary-context";
@@ -182,17 +184,35 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
       telephone: site.phone,
       email: site.email,
     },
-    ...(waypoints.length > 0 && {
-      itinerary: {
-        "@type": "ItemList",
-        numberOfItems: waypoints.length,
-        itemListElement: waypoints.map((stop, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: stop,
-        })),
-      },
-    }),
+    ...((pkg.itinerary && pkg.itinerary.length > 0)
+      ? {
+          itinerary: {
+            "@type": "ItemList",
+            numberOfItems: pkg.itinerary.length,
+            itemListElement: pkg.itinerary.map((d, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "TouristTrip",
+                name: `Day ${d.day}: ${d.title}`,
+                description: d.description,
+              },
+            })),
+          },
+        }
+      : waypoints.length > 0
+      ? {
+          itinerary: {
+            "@type": "ItemList",
+            numberOfItems: waypoints.length,
+            itemListElement: waypoints.map((stop, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: stop,
+            })),
+          },
+        }
+      : {}),
   };
 
   return (
@@ -321,7 +341,12 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
               </div>
             )}
 
-            {/* 3. Package Inclusions & Exclusions (Audited Green & Red Sections) */}
+            {/* 3. Comprehensive Day-by-Day Itinerary (Foldable & Responsive) */}
+            {pkg.itinerary && pkg.itinerary.length > 0 && (
+              <ItineraryAccordion itinerary={pkg.itinerary} />
+            )}
+
+            {/* 4. Package Inclusions & Exclusions (Audited Green & Red Sections) */}
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
               <h2 className="font-heading text-xl sm:text-2xl font-bold uppercase tracking-tight text-neutral-900 border-b border-neutral-100 pb-4">
                 Package Inclusions &amp; Features
