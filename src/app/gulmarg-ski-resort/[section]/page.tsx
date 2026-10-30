@@ -27,15 +27,26 @@ const sectionData: Record<
   "about-gulmarg": {
     title: "About Gulmarg Ski Resort",
     subtitle:
-      "Discover Alpine Club India and our passion for exploring the Himalayas of India.",
+      "Perched high on Mt. Apharwat with over 1,330 vertical meters of skiable terrain in the mighty Himalayas.",
     heroImage: "/images/hero/gulmarg-hero.jpg",
-    tagline: "Discover the Himalayas with Alpine Club India",
+    tagline: "Mt. Apharwat & The World's Highest Ski Lift",
     description: [
-      "AlpineClubIndia.com is created for travellers from all over the world who see the mountains as a place of inner peace, challenge, reconnecting with nature, and experiencing the Himalayas of India. We specialise in adventure tours throughout the Himalayas of India, including skiing, trekking, hiking, fishing, motorcycle tours, cultural trips, and high-altitude expeditions.",
-      "Our mission is to make the Himalayas of India accessible, safe, sustainable, and lifetime-memorable for travellers across the globe. Our vision is to become India's most trusted community for exploring the Himalayas of India. We believe adventure should be exciting, but safety must always come first, with responsible travel deeply connected to local communities. That's why we work with the best guides, local drivers, homestay owners, and adventure professionals across the Himalayas of India.",
+      "Perched at the very top of India, the beautiful village of Gulmarg sits high on Mt. Apharwat, a ski and snowboard resort with over 1,330 vertical meters of skiable terrain on the rim of the Kashmir valley in the Pir Panjal range of the mighty Himalayas. The resort's claim to fame is the Gulmarg Gondola – the highest ski lift in the world, ascending to an elevation of 3,980 meters.",
+      "CNN International helped put Gulmarg Ski Resort on the map with a Number 7 ranking for the best ski areas in Asia.",
+      "The gondola rises from the village in two stages to an elevation of 3,980 metres. During big storms, the huge pines from the mid station offer great protected tree lines, while the options off the top are endless. Lap the main bowls, hike to the summit and explore the northern slopes or drop off the ridge to remote mountain villages.",
+      "The majestic views, amazing powder, unique cultural experience and our tailored Gulmarg ski tours make this place one of the greatest ski and boarding destinations on earth.",
     ],
-    features: [],
-    recommendations: [],
+    features: [
+      "1,330+ vertical meters of skiable Himalayan terrain",
+      "World's highest ski lift ascending to 3,980 meters",
+      "Ranked #7 Best Ski Area in Asia by CNN International",
+      "Protected deep powder tree skiing and massive alpine bowls",
+    ],
+    recommendations: [
+      "Check daily avalanche advisory reports before riding Phase 2",
+      "Always carry transceiver, probe, shovel and ride with certified local guides",
+      "Pace yourself for high-altitude acclimatization above 3,900 meters",
+    ],
   },
 
   "backcountry-skiing": {
