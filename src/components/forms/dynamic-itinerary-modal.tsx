@@ -240,13 +240,13 @@ Requirements & Notes: ${notes || "None"}`;
         body: JSON.stringify({
           name,
           phone,
-          email,
+          email: email.trim() || undefined,
           subject: `Itinerary Request: ${packageName} (${destName})`,
           message: messageSummary,
         }),
       });
     } catch {
-      // WhatsApp fallback continues seamlessly
+      // Form proceeds to WhatsApp and email fallbacks
     }
 
     setWhatsappUrl(waLink);

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Zap, Phone, CheckCircle2, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Button } from "@/components/ui/button";
+import { LastMinuteTripForm } from "@/components/forms/last-minute-trip-form";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -121,76 +122,7 @@ export default function LastMinuteTripPage() {
                 Leave your details below and our senior guide will message or call you back within 15 minutes.
               </p>
 
-              <form
-                action={`https://formsubmit.co/${site.email}`}
-                method="POST"
-                className="mt-6 space-y-4 text-left"
-              >
-                <input type="hidden" name="_subject" value="URGENT: Last Minute Trip Inquiry" />
-                <input type="hidden" name="_captcha" value="false" />
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 font-heading mb-1">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="e.g. Rahul Sharma"
-                    className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 focus:border-brand focus:outline-none"
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 font-heading mb-1">
-                      Phone / WhatsApp
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      placeholder="+91 98765 43210"
-                      className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 focus:border-brand focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 font-heading mb-1">
-                      Expected Arrival
-                    </label>
-                    <input
-                      type="text"
-                      name="travel_date"
-                      required
-                      placeholder="e.g. Tomorrow / 25 Oct"
-                      className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 focus:border-brand focus:outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 font-heading mb-1">
-                    Trip Interest
-                  </label>
-                  <select
-                    name="package_interest"
-                    className="w-full rounded-xl border border-neutral-300 bg-white px-3.5 py-2.5 text-sm text-neutral-900 focus:border-brand focus:outline-none"
-                  >
-                    <option value="Gulmarg Ski / Snowboard">Gulmarg Skiing &amp; Snow Powder</option>
-                    <option value="Kashmir Valley Tour">Kashmir Valley (Srinagar, Gulmarg, Pahalgam)</option>
-                    <option value="Ladakh Mountain Trip">Ladakh &amp; Leh Short Circuit</option>
-                    <option value="Custom Urgent Trip">Other / Custom Quick Trip</option>
-                  </select>
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full rounded-xl bg-brand py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-brand-deep h-11"
-                >
-                  Send Urgent Request
-                </Button>
-              </form>
+              <LastMinuteTripForm />
             </div>
           </div>
         </div>

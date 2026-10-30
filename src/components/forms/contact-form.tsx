@@ -133,24 +133,6 @@ export function ContactForm({
       const data = (await response.json()) as ApiResponse;
 
       if (response.ok && data.success) {
-        // Also fire client-side FormSubmit AJAX so browser Origin header is included for email delivery
-        fetch(`https://formsubmit.co/ajax/${encodeURIComponent(site.email)}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            _subject: emailSubject,
-            name: cleanName,
-            email: cleanEmail,
-            phone: cleanPhone || "Not provided",
-            subject: cleanSubject,
-            message: cleanMessage,
-            _template: "table",
-          }),
-        }).catch(() => {});
-
         setSubmittedWhatsappUrl(whatsappUrl);
         setSuccessMessage(data.message);
         setStatus("success");
